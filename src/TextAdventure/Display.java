@@ -24,15 +24,17 @@ public class Display {
                 + "As you move  hastily through the dank tunnel, you hear a loud *click* and a hidden trapdoor opens under you, and you fall into the darkness below.."
                 + "\n\n"
                 + ".. You open your eyes, unharmed. "
-                + "\nUnable to reach the trapdoor way above, you must find another way out of the dungeon.\n");
+                + "\nUnable to reach the trapdoor way above, you must find another way out of the dungeon.\n"
+                + "\n"
+                + "If you feel scared and alone in the dungeon just shout help or even better try to write help on the dusty floor in a room.\n");
     }
 
     // returnerer player navn
     public String nameInput() {
         sc = new Scanner(System.in);
-        System.out.print("Indtast dit navn: ");
+        System.out.print("Enter your name: ");
         String name = sc.next();
-        System.out.println("Velkommen, " + name + ".");
+        System.out.println("welcome, " + name + ".");
         return name;
     }
 
