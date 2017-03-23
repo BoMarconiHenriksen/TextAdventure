@@ -34,7 +34,7 @@ public class Display {
         sc = new Scanner(System.in);
         System.out.print("Enter your name: ");
         String name = sc.next();
-        System.out.println("welcome, " + name + ".");
+        System.out.println("Welcome, " + name + ".");
         return name;
     }
 
