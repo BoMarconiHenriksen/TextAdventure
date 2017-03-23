@@ -61,7 +61,7 @@ public class Display {
     }
 
     public void printActionPlayerTransit() {
-        System.out.println("You enters a room...");
+        System.out.println("Walking...");
     }
 
     public void printNoExit() {
@@ -121,7 +121,6 @@ public class Display {
 
     // printer besked n�r player har gennemf�rt spillet
     public void printWinMessage(Player player) {
-        System.out.println("You beat the game YAAAAAY!");
         System.out.println("Total amount of gold gathered: " + player.getPlayerGold());
     }
 
