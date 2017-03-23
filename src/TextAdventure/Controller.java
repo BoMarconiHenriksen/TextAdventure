@@ -37,7 +37,7 @@ public class Controller {
                                 +"\nIt has three doorways; One to the north, one to the east, and one to the south.");
         
         room1 = new Room(0,"The room is long and narrow, with rays of light shining through cracks in the roof.\n" 
-                                +"It has a pulsating portal to the east and a doorway to the west.");
+                                +"It has a pulsating portal to the east and a doorway to the south and west.");
         
         room2 = new Room(15,"The room is long and dark, and you can barely see the walls around you.\n"
                                 +"It has a pulsating portal to the west and a doorway to the east.");
