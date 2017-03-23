@@ -124,8 +124,9 @@ public class Controller {
         
         
         display.welcome();
+        display.printCurrRoomDescr(player.getCurrRoom());
         while(continue_) {
-            display.printCurrRoomDescr(player.getCurrRoom());
+            
             playerControl();
         }
         
@@ -213,7 +214,6 @@ public class Controller {
         }
     }
     
-    // NY NY NY
     // Metoder der fjerner HP fra player hvis der er en fælde i rummet
     public void ifRoomContainsTrap(Player player){
         if (player.getCurrRoom().isTrapActive()) { //Tester om der er 
@@ -228,6 +228,7 @@ public class Controller {
         if (checkExitWest() && player.getCurrRoom().getExitWest().unlockExitCondition(player)){ //Tjekker om der er et exit mod vest og om exit er åben
             player.setCurrRoom(player.getCurrRoom().getExitWest().getNextRoom()); //Flytter player til nyt rum
             display.printActionPlayerTransit();
+            display.printCurrRoomDescr(player.getCurrRoom());
             ifRoomContainsTrap(player);
             ifWinCondition(player);
         } else {
@@ -244,6 +245,7 @@ public class Controller {
         if (checkExitEast() && player.getCurrRoom().getExitEast().unlockExitCondition(player)){ //Tjekker om der er et exit mod vest og om exit er åben
             player.setCurrRoom(player.getCurrRoom().getExitEast().getNextRoom()); //Flytter player til nyt rum
             display.printActionPlayerTransit();
+            display.printCurrRoomDescr(player.getCurrRoom());
             ifRoomContainsTrap(player);
             ifWinCondition(player);
         } else {
@@ -260,6 +262,7 @@ public class Controller {
         if (checkExitSouth() && player.getCurrRoom().getExitSouth().unlockExitCondition(player)){ //Tjekker om der er et exit mod vest og om exit er åben
             player.setCurrRoom(player.getCurrRoom().getExitSouth().getNextRoom()); //Flytter player til nyt rum
             display.printActionPlayerTransit();
+            display.printCurrRoomDescr(player.getCurrRoom());
             ifRoomContainsTrap(player);
             ifWinCondition(player);
         } else {
@@ -276,6 +279,7 @@ public class Controller {
         if (checkExitNorth() && player.getCurrRoom().getExitNorth().unlockExitCondition(player)){ //Tjekker om der er et exit mod vest og om exit er åben
             player.setCurrRoom(player.getCurrRoom().getExitNorth().getNextRoom()); //Flytter player til nyt rum
             display.printActionPlayerTransit();
+            display.printCurrRoomDescr(player.getCurrRoom());
             ifRoomContainsTrap(player);
             ifWinCondition(player);
         } else {
