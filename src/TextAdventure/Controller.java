@@ -33,19 +33,44 @@ public class Controller {
         display = new Display();
         
         // Opretter rum uden fælder
-        startRoom = new Room(20,"Start room");
-        room1 = new Room(0,"room1");
-        room2 = new Room(15,"room2");
-        room3 = new Room(0,"room3");
-        room4 = new Room(35,"room4");
-        room5 = new Room(0,"room5");
-        room6 = new Room(0,"room6");
-        room7 = new Room(25,"room7");
-        room8 = new Room(0,"room8");
-        slutRoom = new Room(0,"Slut room");
+        startRoom = new Room(20,"The room is moist and a brown glow emanates from the walls." 
+                                +"\nIt has three doorways; One to the north, one to the east, and one to the south.");
+        
+        room1 = new Room(0,"The room is long and narrow, with rays of light shining through cracks in the roof.\n" 
+                                +"It has a pulsating portal to the east and a doorway to the west.");
+        
+        room2 = new Room(15,"The room is long and dark, and you can barely see the walls around you.\n"
+                                +"It has a pulsating portal to the west and a doorway to the east.");
+        
+        room3 = new Room(0,"The room has a stony floor, and dripping crystals hanging from the celing.\n"
+                                +"It has three doorways; One to the north, one to the west, and one to the south.");
+        
+        room4 = new Room(35,"The room is a dead end.\n"
+                                +"Your only choice is to go back.");
+        
+        room5 = new Room(0,"The room is narrow and blocked by rocks. You can barely move through.\n"
+                                +"It has a pulsating portal to the south and a doorway to the west. ");
+        
+        room6 = new Room(0,"The room is a wide tunnel, with strange colours coming from the cracks in the floor.\n"
+                                +"It has a doorway to the north and a doorway to the south.");
+        
+        room7 = new Room(25,"The room is I huge circle, with odd, flickering colours of red coming from the walls. "
+                                + "It has a pulsating portal to the west and a doorway to the south.");
+        
+        room8 = new Room(0,"The room is start-shaped, well lit from floating lights, calmly orbiting the ground.\n"
+                                +"It has a pulsating portal to the west and a sturdy looking gate to the east.\n"
+                                +"The gate has a stone tablet above it, with crude letters carved into it.\n"
+                                +"It read: \"My treasure you must collect, in its entirety. Only then can you escape this domain\"");
+        
+        slutRoom = new Room(0,"A ray of sunlight momentarilly blind you. "
+                            + "\nAs you stagger out of the darkness, you hear birds singing, smell the fresh air, feel the grass beneath your feet - you finally escaped the dungeon! \n"
+                            + "The treasure, though, is magically gone from your possenssion. It will forever belong to the Dungeon of Mysteries…");
+        
         // Opretter rum med fælder 
-        trapRoom1 = new Room(5,"Trap room1",true);
-        trapRoom2 = new Room(0,"Trap room2",true);
+        trapRoom1 = new Room(5,"The room is a dead end. "
+                                + "\nYour only choice is to go back.",true);
+        trapRoom2 = new Room(0,"The room is a dead end. "
+                                + "\nYour only choice is to go back.",true);
         
         //Opretter Exits start room
         startRoom.setExitNorth(new Exit(room3));
