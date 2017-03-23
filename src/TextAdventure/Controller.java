@@ -126,6 +126,7 @@ public class Controller {
         while(continue_) {
             playerControl();
         }
+        display.printExitMessage();
         System.exit(0);
        
     }
@@ -168,7 +169,6 @@ public class Controller {
             case "exit":
                 String choice = display.exitChoice();
                 if (choice.equals("yes") || choice.equals("y")) {
-                    display.printExitMessage();
                     continue_ = false;
                 }
                 break;
@@ -196,7 +196,6 @@ public class Controller {
     public void ifWinCondition(Player player) {
         if (player.getCurrRoom().equals(slutRoom)) {
             display.printWinMessage(player);
-            display.printExitMessage();
             continue_ = false;
         }
     }
@@ -206,7 +205,6 @@ public class Controller {
     public void ifPlayerHealthZero(Player player) {
         if (player.getPlayerHealth() <= 0) {
             display.printActionDeath();
-            display.printExitMessage();
             continue_ = false;
         }
     }
