@@ -129,8 +129,7 @@ public class Controller {
             
             playerControl();
         }
-        
-        
+       
     }
     
     // Switch case som tager imod en kommando fra player

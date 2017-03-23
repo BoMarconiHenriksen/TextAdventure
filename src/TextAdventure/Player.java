@@ -16,7 +16,6 @@ public class Player {
     private String name;
     private Room currRoom = null; //Nuværende rum player befinder sig i
 
-    
     public Player(int gold, String name) {
         this.gold = gold;
         this.name = name;
@@ -63,8 +62,6 @@ public class Player {
     public void setPlayerHealth(int health) {
         this.health = health;
     }
-    
-    
     
 }
 
