@@ -91,9 +91,4 @@ public class Room {
         this.trap = false;
     }
 
-    
-    
-    
-    
-    
 }

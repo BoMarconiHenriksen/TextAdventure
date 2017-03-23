@@ -44,7 +44,7 @@ public class Display {
         return input.toLowerCase();
     }
 
-    void helpMenu() {
+    public void helpMenu() {
         System.out.println("++++++++++++++++ HELP  MENU +++++++++++++++++");
         System.out.println("+ \'help\' or \'h\' - Show Help-menu            +");
         System.out.println("+ \'look\' or \'l\' - Look for gold             +");

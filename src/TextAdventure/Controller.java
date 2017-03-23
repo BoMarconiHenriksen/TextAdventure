@@ -29,7 +29,7 @@ public class Controller {
     
     boolean continue_ = true;
     
-    void start() {
+    public void start() {
         display = new Display();
         
         // Opretter rum uden fælder
