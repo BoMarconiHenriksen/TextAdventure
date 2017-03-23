@@ -61,7 +61,7 @@ public class Display {
     }
 
     public void printActionPlayerTransit() {
-        System.out.println("You have entered a new room...");
+        System.out.println("You enters a room...");
     }
 
     public void printNoExit() {

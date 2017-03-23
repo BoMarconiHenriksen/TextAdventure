@@ -37,7 +37,7 @@ public class Controller {
                                 +"\nIt has three doorways; One to the north, one to the east, and one to the south.");
         
         room1 = new Room(0,"The room is long and narrow, with rays of light shining through cracks in the roof.\n" 
-                                +"It has a pulsating portal to the east and a doorway to the south and west.");
+                                +"It has a dark tunnel to the east and a doorway to the south and west.");
         
         room2 = new Room(15,"The room is long and dark, and you can barely see the walls around you.\n"
                                 +"It has a pulsating portal to the west and a doorway to the east.");
@@ -49,7 +49,7 @@ public class Controller {
                                 +"Your only choice is to go back.");
         
         room5 = new Room(0,"The room is narrow and blocked by rocks. You can barely move through.\n"
-                                +"It has a pulsating portal to the south and a doorway to the west. ");
+                                +"It has a dark tunnel to the south and a doorway to the west. ");
         
         room6 = new Room(0,"The room is a wide tunnel, with strange colours coming from the cracks in the floor.\n"
                                 +"It has a doorway to the north and a doorway to the south.");
@@ -118,17 +118,15 @@ public class Controller {
         //Opretter Exits trap room2
         trapRoom2.setExitNorth(new Exit(startRoom));
         
-        //player = new Player(0, display.nameInput());
-        player = new Player(0, "slutty");
-        player.setCurrRoom(startRoom);
-        
+        player = new Player(0, display.nameInput()); // Opretter en player og får et navn som input
+        player.setCurrRoom(startRoom); // Placere player i et rum
         
         display.welcome();
         display.printCurrRoomDescr(player.getCurrRoom());
         while(continue_) {
-            
             playerControl();
         }
+        System.exit(0);
        
     }
     
