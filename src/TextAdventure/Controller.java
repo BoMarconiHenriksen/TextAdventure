@@ -54,7 +54,7 @@ public class Controller {
         room6 = new Room(0,"The room is a wide tunnel, with strange colours coming from the cracks in the floor.\n"
                                 +"It has a doorway to the north and a doorway to the south.");
         
-        room7 = new Room(25,"The room is I huge circle, with odd, flickering colours of red coming from the walls. "
+        room7 = new Room(25,"The room is a huge circle, with odd, flickering colours of red coming from the walls. "
                                 + "It has a pulsating portal to the west and a doorway to the south.");
         
         room8 = new Room(0,"The room is start-shaped, well lit from floating lights, calmly orbiting the ground.\n"
