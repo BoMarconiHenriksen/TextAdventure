@@ -5,6 +5,7 @@
  */
 package TextAdventure;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -101,8 +102,11 @@ public class Display {
 
     // printer m�ngden af guld player 'holder' samt m�ngden af HP player har
     public void printInventory(Player player) {
-        System.out.println("Your wallet contains " + player.getPlayerGold() + " gold...");
-        System.out.println("You have " + player.getPlayerHealth() + " health points...");
+//        System.out.println("Your wallet contains " + player.getPlayerGold() + " gold...");
+//        System.out.println("You have " + player.getPlayerHealth() + " health points...");
+        for (Item i : player.getPlayerInventory().getItems()) {
+            System.out.println(i);
+        }
     }
 
     // printer besked med hvor meget guld der er opsamlet, eller at man intet kan samle op

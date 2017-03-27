@@ -15,7 +15,22 @@ public class Player {
     private int health = 100;
     private String name;
     private Room currRoom = null; //Nuværende rum player befinder sig i
+    private Inventory playerInventory = new Inventory();
 
+    public Inventory getPlayerInventory() {
+        return playerInventory;
+    }
+
+    public void setPlayerInventory(Inventory playerInventory) {
+        this.playerInventory = playerInventory;
+    }
+    
+    
+    
+    
+    
+    
+    
     public Player(int gold, String name) {
         this.gold = gold;
         this.name = name;
