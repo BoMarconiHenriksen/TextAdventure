@@ -55,7 +55,6 @@ public class Controller {
         }
         display.printExitMessage();
         System.exit(0);
-
     }
     
     public void start() {
@@ -69,8 +68,6 @@ public class Controller {
       //  player = new Player(0, display.nameInput()); // Opretter en player og får et navn som input
         player.setCurrRoom(rc.startRoom); // Placere player i et rum
 
-        
-        
         display.welcome();
         display.printCurrRoomDescr(player.getCurrRoom());
         while(continue_) {
@@ -85,7 +82,6 @@ public class Controller {
         }
         display.printExitMessage();
         System.exit(0);
-       
     }
     
     // Switch case som tager imod en kommando fra player

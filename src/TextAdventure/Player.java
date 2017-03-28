@@ -11,7 +11,6 @@ package TextAdventure;
  */
 public class Player {
     
-    //private int gold;
     private int health = 100;
     private String name;
     private Room currRoom = null; //Nuværende rum player befinder sig i
@@ -40,6 +39,7 @@ public class Player {
         this.inventory.setItemAmount(index,amount);
     }
     
+    //KAN CURROOM IKKE BRUGES? *******************************************************************
     // Tilføjer guld til player og tager guld fra rum
     public int takeItem(int index, int amount, Room room) {
         inventory.setItemAmount(index, inventory.getItemAmount(index) + amount);
@@ -47,6 +47,7 @@ public class Player {
         return this.inventory.getItemAmount(index);
     }
     
+    //KAN CURROOM IKKE BRUGES? *******************************************************************
     // Smider Items 
     public int placeItem(int index, int amount, Room room) {
         room.setRoomItemAmount(index, room.getRoomItemAmount(index) + amount);
