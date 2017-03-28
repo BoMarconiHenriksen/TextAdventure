@@ -25,12 +25,6 @@ public class Player {
         this.playerInventory = playerInventory;
     }
     
-    
-    
-    
-    
-    
-    
     public Player(int gold, String name) {
         this.gold = gold;
         this.name = name;

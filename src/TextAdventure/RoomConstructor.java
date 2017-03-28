@@ -24,6 +24,7 @@ public class RoomConstructor {
     Room trapRoom1;
     Room trapRoom2;
     
+    
     public void createRooms() {
     
     // Opretter rum uden fælder

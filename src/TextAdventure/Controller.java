@@ -19,7 +19,27 @@ public class Controller {
     boolean continue_ = true;
     
     public void test() {
-    
+        display = new Display();
+        rc = new RoomConstructor();
+        
+        rc.createRooms();
+        
+        // TEMP PLAYERNAME
+        player = new Player(0, "Playername");
+      //  player = new Player(0, display.nameInput()); // Opretter en player og får et navn som input
+        player.setCurrRoom(rc.startRoom); // Placere player i et rum
+        
+        
+
+        
+//        display.welcome();
+//        display.printCurrRoomDescr(player.getCurrRoom());
+//        while(continue_) {
+//            playerControl();
+//        }
+//        display.printExitMessage();
+//        System.exit(0);
+       
     }
     
     public void start() {
@@ -31,7 +51,7 @@ public class Controller {
         // TEMP PLAYERNAME
         player = new Player(0, "Playername");
       //  player = new Player(0, display.nameInput()); // Opretter en player og får et navn som input
-        player.setCurrRoom(startRoom); // Placere player i et rum
+        player.setCurrRoom(rc.startRoom); // Placere player i et rum
         
         
 
@@ -109,7 +129,7 @@ public class Controller {
     
     // Tester om player er kommet i slutrummet, og afslutter spil hvis player er det.
     public void ifWinCondition(Player player) {
-        if (player.getCurrRoom().equals(slutRoom)) {
+        if (player.getCurrRoom().equals(rc.slutRoom)) {
             display.printWinMessage(player);
             continue_ = false;
         }
