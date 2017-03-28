@@ -41,11 +41,17 @@ public class Player {
     }
     
     // Tilføjer guld til player og tager guld fra rum
-    public int takeItem(int index, Room room) {
-        int temp = inventory.getItemAmount(index);
-        inventory.setItemAmount(index,temp + room.getRoomItemAmount(index));
-        room.setRoomItemAmount(index,0);
+    public int takeItem(int index, int amount, Room room) {
+        inventory.setItemAmount(index, inventory.getItemAmount(index) + amount);
+        room.setRoomItemAmount(index, room.getRoomItemAmount(index) - amount);
         return this.inventory.getItemAmount(index);
+    }
+    
+    // Smider Items 
+    public int placeItem(int index, int amount, Room room) {
+        room.setRoomItemAmount(index, room.getRoomItemAmount(index) + amount);
+        inventory.setItemAmount(index, inventory.getItemAmount(index) - amount);
+        return inventory.getItemAmount(index);
     }
 
     public String getName() {

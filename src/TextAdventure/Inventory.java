@@ -14,8 +14,6 @@ import java.util.ArrayList;
 public class Inventory {
     private ArrayList<Item> items = new ArrayList<>();
     
-    
-    
     //Filling inventory
     public Inventory() {
         items.add(new Gold(0));

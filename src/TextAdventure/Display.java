@@ -34,7 +34,7 @@ public class Display {
     public String nameInput() {
         sc = new Scanner(System.in);
         System.out.print("Enter your name: ");
-        String name = sc.next();
+        String name = sc.nextLine();
         System.out.println("Welcome, " + name + ".");
         return name;
     }
@@ -43,7 +43,7 @@ public class Display {
     public String playerInput() {
         sc = new Scanner(System.in);
         System.out.print("> ");
-        String input = sc.next();
+        String input = sc.nextLine();
         return input.toLowerCase();
     }
 
@@ -82,7 +82,7 @@ public class Display {
     public String exitChoice() {
         sc = new Scanner(System.in);
         System.out.print("Are you sure you want to exit?: ");
-        String choice = sc.next();
+        String choice = sc.nextLine();
         return choice;
     }
 

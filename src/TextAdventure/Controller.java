@@ -30,27 +30,33 @@ public class Controller {
         player.setCurrRoom(rc.startRoom); // Placere player i et rum
         
         rc.startRoom.setRoomItemAmount(1,10);
-        System.out.println(rc.startRoom.getRoomItemAmount(1));
         
-        System.out.println(player.getPlayerItemAmount(1));
-        player.takeItem(1, player.getCurrRoom());
-        System.out.println(rc.startRoom.getRoomItemAmount(1));
-        System.out.println(player.getPlayerItemAmount(1));
-
+//        System.out.println(rc.startRoom.getRoomItemAmount(1));
+//        System.out.println(player.getPlayerItemAmount(1));
+//        player.takeItem(1, 50 ,player.getCurrRoom());
+//        System.out.println(rc.startRoom.getRoomItemAmount(1));
+//        System.out.println(player.getPlayerItemAmount(1));
+        
         
 //        display.welcome();
 //        display.printCurrRoomDescr(player.getCurrRoom());
 //        while(continue_) {
 //            playerControl();
 //        }
-//        display.printExitMessage();
-//        System.exit(0);
-       
+        while(continue_) {
+            String[] command = new String[1];
+            command[0] = display.playerInput();
+            if (command[0].contains(" ")) {
+                String[] command2 = command[0].split(" ");
+                playerControl(command2);
+            } else {
+                playerControl(command);
+            }
+        }
+        display.printExitMessage();
+        System.exit(0);
+
     }
-    
-    
-    
-    
     
     public void start() {
         display = new Display();
@@ -62,23 +68,29 @@ public class Controller {
         player = new Player(new Inventory(), "Playername");
       //  player = new Player(0, display.nameInput()); // Opretter en player og får et navn som input
         player.setCurrRoom(rc.startRoom); // Placere player i et rum
-        
-        
 
         
-//        display.welcome();
-//        display.printCurrRoomDescr(player.getCurrRoom());
-//        while(continue_) {
-//            playerControl();
-//        }
-//        display.printExitMessage();
-//        System.exit(0);
+        
+        display.welcome();
+        display.printCurrRoomDescr(player.getCurrRoom());
+        while(continue_) {
+            String[] command = new String[1];
+            command[0] = display.playerInput();
+            if (command[0].contains(" ")) {
+                String[] command2 = command[0].split(" ");
+                playerControl(command2);
+            } else {
+                playerControl(command);
+            }
+        }
+        display.printExitMessage();
+        System.exit(0);
        
     }
     
     // Switch case som tager imod en kommando fra player
-    public void playerControl() {
-        switch(display.playerInput()) {
+    public void playerControl(String[] command) {
+        switch(command[0]) {
             case "north": 
             case "n":
                 north();
@@ -102,6 +114,11 @@ public class Controller {
             case "take":
             case "t":
                 //display.printActionTake(player.takeGold(player.getCurrRoom()));
+                if (command.length > 1){
+                    System.out.println(command[1]);
+                } else {
+                    System.out.println("Kun modtaget ét ord");
+                }
                 break;
             case "inventory":
             case "i":
@@ -230,6 +247,8 @@ public class Controller {
             }
         }
     }
+    
+    
     
 }
 
