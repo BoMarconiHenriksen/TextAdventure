@@ -25,11 +25,17 @@ public class Controller {
         rc.createRooms();
         
         // TEMP PLAYERNAME
-        player = new Player(0, "Playername");
+        player = new Player(new Inventory(),"Playername");
       //  player = new Player(0, display.nameInput()); // Opretter en player og får et navn som input
         player.setCurrRoom(rc.startRoom); // Placere player i et rum
         
+        rc.startRoom.setRoomItemAmount(1,10);
+        System.out.println(rc.startRoom.getRoomItemAmount(1));
         
+        System.out.println(player.getPlayerItemAmount(1));
+        player.takeItem(1, player.getCurrRoom());
+        System.out.println(rc.startRoom.getRoomItemAmount(1));
+        System.out.println(player.getPlayerItemAmount(1));
 
         
 //        display.welcome();
@@ -42,6 +48,10 @@ public class Controller {
        
     }
     
+    
+    
+    
+    
     public void start() {
         display = new Display();
         rc = new RoomConstructor();
@@ -49,7 +59,7 @@ public class Controller {
         rc.createRooms();
         
         // TEMP PLAYERNAME
-        player = new Player(0, "Playername");
+        player = new Player(new Inventory(), "Playername");
       //  player = new Player(0, display.nameInput()); // Opretter en player og får et navn som input
         player.setCurrRoom(rc.startRoom); // Placere player i et rum
         
@@ -91,7 +101,7 @@ public class Controller {
                 break;
             case "take":
             case "t":
-                display.printActionTake(player.takeGold(player.getCurrRoom()));
+                //display.printActionTake(player.takeGold(player.getCurrRoom()));
                 break;
             case "inventory":
             case "i":

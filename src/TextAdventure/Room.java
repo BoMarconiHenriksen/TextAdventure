@@ -5,13 +5,15 @@
  */
 package TextAdventure;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author bo_ma
  */
 public class Room {
     
-    //private int gold;
+    //private Gold gold;
     private Inventory inventory;
     private String description;
     private boolean trap = false;
@@ -32,19 +34,27 @@ public class Room {
         this.description = description;
     }
     
+    public Room(String description, boolean trap) {
+        this.description = description;
+    }
+    
     public Room(String description) {
         this.description = description;
     }
 
     public Room() {}
     
-//    public int getRoomGold() {
-//        return gold;
-//    }
-//
-//    public void setRoomGold(int gold) {
-//        this.gold = gold;
-//    }
+    public ArrayList<Inventory> getInventory(){
+        return this.getInventory();
+    }
+    
+    public int getRoomItemAmount(int index) {
+        return inventory.getItemAmount(index);
+    }
+
+    public void setRoomItemAmount(int index, int amount) {
+        this.inventory.setItemAmount(index,amount);
+    }
 
     public String getDescription() {
         return description;

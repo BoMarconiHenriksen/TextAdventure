@@ -11,41 +11,41 @@ package TextAdventure;
  */
 public class Player {
     
-    private int gold;
+    //private int gold;
     private int health = 100;
     private String name;
     private Room currRoom = null; //Nuværende rum player befinder sig i
-    private Inventory playerInventory = new Inventory();
+    private Inventory inventory;
 
+    public Player() {}
+    
+    public Player(Inventory inventory, String name) {
+        this.inventory = inventory;
+        this.name = name;
+    }
+    
     public Inventory getPlayerInventory() {
-        return playerInventory;
+        return inventory;
     }
 
     public void setPlayerInventory(Inventory playerInventory) {
-        this.playerInventory = playerInventory;
+        this.inventory = playerInventory;
     }
     
-    public Player(int gold, String name) {
-        this.gold = gold;
-        this.name = name;
+    public int getPlayerItemAmount(int index) {
+        return inventory.getItemAmount(index);
     }
 
-    public Player() {}
-
-    public int getPlayerGold() {
-        return gold;
-    }
-
-    public void setPlayerGold(int gold) {
-        this.gold = gold;
+    public void setPlayerItemAmount(int index, int amount) {
+        this.inventory.setItemAmount(index,amount);
     }
     
     // Tilføjer guld til player og tager guld fra rum
-    public int takeGold(Room room) {
-        int temp = this.gold;
-        this.gold += room.getRoomGold();
-        room.setRoomGold(0);
-        return this.gold - temp;
+    public int takeItem(int index, Room room) {
+        int temp = inventory.getItemAmount(index);
+        inventory.setItemAmount(index,temp + room.getRoomItemAmount(index));
+        room.setRoomItemAmount(index,0);
+        return this.inventory.getItemAmount(index);
     }
 
     public String getName() {

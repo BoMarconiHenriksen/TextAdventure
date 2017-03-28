@@ -17,4 +17,8 @@ public interface Item {
     public void pickUp();
     public String getType();
     
+
+    public void setAmount(int amount);
+    public int getAmount();
+    
 }

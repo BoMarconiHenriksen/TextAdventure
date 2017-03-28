@@ -29,5 +29,15 @@ public class Potion implements Item{
     public String getType() {
         return this.type;
     }
+
+    @Override
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    @Override
+    public int getAmount() {
+        return this.amount;
+    }
     
 }

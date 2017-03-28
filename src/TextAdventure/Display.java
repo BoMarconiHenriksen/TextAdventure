@@ -93,8 +93,8 @@ public class Display {
 
     // printer m�ngden af guld player kan se i nuv�rende 'Room'
     public void printActionLook(Room room) {
-        if (room.getRoomGold() != 0) {
-            System.out.println("You spot " + room.getRoomGold() + " gold!...");
+        if (room.getRoomItemAmount(0) != 0) {
+            System.out.println("You spot " + room.getRoomItemAmount(0) + " gold!...");
         } else {
             System.out.println("You see nothing of value...");
         }
@@ -120,12 +120,12 @@ public class Display {
 
     // printer besked med m�ngden af guld player mangler for at l�se et 'Exit' op
     public void printNeedGoldExit(Player player) {
-        System.out.println("You need " + (100 - player.getPlayerGold()) + " gold to enter!");
+        System.out.println("You need " + (100 - player.getPlayerItemAmount(0)) + " gold to enter!");
     }
 
     // printer besked n�r player har gennemf�rt spillet
     public void printWinMessage(Player player) {
-        System.out.println("Total amount of gold gathered: " + player.getPlayerGold());
+        System.out.println("Total amount of gold gathered: " + player.getPlayerItemAmount(0));
     }
 
     // printer besked hvis en f�lde udl�ses

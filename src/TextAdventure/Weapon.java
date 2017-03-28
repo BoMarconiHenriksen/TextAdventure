@@ -26,5 +26,16 @@ public class Weapon implements Item {
     public String getType() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+ 
+    @Override
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    @Override
+    public int getAmount() {
+        return this.amount;
+    }
+
 }
