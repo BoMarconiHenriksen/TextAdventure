@@ -1,14 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package TextAdventure;
 
 
 /**
- *
- * @author bo_ma
+ * Klassen 
+ * @since 1.0
  */
 public class Room {
     
@@ -93,6 +88,11 @@ public class Room {
     }
     
     // Tager 50 HP fra player og deaktiverer fælden. 
+    /**
+    *  
+    * @param player
+    * @since 1.0
+    */
     public void springTrap(Player player) {
         player.setPlayerHealth(player.getPlayerHealth()-50);
         this.trap = false;

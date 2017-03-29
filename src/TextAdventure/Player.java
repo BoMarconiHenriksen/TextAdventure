@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package TextAdventure;
 
 /**
- *
- * @author bo_ma
+ * Klassen holder informatin om spilleren.
+ * @since 2.0
  */
 public class Player {
     
@@ -40,13 +35,28 @@ public class Player {
     }
     
     // Tilføjer guld til player og tager guld fra rum
+
+    /**
+    *  
+    *  @since 2.0
+    */
+    
+
     public int takeItem(int index, int amount) {
+
         inventory.setItemAmount(index, inventory.getItemAmount(index) + amount);
         this.getCurrRoom().setRoomItemAmount(index, this.getCurrRoom().getRoomItemAmount(index) - amount);
         return this.inventory.getItemAmount(index);
     }
     
     // Smider Items 
+
+    /**
+    *  
+    *  @since 2.0
+    */
+
+
     public int placeItem(int index, int amount) {
         this.getCurrRoom().setRoomItemAmount(index, this.getCurrRoom().getRoomItemAmount(index) + amount);
         inventory.setItemAmount(index, inventory.getItemAmount(index) - amount);

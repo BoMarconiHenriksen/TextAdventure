@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package TextAdventure;
 
 import java.util.ArrayList;
 
 /**
- *
- * @author Mellem
+ *  Klassen holder inventory for spilleren og for rummene.
+ * @since 2.0
  */
 public class Inventory {
     private ArrayList<Item> items = new ArrayList<>();

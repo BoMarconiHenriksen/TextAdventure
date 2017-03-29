@@ -1,20 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package TextAdventure;
 
+package TextAdventure;
+h
 
 /**
- *
- * @author bo_ma
+ *  Klassen der styrer programmet.
+ *  @since 1.0
  */
 public class Controller {
     
     Display display;
     Player player;
-    RoomConstructor rc;
+t    RoomConstructor rc;
     
     boolean continue_ = true;
     
@@ -57,7 +53,15 @@ public class Controller {
         System.exit(0);
     }
     
+
+    /**
+    *  This method starts the game.
+    *  @since 1.0
+    */
+  
+
     public void start() throws Exceptions {
+
         display = new Display();
         rc = new RoomConstructor();
         
@@ -85,7 +89,14 @@ public class Controller {
     }
     
     // Switch case som tager imod en kommando fra player
+
+    /**
+    *  Switch case som tager imod en kommando fra player.
+    *  @since 1.0
+    */ 
+
     public void playerControl(String[] command) throws Exceptions {
+
         switch(command[0]) {
             case "north": 
             case "n":
@@ -144,20 +155,40 @@ public class Controller {
     }
     
     // TJEKKER OM EXIT (i en bestemt retning) FINDES FOR NUVÆRENDE POSISTION
+    /**
+    *  Tjekker om exit for <b>nord</b> findes for nuværende position.
+    *  @since 1.0
+    */
     public boolean checkExitNorth () {
         return player.getCurrRoom().getExitNorth() != null;
     }
+    /**
+    *  Tjekker om exit for <b>sydd</b> findes for nuværende position.
+    *  @since 1.0
+    */
     public boolean checkExitSouth () {
         return player.getCurrRoom().getExitSouth() != null;
     }
+    /**
+    *  Tjekker om exit for <b>east</b> findes for nuværende position.
+    *  @since 1.0
+    */
     public boolean checkExitEast () {
         return player.getCurrRoom().getExitEast() != null;
     }
+    /**
+    *  Tjekker om exit for <b>west</b> findes for nuværende position.
+    *  @since 1.0
+    */
     public boolean checkExitWest () {
         return player.getCurrRoom().getExitWest() != null;
     }
     
     // Tester om player er kommet i slutrummet, og afslutter spil hvis player er det.
+    /**
+    *  Tjekker om player er kommet i slutrummet, og afslutter spil, hvis player er det.
+    *  @since 1.0
+    */
     public void ifWinCondition(Player player) {
         if (player.getCurrRoom().equals(rc.slutRoom)) {
             display.printWinMessage(player);
@@ -167,6 +198,11 @@ public class Controller {
     
     // Tester player HP - Giver output om at player er død og lukker spillet,
     // hvis HP er 0 eller mindre.
+    /**
+    *  Tester player HP - Giver output om at player er død og lukker spillet,
+    *  hvis HP er 0 eller mindre.
+    *  @since 1.0
+    */
     public void ifPlayerHealthZero(Player player) {
         if (player.getPlayerHealth() <= 0) {
             display.printActionDeath();
@@ -175,6 +211,10 @@ public class Controller {
     }
     
     // Metoder der fjerner HP fra player hvis der er en fælde i rummet
+    /**
+    *  Metoder der fjerner HP fra player hvis der er en fælde i rummet
+    *  @since 1.0.
+    */
     public void ifRoomContainsTrap(Player player){
         if (player.getCurrRoom().isTrapActive()) { //Tester om der er 
             player.getCurrRoom().springTrap(player);
@@ -184,6 +224,10 @@ public class Controller {
     }
     
     // Metode for 'west' kommando fra player
+    /**
+    *  Metode for <b>west</b> kommando fra player.
+    *  @since 1.0
+    */
     public void west() {
         if (checkExitWest() && player.getCurrRoom().getExitWest().unlockExitCondition(player)){ //Tjekker om der er et exit mod vest og om exit er åben
             player.setCurrRoom(player.getCurrRoom().getExitWest().getNextRoom()); //Flytter player til nyt rum
@@ -201,6 +245,10 @@ public class Controller {
     }
     
     // Metode for 'east' kommando fra plyer
+    /**
+    *  Metode for <b>east</b> kommando fra player.
+    *  @since 1.0
+    */
     public void east() {
         if (checkExitEast() && player.getCurrRoom().getExitEast().unlockExitCondition(player)){ //Tjekker om der er et exit mod vest og om exit er åben
             player.setCurrRoom(player.getCurrRoom().getExitEast().getNextRoom()); //Flytter player til nyt rum
@@ -218,6 +266,10 @@ public class Controller {
     }
     
     // Metode for 'south' kommando fra player
+    /**
+    *  Metode for <b>south</b> kommando fra player.
+    *  @since 1.0
+    */
     public void south() {
         if (checkExitSouth() && player.getCurrRoom().getExitSouth().unlockExitCondition(player)){ //Tjekker om der er et exit mod vest og om exit er åben
             player.setCurrRoom(player.getCurrRoom().getExitSouth().getNextRoom()); //Flytter player til nyt rum
@@ -235,6 +287,10 @@ public class Controller {
     }
     
     // Metode for 'north' kommando fra player
+    /**
+    *  Metode for <b>north</b> kommando fra player.
+    *  @since 1.0
+    */
     public void north() {
         if (checkExitNorth() && player.getCurrRoom().getExitNorth().unlockExitCondition(player)){ //Tjekker om der er et exit mod vest og om exit er åben
             player.setCurrRoom(player.getCurrRoom().getExitNorth().getNextRoom()); //Flytter player til nyt rum

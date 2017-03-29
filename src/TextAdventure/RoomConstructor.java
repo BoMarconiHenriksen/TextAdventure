@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package TextAdventure;
 
 /**
- *
- * @author Mellem
+ * Klassen indeholder beskrivelserne af rummene og opretter exits i rummene.
+ * @since 2.0
  */
 public class RoomConstructor {
     
@@ -24,7 +19,10 @@ public class RoomConstructor {
     Room trapRoom1;
     Room trapRoom2;
     
-    
+    /**
+    *  
+    *  @since 1.0
+    */
     public void createRooms() {
     
     // Opretter rum uden fælder
@@ -61,9 +59,14 @@ public class RoomConstructor {
                             + "\nAs you stagger out of the darkness, you hear birds singing, smell the fresh air, feel the grass beneath your feet - you finally escaped the dungeon! \n"
                             + "The treasure, though, is magically gone from your possenssion. It will forever belong to the Dungeon of Mysteries…");
         
+
+        // Opretter rum med fælder
+
+
         //ROOM INITIASERES *******************************************************************
         // Opretter rum med fælder 
         trapRoom1 = new Room(new Inventory(),"The room is a dead end. "
+
                                 + "\nYour only choice is to go back.",true);
         trapRoom2 = new Room(new Inventory(), "The room is a dead end. "
                                 + "\nYour only choice is to go back.",true);
