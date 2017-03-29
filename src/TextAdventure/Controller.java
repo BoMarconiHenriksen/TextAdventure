@@ -27,18 +27,10 @@ public class Controller {
         
         rc.startRoom.setRoomItemAmount(1,10);
         
-//        System.out.println(rc.startRoom.getRoomItemAmount(1));
-//        System.out.println(player.getPlayerItemAmount(1));
-//        player.takeItem(1, 50 ,player.getCurrRoom());
-//        System.out.println(rc.startRoom.getRoomItemAmount(1));
-//        System.out.println(player.getPlayerItemAmount(1));
-        
-        
-//        display.welcome();
-//        display.printCurrRoomDescr(player.getCurrRoom());
-//        while(continue_) {
-//            playerControl();
-//        }
+        String test = "hh";
+        System.out.println(commandAliases(test));
+
+        /* SAT I KOMMENTAR PGA DEBUGGING ***********************************
         while(continue_) {
             String[] command = new String[1];
             command[0] = display.playerInput();
@@ -51,6 +43,8 @@ public class Controller {
         }
         display.printExitMessage();
         System.exit(0);
+        
+        */
     }
     
 
@@ -102,31 +96,31 @@ public class Controller {
 
         switch(command[0]) {
             case "north": 
-            case "n":
+            case "n": //KAN FJERNES PGA commandAliases() ********************************
                 north();
                 // allDirections("north"); NYNYNYNYNYNY **************************
                 break;
             case "south":
-            case "s":
+            case "s": //KAN FJERNES PGA commandAliases() ********************************
                 south();
                 // allDirections("south"); NYNYNYNYNYNY **************************
                 break;
             case "east":
-            case "e":
+            case "e": //KAN FJERNES PGA commandAliases() ********************************
                 east();
                 // allDirections("east"); NYNYNYNYNYNY **************************
                 break;
             case "west":
-            case "w":
+            case "w": //KAN FJERNES PGA commandAliases() ********************************
                 west();
                 // allDirections("west"); NYNYNYNYNYNY **************************
                 break;
             case "look":
-            case "l":
+            case "l": //KAN FJERNES PGA commandAliases() ********************************
                 display.printActionLook(player.getCurrRoom());
                 break;
             case "take":
-            case "t":
+            case "t": //KAN FJERNES PGA commandAliases() ********************************
                 if (command.length > 1){
                     itemChoice(command[1],0);
                 } else {
@@ -134,7 +128,7 @@ public class Controller {
                 }
                 break;
             case "place":
-            case "p":
+            case "p": //KAN FJERNES PGA commandAliases() ********************************
                 if (command.length > 1){
                     itemChoice(command[1],1);
                 } else {
@@ -142,11 +136,11 @@ public class Controller {
                 }
                 break;
             case "inventory":
-            case "i":
+            case "i": //KAN FJERNES PGA commandAliases() ********************************
                 display.printInventory(player);
                 break;
             case "help":    
-            case "h":
+            case "h": //KAN FJERNES PGA commandAliases() ********************************
                 display.helpMenu();
                 break;
             case "exit":
@@ -158,6 +152,32 @@ public class Controller {
             default:
                 display.printInvalidInput();
                 break;
+        }
+    }
+    
+    // NYNYNYNYNYNY ************************************************
+    public String commandAliases(String input) {
+        switch(input){
+            case "n":
+                return "north";
+            case "s":
+                return "south";
+            case "e":
+                return "east";
+            case "w":
+                return "west";
+            case "l":
+                return "look";
+            case "t":
+                return "take";
+            case "p":
+                return "place";
+            case "i":
+                return "inventory";
+            case "h":
+                return "help";
+            default:
+                return input;
         }
     }
     
