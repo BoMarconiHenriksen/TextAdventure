@@ -37,7 +37,7 @@ public class App {
      * @param args the command line arguments
      * @since 1.0
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exceptions {
         
         
         Controller controller = new Controller();

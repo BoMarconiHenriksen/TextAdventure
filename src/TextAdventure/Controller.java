@@ -1,6 +1,6 @@
 
 package TextAdventure;
-h
+
 
 /**
  *  Klassen der styrer programmet.
@@ -10,7 +10,7 @@ public class Controller {
     
     Display display;
     Player player;
-t    RoomConstructor rc;
+    RoomConstructor rc;
     
     boolean continue_ = true;
     
