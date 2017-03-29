@@ -12,6 +12,8 @@ public class Armor implements Item{
         this.amount = amount;
     }
     
+    public Armor () {}
+    
     @Override
     public void setAmount(int amount) {
         this.amount = amount;

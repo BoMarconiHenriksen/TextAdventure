@@ -11,6 +11,8 @@ public class Gold implements Item{
     public Gold(int amount) {
         this.amount = amount;
     }
+    
+    public Gold () {}
 
     @Override
     public void setAmount(int amount) {

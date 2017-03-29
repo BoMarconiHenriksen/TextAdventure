@@ -11,6 +11,8 @@ public class Weapon implements Item {
     public Weapon(int amount) {
         this.amount = amount;
     }
+    
+    public Weapon () {}
 
     @Override
     public void setAmount(int amount) {
