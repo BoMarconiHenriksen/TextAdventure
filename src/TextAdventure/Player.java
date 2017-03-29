@@ -39,18 +39,17 @@ public class Player {
         this.inventory.setItemAmount(index,amount);
     }
     
-    //KAN CURROOM IKKE BRUGES? *******************************************************************
     // Tilføjer guld til player og tager guld fra rum
-    public int takeItem(int index, int amount, Room room) {
+    public int takeItem(int index, int amount) {
         inventory.setItemAmount(index, inventory.getItemAmount(index) + amount);
-        room.setRoomItemAmount(index, room.getRoomItemAmount(index) - amount);
+        this.getCurrRoom().setRoomItemAmount(index, this.getCurrRoom().getRoomItemAmount(index) - amount);
         return this.inventory.getItemAmount(index);
+        
     }
     
-    //KAN CURROOM IKKE BRUGES? *******************************************************************
     // Smider Items 
-    public int placeItem(int index, int amount, Room room) {
-        room.setRoomItemAmount(index, room.getRoomItemAmount(index) + amount);
+    public int placeItem(int index, int amount) {
+        this.getCurrRoom().setRoomItemAmount(index, this.getCurrRoom().getRoomItemAmount(index) + amount);
         inventory.setItemAmount(index, inventory.getItemAmount(index) - amount);
         return inventory.getItemAmount(index);
     }
