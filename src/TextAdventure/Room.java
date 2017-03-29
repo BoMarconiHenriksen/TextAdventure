@@ -46,6 +46,22 @@ public class Room {
     public String getDescription() {
         return description;
     }
+    
+    // NYNYNYNYNYNYNY ***********************************************
+    public Exit getSpecExit(String exit) {
+        switch(exit){
+            case "north":
+                return this.north;
+            case "south":
+                return this.south;
+            case "east":
+                return this.east;
+            case "west":
+                return this.west;
+            default:
+                return null;
+        }
+    }
 
     public Exit getExitNorth() {
         return north;

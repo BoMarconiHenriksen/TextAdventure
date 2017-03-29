@@ -56,6 +56,7 @@ public class Controller {
 
     /**
     *  This method starts the game.
+     * @throws TextAdventure.Exceptions
     *  @since 1.0
     */
   
@@ -92,6 +93,8 @@ public class Controller {
 
     /**
     *  Switch case som tager imod en kommando fra player.
+     * @param command
+     * @throws TextAdventure.Exceptions
     *  @since 1.0
     */ 
 
@@ -101,18 +104,22 @@ public class Controller {
             case "north": 
             case "n":
                 north();
+                // allDirections("north"); NYNYNYNYNYNY **************************
                 break;
             case "south":
             case "s":
                 south();
+                // allDirections("south"); NYNYNYNYNYNY **************************
                 break;
             case "east":
             case "e":
                 east();
+                // allDirections("east"); NYNYNYNYNYNY **************************
                 break;
             case "west":
             case "w":
                 west();
+                // allDirections("west"); NYNYNYNYNYNY **************************
                 break;
             case "look":
             case "l":
@@ -154,9 +161,15 @@ public class Controller {
         }
     }
     
+    // NYNYNYNYNYNYNY ***********************************************
+    public boolean checkSpecExit (String exit) {
+        return player.getCurrRoom().getSpecExit(exit) != null;
+    }
+    
     // TJEKKER OM EXIT (i en bestemt retning) FINDES FOR NUVÆRENDE POSISTION
     /**
     *  Tjekker om exit for <b>nord</b> findes for nuværende position.
+     * @return 
     *  @since 1.0
     */
     public boolean checkExitNorth () {
@@ -164,6 +177,7 @@ public class Controller {
     }
     /**
     *  Tjekker om exit for <b>sydd</b> findes for nuværende position.
+     * @return 
     *  @since 1.0
     */
     public boolean checkExitSouth () {
@@ -171,6 +185,7 @@ public class Controller {
     }
     /**
     *  Tjekker om exit for <b>east</b> findes for nuværende position.
+     * @return 
     *  @since 1.0
     */
     public boolean checkExitEast () {
@@ -178,6 +193,7 @@ public class Controller {
     }
     /**
     *  Tjekker om exit for <b>west</b> findes for nuværende position.
+     * @return 
     *  @since 1.0
     */
     public boolean checkExitWest () {
@@ -187,6 +203,7 @@ public class Controller {
     // Tester om player er kommet i slutrummet, og afslutter spil hvis player er det.
     /**
     *  Tjekker om player er kommet i slutrummet, og afslutter spil, hvis player er det.
+     * @param player
     *  @since 1.0
     */
     public void ifWinCondition(Player player) {
@@ -201,6 +218,7 @@ public class Controller {
     /**
     *  Tester player HP - Giver output om at player er død og lukker spillet,
     *  hvis HP er 0 eller mindre.
+     * @param player
     *  @since 1.0
     */
     public void ifPlayerHealthZero(Player player) {
@@ -213,6 +231,7 @@ public class Controller {
     // Metoder der fjerner HP fra player hvis der er en fælde i rummet
     /**
     *  Metoder der fjerner HP fra player hvis der er en fælde i rummet
+     * @param player
     *  @since 1.0.
     */
     public void ifRoomContainsTrap(Player player){
@@ -220,6 +239,23 @@ public class Controller {
             player.getCurrRoom().springTrap(player);
             display.printActionSpringTrap();
             ifPlayerHealthZero(player);
+        }
+    }
+    
+    // NYNYNYNYNYNYNY ***********************************************
+    public void allDirections(String exit) {
+        if (checkSpecExit(exit) && player.getCurrRoom().getSpecExit(exit).unlockExitCondition(player)){ //Tjekker om der er et exit mod vest og om exit er åben
+            player.setCurrRoom(player.getCurrRoom().getSpecExit(exit).getNextRoom()); //Flytter player til nyt rum
+            display.printActionPlayerTransit();
+            display.printCurrRoomDescr(player.getCurrRoom());
+            ifRoomContainsTrap(player);
+            ifWinCondition(player);
+        } else {
+            if (!checkSpecExit(exit)) {
+                display.printNoExit();
+            } else {
+                display.printNeedGoldExit(player);
+            }
         }
     }
     
@@ -307,6 +343,7 @@ public class Controller {
         }
     }
     
+    // ÆNDRING FORSLAG: 
     public void itemChoice(String itemChoice, int takeOrPlace) throws Exceptions {
         int amount;
         switch(itemChoice) {
@@ -332,14 +369,17 @@ public class Controller {
         }
     }
     
+    // ÆNDRING FORSLAG: playerCheckAmount()
     public boolean checkInventoryAmountPlayer(int index,int amount){
         return player.getPlayerItemAmount(index) >= amount;
-        
     }
+    
+    // ÆNDRING FORSLAG: roomCheckAmount()
     public boolean checkInventoryAmountRoom(int index,int amount){
         return player.getCurrRoom().getRoomItemAmount(index) >= amount;
     }
     
+    // ÆNDRING FORSLAG: itemTakeOrPlace()
     public void itemChoiceAction(int itemIndex, int amount, int takeOrPlace) {
         if (takeOrPlace == 0) {
             if (checkInventoryAmountRoom(0,amount)) {
