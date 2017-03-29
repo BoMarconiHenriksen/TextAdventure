@@ -6,13 +6,8 @@ package TextAdventure;
  */
 public interface Item {
 
-    @Override
-    public String toString();
+    // public void getType();
     
-    public void pickUp();
-    public String getType();
-    
-
     public void setAmount(int amount);
     public int getAmount();
     

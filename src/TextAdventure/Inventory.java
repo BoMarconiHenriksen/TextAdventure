@@ -41,13 +41,13 @@ public class Inventory {
         this.items.add(item);
     }
     
-    public void removeItem(String str) {
-        for (Item i : items) {
-            if (i.getType().equals(str)) {
-                items.remove(i);
-            }
-        }
-    }
+//    public void removeItem(String str) {
+//        for (Item i : items) {
+//            if (i.getType().equals(str)) {
+//                items.remove(i);
+//            }
+//        }
+//    }
 
     public int getItemAmount(int index) {
         return items.get(index).getAmount();

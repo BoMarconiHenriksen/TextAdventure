@@ -345,13 +345,13 @@ public class Controller {
             if (checkInventoryAmountRoom(0,amount)) {
                 player.takeItem(0, amount);
             } else {
-                System.out.println("ERROR");
+                System.out.println("ERROR"); // DEBUGGING
             }
         } else {
             if (checkInventoryAmountPlayer(0,amount)) {
                 player.placeItem(0, amount);
             } else {
-                System.out.println("ERROR");
+                System.out.println("ERROR"); // DEBUGGING
             }
         }
     }

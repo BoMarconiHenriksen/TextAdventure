@@ -14,16 +14,6 @@ public class Potion implements Item{
     public Potion(int amount) {
         this.amount = amount;
     }
-    
-    @Override
-    public void pickUp() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String getType() {
-        return this.type;
-    }
 
     @Override
     public void setAmount(int amount) {
