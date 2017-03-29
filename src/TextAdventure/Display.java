@@ -5,6 +5,7 @@
  */
 package TextAdventure;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -33,7 +34,7 @@ public class Display {
     public String nameInput() {
         sc = new Scanner(System.in);
         System.out.print("Enter your name: ");
-        String name = sc.next();
+        String name = sc.nextLine();
         System.out.println("Welcome, " + name + ".");
         return name;
     }
@@ -42,7 +43,7 @@ public class Display {
     public String playerInput() {
         sc = new Scanner(System.in);
         System.out.print("> ");
-        String input = sc.next();
+        String input = sc.nextLine();
         return input.toLowerCase();
     }
 
@@ -81,7 +82,7 @@ public class Display {
     public String exitChoice() {
         sc = new Scanner(System.in);
         System.out.print("Are you sure you want to exit?: ");
-        String choice = sc.next();
+        String choice = sc.nextLine();
         return choice;
     }
 
@@ -92,8 +93,8 @@ public class Display {
 
     // printer m�ngden af guld player kan se i nuv�rende 'Room'
     public void printActionLook(Room room) {
-        if (room.getRoomGold() != 0) {
-            System.out.println("You spot " + room.getRoomGold() + " gold!...");
+        if (room.getRoomItemAmount(0) != 0) {
+            System.out.println("You spot " + room.getRoomItemAmount(0) + " gold!...");
         } else {
             System.out.println("You see nothing of value...");
         }
@@ -101,8 +102,11 @@ public class Display {
 
     // printer m�ngden af guld player 'holder' samt m�ngden af HP player har
     public void printInventory(Player player) {
-        System.out.println("Your wallet contains " + player.getPlayerGold() + " gold...");
-        System.out.println("You have " + player.getPlayerHealth() + " health points...");
+//        System.out.println("Your wallet contains " + player.getPlayerGold() + " gold...");
+//        System.out.println("You have " + player.getPlayerHealth() + " health points...");
+        for (Item i : player.getPlayerInventory().getItems()) {
+            System.out.println(i);
+        }
     }
 
     // printer besked med hvor meget guld der er opsamlet, eller at man intet kan samle op
@@ -116,12 +120,12 @@ public class Display {
 
     // printer besked med m�ngden af guld player mangler for at l�se et 'Exit' op
     public void printNeedGoldExit(Player player) {
-        System.out.println("You need " + (100 - player.getPlayerGold()) + " gold to enter!");
+        System.out.println("You need " + (100 - player.getPlayerItemAmount(0)) + " gold to enter!");
     }
 
     // printer besked n�r player har gennemf�rt spillet
     public void printWinMessage(Player player) {
-        System.out.println("Total amount of gold gathered: " + player.getPlayerGold());
+        System.out.println("Total amount of gold gathered: " + player.getPlayerItemAmount(0));
     }
 
     // printer besked hvis en f�lde udl�ses
@@ -133,4 +137,33 @@ public class Display {
     public void printActionDeath() {
         System.out.println("You have 0 health points, you die...");
     }
+    
+    // HUSK ERROR HANDLING
+    public int itemAmountChoice() throws Exceptions {
+        sc = new Scanner (System.in);
+        boolean _continue = true;
+        int choice=0;
+        
+        while(_continue) {
+            System.out.print("How many?: ");
+            String choiceStr = sc.nextLine();
+            try {
+                choice = Integer.parseInt(choiceStr);
+                _continue = false;
+
+            } catch (NumberFormatException e) {
+                System.out.print("Invalid number. Do you want to try again?: ");
+                String check = sc.nextLine().toLowerCase();
+                if (!check.equals("y") && !check.equals("yes")){
+                    _continue = false;
+                }
+            }
+        }
+        return choice;
+    }
+    
+    public void noSpecifiedItem() {
+        System.out.println("Please specify an item...");
+    }
+    
 }

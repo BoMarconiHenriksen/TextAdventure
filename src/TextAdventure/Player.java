@@ -11,32 +11,46 @@ package TextAdventure;
  */
 public class Player {
     
-    private int gold;
     private int health = 100;
     private String name;
     private Room currRoom = null; //Nuværende rum player befinder sig i
-
-    public Player(int gold, String name) {
-        this.gold = gold;
-        this.name = name;
-    }
+    private Inventory inventory;
 
     public Player() {}
-
-    public int getPlayerGold() {
-        return gold;
+    
+    public Player(Inventory inventory, String name) {
+        this.inventory = inventory;
+        this.name = name;
+    }
+    
+    public Inventory getPlayerInventory() {
+        return inventory;
     }
 
-    public void setPlayerGold(int gold) {
-        this.gold = gold;
+    public void setPlayerInventory(Inventory playerInventory) {
+        this.inventory = playerInventory;
+    }
+    
+    public int getPlayerItemAmount(int index) {
+        return inventory.getItemAmount(index);
+    }
+
+    public void setPlayerItemAmount(int index, int amount) {
+        this.inventory.setItemAmount(index,amount);
     }
     
     // Tilføjer guld til player og tager guld fra rum
-    public int takeGold(Room room) {
-        int temp = this.gold;
-        this.gold += room.getRoomGold();
-        room.setRoomGold(0);
-        return this.gold - temp;
+    public int takeItem(int index, int amount) {
+        inventory.setItemAmount(index, inventory.getItemAmount(index) + amount);
+        this.getCurrRoom().setRoomItemAmount(index, this.getCurrRoom().getRoomItemAmount(index) - amount);
+        return this.inventory.getItemAmount(index);
+    }
+    
+    // Smider Items 
+    public int placeItem(int index, int amount) {
+        this.getCurrRoom().setRoomItemAmount(index, this.getCurrRoom().getRoomItemAmount(index) + amount);
+        inventory.setItemAmount(index, inventory.getItemAmount(index) - amount);
+        return inventory.getItemAmount(index);
     }
 
     public String getName() {

@@ -5,13 +5,14 @@
  */
 package TextAdventure;
 
+
 /**
  *
  * @author bo_ma
  */
 public class Room {
     
-    private int gold;
+    private Inventory inventory;
     private String description;
     private boolean trap = false;
     
@@ -20,25 +21,31 @@ public class Room {
     private Exit west = null;
     private Exit east = null;
 
-    public Room(int gold, String description, boolean trap) {
-        this.gold = gold;
+    public Room(Inventory inventory, String description, boolean trap) {
         this.description = description;
-        this.trap = trap;
     }
     
-    public Room(int gold, String description) {
-        this.gold = gold;
+    public Room(Inventory inventory, String description) {
+        this.inventory = inventory;
+        this.description = description;
+    }
+    
+    public Room(String description) {
         this.description = description;
     }
 
     public Room() {}
     
-    public int getRoomGold() {
-        return gold;
+    public Inventory getInventory(){
+        return this.inventory;
+    }
+    
+    public int getRoomItemAmount(int index) {
+        return inventory.getItemAmount(index);
     }
 
-    public void setRoomGold(int gold) {
-        this.gold = gold;
+    public void setRoomItemAmount(int index, int amount) {
+        this.inventory.setItemAmount(index,amount);
     }
 
     public String getDescription() {

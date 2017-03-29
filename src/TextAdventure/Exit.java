@@ -37,7 +37,7 @@ public class Exit {
     // Returnerer true hvis Exit er åbent - returnerer true hvis player har 100+ guld, samt sætter Exit til at være åbent
     public boolean unlockExitCondition(Player player) {
         if (this.open != true) {
-            if (player.getPlayerGold() >= 100) {
+            if (player.getPlayerItemAmount(0) >= 100) {
                 this.open = true;
                 return true;
             } else {
