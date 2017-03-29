@@ -18,7 +18,7 @@ public class Controller {
     
     boolean continue_ = true;
     
-    public void test() {
+    public void test() throws Exceptions {
         display = new Display();
         rc = new RoomConstructor();
         
@@ -57,7 +57,7 @@ public class Controller {
         System.exit(0);
     }
     
-    public void start() {
+    public void start() throws Exceptions {
         display = new Display();
         rc = new RoomConstructor();
         
@@ -85,7 +85,7 @@ public class Controller {
     }
     
     // Switch case som tager imod en kommando fra player
-    public void playerControl(String[] command) {
+    public void playerControl(String[] command) throws Exceptions {
         switch(command[0]) {
             case "north": 
             case "n":
@@ -109,11 +109,18 @@ public class Controller {
                 break;
             case "take":
             case "t":
-                //display.printActionTake(player.takeGold(player.getCurrRoom()));
                 if (command.length > 1){
-                    System.out.println(command[1]);
+                    itemChoice(command[1]);
                 } else {
-                    System.out.println("Kun modtaget ét ord");
+                    display.noSpecifiedItem();
+                }
+                break;
+            case "place":
+            case "p":
+                if (command.length > 1){
+                    itemChoice(command[1]);
+                } else {
+                    display.noSpecifiedItem();
                 }
                 break;
             case "inventory":
@@ -244,7 +251,25 @@ public class Controller {
         }
     }
     
-    
+    public void itemChoice(String itemChoice) throws Exceptions {
+        switch(itemChoice) {
+            case "gold":
+                player.takeItem(0, display.itemAmountChoice());
+                break;
+            case "weapon":
+                player.takeItem(1, display.itemAmountChoice());
+                break;
+            case "armor":
+                player.takeItem(2, display.itemAmountChoice());
+                break;
+            case "potion":
+                player.takeItem(3, display.itemAmountChoice());
+                break;
+            default:
+                display.printInvalidInput();
+                break;
+        }
+    }
     
 }
 

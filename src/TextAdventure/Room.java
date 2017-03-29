@@ -5,7 +5,6 @@
  */
 package TextAdventure;
 
-import java.util.ArrayList;
 
 /**
  *
@@ -22,7 +21,6 @@ public class Room {
     private Exit west = null;
     private Exit east = null;
 
-    // INVENTORY TILFØJET *******************************************************************
     public Room(Inventory inventory, String description, boolean trap) {
         this.description = description;
     }
@@ -38,7 +36,6 @@ public class Room {
 
     public Room() {}
     
-    // NyNyNy ******************************************************************
     public Inventory getInventory(){
         return this.inventory;
     }

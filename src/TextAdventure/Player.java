@@ -44,7 +44,6 @@ public class Player {
         inventory.setItemAmount(index, inventory.getItemAmount(index) + amount);
         this.getCurrRoom().setRoomItemAmount(index, this.getCurrRoom().getRoomItemAmount(index) - amount);
         return this.inventory.getItemAmount(index);
-        
     }
     
     // Smider Items 
