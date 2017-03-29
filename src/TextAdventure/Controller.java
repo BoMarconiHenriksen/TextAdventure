@@ -121,7 +121,7 @@ public class Controller {
             case "take":
             case "t":
                 if (command.length > 1){
-                    itemChoice(command[1]);
+                    itemChoice(command[1],0);
                 } else {
                     display.noSpecifiedItem();
                 }
@@ -129,7 +129,7 @@ public class Controller {
             case "place":
             case "p":
                 if (command.length > 1){
-                    itemChoice(command[1]);
+                    itemChoice(command[1],1);
                 } else {
                     display.noSpecifiedItem();
                 }
@@ -307,25 +307,55 @@ public class Controller {
         }
     }
     
-    public void itemChoice(String itemChoice) throws Exceptions {
+    public void itemChoice(String itemChoice, int takeOrPlace) throws Exceptions {
+        int amount;
         switch(itemChoice) {
             case "gold":
-                player.takeItem(0, display.itemAmountChoice());
+                amount = display.itemAmountChoice();
+                itemChoiceAction(0,amount,takeOrPlace);
                 break;
             case "weapon":
-                player.takeItem(1, display.itemAmountChoice());
+                amount = display.itemAmountChoice();
+                itemChoiceAction(1,amount,takeOrPlace);
                 break;
             case "armor":
-                player.takeItem(2, display.itemAmountChoice());
+                amount = display.itemAmountChoice();
+                itemChoiceAction(2,amount,takeOrPlace);
                 break;
             case "potion":
-                player.takeItem(3, display.itemAmountChoice());
+                amount = display.itemAmountChoice();
+                itemChoiceAction(3,amount,takeOrPlace);
                 break;
             default:
                 display.printInvalidInput();
                 break;
         }
     }
+    
+    public boolean checkInventoryAmountPlayer(int index,int amount){
+        return player.getPlayerItemAmount(index) >= amount;
+        
+    }
+    public boolean checkInventoryAmountRoom(int index,int amount){
+        return player.getCurrRoom().getRoomItemAmount(index) >= amount;
+    }
+    
+    public void itemChoiceAction(int itemIndex, int amount, int takeOrPlace) {
+        if (takeOrPlace == 0) {
+            if (checkInventoryAmountRoom(0,amount)) {
+                player.takeItem(0, amount);
+            } else {
+                System.out.println("ERROR");
+            }
+        } else {
+            if (checkInventoryAmountPlayer(0,amount)) {
+                player.placeItem(0, amount);
+            } else {
+                System.out.println("ERROR");
+            }
+        }
+    }
+    
     
 }
 

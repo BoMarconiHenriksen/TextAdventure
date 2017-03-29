@@ -26,7 +26,7 @@ public class RoomConstructor {
     public void createRooms() {
     
     // Opretter rum uden fælder
-        startRoom = new Room(new Inventory(),"The room is moist and a brown glow emanates from the walls." 
+        startRoom = new Room(new Inventory(10),"The room is moist and a brown glow emanates from the walls." 
                                 +"\nIt has three doorways; One to the north, one to the east, and one to the south.");
         
         room1 = new Room("The room is long and narrow, with rays of light shining through cracks in the roof.\n" 
