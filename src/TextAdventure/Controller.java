@@ -1,6 +1,6 @@
 
 package TextAdventure;
-
+h
 
 /**
  *  Klassen der styrer programmet.
@@ -10,11 +10,11 @@ public class Controller {
     
     Display display;
     Player player;
-    RoomConstructor rc;
+t    RoomConstructor rc;
     
     boolean continue_ = true;
     
-    public void test() {
+    public void test() throws Exceptions {
         display = new Display();
         rc = new RoomConstructor();
         
@@ -51,14 +51,17 @@ public class Controller {
         }
         display.printExitMessage();
         System.exit(0);
-
     }
     
+
     /**
     *  This method starts the game.
     *  @since 1.0
     */
-    public void start() {
+  
+
+    public void start() throws Exceptions {
+
         display = new Display();
         rc = new RoomConstructor();
         
@@ -69,8 +72,6 @@ public class Controller {
       //  player = new Player(0, display.nameInput()); // Opretter en player og får et navn som input
         player.setCurrRoom(rc.startRoom); // Placere player i et rum
 
-        
-        
         display.welcome();
         display.printCurrRoomDescr(player.getCurrRoom());
         while(continue_) {
@@ -85,15 +86,17 @@ public class Controller {
         }
         display.printExitMessage();
         System.exit(0);
-       
     }
     
     // Switch case som tager imod en kommando fra player
+
     /**
     *  Switch case som tager imod en kommando fra player.
     *  @since 1.0
-    */
-    public void playerControl(String[] command) {
+    */ 
+
+    public void playerControl(String[] command) throws Exceptions {
+
         switch(command[0]) {
             case "north": 
             case "n":
@@ -117,11 +120,18 @@ public class Controller {
                 break;
             case "take":
             case "t":
-                //display.printActionTake(player.takeGold(player.getCurrRoom()));
                 if (command.length > 1){
-                    System.out.println(command[1]);
+                    itemChoice(command[1]);
                 } else {
-                    System.out.println("Kun modtaget ét ord");
+                    display.noSpecifiedItem();
+                }
+                break;
+            case "place":
+            case "p":
+                if (command.length > 1){
+                    itemChoice(command[1]);
+                } else {
+                    display.noSpecifiedItem();
                 }
                 break;
             case "inventory":
@@ -297,7 +307,25 @@ public class Controller {
         }
     }
     
-    
+    public void itemChoice(String itemChoice) throws Exceptions {
+        switch(itemChoice) {
+            case "gold":
+                player.takeItem(0, display.itemAmountChoice());
+                break;
+            case "weapon":
+                player.takeItem(1, display.itemAmountChoice());
+                break;
+            case "armor":
+                player.takeItem(2, display.itemAmountChoice());
+                break;
+            case "potion":
+                player.takeItem(3, display.itemAmountChoice());
+                break;
+            default:
+                display.printInvalidInput();
+                break;
+        }
+    }
     
 }
 

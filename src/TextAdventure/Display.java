@@ -211,4 +211,33 @@ public class Display {
     public void printActionDeath() {
         System.out.println("You have 0 health points, you die...");
     }
+    
+    // HUSK ERROR HANDLING
+    public int itemAmountChoice() throws Exceptions {
+        sc = new Scanner (System.in);
+        boolean _continue = true;
+        int choice=0;
+        
+        while(_continue) {
+            System.out.print("How many?: ");
+            String choiceStr = sc.nextLine();
+            try {
+                choice = Integer.parseInt(choiceStr);
+                _continue = false;
+
+            } catch (NumberFormatException e) {
+                System.out.print("Invalid number. Do you want to try again?: ");
+                String check = sc.nextLine().toLowerCase();
+                if (!check.equals("y") && !check.equals("yes")){
+                    _continue = false;
+                }
+            }
+        }
+        return choice;
+    }
+    
+    public void noSpecifiedItem() {
+        System.out.println("Please specify an item...");
+    }
+    
 }

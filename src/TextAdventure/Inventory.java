@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Inventory {
     private ArrayList<Item> items = new ArrayList<>();
     
-    //Filling inventory
+    //Filling inventory auto
     public Inventory() {
         items.add(new Gold(0));
         items.add(new Weapon(0));
@@ -17,13 +17,15 @@ public class Inventory {
         items.add(new Potion(0));
     }
     
+    //Filling inventory auto, but gold manually
     public Inventory(int goldAmount) {
         items.add(new Gold(goldAmount));
         items.add(new Weapon(0));
         items.add(new Armor(0));
         items.add(new Potion(0));
     }
-
+    
+    //Filling inventory manually
     public Inventory(int goldAmount, int weaponAmount, int armorAmount, int potionAmount) {
         items.add(new Gold(goldAmount));
         items.add(new Weapon(0));
@@ -46,7 +48,7 @@ public class Inventory {
             }
         }
     }
-    
+
     public int getItemAmount(int index) {
         return items.get(index).getAmount();
     }

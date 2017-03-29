@@ -1,6 +1,5 @@
 package TextAdventure;
 
-import java.util.ArrayList;
 
 /**
  * Klassen 
@@ -8,7 +7,6 @@ import java.util.ArrayList;
  */
 public class Room {
     
-    //private Gold gold;
     private Inventory inventory;
     private String description;
     private boolean trap = false;
@@ -18,18 +16,12 @@ public class Room {
     private Exit west = null;
     private Exit east = null;
 
-//    public Room(int gold, String description, boolean trap) {
-//        this.gold = gold;
-//        this.description = description;
-//        this.trap = trap;
-//    }
-//    
-    public Room(Inventory inventory, String description) {
-        this.inventory = inventory;
+    public Room(Inventory inventory, String description, boolean trap) {
         this.description = description;
     }
     
-    public Room(String description, boolean trap) {
+    public Room(Inventory inventory, String description) {
+        this.inventory = inventory;
         this.description = description;
     }
     
@@ -39,8 +31,8 @@ public class Room {
 
     public Room() {}
     
-    public ArrayList<Inventory> getInventory(){
-        return this.getInventory();
+    public Inventory getInventory(){
+        return this.inventory;
     }
     
     public int getRoomItemAmount(int index) {

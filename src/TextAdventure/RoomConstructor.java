@@ -59,10 +59,16 @@ public class RoomConstructor {
                             + "\nAs you stagger out of the darkness, you hear birds singing, smell the fresh air, feel the grass beneath your feet - you finally escaped the dungeon! \n"
                             + "The treasure, though, is magically gone from your possenssion. It will forever belong to the Dungeon of Mysteries…");
         
+
         // Opretter rum med fælder
-       trapRoom1 = new Room("The room is a dead end. "
+
+
+        //ROOM INITIASERES *******************************************************************
+        // Opretter rum med fælder 
+        trapRoom1 = new Room(new Inventory(),"The room is a dead end. "
+
                                 + "\nYour only choice is to go back.",true);
-        trapRoom2 = new Room("The room is a dead end. "
+        trapRoom2 = new Room(new Inventory(), "The room is a dead end. "
                                 + "\nYour only choice is to go back.",true);
         
         //Opretter Exits start room
