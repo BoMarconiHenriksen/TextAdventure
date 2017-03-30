@@ -18,6 +18,8 @@ public class Room {
 
     public Room(Inventory inventory, String description, boolean trap) {
         this.description = description;
+        this.inventory = inventory;
+        this.trap = trap;
     }
     
     public Room(Inventory inventory, String description) {
@@ -35,11 +37,11 @@ public class Room {
         return this.inventory;
     }
     
-    public int getRoomItemAmount(int index) {
+    public int getItemAmount(int index) {
         return inventory.getItemAmount(index);
     }
 
-    public void setRoomItemAmount(int index, int amount) {
+    public void setItemAmount(int index, int amount) {
         this.inventory.setItemAmount(index,amount);
     }
 

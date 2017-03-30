@@ -25,12 +25,8 @@ public class Controller {
       //  player = new Player(0, display.nameInput()); // Opretter en player og får et navn som input
         player.setCurrRoom(rc.startRoom); // Placere player i et rum
         
-        rc.startRoom.setRoomItemAmount(1,10);
         
-        String test = "hh";
-        System.out.println(commandAliases(test));
 
-        /* SAT I KOMMENTAR PGA DEBUGGING ***********************************
         while(continue_) {
             String[] command = new String[1];
             command[0] = display.playerInput();
@@ -44,7 +40,7 @@ public class Controller {
         display.printExitMessage();
         System.exit(0);
         
-        */
+        
     }
     
 
@@ -94,33 +90,23 @@ public class Controller {
 
     public void playerControl(String[] command) throws Exceptions {
 
-        switch(command[0]) {
+        switch(commandAliases(command[0])) {
             case "north": 
-            case "n": //KAN FJERNES PGA commandAliases() ********************************
-                north();
-                // allDirections("north"); NYNYNYNYNYNY **************************
+                allDirections(commandAliases(command[0]));
                 break;
             case "south":
-            case "s": //KAN FJERNES PGA commandAliases() ********************************
-                south();
-                // allDirections("south"); NYNYNYNYNYNY **************************
+                allDirections(commandAliases(command[0]));
                 break;
             case "east":
-            case "e": //KAN FJERNES PGA commandAliases() ********************************
-                east();
-                // allDirections("east"); NYNYNYNYNYNY **************************
+                allDirections(commandAliases(command[0]));
                 break;
             case "west":
-            case "w": //KAN FJERNES PGA commandAliases() ********************************
-                west();
-                // allDirections("west"); NYNYNYNYNYNY **************************
+                allDirections(commandAliases(command[0]));
                 break;
             case "look":
-            case "l": //KAN FJERNES PGA commandAliases() ********************************
                 display.printActionLook(player.getCurrRoom());
                 break;
             case "take":
-            case "t": //KAN FJERNES PGA commandAliases() ********************************
                 if (command.length > 1){
                     itemChoice(command[1],0);
                 } else {
@@ -128,7 +114,6 @@ public class Controller {
                 }
                 break;
             case "place":
-            case "p": //KAN FJERNES PGA commandAliases() ********************************
                 if (command.length > 1){
                     itemChoice(command[1],1);
                 } else {
@@ -136,11 +121,9 @@ public class Controller {
                 }
                 break;
             case "inventory":
-            case "i": //KAN FJERNES PGA commandAliases() ********************************
                 display.printInventory(player);
                 break;
             case "help":    
-            case "h": //KAN FJERNES PGA commandAliases() ********************************
                 display.helpMenu();
                 break;
             case "exit":
@@ -176,6 +159,8 @@ public class Controller {
                 return "inventory";
             case "h":
                 return "help";
+            case "x":
+                return "exit";
             default:
                 return input;
         }
@@ -184,40 +169,6 @@ public class Controller {
     // NYNYNYNYNYNYNY ***********************************************
     public boolean checkSpecExit (String exit) {
         return player.getCurrRoom().getSpecExit(exit) != null;
-    }
-    
-    // TJEKKER OM EXIT (i en bestemt retning) FINDES FOR NUVÆRENDE POSISTION
-    /**
-    *  Tjekker om exit for <b>nord</b> findes for nuværende position.
-     * @return 
-    *  @since 1.0
-    */
-    public boolean checkExitNorth () {
-        return player.getCurrRoom().getExitNorth() != null;
-    }
-    /**
-    *  Tjekker om exit for <b>sydd</b> findes for nuværende position.
-     * @return 
-    *  @since 1.0
-    */
-    public boolean checkExitSouth () {
-        return player.getCurrRoom().getExitSouth() != null;
-    }
-    /**
-    *  Tjekker om exit for <b>east</b> findes for nuværende position.
-     * @return 
-    *  @since 1.0
-    */
-    public boolean checkExitEast () {
-        return player.getCurrRoom().getExitEast() != null;
-    }
-    /**
-    *  Tjekker om exit for <b>west</b> findes for nuværende position.
-     * @return 
-    *  @since 1.0
-    */
-    public boolean checkExitWest () {
-        return player.getCurrRoom().getExitWest() != null;
     }
     
     // Tester om player er kommet i slutrummet, og afslutter spil hvis player er det.
@@ -279,90 +230,6 @@ public class Controller {
         }
     }
     
-    // Metode for 'west' kommando fra player
-    /**
-    *  Metode for <b>west</b> kommando fra player.
-    *  @since 1.0
-    */
-    public void west() {
-        if (checkExitWest() && player.getCurrRoom().getExitWest().unlockExitCondition(player)){ //Tjekker om der er et exit mod vest og om exit er åben
-            player.setCurrRoom(player.getCurrRoom().getExitWest().getNextRoom()); //Flytter player til nyt rum
-            display.printActionPlayerTransit();
-            display.printCurrRoomDescr(player.getCurrRoom());
-            ifRoomContainsTrap(player);
-            ifWinCondition(player);
-        } else {
-            if (!checkExitWest()) {
-                display.printNoExit();
-            } else {
-                display.printNeedGoldExit(player);
-            }
-        }
-    }
-    
-    // Metode for 'east' kommando fra plyer
-    /**
-    *  Metode for <b>east</b> kommando fra player.
-    *  @since 1.0
-    */
-    public void east() {
-        if (checkExitEast() && player.getCurrRoom().getExitEast().unlockExitCondition(player)){ //Tjekker om der er et exit mod vest og om exit er åben
-            player.setCurrRoom(player.getCurrRoom().getExitEast().getNextRoom()); //Flytter player til nyt rum
-            display.printActionPlayerTransit();
-            display.printCurrRoomDescr(player.getCurrRoom());
-            ifRoomContainsTrap(player);
-            ifWinCondition(player);
-        } else {
-            if (!checkExitEast()) {
-                display.printNoExit();
-            } else {
-                display.printNeedGoldExit(player);
-            }
-        }
-    }
-    
-    // Metode for 'south' kommando fra player
-    /**
-    *  Metode for <b>south</b> kommando fra player.
-    *  @since 1.0
-    */
-    public void south() {
-        if (checkExitSouth() && player.getCurrRoom().getExitSouth().unlockExitCondition(player)){ //Tjekker om der er et exit mod vest og om exit er åben
-            player.setCurrRoom(player.getCurrRoom().getExitSouth().getNextRoom()); //Flytter player til nyt rum
-            display.printActionPlayerTransit();
-            display.printCurrRoomDescr(player.getCurrRoom());
-            ifRoomContainsTrap(player);
-            ifWinCondition(player);
-        } else {
-            if (!checkExitSouth()) {
-                display.printNoExit();
-            } else {
-                display.printNeedGoldExit(player);
-            }
-        }
-    }
-    
-    // Metode for 'north' kommando fra player
-    /**
-    *  Metode for <b>north</b> kommando fra player.
-    *  @since 1.0
-    */
-    public void north() {
-        if (checkExitNorth() && player.getCurrRoom().getExitNorth().unlockExitCondition(player)){ //Tjekker om der er et exit mod vest og om exit er åben
-            player.setCurrRoom(player.getCurrRoom().getExitNorth().getNextRoom()); //Flytter player til nyt rum
-            display.printActionPlayerTransit();
-            display.printCurrRoomDescr(player.getCurrRoom());
-            ifRoomContainsTrap(player);
-            ifWinCondition(player);
-        } else {
-            if (!checkExitNorth()) {
-                display.printNoExit();
-            } else {
-                display.printNeedGoldExit(player);
-            }
-        }
-    }
-    
     // ÆNDRING FORSLAG: 
     public void itemChoice(String itemChoice, int takeOrPlace) throws Exceptions {
         int amount;
@@ -391,12 +258,12 @@ public class Controller {
     
     // ÆNDRING FORSLAG: playerCheckAmount()
     public boolean checkInventoryAmountPlayer(int index,int amount){
-        return player.getPlayerItemAmount(index) >= amount;
+        return player.getItemAmount(index) >= amount;
     }
     
     // ÆNDRING FORSLAG: roomCheckAmount()
     public boolean checkInventoryAmountRoom(int index,int amount){
-        return player.getCurrRoom().getRoomItemAmount(index) >= amount;
+        return player.getCurrRoom().getItemAmount(index) >= amount;
     }
     
     // ÆNDRING FORSLAG: itemTakeOrPlace()
@@ -415,7 +282,6 @@ public class Controller {
             }
         }
     }
-    
     
 }
 

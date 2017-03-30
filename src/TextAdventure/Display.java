@@ -141,11 +141,28 @@ public class Display {
     *  @since 2.0
     */
     public void printActionLook(Room room) {
-        if (room.getRoomItemAmount(0) != 0) {
-            System.out.println("You spot " + room.getRoomItemAmount(0) + " gold!...");
-        } else {
-            System.out.println("You see nothing of value...");
+        boolean hasItem = false;
+
+        System.out.print("You see: ");
+        if (room.getInventory().getItemAmount(0) > 0){
+            System.out.print("\n"+room.getInventory().getItemAmount(0) + " Gold");
+            hasItem = true;
+        } if (room.getInventory().getItemAmount(1) > 0) {
+            System.out.print("\n"+room.getInventory().getItemAmount(1) + " Weapons");
+            hasItem = true;
+        } if (room.getInventory().getItemAmount(2) > 0){
+            System.out.print("\n"+room.getInventory().getItemAmount(2) + " Armors");
+            hasItem = true;
+        } if (room.getInventory().getItemAmount(3) > 0){
+            System.out.print("\n"+room.getInventory().getItemAmount(3) + " Potions");
+            hasItem = true;
         }
+        
+        if (!hasItem) {
+            System.out.print("Nothing...");
+        }
+        System.out.println();
+              //Type potioninfo, armorinfo or weaponinfo for information on specific items??
     }
 
     // printer m�ngden af guld player 'holder' samt m�ngden af HP player har
@@ -157,14 +174,30 @@ public class Display {
    
         
     public void printInventory(Player player) {
+        boolean hasItem = false;
+        
         System.out.println("You have " + player.getPlayerHealth() + " health points...");
-        System.out.println(" Your inventory contains: ");
-          // System.out.println(Inventory.getItemAmount(0) + " Gold"
-          //         + \n inventory.getItemAmount(1) + " Weapons"
-          //         + \n inventory.getItemAmount(2) + " Armors"
-          //         + \n inventory.getItemAmount(3) + " Potions");
-          //    Type potioninfo, armorinfo or weaponinfo for information on specific items??
-          }
+        System.out.print("Your inventory contains: ");
+        if (player.getInventory().getItemAmount(0) > 0){
+            System.out.print("\n"+player.getInventory().getItemAmount(0) + " Gold");
+            hasItem = true;
+        } if (player.getInventory().getItemAmount(1) > 0) {
+            System.out.print("\n"+player.getInventory().getItemAmount(1) + " Weapons");
+            hasItem = true;
+        } if (player.getInventory().getItemAmount(2) > 0){
+            System.out.print("\n"+player.getInventory().getItemAmount(2) + " Armors");
+            hasItem = true;
+        } if (player.getInventory().getItemAmount(3) > 0){
+            System.out.print("\n"+player.getInventory().getItemAmount(3) + " Potions");
+            hasItem = true;
+        }
+        
+        if (!hasItem) {
+            System.out.print("Nothing...");
+        }
+        System.out.println();
+              //Type potioninfo, armorinfo or weaponinfo for information on specific items??
+    }
 
     
 
@@ -185,21 +218,21 @@ public class Display {
     // printer besked med m�ngden af guld player mangler for at l�se et 'Exit' op
     /**
     *  Printer besked med mængden af guld player mangler for at låse et <b>Exit</b> op.
-    *  @param player Spillerens totale mangde guld fra player.getPlayerItemAmount.
+    *  @param player Spillerens totale mangde guld fra player.getItemAmount.
     *  @since 2.0
     */
     public void printNeedGoldExit(Player player) {
-        System.out.println("You need " + (100 - player.getPlayerItemAmount(0)) + " gold to enter!");
+        System.out.println("You need " + (100 - player.getItemAmount(0)) + " gold to enter!");
     }
 
     // printer besked n�r player har gennemf�rt spillet
     /**
     *  Printer n�r player har gennemf�rt spillet.
-    *  @param player Spillerens totale mangde guld fra player.getPlayerItemAmount.
+    *  @param player Spillerens totale mangde guld fra player.getItemAmount.
     *  @since 2.0
     */
     public void printWinMessage(Player player) {
-        System.out.println("Total amount of gold gathered: " + player.getPlayerItemAmount(0));
+        System.out.println("Total amount of gold gathered: " + player.getItemAmount(0));
     }
 
     // printer besked hvis en f�lde udl�ses

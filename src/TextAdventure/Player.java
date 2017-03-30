@@ -18,19 +18,19 @@ public class Player {
         this.name = name;
     }
     
-    public Inventory getPlayerInventory() {
+    public Inventory getInventory() {
         return inventory;
     }
 
-    public void setPlayerInventory(Inventory playerInventory) {
+    public void setInventory(Inventory playerInventory) {
         this.inventory = playerInventory;
     }
     
-    public int getPlayerItemAmount(int index) {
+    public int getItemAmount(int index) {
         return inventory.getItemAmount(index);
     }
 
-    public void setPlayerItemAmount(int index, int amount) {
+    public void setItemAmount(int index, int amount) {
         this.inventory.setItemAmount(index,amount);
     }
     
@@ -45,7 +45,7 @@ public class Player {
     public int takeItem(int index, int amount) {
 
         inventory.setItemAmount(index, inventory.getItemAmount(index) + amount);
-        this.getCurrRoom().setRoomItemAmount(index, this.getCurrRoom().getRoomItemAmount(index) - amount);
+        this.getCurrRoom().setItemAmount(index, this.getCurrRoom().getItemAmount(index) - amount);
         return this.inventory.getItemAmount(index);
     }
     
@@ -58,7 +58,7 @@ public class Player {
 
 
     public int placeItem(int index, int amount) {
-        this.getCurrRoom().setRoomItemAmount(index, this.getCurrRoom().getRoomItemAmount(index) + amount);
+        this.getCurrRoom().setItemAmount(index, this.getCurrRoom().getItemAmount(index) + amount);
         inventory.setItemAmount(index, inventory.getItemAmount(index) - amount);
         return inventory.getItemAmount(index);
     }
