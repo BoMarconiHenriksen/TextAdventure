@@ -17,8 +17,8 @@ public class Controller {
     boolean continue_ = true;
     
     public void test() throws Exceptions {
-        hs = new Highscore();
         display = new Display();
+        hs = new Highscore(display);
         rc = new RoomConstructor();
         
         rc.createRooms();
@@ -40,7 +40,9 @@ public class Controller {
                 playerControl(command);
             }
         }
+        display.printFinalStats(player);
         hs.setHighscore(player.getName(), player.getItemAmount(0));
+        hs.getHighscore();
         display.printExitMessage();
         System.exit(0);
         
@@ -78,6 +80,7 @@ public class Controller {
                 playerControl(command);
             }
         }
+        hs.getHighscore();
         display.printExitMessage();
         System.exit(0);
     }
@@ -182,7 +185,6 @@ public class Controller {
     */
     public void ifWinCondition(Player player) {
         if (player.getCurrRoom().equals(rc.slutRoom)) {
-            display.printWinMessage(player);
             continue_ = false;
         }
     }
@@ -272,14 +274,16 @@ public class Controller {
     // ÆNDRING FORSLAG: itemTakeOrPlace()
     public void itemChoiceAction(int itemIndex, int amount, int takeOrPlace) {
         if (takeOrPlace == 0) {
-            if (checkInventoryAmountRoom(0,amount)) {
-                player.takeItem(0, amount);
+            if (checkInventoryAmountRoom(itemIndex,amount)) {
+                player.takeItem(itemIndex, amount);
+                display.takeItem(itemIndex,amount);
             } else {
                 System.out.println("ERROR"); // DEBUGGING
             }
         } else {
-            if (checkInventoryAmountPlayer(0,amount)) {
-                player.placeItem(0, amount);
+            if (checkInventoryAmountPlayer(itemIndex,amount)) {
+                player.placeItem(itemIndex, amount);
+                display.placeItem(itemIndex, amount);
             } else {
                 System.out.println("ERROR"); // DEBUGGING
             }

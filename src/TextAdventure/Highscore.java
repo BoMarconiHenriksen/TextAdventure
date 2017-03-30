@@ -15,9 +15,14 @@ import java.util.Date;
  */
 public class Highscore {
 
+    private final Display display;
     private final String FILENAME = "highscore.txt";
     private final File FILE = new File(FILENAME);
 
+    public Highscore(Display display){
+        this.display = display;
+    }
+    
     /**
      * prints recorded highscores from "highscore.txt" to console.
      *
@@ -26,16 +31,13 @@ public class Highscore {
     public void getHighscore() throws Exceptions {
         System.out.println("Highscore:");
         try (Scanner sc = new Scanner(FILE)) {
-            if (!sc.hasNextLine()) {
-                System.out.println("No highscore recorded.");
-            }
             while (sc.hasNextLine()) {
                 String line = sc.nextLine();
                 System.out.println(line);
             }
             //Exception handling
         } catch (java.io.FileNotFoundException e) {
-            System.out.println("Unable to show highscore.txt - file not found.");
+            display.errorFileNotFound();
         }
     }
 
@@ -72,7 +74,7 @@ public class Highscore {
             this.sortHighscore();
             //Exception handling
         } catch (IOException e) {
-            System.out.println("Unable to write to file - File might be protected.");
+            display.errorIOException();
         }
     }
 
@@ -88,7 +90,7 @@ public class Highscore {
             fw.close();
             //Exception handling
         } catch (IOException e) {
-            System.out.println("Unable to write to file - File might be protected.");
+            display.errorIOException();
         }
 
     }
@@ -110,7 +112,7 @@ public class Highscore {
                 lineList.add(line);
             }
         } catch (FileNotFoundException e) {
-            System.out.println("Unable to show highscore.txt - file not found.");
+            display.errorFileNotFound();
         }
         //sort ArrayList in reverse order (high to low).
         Collections.sort(lineList, Collections.reverseOrder());
@@ -128,7 +130,7 @@ public class Highscore {
             pWriter.close();
 
         } catch (IOException e) {
-            System.out.println("Unable to write to file - File might be protected.");
+            display.errorIOException();
         }
     }
 

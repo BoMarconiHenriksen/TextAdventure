@@ -1,6 +1,5 @@
 package TextAdventure;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -10,7 +9,6 @@ import java.util.Scanner;
 public class Display {
 
     Scanner sc;
-    String name;
     
     /**
     *  Metoden giver en velkomst besked til spilleren, når spillet starter.
@@ -204,14 +202,41 @@ public class Display {
     // printer besked med hvor meget guld der er opsamlet, eller at man intet kan samle op
     /**
     *  Printer hvor meget guld du tager eller om du ikke tager noget guld op.
+     * @param index
     *  @param amount Hvor meget guld der er.
     *  @since 1.0
     */
-    public void printActionTake(int amount) {
-        if (amount != 0) {
-            System.out.println("You have picked up " + amount + " gold...");
-        } else {
-            System.out.println("You picked up nothing...");
+    public void takeItem(int index,int amount) {
+        switch(index) {
+            case 0:
+                System.out.println("You have picked up " + amount + " gold...");
+                break;
+            case 1:
+                System.out.println("You have picked up " + amount + " weapon...");
+                break;
+            case 2:
+                System.out.println("You have picked up " + amount + " armor...");
+                break;
+            case 3:
+                System.out.println("You have picked up " + amount + " potion...");
+                break;
+        }
+    }
+    
+    public void placeItem(int index,int amount) {
+        switch(index) {
+            case 0:
+                System.out.println("You have placed " + amount + " gold...");
+                break;
+            case 1:
+                System.out.println("You have placed " + amount + " weapon...");
+                break;
+            case 2:
+                System.out.println("You have placed " + amount + " armor...");
+                break;
+            case 3:
+                System.out.println("You have placed " + amount + " potion...");
+                break;
         }
     }
 
@@ -231,8 +256,9 @@ public class Display {
     *  @param player Spillerens totale mangde guld fra player.getItemAmount.
     *  @since 2.0
     */
-    public void printWinMessage(Player player) {
-        System.out.println("Total amount of gold gathered: " + player.getItemAmount(0));
+    public void printFinalStats(Player player) {
+        System.out.println(player.getName()+", total amount of gold gathered: " + player.getItemAmount(0));
+        
     }
 
     // printer besked hvis en f�lde udl�ses
@@ -281,6 +307,14 @@ public class Display {
     
     public void noSpecifiedItem() {
         System.out.println("Please specify an item...");
+    }
+    
+    public void errorFileNotFound() {
+        System.out.println("File not found");
+    }
+    
+    public void errorIOException() {
+        System.out.println("Unable to write to file - File might be protected.");
     }
     
 }
