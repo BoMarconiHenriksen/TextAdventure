@@ -3,6 +3,8 @@ package TextAdventure;
 import java.util.Scanner;
 import java.io.*;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 
 /**
@@ -16,50 +18,42 @@ public class Highscore {
     private final String FILENAME = "highscore.txt";
     private final File FILE = new File(FILENAME);
 
-    //CHECK IF HIGHSCORE FILE EXIST
-    /**
-     * Check if "highscore.txt" exists.
-     *
-     * @return true if so.
-     */
-    public boolean highscoreExist() {
-        return FILE.exists();
-    }
-
-    //READ HIGHSCORE
     /**
      * prints recorded highscores from "highscore.txt" to console.
      *
      * @throws Exceptions for FileNotFoundException
      */
     public void getHighscore() throws Exceptions {
+        System.out.println("Highscore:");
         try (Scanner sc = new Scanner(FILE)) {
+            if (!sc.hasNextLine()) {
+                System.out.println("No highscore recorded.");
+            }
             while (sc.hasNextLine()) {
                 String line = sc.nextLine();
                 System.out.println(line);
             }
             //Exception handling
         } catch (java.io.FileNotFoundException e) {
-            throw new Exceptions("Highscore.txt file not found");
+            System.out.println("Unable to show highscore.txt - file not found.");
         }
     }
 
-/**
- * 
- * @return current timestamp
- */
+    /**
+     *
+     * @return current timestamp
+     */
     public String timestamp() {
-        //time stamp
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         String formattedDate = sdf.format(date);
-        return formattedDate; // 12/01/2011 4:48:16 PM
-
+        return formattedDate;
     }
+
     //[if none found] CREATE NEW HIGHSCORE FILE & APPEND ENTRY
     /**
-     * Appends parameters "to highscore.txt" as newline - syntax "playerName :
-     * gold"
+     * Appends parameters "to highscore.txt" as newline - syntax "gold :
+     * playername : timestamp"
      *
      * @param playerName
      * @param gold
@@ -67,8 +61,8 @@ public class Highscore {
      */
     public void setHighscore(String playerName, int gold) throws Exceptions {
 
-        String timestamp = timestamp();  
-        String lineToAppend = playerName+ " : " +gold+ " : " +timestamp;
+        String timestamp = timestamp();
+        String lineToAppend = gold + " | " + playerName + " | " + timestamp;
 
         try {
             FileWriter fw = new FileWriter(FILENAME, true);  //true = append
@@ -78,19 +72,88 @@ public class Highscore {
 
             //Exception handling
         } catch (IOException e) {
-            throw new Exceptions("Error writing highstore to file. File might be protected..");
-
+            System.out.println("Unable to write to file - File might be protected.");
         }
     }
- public void clearHighscore() throws Exceptions {
+
+    /**
+     * Clear all highscores from highscore.txt
+     *
+     * @throws Exceptions for IOExceptions
+     */
+    public void clearHighscore() throws Exceptions {
         try {
             FileWriter fw = new FileWriter(FILENAME);
             fw.write("");
             fw.close();
             //Exception handling
         } catch (IOException e) {
-            throw new Exceptions("Error writing highscore to file. File might be protected..");
+            System.out.println("Unable to write to file - File might be protected.");
         }
 
+    }
+
+    /**
+     * DESCRIPTION HERE
+     *
+     * @param FILE
+     * @throws Exceptions
+     */
+    public void sortHighscore() throws Exceptions {
+
+        ArrayList<String> lineList = new ArrayList<>();
+
+        try (Scanner sc = new Scanner(FILE)) {
+            //add each line from highscore file to ArrayList
+            while (sc.hasNextLine()) {
+                String line = sc.nextLine();
+                lineList.add(line);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to show highscore.txt - file not found.");
+        }
+        //sort ArrayList in reverse order (high to low).
+        Collections.sort(lineList, Collections.reverseOrder());
+
+        //write ArrayList to highscore file
+        try {
+            FileWriter fw = new FileWriter(FILENAME, true);  //true = append
+            PrintWriter pWriter = new PrintWriter(fw);
+            //clear highscore.txt from old entries
+            clearHighscore();
+            //write new entries to highscore.txt
+            for (String string : lineList) {
+                pWriter.println(string);
+            }
+            pWriter.close();
+
+        } catch (IOException e) {
+            System.out.println("Unable to write to file - File might be protected.");
+        }
+
+    }
+
+    public static void main(String[] args) throws Exceptions {
+
+        //Set highscore i Controller:
+        
+//        Highscore hs = new Highscore();
+//        hs.setHighscore(player.getName(), player.getPlayerItemAmount(0));
+
+//DEBUG
+//        hs.setHighscore("alexander", 15);
+//        hs.setHighscore("alexander", 25);
+//        hs.setHighscore("alexander", 85);
+
+//        hs.setHighscore("alexander", 9);
+
+
+//        System.out.println("before:");
+//        hs.getHighscore();
+//        System.out.println("");
+//        System.out.println("after:");
+//        hs.sortHighscore();
+
+//        hs.clearHighscore();
     }
 }
