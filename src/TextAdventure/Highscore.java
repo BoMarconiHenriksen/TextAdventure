@@ -28,7 +28,7 @@ public class Highscore {
      *
      * @throws Exceptions for FileNotFoundException
      */
-    public void getHighscore() throws Exceptions {
+    public void getHighscore() {
         System.out.println("Highscore:");
         try (Scanner sc = new Scanner(FILE)) {
             while (sc.hasNextLine()) {
@@ -59,9 +59,8 @@ public class Highscore {
      *
      * @param playerName
      * @param gold
-     * @throws Exceptions for IOExceptions
      */
-    public void setHighscore(String playerName, int gold) throws Exceptions {
+    public void setHighscore(String playerName, int gold) {
 
         String timestamp = timestamp();
         String lineToAppend = gold + " | " + playerName + " | " + timestamp;
@@ -83,7 +82,7 @@ public class Highscore {
      *
      * @throws Exceptions for IOExceptions
      */
-    public void clearHighscore() throws Exceptions {
+    public void clearHighscore() {
         try {
             FileWriter fw = new FileWriter(FILENAME);
             fw.write("");
@@ -101,7 +100,7 @@ public class Highscore {
      * @param FILE
      * @throws Exceptions
      */
-    public void sortHighscore() throws Exceptions {
+    public void sortHighscore() {
 
         ArrayList<String> lineList = new ArrayList<>();
 

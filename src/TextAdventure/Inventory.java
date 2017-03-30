@@ -41,6 +41,7 @@ public class Inventory {
         this.items.add(item);
     }
     
+    //MÅ IKKE FJERNES
 //    public void removeItem(String str) {
 //        for (Item i : items) {
 //            if (i.getType().equals(str)) {

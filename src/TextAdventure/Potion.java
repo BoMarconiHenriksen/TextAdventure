@@ -6,7 +6,6 @@ package TextAdventure;
  */
 public class Potion implements Item{
 
-    private String type;
     private int amount;
 
     public Potion() {}

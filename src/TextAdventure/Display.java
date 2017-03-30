@@ -170,7 +170,6 @@ public class Display {
     *  @since 2.0
     */
    
-        
     public void printInventory(Player player) {
         boolean hasItem = false;
         
@@ -284,7 +283,7 @@ public class Display {
     // Hvis spilleren skriver "take x" spørges der hvor mange. Hvis spilleren 
     // derefter giver en ugyldig værdi spørges der om han vil indtaste igen 
     // eller bare fortsætte spillet.
-    public int itemAmountChoice() throws Exceptions {
+    public int itemAmountChoice() {
         sc = new Scanner (System.in);
         boolean _continue = true;
         int choice=0;

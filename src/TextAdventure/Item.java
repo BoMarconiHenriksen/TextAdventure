@@ -6,8 +6,6 @@ package TextAdventure;
  */
 public interface Item {
 
-    // public void getType();
-    
     public void setAmount(int amount);
     public int getAmount();
     

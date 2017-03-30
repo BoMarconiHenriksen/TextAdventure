@@ -15,40 +15,13 @@ public class Controller {
     
     boolean continue_ = true;
     
-    public void test() throws Exceptions {
-        display = new Display();
-        hs = new Highscore(display);
-        rc = new RoomConstructor();
-        
-        rc.createRooms();
-        
-        player = new Player(new Inventory(), display.nameInput()); // Opretter en player og får et navn som input
-        player.setCurrRoom(rc.startRoom); // Placere player i et rum
-        
-        while(continue_) {
-            String[] command = new String[1];
-            command[0] = display.playerInput();
-            if (command[0].contains(" ")) {
-                String[] command2 = command[0].split(" ");
-                playerControl(command2);
-            } else {
-                playerControl(command);
-            }
-        }
-        display.printFinalStats(player);
-        hs.setHighscore(player.getName(), player.getItemAmount(0));
-        hs.getHighscore();
-        display.printExitMessage();
-        System.exit(0);
-    }
-    
 
     /**
     *  This method starts the game.
      * @throws TextAdventure.Exceptions
     *  @since 1.0
     */
-    public void start() throws Exceptions {
+    public void start() {
         display = new Display();
         hs = new Highscore(display);
         rc = new RoomConstructor();
@@ -83,7 +56,7 @@ public class Controller {
      * @throws TextAdventure.Exceptions
     *  @since 1.0
     */ 
-    public void playerControl(String[] command) throws Exceptions {
+    public void playerControl(String[] command) {
 
         switch(commandAliases(command[0])) {
             case "north": 
@@ -222,7 +195,7 @@ public class Controller {
     }
     
     // ÆNDRING FORSLAG: 
-    public void itemChoice(String itemChoice, int takeOrPlace) throws Exceptions {
+    public void itemChoice(String itemChoice, int takeOrPlace) {
         int amount;
         switch(itemChoice) {
             case "gold":
