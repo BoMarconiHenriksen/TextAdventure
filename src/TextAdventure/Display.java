@@ -60,16 +60,16 @@ public class Display {
     */
     public void helpMenu() {
         System.out.println("++++++++++++++++ HELP  MENU ++++++++++++++++++++++");
-        System.out.println("+ \'help\' or \'h\' - Show Help-menu             +");
-        System.out.println("+ \'look\' or \'l\' - Search the room            +");
-        System.out.println("+ \'take\' or \'t\' + Item Name - Take an item   +");
-        System.out.println("+ \'place\' or \'p\' + Item Name - Place an item +");
-        System.out.println("+ \'inventory\' or \'i - Show inventory/health   +");
-        System.out.println("+ \'north\' or \'n\' - Go north                  +");
-        System.out.println("+ \'south\' or \'s\' - Go south                  +");
-        System.out.println("+ \'east\' or \'e\' - Go east                    +");
-        System.out.println("+ \'west\' or \'w\' - Go west                    +");
-        System.out.println("+ \'exit\' or \'e\' - Exit game                  +");
+        System.out.println("+ \'help\' or \'h\' - Show Help-menu                 +");
+        System.out.println("+ \'look\' or \'l\' - Search the room                +");
+        System.out.println("+ \'take\' or \'t\' + \"Item Name\" - Take an item     +");
+        System.out.println("+ \'place\' or \'p\' + \"Item Name\" - Place an item   +");
+        System.out.println("+ \'inventory\' or \'i - Show inventory/health      +");
+        System.out.println("+ \'north\' or \'n\' - Go north                      +");
+        System.out.println("+ \'south\' or \'s\' - Go south                      +");
+        System.out.println("+ \'east\' or \'e\' - Go east                        +");
+        System.out.println("+ \'west\' or \'w\' - Go west                        +");
+        System.out.println("+ \'exit\' or \'x\' - Exit game                      +");
         System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++");
         // System.out.println("+ \'use\' or \'u\' + Item Name - Use an Item  +");
     }
