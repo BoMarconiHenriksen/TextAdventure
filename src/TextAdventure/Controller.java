@@ -12,7 +12,6 @@ public class Controller {
     Player player;
     RoomConstructor rc;
     Highscore hs;
-//        hs.setHighscore(player.getName(), player.getPlayerItemAmount(0));
     
     boolean continue_ = true;
     
@@ -23,12 +22,8 @@ public class Controller {
         
         rc.createRooms();
         
-        // TEMP PLAYERNAME
-        player = new Player(new Inventory(),"Playername");
-      //  player = new Player(0, display.nameInput()); // Opretter en player og får et navn som input
+        player = new Player(new Inventory(), display.nameInput()); // Opretter en player og får et navn som input
         player.setCurrRoom(rc.startRoom); // Placere player i et rum
-        
-        player.getInventory().setItemAmount(0, 5);
         
         while(continue_) {
             String[] command = new String[1];
@@ -45,7 +40,6 @@ public class Controller {
         hs.getHighscore();
         display.printExitMessage();
         System.exit(0);
-        
     }
     
 
@@ -54,22 +48,16 @@ public class Controller {
      * @throws TextAdventure.Exceptions
     *  @since 1.0
     */
-  
-
     public void start() throws Exceptions {
-
         display = new Display();
+        hs = new Highscore(display);
         rc = new RoomConstructor();
         
         rc.createRooms();
         
-        // TEMP PLAYERNAME
-        player = new Player(new Inventory(), "Playername");
-      //  player = new Player(0, display.nameInput()); // Opretter en player og får et navn som input
+        player = new Player(new Inventory(), display.nameInput()); // Opretter en player og får et navn som input
         player.setCurrRoom(rc.startRoom); // Placere player i et rum
-
-        display.welcome();
-        display.printCurrRoomDescr(player.getCurrRoom());
+        
         while(continue_) {
             String[] command = new String[1];
             command[0] = display.playerInput();
@@ -80,6 +68,8 @@ public class Controller {
                 playerControl(command);
             }
         }
+        display.printFinalStats(player);
+        hs.setHighscore(player.getName(), player.getItemAmount(0));
         hs.getHighscore();
         display.printExitMessage();
         System.exit(0);
@@ -93,7 +83,6 @@ public class Controller {
      * @throws TextAdventure.Exceptions
     *  @since 1.0
     */ 
-
     public void playerControl(String[] command) throws Exceptions {
 
         switch(commandAliases(command[0])) {
@@ -144,7 +133,6 @@ public class Controller {
         }
     }
     
-    // NYNYNYNYNYNY ************************************************
     public String commandAliases(String input) {
         switch(input){
             case "n":
@@ -172,7 +160,6 @@ public class Controller {
         }
     }
     
-    // NYNYNYNYNYNYNY ***********************************************
     public boolean checkSpecExit (String exit) {
         return player.getCurrRoom().getSpecExit(exit) != null;
     }
@@ -218,7 +205,6 @@ public class Controller {
         }
     }
     
-    // NYNYNYNYNYNYNY ***********************************************
     public void allDirections(String exit) {
         if (checkSpecExit(exit) && player.getCurrRoom().getSpecExit(exit).unlockExitCondition(player)){ //Tjekker om der er et exit mod vest og om exit er åben
             player.setCurrRoom(player.getCurrRoom().getSpecExit(exit).getNextRoom()); //Flytter player til nyt rum
@@ -261,27 +247,25 @@ public class Controller {
         }
     }
     
-    // ÆNDRING FORSLAG: playerCheckAmount()
-    public boolean checkInventoryAmountPlayer(int index,int amount){
+    public boolean playerCheckAmount(int index,int amount){
         return player.getItemAmount(index) >= amount;
     }
     
-    // ÆNDRING FORSLAG: roomCheckAmount()
-    public boolean checkInventoryAmountRoom(int index,int amount){
+    public boolean roomCheckAmount(int index,int amount){
         return player.getCurrRoom().getItemAmount(index) >= amount;
     }
     
     // ÆNDRING FORSLAG: itemTakeOrPlace()
     public void itemChoiceAction(int itemIndex, int amount, int takeOrPlace) {
         if (takeOrPlace == 0) {
-            if (checkInventoryAmountRoom(itemIndex,amount)) {
+            if (roomCheckAmount(itemIndex,amount)) {
                 player.takeItem(itemIndex, amount);
                 display.takeItem(itemIndex,amount);
             } else {
                 display.insufficientAmount();
             }
         } else {
-            if (checkInventoryAmountPlayer(itemIndex,amount)) {
+            if (playerCheckAmount(itemIndex,amount)) {
                 player.placeItem(itemIndex, amount);
                 display.placeItem(itemIndex, amount);
             } else {
