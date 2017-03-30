@@ -42,7 +42,7 @@ public class Controller {
             }
         }
         display.printFinalStats(player);
-        hs.setHighscore(player.getName(), player.getItemAmount(0));
+        hs.setHighscore(player);
         hs.getHighscore();
         display.printExitMessage();
         System.exit(0);

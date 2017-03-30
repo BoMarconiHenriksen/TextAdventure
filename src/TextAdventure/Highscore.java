@@ -54,16 +54,16 @@ public class Highscore {
 
     //[if none found] CREATE NEW HIGHSCORE FILE & APPEND ENTRY
     /**
-     * Appends parameters "to highscore.txt" as newline - syntax "gold :
-     * playername : timestamp"
+     * Appends parameters "to highscore.txt" as newline. 
+     * syntax "gold : playername : timestamp"
      *
-     * @param playerName
-     * @param gold
+     * @param player
      */
-    public void setHighscore(String playerName, int gold) {
+//    public void setHighscore(String playerName, int gold) {
+    public void setHighscore(Player player) {
 
         String timestamp = timestamp();
-        String lineToAppend = gold + " | " + playerName + " | " + timestamp;
+        String lineToAppend = player.getItemAmount(0) + " | " + player.getName() + " | " + timestamp;
 
         try {
             FileWriter fw = new FileWriter(FILENAME, true);  //true = append
