@@ -11,10 +11,13 @@ public class Controller {
     Display display;
     Player player;
     RoomConstructor rc;
+    Highscore hs;
+//        hs.setHighscore(player.getName(), player.getPlayerItemAmount(0));
     
     boolean continue_ = true;
     
     public void test() throws Exceptions {
+        hs = new Highscore();
         display = new Display();
         rc = new RoomConstructor();
         
@@ -25,8 +28,8 @@ public class Controller {
       //  player = new Player(0, display.nameInput()); // Opretter en player og får et navn som input
         player.setCurrRoom(rc.startRoom); // Placere player i et rum
         
+        player.getInventory().setItemAmount(0, 5);
         
-
         while(continue_) {
             String[] command = new String[1];
             command[0] = display.playerInput();
@@ -37,9 +40,9 @@ public class Controller {
                 playerControl(command);
             }
         }
+        hs.setHighscore(player.getName(), player.getItemAmount(0));
         display.printExitMessage();
         System.exit(0);
-        
         
     }
     

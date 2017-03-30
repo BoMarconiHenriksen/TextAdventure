@@ -69,7 +69,7 @@ public class Highscore {
             PrintWriter pWriter = new PrintWriter(fw);
             pWriter.println(lineToAppend);
             pWriter.close();
-
+            this.sortHighscore();
             //Exception handling
         } catch (IOException e) {
             System.out.println("Unable to write to file - File might be protected.");
@@ -130,30 +130,6 @@ public class Highscore {
         } catch (IOException e) {
             System.out.println("Unable to write to file - File might be protected.");
         }
-
     }
 
-    public static void main(String[] args) throws Exceptions {
-
-        //Set highscore i Controller:
-        
-//        Highscore hs = new Highscore();
-//        hs.setHighscore(player.getName(), player.getPlayerItemAmount(0));
-
-//DEBUG
-//        hs.setHighscore("alexander", 15);
-//        hs.setHighscore("alexander", 25);
-//        hs.setHighscore("alexander", 85);
-
-//        hs.setHighscore("alexander", 9);
-
-
-//        System.out.println("before:");
-//        hs.getHighscore();
-//        System.out.println("");
-//        System.out.println("after:");
-//        hs.sortHighscore();
-
-//        hs.clearHighscore();
-    }
 }

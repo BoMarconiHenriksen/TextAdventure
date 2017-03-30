@@ -28,9 +28,9 @@ public class Inventory {
     //Filling inventory manually
     public Inventory(int goldAmount, int weaponAmount, int armorAmount, int potionAmount) {
         items.add(new Gold(goldAmount));
-        items.add(new Weapon(0));
-        items.add(new Armor(0));
-        items.add(new Potion(0));
+        items.add(new Weapon(weaponAmount));
+        items.add(new Armor(armorAmount));
+        items.add(new Potion(potionAmount));
     }
     
     public ArrayList<Item> getItems() {
