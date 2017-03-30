@@ -59,17 +59,19 @@ public class Display {
     *  @since 1.0
     */
     public void helpMenu() {
-        System.out.println("++++++++++++++++ HELP  MENU +++++++++++++++++");
-        System.out.println("+ \'help\' or \'h\' - Show Help-menu            +");
-        System.out.println("+ \'look\' or \'l\' - Look for gold             +");
-        System.out.println("+ \'take\' or \'t\' - Take gold                 +");
-        System.out.println("+ \'inventory\' or \'i - Show inventory/health +");
-        System.out.println("+ \'exit\' or \'e\' - Exit game                 +");
-        System.out.println("+ \'north\' or \'n\' - Go north                 +");
-        System.out.println("+ \'south\' or \'s\' - Go south                 +");
-        System.out.println("+ \'east\' or \'e\' - Go east                   +");
-        System.out.println("+ \'east\' or \'w\' - Go west                   +");
-        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");
+        System.out.println("++++++++++++++++ HELP  MENU ++++++++++++++++++++++");
+        System.out.println("+ \'help\' or \'h\' - Show Help-menu             +");
+        System.out.println("+ \'look\' or \'l\' - Search the room            +");
+        System.out.println("+ \'take\' or \'t\' + Item Name - Take an item   +");
+        System.out.println("+ \'place\' or \'p\' + Item Name - Place an item +");
+        System.out.println("+ \'inventory\' or \'i - Show inventory/health   +");
+        System.out.println("+ \'north\' or \'n\' - Go north                  +");
+        System.out.println("+ \'south\' or \'s\' - Go south                  +");
+        System.out.println("+ \'east\' or \'e\' - Go east                    +");
+        System.out.println("+ \'west\' or \'w\' - Go west                    +");
+        System.out.println("+ \'exit\' or \'e\' - Exit game                  +");
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++");
+        // System.out.println("+ \'use\' or \'u\' + Item Name - Use an Item  +");
     }
     
     /**
@@ -152,13 +154,19 @@ public class Display {
     *  @param player Tjekker spillerens guld fra getPlayerGold, og får spillerens health fra getPlayerHealth.
     *  @since 2.0
     */
+   
+        
     public void printInventory(Player player) {
-//        System.out.println("Your wallet contains " + player.getPlayerGold() + " gold...");
-//        System.out.println("You have " + player.getPlayerHealth() + " health points...");
-        for (Item i : player.getPlayerInventory().getItems()) {
-            System.out.println(i);
-        }
-    }
+        System.out.println("You have " + player.getPlayerHealth() + " health points...");
+        System.out.println(" Your inventory contains: ");
+          // System.out.println(Inventory.getItemAmount(0) + " Gold"
+          //         + \n inventory.getItemAmount(1) + " Weapons"
+          //         + \n inventory.getItemAmount(2) + " Armors"
+          //         + \n inventory.getItemAmount(3) + " Potions");
+          //    Type potioninfo, armorinfo or weaponinfo for information on specific items??
+          }
+
+    
 
     // printer besked med hvor meget guld der er opsamlet, eller at man intet kan samle op
     /**
@@ -212,7 +220,9 @@ public class Display {
         System.out.println("You have 0 health points, you die...");
     }
     
-    // HUSK ERROR HANDLING
+    // Hvis spilleren skriver "take x" spørges der hvor mange. Hvis spilleren 
+    // derefter giver en ugyldig værdi spørges der om han vil indtaste igen 
+    // eller bare fortsætte spillet.
     public int itemAmountChoice() throws Exceptions {
         sc = new Scanner (System.in);
         boolean _continue = true;
