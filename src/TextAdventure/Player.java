@@ -43,9 +43,8 @@ public class Player {
     
 
     public int takeItem(int index, int amount) {
-
-        inventory.setItemAmount(index, inventory.getItemAmount(index) + amount);
-        this.getCurrRoom().setItemAmount(index, this.getCurrRoom().getItemAmount(index) - amount);
+        inventory.setItemAmount(index, inventory.getItemAmount(index) + Math.abs(amount));
+        this.getCurrRoom().setItemAmount(index, this.getCurrRoom().getItemAmount(index) - Math.abs(amount));
         return this.inventory.getItemAmount(index);
     }
     
@@ -58,8 +57,8 @@ public class Player {
 
 
     public int placeItem(int index, int amount) {
-        this.getCurrRoom().setItemAmount(index, this.getCurrRoom().getItemAmount(index) + amount);
-        inventory.setItemAmount(index, inventory.getItemAmount(index) - amount);
+        this.getCurrRoom().setItemAmount(index, this.getCurrRoom().getItemAmount(index) + Math.abs(amount));
+        inventory.setItemAmount(index, inventory.getItemAmount(index) - Math.abs(amount));
         return inventory.getItemAmount(index);
     }
 

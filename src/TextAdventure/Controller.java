@@ -278,14 +278,14 @@ public class Controller {
                 player.takeItem(itemIndex, amount);
                 display.takeItem(itemIndex,amount);
             } else {
-                System.out.println("ERROR"); // DEBUGGING
+                display.insufficientAmount();
             }
         } else {
             if (checkInventoryAmountPlayer(itemIndex,amount)) {
                 player.placeItem(itemIndex, amount);
                 display.placeItem(itemIndex, amount);
             } else {
-                System.out.println("ERROR"); // DEBUGGING
+                display.insufficientAmount();
             }
         }
     }

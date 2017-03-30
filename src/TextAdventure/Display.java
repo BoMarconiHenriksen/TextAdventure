@@ -207,6 +207,7 @@ public class Display {
     *  @since 1.0
     */
     public void takeItem(int index,int amount) {
+        amount = Math.abs(amount);
         switch(index) {
             case 0:
                 System.out.println("You have picked up " + amount + " gold...");
@@ -224,6 +225,7 @@ public class Display {
     }
     
     public void placeItem(int index,int amount) {
+        amount = Math.abs(amount);
         switch(index) {
             case 0:
                 System.out.println("You have placed " + amount + " gold...");
@@ -315,6 +317,10 @@ public class Display {
     
     public void errorIOException() {
         System.out.println("Unable to write to file - File might be protected.");
+    }
+    
+    public void insufficientAmount() {
+        System.out.println("Insufficient amount");
     }
     
 }
