@@ -45,6 +45,7 @@ public class Controller {
         }
         display.printFinalStats(player);
         hs.setHighscore(player);
+        hs.sortHighscore();
         hs.getHighscore();
         display.printExitMessage();
         System.exit(0);
