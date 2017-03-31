@@ -27,7 +27,7 @@ public class Display {
                 + "If you feel scared and alone in the dungeon just shout help or even better try to write help on the dusty floor in a room.\n");
     }
 
-    // returnerer player navn
+    
     /**
     *  Returnerer player navn.
     *  @since 1.0
@@ -40,7 +40,7 @@ public class Display {
         return name;
     }
 
-    // printer kommandolinjen og returnerer kommandoen fra player
+    
     /**
     *  Printer kommandolinjen og returnerer kommandoen fra player.
     *  @since 1.0
@@ -96,7 +96,7 @@ public class Display {
         System.out.println("Invalid input...");
     }
 
-    // printer beskrivelsen af nuv�rende 'Room'
+    // printer beskrivelsen af nuværende 'Room'
     /**
     *  Printer beskrivelsen af nuværende <b>Room</b>.
     *  @param room Henter beskrivelsen fra room.
@@ -118,7 +118,7 @@ public class Display {
         return choice;
     }
 
-    // printer exit besked, inden spillet lukkes
+    
     /**
     *  Printer exit besked, inden spillet lukkes.
     *  @since 1.0
@@ -127,11 +127,7 @@ public class Display {
         System.out.println("Farewell!");
     }
 
-    // printer m�ngden af guld player kan se i nuv�rende 'Room'
-    /**
-    *  Printer mængden af guld player kan se i nuværende <b>Room</b>.
-    *  @since 1.0
-    */
+
     
     /**
     *  Printer om der er guld eller ingen guld i rummet.
@@ -160,16 +156,15 @@ public class Display {
             System.out.print("Nothing...");
         }
         System.out.println();
-              //Type potioninfo, armorinfo or weaponinfo for information on specific items??
+            
     }
 
-    // printer m�ngden af guld player 'holder' samt m�ngden af HP player har
+
     /**
-    *  Printer mængden af guld player 'holder' samt mængden af HP player har.
+    *  Printer mængden af guld, våben, armor og potions player har. Printer health.
     *  @param player Tjekker spillerens guld fra getPlayerGold, og får spillerens health fra getPlayerHealth.
     *  @since 2.0
     */
-   
     public void printInventory(Player player) {
         boolean hasItem = false;
         
@@ -193,12 +188,12 @@ public class Display {
             System.out.print("Nothing...");
         }
         System.out.println();
-              //Type potioninfo, armorinfo or weaponinfo for information on specific items??
+              
     }
 
     
 
-    // printer besked med hvor meget guld der er opsamlet, eller at man intet kan samle op
+    
     /**
     *  Printer hvor meget guld du tager eller om du ikke tager noget guld op.
      * @param index
@@ -222,6 +217,12 @@ public class Display {
                 break;
         }
     }
+    /**
+     * Tager item fra inventory position + amount og placerer det pågældende i current room.
+     * Printer hvad og hvor meget der er blevet placeret.
+     * @param index
+     * @param amount 
+     */
     
     public void placeItem(int index,int amount) {
         amount = Math.abs(amount);
@@ -241,7 +242,7 @@ public class Display {
         }
     }
 
-    // printer besked med m�ngden af guld player mangler for at l�se et 'Exit' op
+  
     /**
     *  Printer besked med mængden af guld player mangler for at låse et <b>Exit</b> op.
     *  @param player Spillerens totale mangde guld fra player.getItemAmount.
@@ -251,7 +252,7 @@ public class Display {
         System.out.println("You need " + (100 - player.getItemAmount(0)) + " gold to enter!");
     }
 
-    // printer besked n�r player har gennemf�rt spillet
+    
     /**
     *  Printer n�r player har gennemf�rt spillet.
     *  @param player Spillerens totale mangde guld fra player.getItemAmount.
@@ -262,7 +263,7 @@ public class Display {
         
     }
 
-    // printer besked hvis en f�lde udl�ses
+    
     /**
     *  Printer besked hvis en fælde udløses.
     *  @since 1.0
@@ -271,7 +272,7 @@ public class Display {
         System.out.println("You hit a trap in the room! You lost health...");
     }
 
-    // printer besked n�r player d�r
+    
     /**
     *  Printer besked når player dør.
     *  @since 1.0
@@ -280,9 +281,12 @@ public class Display {
         System.out.println("You have 0 health points, you die...");
     }
     
-    // Hvis spilleren skriver "take x" spørges der hvor mange. Hvis spilleren 
-    // derefter giver en ugyldig værdi spørges der om han vil indtaste igen 
-    // eller bare fortsætte spillet.
+    /**
+     * Hvis spilleren skriver "take x" spørges der hvor mange. Hvis spilleren 
+     * derefter giver en ugyldig værdi spørges der om han vil indtaste igen
+     * eller bare fortsætte spillet.
+     * @return choice
+     */ 
     public int itemAmountChoice() {
         sc = new Scanner (System.in);
         boolean _continue = true;
@@ -305,19 +309,28 @@ public class Display {
         }
         return choice;
     }
-    
+    /**
+     * Errormessage hvis spiller skriver commando uden henvisning til item
+     */
     public void noSpecifiedItem() {
         System.out.println("Please specify an item...");
     }
-    
+    /**
+     * Errormessage hvis highscore.txt ikke kan findes af programmet
+     */
     public void errorFileNotFound() {
         System.out.println("File not found");
     }
-    
+    /**
+     * Errormessage hvis programmet ikke kan skrive til highscore.txt
+     */
     public void errorIOException() {
         System.out.println("Unable to write to file - File might be protected.");
     }
-    
+    /**
+     * Errormessage hvis den indtastede mængde ikke matcher den 
+     * tilgængelige mængde i inventory
+     */
     public void insufficientAmount() {
         System.out.println("Insufficient amount");
     }
