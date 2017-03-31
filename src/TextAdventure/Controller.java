@@ -33,6 +33,9 @@ public class Controller {
         player = new Player(new Inventory(), display.nameInput()); 
         player.setCurrRoom(rc.startRoom); 
         
+        display.welcome();
+        System.out.println(player.getCurrRoom().getDescription());
+        
         while(continue_) {
             String[] command = new String[1];
             command[0] = display.playerInput();
