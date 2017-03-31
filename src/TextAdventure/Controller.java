@@ -25,10 +25,13 @@ public class Controller {
         hs = new Highscore(display);
         rc = new RoomConstructor();
         
+        /**
+         * Opretter rum
+         */
         rc.createRooms();
         
-        player = new Player(new Inventory(), display.nameInput()); // Opretter en player og får et navn som input
-        player.setCurrRoom(rc.startRoom); // Placere player i et rum
+        player = new Player(new Inventory(), display.nameInput()); 
+        player.setCurrRoom(rc.startRoom); 
         
         while(continue_) {
             String[] command = new String[1];
@@ -53,7 +56,6 @@ public class Controller {
     /**
     *  Switch case som tager imod en kommando fra player.
      * @param command
-     * @throws TextAdventure.Exceptions
     *  @since 1.0
     */ 
     public void playerControl(String[] command) {
@@ -105,7 +107,11 @@ public class Controller {
                 break;
         }
     }
-    
+    /**
+     * Alias'er til input fra player i command
+     * @param input
+     * @return 
+     */
     public String commandAliases(String input) {
         switch(input){
             case "n":
@@ -132,12 +138,16 @@ public class Controller {
                 return input;
         }
     }
-    
+    /**
+     * Checker om det pågældende rum har en exit for den indtastede retning
+     * @param exit
+     * @return 
+     */
     public boolean checkSpecExit (String exit) {
         return player.getCurrRoom().getSpecExit(exit) != null;
     }
     
-    // Tester om player er kommet i slutrummet, og afslutter spil hvis player er det.
+    
     /**
     *  Tjekker om player er kommet i slutrummet, og afslutter spil, hvis player er det.
      * @param player
@@ -149,8 +159,7 @@ public class Controller {
         }
     }
     
-    // Tester player HP - Giver output om at player er død og lukker spillet,
-    // hvis HP er 0 eller mindre.
+    
     /**
     *  Tester player HP - Giver output om at player er død og lukker spillet,
     *  hvis HP er 0 eller mindre.
@@ -164,7 +173,7 @@ public class Controller {
         }
     }
     
-    // Metoder der fjerner HP fra player hvis der er en fælde i rummet
+    
     /**
     *  Metoder der fjerner HP fra player hvis der er en fælde i rummet
      * @param player
@@ -219,16 +228,33 @@ public class Controller {
                 break;
         }
     }
-    
+    /**
+     * Checker hvor meget af en item player har i et pågældende index
+     * @param index
+     * @param amount
+     * @return 
+     */
     public boolean playerCheckAmount(int index,int amount){
         return player.getItemAmount(index) >= amount;
     }
-    
+    /**
+     * Checker hvor meget af en item Current room har i et pågældende index
+     * @param index
+     * @param amount
+     * @return 
+     */
     public boolean roomCheckAmount(int index,int amount){
         return player.getCurrRoom().getItemAmount(index) >= amount;
     }
     
-    // ÆNDRING FORSLAG: itemTakeOrPlace()
+    /**
+     * Tager index, amount og om item skal placeres eller tages af player.
+     * Derefter sker handlingen og printes til display.
+     * Hvis der ikke er nok skrives 
+     * @param itemIndex
+     * @param amount
+     * @param takeOrPlace 
+     */
     public void itemChoiceAction(int itemIndex, int amount, int takeOrPlace) {
         if (takeOrPlace == 0) {
             if (roomCheckAmount(itemIndex,amount)) {
