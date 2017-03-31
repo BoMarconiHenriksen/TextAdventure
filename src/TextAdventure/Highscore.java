@@ -29,10 +29,15 @@ public class Highscore {
      * @throws Exceptions for FileNotFoundException
      */
     public void getHighscore() {
-        System.out.println("Highscore:");
+        System.out.println("\tHIGHSCORES:");
+        System.out.println("#  GOLD   NAME\t  DATE");
+        
+        int posCounter = 1;
         try (Scanner sc = new Scanner(FILE)) {
+        
             while (sc.hasNextLine()) {
-                String line = sc.nextLine();
+                String line = posCounter + "  " + sc.nextLine();
+                posCounter +=1;
                 System.out.println(line);
             }
             //Exception handling
@@ -70,7 +75,6 @@ public class Highscore {
             PrintWriter pWriter = new PrintWriter(fw);
             pWriter.println(lineToAppend);
             pWriter.close();
-            this.sortHighscore();
             //Exception handling
         } catch (IOException e) {
             display.errorIOException();
@@ -122,7 +126,7 @@ public class Highscore {
                 newString += temp[0] + " " + temp[1] + " " + temp[2];
                 line = newString;
 
-                
+                //adding line back to arraylist
                 lineList.add(line);
             }
         } catch (FileNotFoundException e) {
@@ -138,6 +142,7 @@ public class Highscore {
             //clear highscore.txt from old entries
             clearHighscore();
             //write new entries to highscore.txt
+            
             for (String string : lineList) {
                 pWriter.println(string);
             }
