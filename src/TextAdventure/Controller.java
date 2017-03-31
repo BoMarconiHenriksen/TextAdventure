@@ -18,7 +18,6 @@ public class Controller {
 
     /**
     *  This method starts the game.
-     * @throws TextAdventure.Exceptions
     *  @since 1.0
     */
     public void start() {

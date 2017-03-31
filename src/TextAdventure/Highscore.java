@@ -26,7 +26,6 @@ public class Highscore {
     /**
      * prints recorded highscores from "highscore.txt" to console.
      *
-     * @throws Exceptions for FileNotFoundException
      */
     public void getHighscore() {
         System.out.println("\tHIGHSCORES:");
@@ -84,7 +83,6 @@ public class Highscore {
     /**
      * Clear all highscores from highscore.txt
      *
-     * @throws Exceptions for IOExceptions
      */
     public void clearHighscore() {
         try {
@@ -101,8 +99,6 @@ public class Highscore {
     /**
      * DESCRIPTION HERE
      *
-     * @param FILE
-     * @throws Exceptions
      */
     public void sortHighscore() {
 

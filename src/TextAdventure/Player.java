@@ -50,12 +50,7 @@ public class Player {
     
     // Smider Items 
 
-    /**
-    *  
-    *  @since 2.0
-    */
-
-
+    
     public int placeItem(int index, int amount) {
         this.getCurrRoom().setItemAmount(index, this.getCurrRoom().getItemAmount(index) + Math.abs(amount));
         inventory.setItemAmount(index, inventory.getItemAmount(index) - Math.abs(amount));

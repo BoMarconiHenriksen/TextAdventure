@@ -108,7 +108,7 @@ public class Room {
     // Tager 50 HP fra player og deaktiverer fælden. 
     /**
     *  
-    * @param player
+    * @param player a
     * @since 1.0
     */
     public void springTrap(Player player) {
