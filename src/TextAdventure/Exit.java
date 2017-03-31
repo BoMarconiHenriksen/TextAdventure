@@ -53,8 +53,7 @@ public class Exit {
     public void setOpen(boolean open) {
         this.open = open;
     }
-    
-    // Returnerer true hvis Exit er åbent - returnerer true hvis player har 100+ guld, samt sætter Exit til at være åbent
+     
     /**
     *  Returnerer true hvis Exit er åbent - returnerer true hvis player har 100+ guld, samt sætter Exit til at være åbent.
     * @param player player.getItemAmount

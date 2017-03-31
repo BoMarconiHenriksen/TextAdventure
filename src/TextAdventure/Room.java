@@ -2,7 +2,7 @@ package TextAdventure;
 
 
 /**
- * Klassen 
+ * Klassen holder information om pågældende rum
  * @since 1.0
  */
 public class Room {
@@ -105,9 +105,9 @@ public class Room {
         this.trap = trap;
     }
     
-    // Tager 50 HP fra player og deaktiverer fælden. 
+    
     /**
-    *  
+    * Fjerner 50 hp fra player og fjerner trap  
     * @param player a
     * @since 1.0
     */

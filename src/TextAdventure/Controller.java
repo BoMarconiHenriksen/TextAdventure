@@ -51,7 +51,7 @@ public class Controller {
         System.exit(0);
     }
     
-    // Switch case som tager imod en kommando fra player
+    
 
     /**
     *  Switch case som tager imod en kommando fra player.

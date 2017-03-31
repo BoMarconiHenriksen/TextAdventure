@@ -20,12 +20,11 @@ public class RoomConstructor {
     Room trapRoom2;
     
     /**
-    *  
+    *  Laver rum uden fælder
     *  @since 1.0
     */
     public void createRooms() {
-    
-    // Opretter rum uden fælder
+        
         startRoom = new Room(new Inventory(20,0,0,0),"The room is moist and a brown glow emanates from the walls." 
                                 +"\nIt has three doorways; One to the north, one to the east, and one to the south.");
         
@@ -60,7 +59,7 @@ public class RoomConstructor {
                             + "The treasure, though, is magically gone from your possenssion. It will forever belong to the Dungeon of Mysteries…");
         
 
-        //ROOM INITIASERES *******************************************************************
+       
         // Opretter rum med fælder 
         trapRoom1 = new Room(new Inventory(0,0,0,1),"The room is a dead end. "
 

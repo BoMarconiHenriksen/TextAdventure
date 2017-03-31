@@ -74,7 +74,7 @@ public class Highscore {
             PrintWriter pWriter = new PrintWriter(fw);
             pWriter.println(lineToAppend);
             pWriter.close();
-            //Exception handling
+            
         } catch (IOException e) {
             display.errorIOException();
         }
@@ -97,8 +97,12 @@ public class Highscore {
     }
 
     /**
-     * DESCRIPTION HERE
-     *
+     * Tilføjer linjer fra highscore.txt til arraylist
+     * Sætter score syntax til 3 cifre for hver linje
+     * Sender linjerne tilbage til arraylist
+     * Sorterer arraylist efter højeste score (reverse)
+     * Sletter teksten i highscore.txt
+     * Skriver linjerne tilbage til textfilen
      */
     public void sortHighscore() {
 

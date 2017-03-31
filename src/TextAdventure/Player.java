@@ -34,24 +34,31 @@ public class Player {
         this.inventory.setItemAmount(index,amount);
     }
     
-    // Tilføjer guld til player og tager guld fra rum
-
-    /**
-    *  
-    *  @since 2.0
-    */
     
 
+
+     /* 
+     * Tilføjer item til player inventory og fjerner den tilsvarende
+     * item fra room inventory 
+     * @param index
+     * @param amount
+     * @return 
+     */
     public int takeItem(int index, int amount) {
         inventory.setItemAmount(index, inventory.getItemAmount(index) + Math.abs(amount));
         this.getCurrRoom().setItemAmount(index, this.getCurrRoom().getItemAmount(index) - Math.abs(amount));
         return this.inventory.getItemAmount(index);
     }
     
-    // Smider Items 
+    /**
+     * Tilføjer item til room inventory og fjerner den tilsvarende
+     * item fra player inventory
+     * @param index
+     * @param amount
+     * @return 
+     */ 
 
-    
-    public int placeItem(int index, int amount) {
+        public int placeItem(int index, int amount) {
         this.getCurrRoom().setItemAmount(index, this.getCurrRoom().getItemAmount(index) + Math.abs(amount));
         inventory.setItemAmount(index, inventory.getItemAmount(index) - Math.abs(amount));
         return inventory.getItemAmount(index);
