@@ -19,10 +19,10 @@ public class Highscore {
     private final String FILENAME = "highscore.txt";
     private final File FILE = new File(FILENAME);
 
-    public Highscore(Display display){
+    public Highscore(Display display) {
         this.display = display;
     }
-    
+
     /**
      * prints recorded highscores from "highscore.txt" to console.
      *
@@ -54,8 +54,8 @@ public class Highscore {
 
     //[if none found] CREATE NEW HIGHSCORE FILE & APPEND ENTRY
     /**
-     * Appends parameters "to highscore.txt" as newline. 
-     * syntax "gold : playername : timestamp"
+     * Appends parameters "to highscore.txt" as newline. syntax "gold :
+     * playername : timestamp"
      *
      * @param player
      */
@@ -63,7 +63,7 @@ public class Highscore {
     public void setHighscore(Player player) {
 
         String timestamp = timestamp();
-        String lineToAppend = player.getItemAmount(0) + " | " + player.getName() + " | " + timestamp;
+        String lineToAppend = player.getItemAmount(0) + " " + player.getName() + " " + timestamp;
 
         try {
             FileWriter fw = new FileWriter(FILENAME, true);  //true = append
@@ -108,6 +108,21 @@ public class Highscore {
             //add each line from highscore file to ArrayList
             while (sc.hasNextLine()) {
                 String line = sc.nextLine();
+
+                //appending "0" (zero) to score, if score <3 digits.
+                String[] temp = line.split(" ");
+                String temp2 = temp[0];
+                String newString = "";
+
+                int counter = temp2.length();
+                while (counter < 3) {
+                    newString += "0";
+                    counter++;
+                }
+                newString += temp[0] + " " + temp[1] + " " + temp[2];
+                line = newString;
+
+                
                 lineList.add(line);
             }
         } catch (FileNotFoundException e) {
