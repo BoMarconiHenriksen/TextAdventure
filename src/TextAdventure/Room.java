@@ -1,14 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package TextAdventure;
 
 
 /**
- *
- * @author bo_ma
+ * Klassen holder information om pågældende rum
+ * @since 1.0
  */
 public class Room {
     
@@ -23,6 +18,8 @@ public class Room {
 
     public Room(Inventory inventory, String description, boolean trap) {
         this.description = description;
+        this.inventory = inventory;
+        this.trap = trap;
     }
     
     public Room(Inventory inventory, String description) {
@@ -40,16 +37,32 @@ public class Room {
         return this.inventory;
     }
     
-    public int getRoomItemAmount(int index) {
+    public int getItemAmount(int index) {
         return inventory.getItemAmount(index);
     }
 
-    public void setRoomItemAmount(int index, int amount) {
+    public void setItemAmount(int index, int amount) {
         this.inventory.setItemAmount(index,amount);
     }
 
     public String getDescription() {
         return description;
+    }
+    
+    // NYNYNYNYNYNYNY ***********************************************
+    public Exit getSpecExit(String exit) {
+        switch(exit){
+            case "north":
+                return this.north;
+            case "south":
+                return this.south;
+            case "east":
+                return this.east;
+            case "west":
+                return this.west;
+            default:
+                return null;
+        }
     }
 
     public Exit getExitNorth() {
@@ -92,7 +105,12 @@ public class Room {
         this.trap = trap;
     }
     
-    // Tager 50 HP fra player og deaktiverer fælden. 
+    
+    /**
+    * Fjerner 50 hp fra player og fjerner trap  
+    * @param player a
+    * @since 1.0
+    */
     public void springTrap(Player player) {
         player.setPlayerHealth(player.getPlayerHealth()-50);
         this.trap = false;

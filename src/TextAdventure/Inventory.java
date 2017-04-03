@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package TextAdventure;
 
 import java.util.ArrayList;
 
 /**
- *
- * @author Mellem
+ *  Klassen holder inventory for spilleren og for rummene.
+ * @since 2.0
  */
 public class Inventory {
     private ArrayList<Item> items = new ArrayList<>();
@@ -33,9 +28,9 @@ public class Inventory {
     //Filling inventory manually
     public Inventory(int goldAmount, int weaponAmount, int armorAmount, int potionAmount) {
         items.add(new Gold(goldAmount));
-        items.add(new Weapon(0));
-        items.add(new Armor(0));
-        items.add(new Potion(0));
+        items.add(new Weapon(weaponAmount));
+        items.add(new Armor(armorAmount));
+        items.add(new Potion(potionAmount));
     }
     
     public ArrayList<Item> getItems() {
@@ -46,13 +41,6 @@ public class Inventory {
         this.items.add(item);
     }
     
-    public void removeItem(String str) {
-        for (Item i : items) {
-            if (i.getType().equals(str)) {
-                items.remove(i);
-            }
-        }
-    }
 
     public int getItemAmount(int index) {
         return items.get(index).getAmount();

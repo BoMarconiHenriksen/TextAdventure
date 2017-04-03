@@ -1,75 +1,41 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package TextAdventure;
 
 
 /**
- *
- * @author bo_ma
+ *  Klassen der styrer programmet.
+ *  @since 1.0
  */
 public class Controller {
     
     Display display;
     Player player;
     RoomConstructor rc;
+    Highscore hs;
     
     boolean continue_ = true;
     
-    public void test() throws Exceptions {
-        display = new Display();
-        rc = new RoomConstructor();
-        
-        rc.createRooms();
-        
-        // TEMP PLAYERNAME
-        player = new Player(new Inventory(),"Playername");
-      //  player = new Player(0, display.nameInput()); // Opretter en player og får et navn som input
-        player.setCurrRoom(rc.startRoom); // Placere player i et rum
-        
-        rc.startRoom.setRoomItemAmount(1,10);
-        
-//        System.out.println(rc.startRoom.getRoomItemAmount(1));
-//        System.out.println(player.getPlayerItemAmount(1));
-//        player.takeItem(1, 50 ,player.getCurrRoom());
-//        System.out.println(rc.startRoom.getRoomItemAmount(1));
-//        System.out.println(player.getPlayerItemAmount(1));
-        
-        
-//        display.welcome();
-//        display.printCurrRoomDescr(player.getCurrRoom());
-//        while(continue_) {
-//            playerControl();
-//        }
-        while(continue_) {
-            String[] command = new String[1];
-            command[0] = display.playerInput();
-            if (command[0].contains(" ")) {
-                String[] command2 = command[0].split(" ");
-                playerControl(command2);
-            } else {
-                playerControl(command);
-            }
-        }
-        display.printExitMessage();
-        System.exit(0);
-    }
-    
-    public void start() throws Exceptions {
-        display = new Display();
-        rc = new RoomConstructor();
-        
-        rc.createRooms();
-        
-        // TEMP PLAYERNAME
-        player = new Player(new Inventory(), "Playername");
-      //  player = new Player(0, display.nameInput()); // Opretter en player og får et navn som input
-        player.setCurrRoom(rc.startRoom); // Placere player i et rum
 
+    /**
+    *  This method starts the game.
+    *  @since 1.0
+    */
+    public void start() {
+        display = new Display();
+        hs = new Highscore(display);
+        rc = new RoomConstructor();
+        
+        /**
+         * Opretter rum
+         */
+        rc.createRooms();
+        
+        player = new Player(new Inventory(), display.nameInput()); 
+        player.setCurrRoom(rc.startRoom); 
+        
         display.welcome();
-        display.printCurrRoomDescr(player.getCurrRoom());
+        System.out.println(player.getCurrRoom().getDescription());
+        
         while(continue_) {
             String[] command = new String[1];
             command[0] = display.playerInput();
@@ -80,55 +46,57 @@ public class Controller {
                 playerControl(command);
             }
         }
+        display.printFinalStats(player);
+        hs.setHighscore(player);
+        hs.sortHighscore();
+        hs.getHighscore();
         display.printExitMessage();
         System.exit(0);
     }
     
-    // Switch case som tager imod en kommando fra player
-    public void playerControl(String[] command) throws Exceptions {
-        switch(command[0]) {
+    
+
+    /**
+    *  Switch case som tager imod en kommando fra player.
+     * @param command
+    *  @since 1.0
+    */ 
+    public void playerControl(String[] command) {
+
+        switch(commandAliases(command[0])) {
             case "north": 
-            case "n":
-                north();
+                allDirections(commandAliases(command[0]));
                 break;
             case "south":
-            case "s":
-                south();
+                allDirections(commandAliases(command[0]));
                 break;
             case "east":
-            case "e":
-                east();
+                allDirections(commandAliases(command[0]));
                 break;
             case "west":
-            case "w":
-                west();
+                allDirections(commandAliases(command[0]));
                 break;
             case "look":
-            case "l":
                 display.printActionLook(player.getCurrRoom());
                 break;
             case "take":
-            case "t":
                 if (command.length > 1){
-                    itemChoice(command[1]);
+                    itemChoice(command[1],0);
                 } else {
                     display.noSpecifiedItem();
                 }
                 break;
             case "place":
-            case "p":
                 if (command.length > 1){
-                    itemChoice(command[1]);
+                    itemChoice(command[1],1);
                 } else {
                     display.noSpecifiedItem();
                 }
                 break;
             case "inventory":
-            case "i":
                 display.printInventory(player);
                 break;
             case "help":    
-            case "h":
                 display.helpMenu();
                 break;
             case "exit":
@@ -142,31 +110,65 @@ public class Controller {
                 break;
         }
     }
+    /**
+     * Alias'er til input fra player i command
+     * @param input
+     * @return 
+     */
+    public String commandAliases(String input) {
+        switch(input){
+            case "n":
+                return "north";
+            case "s":
+                return "south";
+            case "e":
+                return "east";
+            case "w":
+                return "west";
+            case "l":
+                return "look";
+            case "t":
+                return "take";
+            case "p":
+                return "place";
+            case "i":
+                return "inventory";
+            case "h":
+                return "help";
+            case "x":
+                return "exit";
+            default:
+                return input;
+        }
+    }
+    /**
+     * Checker om det pågældende rum har en exit for den indtastede retning
+     * @param exit
+     * @return 
+     */
+    public boolean checkSpecExit (String exit) {
+        return player.getCurrRoom().getSpecExit(exit) != null;
+    }
     
-    // TJEKKER OM EXIT (i en bestemt retning) FINDES FOR NUVÆRENDE POSISTION
-    public boolean checkExitNorth () {
-        return player.getCurrRoom().getExitNorth() != null;
-    }
-    public boolean checkExitSouth () {
-        return player.getCurrRoom().getExitSouth() != null;
-    }
-    public boolean checkExitEast () {
-        return player.getCurrRoom().getExitEast() != null;
-    }
-    public boolean checkExitWest () {
-        return player.getCurrRoom().getExitWest() != null;
-    }
     
-    // Tester om player er kommet i slutrummet, og afslutter spil hvis player er det.
+    /**
+    *  Tjekker om player er kommet i slutrummet, og afslutter spil, hvis player er det.
+     * @param player
+    *  @since 1.0
+    */
     public void ifWinCondition(Player player) {
         if (player.getCurrRoom().equals(rc.slutRoom)) {
-            display.printWinMessage(player);
             continue_ = false;
         }
     }
     
-    // Tester player HP - Giver output om at player er død og lukker spillet,
-    // hvis HP er 0 eller mindre.
+    
+    /**
+    *  Tester player HP - Giver output om at player er død og lukker spillet,
+    *  hvis HP er 0 eller mindre.
+     * @param player
+    *  @since 1.0
+    */
     public void ifPlayerHealthZero(Player player) {
         if (player.getPlayerHealth() <= 0) {
             display.printActionDeath();
@@ -174,7 +176,12 @@ public class Controller {
         }
     }
     
-    // Metoder der fjerner HP fra player hvis der er en fælde i rummet
+    
+    /**
+    *  Metoder der fjerner HP fra player hvis der er en fælde i rummet
+     * @param player
+    *  @since 1.0.
+    */
     public void ifRoomContainsTrap(Player player){
         if (player.getCurrRoom().isTrapActive()) { //Tester om der er 
             player.getCurrRoom().springTrap(player);
@@ -183,16 +190,15 @@ public class Controller {
         }
     }
     
-    // Metode for 'west' kommando fra player
-    public void west() {
-        if (checkExitWest() && player.getCurrRoom().getExitWest().unlockExitCondition(player)){ //Tjekker om der er et exit mod vest og om exit er åben
-            player.setCurrRoom(player.getCurrRoom().getExitWest().getNextRoom()); //Flytter player til nyt rum
+    public void allDirections(String exit) {
+        if (checkSpecExit(exit) && player.getCurrRoom().getSpecExit(exit).unlockExitCondition(player)){ //Tjekker om der er et exit mod vest og om exit er åben
+            player.setCurrRoom(player.getCurrRoom().getSpecExit(exit).getNextRoom()); //Flytter player til nyt rum
             display.printActionPlayerTransit();
             display.printCurrRoomDescr(player.getCurrRoom());
             ifRoomContainsTrap(player);
             ifWinCondition(player);
         } else {
-            if (!checkExitWest()) {
+            if (!checkSpecExit(exit)) {
                 display.printNoExit();
             } else {
                 display.printNeedGoldExit(player);
@@ -200,74 +206,73 @@ public class Controller {
         }
     }
     
-    // Metode for 'east' kommando fra plyer
-    public void east() {
-        if (checkExitEast() && player.getCurrRoom().getExitEast().unlockExitCondition(player)){ //Tjekker om der er et exit mod vest og om exit er åben
-            player.setCurrRoom(player.getCurrRoom().getExitEast().getNextRoom()); //Flytter player til nyt rum
-            display.printActionPlayerTransit();
-            display.printCurrRoomDescr(player.getCurrRoom());
-            ifRoomContainsTrap(player);
-            ifWinCondition(player);
-        } else {
-            if (!checkExitEast()) {
-                display.printNoExit();
-            } else {
-                display.printNeedGoldExit(player);
-            }
-        }
-    }
-    
-    // Metode for 'south' kommando fra player
-    public void south() {
-        if (checkExitSouth() && player.getCurrRoom().getExitSouth().unlockExitCondition(player)){ //Tjekker om der er et exit mod vest og om exit er åben
-            player.setCurrRoom(player.getCurrRoom().getExitSouth().getNextRoom()); //Flytter player til nyt rum
-            display.printActionPlayerTransit();
-            display.printCurrRoomDescr(player.getCurrRoom());
-            ifRoomContainsTrap(player);
-            ifWinCondition(player);
-        } else {
-            if (!checkExitSouth()) {
-                display.printNoExit();
-            } else {
-                display.printNeedGoldExit(player);
-            }
-        }
-    }
-    
-    // Metode for 'north' kommando fra player
-    public void north() {
-        if (checkExitNorth() && player.getCurrRoom().getExitNorth().unlockExitCondition(player)){ //Tjekker om der er et exit mod vest og om exit er åben
-            player.setCurrRoom(player.getCurrRoom().getExitNorth().getNextRoom()); //Flytter player til nyt rum
-            display.printActionPlayerTransit();
-            display.printCurrRoomDescr(player.getCurrRoom());
-            ifRoomContainsTrap(player);
-            ifWinCondition(player);
-        } else {
-            if (!checkExitNorth()) {
-                display.printNoExit();
-            } else {
-                display.printNeedGoldExit(player);
-            }
-        }
-    }
-    
-    public void itemChoice(String itemChoice) throws Exceptions {
+    // ÆNDRING FORSLAG: 
+    public void itemChoice(String itemChoice, int takeOrPlace) {
+        int amount;
         switch(itemChoice) {
             case "gold":
-                player.takeItem(0, display.itemAmountChoice());
+                amount = display.itemAmountChoice();
+                itemChoiceAction(0,amount,takeOrPlace);
                 break;
             case "weapon":
-                player.takeItem(1, display.itemAmountChoice());
+                amount = display.itemAmountChoice();
+                itemChoiceAction(1,amount,takeOrPlace);
                 break;
             case "armor":
-                player.takeItem(2, display.itemAmountChoice());
+                amount = display.itemAmountChoice();
+                itemChoiceAction(2,amount,takeOrPlace);
                 break;
             case "potion":
-                player.takeItem(3, display.itemAmountChoice());
+                amount = display.itemAmountChoice();
+                itemChoiceAction(3,amount,takeOrPlace);
                 break;
             default:
                 display.printInvalidInput();
                 break;
+        }
+    }
+    /**
+     * Checker hvor meget af en item player har i et pågældende index
+     * @param index
+     * @param amount
+     * @return 
+     */
+    public boolean playerCheckAmount(int index,int amount){
+        return player.getItemAmount(index) >= amount;
+    }
+    /**
+     * Checker hvor meget af en item Current room har i et pågældende index
+     * @param index
+     * @param amount
+     * @return 
+     */
+    public boolean roomCheckAmount(int index,int amount){
+        return player.getCurrRoom().getItemAmount(index) >= amount;
+    }
+    
+    /**
+     * Tager index, amount og om item skal placeres eller tages af player.
+     * Derefter sker handlingen og printes til display.
+     * Hvis der ikke er nok skrives 
+     * @param itemIndex
+     * @param amount
+     * @param takeOrPlace 
+     */
+    public void itemChoiceAction(int itemIndex, int amount, int takeOrPlace) {
+        if (takeOrPlace == 0) {
+            if (roomCheckAmount(itemIndex,amount)) {
+                player.takeItem(itemIndex, amount);
+                display.takeItem(itemIndex,amount);
+            } else {
+                display.insufficientAmount();
+            }
+        } else {
+            if (playerCheckAmount(itemIndex,amount)) {
+                player.placeItem(itemIndex, amount);
+                display.placeItem(itemIndex, amount);
+            } else {
+                display.insufficientAmount();
+            }
         }
     }
     
