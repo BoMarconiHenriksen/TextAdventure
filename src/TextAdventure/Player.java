@@ -27,11 +27,13 @@ public class Player {
     }
     
     public int getItemAmount(int index) {
-        return inventory.getItemAmount(index);
+        //return inventory.getItemAmount(index);
+        return 0;
     }
 
     public void setItemAmount(int index, int amount) {
-        this.inventory.setItemAmount(index,amount);
+        // this.inventory.setItemAmount(index,amount);
+
     }
     
     
@@ -45,9 +47,10 @@ public class Player {
      * @return 
      */
     public int takeItem(int index, int amount) {
-        inventory.setItemAmount(index, inventory.getItemAmount(index) + Math.abs(amount));
-        this.getCurrRoom().setItemAmount(index, this.getCurrRoom().getItemAmount(index) - Math.abs(amount));
-        return this.inventory.getItemAmount(index);
+//        inventory.setItemAmount(index, inventory.getItemAmount(index) + Math.abs(amount));
+//        this.getCurrRoom().setItemAmount(index, this.getCurrRoom().getItemAmount(index) - Math.abs(amount));
+//        return this.inventory.getItemAmount(index);
+        return 0;
     }
     
     /**
@@ -59,9 +62,10 @@ public class Player {
      */ 
 
         public int placeItem(int index, int amount) {
-        this.getCurrRoom().setItemAmount(index, this.getCurrRoom().getItemAmount(index) + Math.abs(amount));
-        inventory.setItemAmount(index, inventory.getItemAmount(index) - Math.abs(amount));
-        return inventory.getItemAmount(index);
+//        this.getCurrRoom().setItemAmount(index, this.getCurrRoom().getItemAmount(index) + Math.abs(amount));
+//        inventory.setItemAmount(index, inventory.getItemAmount(index) - Math.abs(amount));
+//        return inventory.getItemAmount(index);
+        return 0;
     }
 
     public String getName() {
@@ -86,6 +90,10 @@ public class Player {
 
     public void setPlayerHealth(int health) {
         this.health = health;
+    }
+    
+    public void addItemPlayer(int index, Item item) {
+        inventory.getItemsList().get(index).add(item);
     }
     
 }

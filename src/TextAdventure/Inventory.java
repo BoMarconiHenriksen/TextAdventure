@@ -7,48 +7,44 @@ import java.util.ArrayList;
  * @since 2.0
  */
 public class Inventory {
-    private ArrayList<Item> items = new ArrayList<>();
+    //private Item[] items = new Item[4];
+    private ArrayList<ArrayList> items = new ArrayList<>();
+    private ArrayList<Gold> gold = new ArrayList<>();
+    private ArrayList<Weapon> weapons = new ArrayList<>();
+    private ArrayList<Potion> potions = new ArrayList<>();
+    private ArrayList<Armor> armor = new ArrayList<>();
     
     //Filling inventory auto
     public Inventory() {
-        items.add(new Gold(0));
-        items.add(new Weapon(0));
-        items.add(new Armor(0));
-        items.add(new Potion(0));
+        items.add(this.gold);
+        items.get(0).add(new Gold("Gold",0,1));
+        items.add(weapons);
+        items.add(armor);
+        items.add(potions);
     }
     
-    //Filling inventory auto, but gold manually
-    public Inventory(int goldAmount) {
-        items.add(new Gold(goldAmount));
-        items.add(new Weapon(0));
-        items.add(new Armor(0));
-        items.add(new Potion(0));
-    }
-    
-    //Filling inventory manually
-    public Inventory(int goldAmount, int weaponAmount, int armorAmount, int potionAmount) {
-        items.add(new Gold(goldAmount));
-        items.add(new Weapon(weaponAmount));
-        items.add(new Armor(armorAmount));
-        items.add(new Potion(potionAmount));
-    }
-    
-    public ArrayList<Item> getItems() {
+    public ArrayList<ArrayList> getItemsList() {
         return items;
     }
 
-    public void addItem(Item item) {
-        this.items.add(item);
+    public ArrayList<Gold> getGoldList() {
+        return gold;
     }
-    
 
-    public int getItemAmount(int index) {
-        return items.get(index).getAmount();
+    public ArrayList<Weapon> getWeaponsList() {
+        return weapons;
     }
+
+    public ArrayList<Potion> getPotionsList() {
+        return potions;
+    }
+
+    public ArrayList<Armor> getArmorList() {
+        return armor;
+    }
+
     
-    public void setItemAmount(int index ,int amount) {
-        items.get(index).setAmount(amount);
-    }
+    
     
 }
 

@@ -37,19 +37,22 @@ public class Room {
         return this.inventory;
     }
     
-    public int getItemAmount(int index) {
-        return inventory.getItemAmount(index);
-    }
-
-    public void setItemAmount(int index, int amount) {
-        this.inventory.setItemAmount(index,amount);
+//    public int getItemAmount(int index) {
+//        return inventory.getItemAmount(index);
+//    }
+//
+//    public void setItemAmount(int index, int amount) {
+//        this.inventory.setItemAmount(index,amount);
+//    }
+    
+    public void addItemRoom(int index, Item item) {
+        inventory.getItemsList().get(index).add(item);
     }
 
     public String getDescription() {
         return description;
     }
     
-    // NYNYNYNYNYNYNY ***********************************************
     public Exit getSpecExit(String exit) {
         switch(exit){
             case "north":

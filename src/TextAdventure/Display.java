@@ -134,30 +134,30 @@ public class Display {
     *  @param room Tjekker om der er guld fra RoomItemAmount.
     *  @since 2.0
     */
-    public void printActionLook(Room room) {
-        boolean hasItem = false;
-
-        System.out.print("You see: ");
-        if (room.getInventory().getItemAmount(0) > 0){
-            System.out.print("\n"+room.getInventory().getItemAmount(0) + " Gold");
-            hasItem = true;
-        } if (room.getInventory().getItemAmount(1) > 0) {
-            System.out.print("\n"+room.getInventory().getItemAmount(1) + " Weapons");
-            hasItem = true;
-        } if (room.getInventory().getItemAmount(2) > 0){
-            System.out.print("\n"+room.getInventory().getItemAmount(2) + " Armors");
-            hasItem = true;
-        } if (room.getInventory().getItemAmount(3) > 0){
-            System.out.print("\n"+room.getInventory().getItemAmount(3) + " Potions");
-            hasItem = true;
-        }
-        
-        if (!hasItem) {
-            System.out.print("Nothing...");
-        }
-        System.out.println();
-            
-    }
+//    public void printActionLook(Room room) {
+//        boolean hasItem = false;
+//
+//        System.out.print("You see: ");
+//        if (room.getInventory().getItemAmount(0) > 0){
+//            System.out.print("\n"+room.getInventory().getItemAmount(0) + " Gold");
+//            hasItem = true;
+//        } if (room.getInventory().getItemAmount(1) > 0) {
+//            System.out.print("\n"+room.getInventory().getItemAmount(1) + " Weapons");
+//            hasItem = true;
+//        } if (room.getInventory().getItemAmount(2) > 0){
+//            System.out.print("\n"+room.getInventory().getItemAmount(2) + " Armors");
+//            hasItem = true;
+//        } if (room.getInventory().getItemAmount(3) > 0){
+//            System.out.print("\n"+room.getInventory().getItemAmount(3) + " Potions");
+//            hasItem = true;
+//        }
+//        
+//        if (!hasItem) {
+//            System.out.print("Nothing...");
+//        }
+//        System.out.println();
+//            
+//    }
 
 
     /**
@@ -166,28 +166,21 @@ public class Display {
     *  @since 2.0
     */
     public void printInventory(Player player) {
-        boolean hasItem = false;
-        
-        System.out.println("You have " + player.getPlayerHealth() + " health points...");
-        System.out.print("Your inventory contains: ");
-        if (player.getInventory().getItemAmount(0) > 0){
-            System.out.print("\n"+player.getInventory().getItemAmount(0) + " Gold");
-            hasItem = true;
-        } if (player.getInventory().getItemAmount(1) > 0) {
-            System.out.print("\n"+player.getInventory().getItemAmount(1) + " Weapons");
-            hasItem = true;
-        } if (player.getInventory().getItemAmount(2) > 0){
-            System.out.print("\n"+player.getInventory().getItemAmount(2) + " Armors");
-            hasItem = true;
-        } if (player.getInventory().getItemAmount(3) > 0){
-            System.out.print("\n"+player.getInventory().getItemAmount(3) + " Potions");
-            hasItem = true;
+
+        System.out.println("Your inventory contains: ");
+        System.out.println("Gold: "+player.getInventory().getGoldList().get(0).getAmount());
+        System.out.println("Weapons:");
+        for (Item i : player.getInventory().getWeaponsList()){
+            System.out.println((player.getInventory().getWeaponsList().indexOf(i) + 1) +". "+i);
         }
-        
-        if (!hasItem) {
-            System.out.print("Nothing...");
-        }
-        System.out.println();
+        System.out.println("Armor:");
+        for (Item i : player.getInventory().getArmorList()){
+            System.out.println((player.getInventory().getArmorList().indexOf(i) + 1) +". "+i);
+        }    
+        System.out.println("Potions:");
+        for (Item i : player.getInventory().getPotionsList()){
+            System.out.println((player.getInventory().getPotionsList().indexOf(i) + 1) +". "+i);
+        }    
               
     }
 

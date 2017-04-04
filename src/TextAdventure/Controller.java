@@ -16,6 +16,27 @@ public class Controller {
     boolean continue_ = true;
     
 
+    public void test() {
+        display = new Display();
+        hs = new Highscore(display);
+        rc = new RoomConstructor();
+        
+        /**
+         * Opretter rum
+         */
+        rc.createRooms();
+        
+        player = new Player(new Inventory(), "Henrik"); 
+        player.setCurrRoom(rc.startRoom); 
+        player.addItemPlayer(1, new Weapon("Dagger",1,1));
+        
+        display.printInventory(player);
+    
+    
+    
+    }
+    
+    
     /**
     *  This method starts the game.
     *  @since 1.0
@@ -77,7 +98,7 @@ public class Controller {
                 allDirections(commandAliases(command[0]));
                 break;
             case "look":
-                display.printActionLook(player.getCurrRoom());
+                //display.printActionLook(player.getCurrRoom());
                 break;
             case "take":
                 if (command.length > 1){
@@ -247,7 +268,7 @@ public class Controller {
      * @return 
      */
     public boolean roomCheckAmount(int index,int amount){
-        return player.getCurrRoom().getItemAmount(index) >= amount;
+        return true;
     }
     
     /**
