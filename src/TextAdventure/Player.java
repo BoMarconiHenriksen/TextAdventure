@@ -27,12 +27,12 @@ public class Player {
     }
     
     public int getItemAmount(int index) {
-        //return inventory.getItemAmount(index);
-        return 0;
+        return inventory.getItemAmount(index);
+
     }
 
     public void setItemAmount(int index, int amount) {
-        // this.inventory.setItemAmount(index,amount);
+         this.inventory.setItemAmount(index,amount);
 
     }
     
@@ -47,10 +47,10 @@ public class Player {
      * @return 
      */
     public int takeItem(int index, int amount) {
-//        inventory.setItemAmount(index, inventory.getItemAmount(index) + Math.abs(amount));
-//        this.getCurrRoom().setItemAmount(index, this.getCurrRoom().getItemAmount(index) - Math.abs(amount));
-//        return this.inventory.getItemAmount(index);
-        return 0;
+        inventory.setItemAmount(index, inventory.getItemAmount(index) + Math.abs(amount));
+        this.getCurrRoom().setItemAmount(index, this.getCurrRoom().getItemAmount(index) - Math.abs(amount));
+        return this.inventory.getItemAmount(index);
+
     }
     
     /**
@@ -62,10 +62,9 @@ public class Player {
      */ 
 
         public int placeItem(int index, int amount) {
-//        this.getCurrRoom().setItemAmount(index, this.getCurrRoom().getItemAmount(index) + Math.abs(amount));
-//        inventory.setItemAmount(index, inventory.getItemAmount(index) - Math.abs(amount));
-//        return inventory.getItemAmount(index);
-        return 0;
+        this.getCurrRoom().setItemAmount(index, this.getCurrRoom().getItemAmount(index) + Math.abs(amount));
+        inventory.setItemAmount(index, inventory.getItemAmount(index) - Math.abs(amount));
+        return inventory.getItemAmount(index);
     }
 
     public String getName() {

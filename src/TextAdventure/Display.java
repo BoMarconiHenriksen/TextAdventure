@@ -134,30 +134,30 @@ public class Display {
     *  @param room Tjekker om der er guld fra RoomItemAmount.
     *  @since 2.0
     */
-//    public void printActionLook(Room room) {
-//        boolean hasItem = false;
-//
-//        System.out.print("You see: ");
-//        if (room.getInventory().getItemAmount(0) > 0){
-//            System.out.print("\n"+room.getInventory().getItemAmount(0) + " Gold");
-//            hasItem = true;
-//        } if (room.getInventory().getItemAmount(1) > 0) {
-//            System.out.print("\n"+room.getInventory().getItemAmount(1) + " Weapons");
-//            hasItem = true;
-//        } if (room.getInventory().getItemAmount(2) > 0){
-//            System.out.print("\n"+room.getInventory().getItemAmount(2) + " Armors");
-//            hasItem = true;
-//        } if (room.getInventory().getItemAmount(3) > 0){
-//            System.out.print("\n"+room.getInventory().getItemAmount(3) + " Potions");
-//            hasItem = true;
-//        }
-//        
-//        if (!hasItem) {
-//            System.out.print("Nothing...");
-//        }
-//        System.out.println();
-//            
-//    }
+    public void printActionLook(Room room) {
+        boolean hasItem = false;
+
+        System.out.print("You see: ");
+        if (room.getInventory().getItemAmount(0) > 0){
+            System.out.print("\n"+room.getInventory().getItemAmount(0) + " Gold");
+            hasItem = true;
+        } if (room.getInventory().getItemAmount(1) > 0) {
+            System.out.print("\n"+room.getInventory().getItemAmount(1) + " Weapons");
+            hasItem = true;
+        } if (room.getInventory().getItemAmount(2) > 0){
+            System.out.print("\n"+room.getInventory().getItemAmount(2) + " Armors");
+            hasItem = true;
+        } if (room.getInventory().getItemAmount(3) > 0){
+            System.out.print("\n"+room.getInventory().getItemAmount(3) + " Potions");
+            hasItem = true;
+        }
+        
+        if (!hasItem) {
+            System.out.print("Nothing...");
+        }
+        System.out.println();
+            
+    }
 
 
     /**

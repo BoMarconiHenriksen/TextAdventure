@@ -12,6 +12,7 @@ public class Controller {
     Player player;
     RoomConstructor rc;
     Highscore hs;
+    DungeonConstructor dc;
     
     boolean continue_ = true;
     
@@ -19,12 +20,7 @@ public class Controller {
     public void test() {
         display = new Display();
         hs = new Highscore(display);
-        rc = new RoomConstructor();
-        
-        /**
-         * Opretter rum
-         */
-        rc.createRooms();
+        dc = new DungeonConstructor();
         
         player = new Player(new Inventory(), "Henrik"); 
         player.setCurrRoom(rc.startRoom); 
@@ -98,7 +94,7 @@ public class Controller {
                 allDirections(commandAliases(command[0]));
                 break;
             case "look":
-                //display.printActionLook(player.getCurrRoom());
+                display.printActionLook(player.getCurrRoom());
                 break;
             case "take":
                 if (command.length > 1){
@@ -227,7 +223,6 @@ public class Controller {
         }
     }
     
-    // ÆNDRING FORSLAG: 
     public void itemChoice(String itemChoice, int takeOrPlace) {
         int amount;
         switch(itemChoice) {
@@ -268,7 +263,7 @@ public class Controller {
      * @return 
      */
     public boolean roomCheckAmount(int index,int amount){
-        return true;
+
     }
     
     /**
