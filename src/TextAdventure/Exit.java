@@ -62,7 +62,7 @@ public class Exit {
     */
     public boolean unlockExitCondition(Player player) {
         if (this.open != true) {
-            if (player.getItemAmount(0) >= 100) {
+            if (player.getInventory().getGoldList().get(0).getAmount() >= 100) {
                 this.open = true;
                 return true;
             } else {

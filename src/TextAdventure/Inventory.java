@@ -31,11 +31,11 @@ public class Inventory {
         return gold;
     }
 
-    public ArrayList<Weapon> getWeaponsList() {
+    public ArrayList<Weapon> getWeaponList() {
         return weapons;
     }
 
-    public ArrayList<Potion> getPotionsList() {
+    public ArrayList<Potion> getPotionList() {
         return potions;
     }
 
@@ -43,8 +43,16 @@ public class Inventory {
         return armor;
     }
 
+    public Item getSpecItem(int indexCol, int indexRow) {
+        return (Item) items.get(indexCol).get(indexRow);
+    }
     
-    
-    
+    public void removeSpecItem(int indexCol, int indexRow) {
+        items.get(indexCol).remove(indexRow);
+    }
+
+    public void addSpecItem(int indexCol, Item item) {
+        items.get(indexCol).add(item);
+    }
 }
 

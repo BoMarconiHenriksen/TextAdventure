@@ -44,10 +44,6 @@ public class Room {
 //    public void setItemAmount(int index, int amount) {
 //        this.inventory.setItemAmount(index,amount);
 //    }
-    
-    public void addItemRoom(int index, Item item) {
-        inventory.getItemsList().get(index).add(item);
-    }
 
     public String getDescription() {
         return description;

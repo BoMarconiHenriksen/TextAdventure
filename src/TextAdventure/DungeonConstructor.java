@@ -18,7 +18,7 @@ public class DungeonConstructor {
         ic = new ItemConstructor();
         rc = new RoomConstructor();
         
-        rc.startRoom.addItemRoom(2, ic.a1);
+        rc.startRoom.getInventory().addSpecItem(2, ic.a1);
         
     }
      

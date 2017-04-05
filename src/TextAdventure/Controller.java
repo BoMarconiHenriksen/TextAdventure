@@ -225,22 +225,16 @@ public class Controller {
     
     public void itemChoice(String itemChoice, int takeOrPlace) {
         int amount;
+        int indexRow=0;
         switch(itemChoice) {
-            case "gold":
-                amount = display.itemAmountChoice();
-                itemChoiceAction(0,amount,takeOrPlace);
-                break;
             case "weapon":
-                amount = display.itemAmountChoice();
-                itemChoiceAction(1,amount,takeOrPlace);
+                itemChoiceAction(1,indexRow,takeOrPlace);
                 break;
             case "armor":
-                amount = display.itemAmountChoice();
-                itemChoiceAction(2,amount,takeOrPlace);
+                itemChoiceAction(1,indexRow,takeOrPlace);
                 break;
             case "potion":
-                amount = display.itemAmountChoice();
-                itemChoiceAction(3,amount,takeOrPlace);
+                itemChoiceAction(1,indexRow,takeOrPlace);
                 break;
             default:
                 display.printInvalidInput();
@@ -253,8 +247,15 @@ public class Controller {
      * @param amount
      * @return 
      */
-    public boolean playerCheckAmount(int index,int amount){
-        return player.getItemAmount(index) >= amount;
+    public boolean checkInvRangePlayer(int indexCol,int indexRow){
+        try {
+            player.getInventory().getSpecItem(indexCol, indexRow);
+            return true;
+        }
+        catch(IndexOutOfBoundsException e) {
+            System.out.println("ERROR. DENNE BESKED SKAL PLACERES I DISPLAY");
+            return false;
+        }
     }
     /**
      * Checker hvor meget af en item Current room har i et pågældende index
@@ -262,30 +263,37 @@ public class Controller {
      * @param amount
      * @return 
      */
-    public boolean roomCheckAmount(int index,int amount){
-
+    public boolean checkInvRangeRoom(int indexCol, int indexRow){
+        try {
+            player.getCurrRoom().getInventory().getSpecItem(indexCol, indexRow);
+            return true;
+        }
+        catch(IndexOutOfBoundsException e) {
+            System.out.println("ERROR. DENNE BESKED SKAL PLACERES I DISPLAY");
+            return false;
+        }
     }
     
     /**
-     * Tager index, amount og om item skal placeres eller tages af player.
+     * Tager index, indexRow og om item skal placeres eller tages af player.
      * Derefter sker handlingen og printes til display.
      * Hvis der ikke er nok skrives 
      * @param itemIndex
-     * @param amount
+     * @param indexRow
      * @param takeOrPlace 
      */
-    public void itemChoiceAction(int itemIndex, int amount, int takeOrPlace) {
+    public void itemChoiceAction(int itemIndex, int indexRow, int takeOrPlace) {
         if (takeOrPlace == 0) {
-            if (roomCheckAmount(itemIndex,amount)) {
-                player.takeItem(itemIndex, amount);
-                display.takeItem(itemIndex,amount);
+            if (checkInvRangeRoom(itemIndex,indexRow)) {
+                player.takeItem(itemIndex, indexRow);
+                display.takeItem(itemIndex,indexRow);
             } else {
                 display.insufficientAmount();
             }
         } else {
-            if (playerCheckAmount(itemIndex,amount)) {
-                player.placeItem(itemIndex, amount);
-                display.placeItem(itemIndex, amount);
+            if (checkInvRangePlayer(itemIndex,indexRow)) {
+                player.placeItem(itemIndex, indexRow);
+                display.placeItem(itemIndex, indexRow);
             } else {
                 display.insufficientAmount();
             }

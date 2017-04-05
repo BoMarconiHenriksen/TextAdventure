@@ -67,7 +67,7 @@ public class Highscore {
     public void setHighscore(Player player) {
 
         String timestamp = timestamp();
-        String lineToAppend = player.getItemAmount(0) + " " + player.getName() + " " + timestamp;
+        String lineToAppend = player.getInventory().getGoldList().get(0).getAmount() + " " + player.getName() + " " + timestamp;
 
         try {
             FileWriter fw = new FileWriter(FILENAME, true);  //true = append

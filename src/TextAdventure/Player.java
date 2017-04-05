@@ -26,19 +26,6 @@ public class Player {
         this.inventory = playerInventory;
     }
     
-    public int getItemAmount(int index) {
-        return inventory.getItemAmount(index);
-
-    }
-
-    public void setItemAmount(int index, int amount) {
-         this.inventory.setItemAmount(index,amount);
-
-    }
-    
-    
-
-
      /* 
      * Tilføjer item til player inventory og fjerner den tilsvarende
      * item fra room inventory 
@@ -46,25 +33,26 @@ public class Player {
      * @param amount
      * @return 
      */
-    public int takeItem(int index, int amount) {
-        inventory.setItemAmount(index, inventory.getItemAmount(index) + Math.abs(amount));
-        this.getCurrRoom().setItemAmount(index, this.getCurrRoom().getItemAmount(index) - Math.abs(amount));
-        return this.inventory.getItemAmount(index);
-
+    public void takeItem(int indexCol, int indexRow) {
+        Item temp = this.currRoom.getInventory().getSpecItem(indexCol, indexRow);
+        this.currRoom.getInventory().removeSpecItem(indexCol, indexRow);
+        this.getInventory().addSpecItem(indexCol, temp);
     }
     
     /**
      * Tilføjer item til room inventory og fjerner den tilsvarende
      * item fra player inventory
+     * @param indexCol
+     * @param indexRow
      * @param index
      * @param amount
      * @return 
      */ 
 
-        public int placeItem(int index, int amount) {
-        this.getCurrRoom().setItemAmount(index, this.getCurrRoom().getItemAmount(index) + Math.abs(amount));
-        inventory.setItemAmount(index, inventory.getItemAmount(index) - Math.abs(amount));
-        return inventory.getItemAmount(index);
+    public void placeItem(int indexCol, int indexRow) {
+        Item temp = this.getInventory().getSpecItem(indexCol, indexRow);
+        this.getInventory().removeSpecItem(indexCol, indexRow);
+        this.currRoom.getInventory().addSpecItem(indexCol, temp);
     }
 
     public String getName() {
@@ -92,7 +80,7 @@ public class Player {
     }
     
     public void addItemPlayer(int index, Item item) {
-        inventory.getItemsList().get(index).add(item);
+
     }
     
 }
