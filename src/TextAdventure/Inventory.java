@@ -54,5 +54,6 @@ public class Inventory {
     public void addSpecItem(int indexCol, Item item) {
         items.get(indexCol).add(item);
     }
+    
 }
 

@@ -10,7 +10,6 @@ public class Controller {
     
     Display display;
     Player player;
-    RoomConstructor rc;
     Highscore hs;
     DungeonConstructor dc;
     
@@ -22,36 +21,10 @@ public class Controller {
         hs = new Highscore(display);
         dc = new DungeonConstructor();
         
+        dc.createDungeon();
+        
         player = new Player(new Inventory(), "Henrik"); 
-        player.setCurrRoom(rc.startRoom); 
-        player.addItemPlayer(1, new Weapon("Dagger",1,1));
-        
-        display.printInventory(player);
-    
-    
-    
-    }
-    
-    
-    /**
-    *  This method starts the game.
-    *  @since 1.0
-    */
-    public void start() {
-        display = new Display();
-        hs = new Highscore(display);
-        rc = new RoomConstructor();
-        
-        /**
-         * Opretter rum
-         */
-        rc.createRooms();
-        
-        player = new Player(new Inventory(), display.nameInput()); 
-        player.setCurrRoom(rc.startRoom); 
-        
-        display.welcome();
-        System.out.println(player.getCurrRoom().getDescription());
+        player.setCurrRoom(dc.rc.startRoom); 
         
         while(continue_) {
             String[] command = new String[1];
@@ -63,13 +36,50 @@ public class Controller {
                 playerControl(command);
             }
         }
-        display.printFinalStats(player);
-        hs.setHighscore(player);
-        hs.sortHighscore();
-        hs.getHighscore();
         display.printExitMessage();
         System.exit(0);
+
+
     }
+    
+    
+    /**
+    *  This method starts the game.
+    *  @since 1.0
+    */
+//    public void start() {
+//        display = new Display();
+//        hs = new Highscore(display);
+//        rc = new RoomConstructor();
+//        
+//        /**
+//         * Opretter rum
+//         */
+//        rc.createRooms();
+//        
+//        player = new Player(new Inventory(), display.nameInput()); 
+//        player.setCurrRoom(rc.startRoom); 
+//        
+//        display.welcome();
+//        System.out.println(player.getCurrRoom().getDescription());
+//        
+//        while(continue_) {
+//            String[] command = new String[1];
+//            command[0] = display.playerInput();
+//            if (command[0].contains(" ")) {
+//                String[] command2 = command[0].split(" ");
+//                playerControl(command2);
+//            } else {
+//                playerControl(command);
+//            }
+//        }
+//        display.printFinalStats(player);
+//        hs.setHighscore(player);
+//        hs.sortHighscore();
+//        hs.getHighscore();
+//        display.printExitMessage();
+//        System.exit(0);
+//    }
     
     
 
@@ -174,7 +184,7 @@ public class Controller {
     *  @since 1.0
     */
     public void ifWinCondition(Player player) {
-        if (player.getCurrRoom().equals(rc.slutRoom)) {
+        if (player.getCurrRoom().equals(dc.rc.slutRoom)) {
             continue_ = false;
         }
     }
@@ -224,17 +234,19 @@ public class Controller {
     }
     
     public void itemChoice(String itemChoice, int takeOrPlace) {
-        int amount;
-        int indexRow=0;
+
         switch(itemChoice) {
+            case "gold":
+                itemChoiceAction(display.goldAmountChoice(),takeOrPlace);
+                break;
             case "weapon":
-                itemChoiceAction(1,indexRow,takeOrPlace);
+                itemChoiceAction(1,display.indexRowChoice(),takeOrPlace);
                 break;
             case "armor":
-                itemChoiceAction(1,indexRow,takeOrPlace);
+                itemChoiceAction(1,display.indexRowChoice(),takeOrPlace);
                 break;
             case "potion":
-                itemChoiceAction(1,indexRow,takeOrPlace);
+                itemChoiceAction(1,display.indexRowChoice(),takeOrPlace);
                 break;
             default:
                 display.printInvalidInput();
@@ -298,6 +310,32 @@ public class Controller {
                 display.insufficientAmount();
             }
         }
+    }
+    
+    public void itemChoiceAction(int goldAmount, int takeOrPlace) {
+        if (takeOrPlace == 0) {
+            if (enoughGoldRoom(goldAmount)) {
+                player.takeItem(goldAmount);
+                System.out.println("TILFØJ DISPLAY METODE!!");
+            } else {
+                display.insufficientAmount();
+            }
+        } else {
+            if (enoughGoldPlayer(goldAmount)) {
+                player.placeItem(goldAmount);
+                System.out.println("TILFØJ DISPLAY METODE!!");
+            } else {
+                display.insufficientAmount();
+            }
+        }
+    }
+    
+    public boolean enoughGoldRoom(int amount){
+        return player.getCurrRoom().getInventory().getGoldList().get(0).getAmount() >= amount;
+    }
+    
+    public boolean enoughGoldPlayer(int amount){
+        return player.getInventory().getGoldList().get(0).getAmount() >= amount;
     }
     
 }

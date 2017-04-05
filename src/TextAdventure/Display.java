@@ -172,18 +172,27 @@ public class Display {
 
         System.out.println("Your inventory contains: ");
         System.out.println("Gold: "+player.getInventory().getGoldList().get(0).getAmount());
-        System.out.println("Weapons:");
-        for (Item i : player.getInventory().getWeaponList()){
-            System.out.println((player.getInventory().getWeaponList().indexOf(i) + 1) +". "+i);
+        
+        if (!player.getInventory().getWeaponList().isEmpty()) {
+            System.out.println("Weapons:");
+            for (Item i : player.getInventory().getWeaponList()){
+                System.out.println((player.getInventory().getWeaponList().indexOf(i) + 1) +". "+i);
+            }
         }
-        System.out.println("Armor:");
-        for (Item i : player.getInventory().getArmorList()){
-            System.out.println((player.getInventory().getArmorList().indexOf(i) + 1) +". "+i);
-        }    
-        System.out.println("Potions:");
-        for (Item i : player.getInventory().getPotionList()){
-            System.out.println((player.getInventory().getPotionList().indexOf(i) + 1) +". "+i);
-        }    
+        
+        if (!player.getInventory().getArmorList().isEmpty()) {
+            System.out.println("Armor:");
+            for (Item i : player.getInventory().getArmorList()){
+                System.out.println((player.getInventory().getArmorList().indexOf(i) + 1) +". "+i);
+            }    
+        }
+        
+        if (!player.getInventory().getPotionList().isEmpty()) {
+            System.out.println("Potions:");
+            for (Item i : player.getInventory().getPotionList()){
+                System.out.println((player.getInventory().getPotionList().indexOf(i) + 1) +". "+i);
+            }    
+        }
               
     }
 
@@ -283,13 +292,13 @@ public class Display {
      * eller bare fortsætte spillet.
      * @return choice
      */ 
-    public int itemAmountChoice() {
+    public int goldAmountChoice() {
         sc = new Scanner (System.in);
         boolean _continue = true;
         int choice=0;
         
         while(_continue) {
-            System.out.print("How many?: ");
+            System.out.print("How much?: ");
             String choiceStr = sc.nextLine();
             try {
                 choice = Integer.parseInt(choiceStr);
@@ -305,6 +314,33 @@ public class Display {
         }
         return choice;
     }
+    
+    public int indexRowChoice() {
+        sc = new Scanner (System.in);
+        boolean _continue = true;
+        int choice=0;
+
+        while(_continue) {
+            System.out.print("WHAT INDEX??: ");
+            String choiceStr = sc.nextLine();
+            try {
+                choice = Integer.parseInt(choiceStr);
+                _continue = false;
+
+            } catch (NumberFormatException e) {
+                System.out.print("Invalid number. Do you want to try again?: ");
+                String check = sc.nextLine().toLowerCase();
+                if (!check.equals("y") && !check.equals("yes")){
+                    _continue = false;
+                }
+            }
+        }
+        return choice;
+    }
+    
+    
+    
+    
     /**
      * Errormessage hvis spiller skriver commando uden henvisning til item
      */

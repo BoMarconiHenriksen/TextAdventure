@@ -39,6 +39,14 @@ public class Player {
         this.getInventory().addSpecItem(indexCol, temp);
     }
     
+    public void takeItem(int goldAmount) {
+        int temp = this.currRoom.getInventory().getGoldList().get(0).getAmount();
+        this.currRoom.getInventory().getGoldList().get(0).setAmount(temp - goldAmount);
+        temp = this.getInventory().getGoldList().get(0).getAmount();
+        this.getInventory().getGoldList().get(0).setAmount(goldAmount+temp);
+    }
+
+    
     /**
      * Tilføjer item til room inventory og fjerner den tilsvarende
      * item fra player inventory
@@ -54,7 +62,15 @@ public class Player {
         this.getInventory().removeSpecItem(indexCol, indexRow);
         this.currRoom.getInventory().addSpecItem(indexCol, temp);
     }
-
+    
+    public void placeItem(int goldAmount) {
+        int temp = this.getInventory().getGoldList().get(0).getAmount();
+        this.getInventory().getGoldList().get(0).setAmount(temp - goldAmount);
+        temp = this.currRoom.getInventory().getGoldList().get(0).getAmount();
+        this.currRoom.getInventory().getGoldList().get(0).setAmount(goldAmount+temp);
+    }
+    
+    
     public String getName() {
         return name;
     }
@@ -79,9 +95,6 @@ public class Player {
         this.health = health;
     }
     
-    public void addItemPlayer(int index, Item item) {
-
-    }
     
 }
 

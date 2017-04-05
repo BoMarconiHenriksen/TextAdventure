@@ -18,7 +18,14 @@ public class DungeonConstructor {
         ic = new ItemConstructor();
         rc = new RoomConstructor();
         
+        rc.createRooms();
+        ic.createItems();
+        
         rc.startRoom.getInventory().addSpecItem(2, ic.a1);
+        rc.startRoom.getInventory().addSpecItem(1, ic.w1);
+        rc.startRoom.getInventory().addSpecItem(3, ic.p4);
+        
+        rc.startRoom.getInventory().getGoldList().get(0).setAmount(8);
         
     }
      
