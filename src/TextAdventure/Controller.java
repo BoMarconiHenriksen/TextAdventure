@@ -243,10 +243,10 @@ public class Controller {
                 itemChoiceAction(1,display.indexRowChoice(),takeOrPlace);
                 break;
             case "armor":
-                itemChoiceAction(1,display.indexRowChoice(),takeOrPlace);
+                itemChoiceAction(2,display.indexRowChoice(),takeOrPlace);
                 break;
             case "potion":
-                itemChoiceAction(1,display.indexRowChoice(),takeOrPlace);
+                itemChoiceAction(3,display.indexRowChoice(),takeOrPlace);
                 break;
             default:
                 display.printInvalidInput();
