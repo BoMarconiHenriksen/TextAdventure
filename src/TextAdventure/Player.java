@@ -134,6 +134,20 @@ public class Player extends Character {
             this.inventory.removeSpecItem(2, indexRow);
         }
     }
+
+    @Override
+    public void doAttack(Character character) {
+        int dmg = 0;
+        
+        if (this.equipped.getActiveWeapon().getAttack() <= character.stats.getTotalDefense
+            (character)) {
+            dmg = this.stats.getAttack();
+        }
+        else {
+            dmg = this.stats.getTotalAttack(this) - character.stats.getTotalDefense(character);
+        }
+        character.stats.setHealth(character.stats.getHealth()-dmg);
+    }
     
     
 }

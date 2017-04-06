@@ -39,5 +39,6 @@ public abstract class Character {
 
     public abstract void setInventory(Inventory inventory);
 
+    public abstract void doAttack(Character character);
     
 }
