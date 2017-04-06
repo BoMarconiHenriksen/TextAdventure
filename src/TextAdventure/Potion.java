@@ -27,7 +27,6 @@ public class Potion extends Item{
 
     @Override
     public String getName() {
-        name = "A mysterious Potion";
         return name;
     }
 
@@ -72,7 +71,7 @@ public class Potion extends Item{
     
     @Override
     public String toString() {
-        return "Potion{" + "weight=" + weight +'}';
+        return "Potion{" +" name: " + name + " weight:" + weight +'}';
     }
     
 }

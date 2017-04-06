@@ -26,11 +26,8 @@ public class ItemConstructor {
         a3 = new Armor("Cursed bone kilt from a slut", 5, 10);
         a4 = new Armor("Sandal of twisted hell", 6,5);
         a5 = new Armor("Undead wrap of darkness", 8, 25);
-        p1 = new Potion("Small health potion",20,5);
-        p2 = new Potion("Large health potion",50,5);
-        p3 = new Potion("Small death potion",-10,5);
-        p4 = new Potion("Large death potion",-30,5);
-        p5 = new Potion("Divine potion",100,5);
+        p1 = new Potion("A mysterious Potion",5);
+  
         
         
     
