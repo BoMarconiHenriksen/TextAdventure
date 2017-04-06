@@ -16,12 +16,12 @@ public class Weapon extends Item {
 
     @Override
     public int getWeight() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return weight;
     }
 
     @Override
     public void setWeight(int weight) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.weight = weight;
     }
 
     @Override
@@ -31,7 +31,7 @@ public class Weapon extends Item {
 
     @Override
     public void setName(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.name = name;
     }
 
     public int getAttack() {

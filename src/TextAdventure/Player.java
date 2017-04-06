@@ -4,28 +4,15 @@ package TextAdventure;
  * Klassen holder informatin om spilleren.
  * @since 2.0
  */
-public class Player {
-    
-    private int health = 100;
-    private String name;
+public class Player extends Character {
+
     private Room currRoom = null; //Nuværende rum player befinder sig i
-    private Inventory inventory;
+    private int maxWeight=999999;
 
-    public Player() {}
-    
-    public Player(Inventory inventory, String name) {
-        this.inventory = inventory;
-        this.name = name;
+    public Player(String name, Stats stats, Equipped equipped, Inventory inventory) {
+        super(name,stats,equipped,inventory);
     }
-    
-    public Inventory getInventory() {
-        return inventory;
-    }
-
-    public void setInventory(Inventory playerInventory) {
-        this.inventory = playerInventory;
-    }
-    
+ 
      /* 
      * Tilføjer item til player inventory og fjerner den tilsvarende
      * item fra room inventory 
@@ -70,15 +57,6 @@ public class Player {
         this.currRoom.getInventory().getGoldList().get(0).setAmount(goldAmount+temp);
     }
     
-    
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Room getCurrRoom() {
         return currRoom;
     }
@@ -87,12 +65,63 @@ public class Player {
         this.currRoom = currRoom;
     }
 
-    public int getPlayerHealth() {
-        return health;
+    public int getMaxWeight() {
+        return maxWeight;
     }
 
-    public void setPlayerHealth(int health) {
-        this.health = health;
+    public void setMaxWeight(int maxWeight) {
+        this.maxWeight = maxWeight;
+    }
+    
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public Stats getStats() {
+        return stats;
+    }
+
+    @Override
+    public void setStats(Stats stats) {
+        this.stats = stats;
+    }
+
+    @Override
+    public Equipped getEquipped() {
+        return equipped;
+    }
+
+    @Override
+    public void setEquipped(Equipped equipped) {
+        this.equipped = equipped;
+    }
+
+    @Override
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    @Override
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
+    
+    public void equipWeapon(int indexRow){
+        if (this.equipped.getActiveWeapon() == null){
+            this.equipped.setActiveWeapon(this.inventory.getWeaponList().get(indexRow));
+            this.inventory.removeSpecItem(1, indexRow);
+        } else {
+            this.inventory.addSpecItem(1, this.equipped.getActiveWeapon());
+            this.equipped.setActiveWeapon(this.inventory.getWeaponList().get(indexRow));
+            this.inventory.removeSpecItem(1, indexRow);
+        }
     }
     
     

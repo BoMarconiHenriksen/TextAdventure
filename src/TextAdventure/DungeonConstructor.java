@@ -13,13 +13,16 @@ public class DungeonConstructor {
     
     ItemConstructor ic;
     RoomConstructor rc;
+    NPCConstructor npc;
     
     public void createDungeon() {
         ic = new ItemConstructor();
         rc = new RoomConstructor();
+        npc = new NPCConstructor();
         
         rc.createRooms();
         ic.createItems();
+        npc.createNPCS();
         
         rc.startRoom.getInventory().addSpecItem(2, ic.a1);
         rc.startRoom.getInventory().addSpecItem(1, ic.w1);

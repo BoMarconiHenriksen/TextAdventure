@@ -55,5 +55,28 @@ public class Inventory {
         items.get(indexCol).add(item);
     }
     
+    public int getTotalWeight() {
+        int weightCounter = 0;
+        weightCounter = gold.get(0).getAmount() * gold.get(0).getWeight();
+        
+        if (!(weapons.isEmpty())) {
+            for (Weapon i : weapons) {
+               weightCounter += i.getWeight();
+            }
+        }
+        if (!(armor.isEmpty())) {
+            for (Armor i : armor) {
+               weightCounter += i.getWeight();
+            }
+        }
+        if (!(potions.isEmpty())) {
+            for (Potion i : potions) {
+               weightCounter += i.getWeight();
+            }
+        }
+        
+        return weightCounter;
+    }
+    
 }
 

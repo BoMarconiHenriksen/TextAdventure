@@ -111,7 +111,7 @@ public class Room {
     * @since 1.0
     */
     public void springTrap(Player player) {
-        player.setPlayerHealth(player.getPlayerHealth()-50);
+        player.stats.setHealth(player.stats.getHealth()-50);
         this.trap = false;
     }
 

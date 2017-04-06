@@ -23,21 +23,25 @@ public class Controller {
         
         dc.createDungeon();
         
-        player = new Player(new Inventory(), "Henrik"); 
+        player = new Player("Henrik",new Stats(100,10,10),new Equipped(),new Inventory()); 
         player.setCurrRoom(dc.rc.startRoom); 
+        player.inventory.addSpecItem(1, dc.ic.w1);
+        player.inventory.addSpecItem(1, dc.ic.w2);
+        System.out.println(player.inventory.getTotalWeight());
         
-        while(continue_) {
-            String[] command = new String[1];
-            command[0] = display.playerInput();
-            if (command[0].contains(" ")) {
-                String[] command2 = command[0].split(" ");
-                playerControl(command2);
-            } else {
-                playerControl(command);
-            }
-        }
-        display.printExitMessage();
-        System.exit(0);
+        
+//        while(continue_) {
+//            String[] command = new String[1];
+//            command[0] = display.playerInput();
+//            if (command[0].contains(" ")) {
+//                String[] command2 = command[0].split(" ");
+//                playerControl(command2);
+//            } else {
+//                playerControl(command);
+//            }
+//        }
+//        display.printExitMessage();
+//        System.exit(0);
 
 
     }
@@ -197,7 +201,7 @@ public class Controller {
     *  @since 1.0
     */
     public void ifPlayerHealthZero(Player player) {
-        if (player.getPlayerHealth() <= 0) {
+        if (player.stats.getHealth()<= 0) {
             display.printActionDeath();
             continue_ = false;
         }
