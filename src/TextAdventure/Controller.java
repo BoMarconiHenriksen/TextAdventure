@@ -27,7 +27,11 @@ public class Controller {
         player.setCurrRoom(dc.rc.startRoom); 
         player.inventory.addSpecItem(1, dc.ic.w1);
         player.inventory.addSpecItem(1, dc.ic.w2);
-        System.out.println(player.inventory.getTotalWeight());
+        System.out.println(player.equipped.getActiveWeapon().toString());
+        player.equipWeapon(0);
+        System.out.println(player.equipped.getActiveWeapon().toString());
+        player.equipWeapon(0);
+        System.out.println(player.equipped.getActiveWeapon().toString());
         
         
 //        while(continue_) {

@@ -124,6 +124,17 @@ public class Player extends Character {
         }
     }
     
+    public void equipArmor(int indexRow){
+        if (this.equipped.getActiveArmor() == null){
+            this.equipped.setActiveArmor(this.inventory.getArmorList().get(indexRow));
+            this.inventory.removeSpecItem(2, indexRow);
+        } else {
+            this.inventory.addSpecItem(2, this.equipped.getActiveArmor());
+            this.equipped.setActiveArmor(this.inventory.getArmorList().get(indexRow));
+            this.inventory.removeSpecItem(2, indexRow);
+        }
+    }
+    
     
 }
 
