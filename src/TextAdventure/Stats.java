@@ -46,11 +46,19 @@ public class Stats {
     }
     
     public int getTotalAttack(Character character) {
-        return this.attack + character.equipped.getActiveWeapon().getAttack();
+        if (character.equipped.getActiveWeapon()!=null) {
+            return this.attack + character.equipped.getActiveWeapon().getAttack();
+        } else {
+            return this.attack;
+        }
     }
     
     public int getTotalDefense(Character character) {
-        return this.defense + character.equipped.getActiveArmor().getDefense();
+        if (character.equipped.getActiveArmor()!=null) {
+            return this.defense + character.equipped.getActiveArmor().getDefense();
+        } else {
+            return this.defense;
+        }
     }
     
 }

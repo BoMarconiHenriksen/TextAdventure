@@ -14,7 +14,7 @@ public class NPCConstructor {
     NPC nmy1;
     
     public void createNPCS() {
-        nmy1 = new NPC("Skeletor",new Stats(100,10,10),new Equipped(),new Inventory());
+        nmy1 = new NPC("Skeletor",new Stats(100,10,11),new Equipped(),new Inventory());
     }
     
 }

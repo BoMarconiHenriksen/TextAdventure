@@ -25,20 +25,21 @@ public class Controller {
         
         player = new Player("Henrik",new Stats(100,10,10),new Equipped(),new Inventory()); 
         player.setCurrRoom(dc.rc.startRoom); 
-        player.inventory.addSpecItem(1, dc.ic.w1);
+        player.inventory.addSpecItem(1, dc.ic.w5);
         player.inventory.addSpecItem(1, dc.ic.w2);
-
+        player.equipWeapon(0);
+        
         
         
         while(continue_) {
             if (dc.npc.nmy1.stats.getHealth() <= 0) {
-                continue_ = false;
+                System.out.println("NPC DIED");
                 break;
             } 
             System.out.println("NPC HEALTH: "+dc.npc.nmy1.stats.getHealth());
             dc.npc.nmy1.doAttack(player);
             if (player.stats.getHealth() <= 0) {
-                continue_ = false;
+                System.out.println("PLAYER DIED");
                 break;
             } 
             System.out.println("PLAYER HEALTH: "+player.stats.getHealth());

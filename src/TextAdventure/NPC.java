@@ -72,7 +72,7 @@ public class NPC extends Character{
     public void doAttack(Character character) {
         int dmg = 0;
         
-        if (this.equipped.getActiveWeapon().getAttack() <= character.stats.getTotalDefense
+        if (this.equipped.getActiveWeapon()==null||this.equipped.getActiveWeapon().getAttack() <= character.stats.getTotalDefense
             (character)) {
             dmg = this.stats.getAttack();
         }
