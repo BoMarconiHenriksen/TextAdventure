@@ -367,4 +367,24 @@ public class Display {
         System.out.println("Insufficient amount");
     }
     
+    
+    //++++++++++++++++++++++ Nye Display Metoder ++++++++++++++++++++++++++++++
+    
+    public void takeDamage(int amount,String character){
+    }
+    public void pickupItem(Item item){
+    }
+    public void dropItem(Item item){
+    }
+    public void equipItem(Item item){
+    }
+    public void unequipItem(Item item){
+    }
+    public void attack(String attacker,String defender){
+    }
+    public void usePotion(){
+    }
+   
+    
+    
 }
