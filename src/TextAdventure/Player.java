@@ -124,6 +124,31 @@ public class Player extends Character {
         }
     }
     
+    public void equipArmor(int indexRow){
+        if (this.equipped.getActiveArmor() == null){
+            this.equipped.setActiveArmor(this.inventory.getArmorList().get(indexRow));
+            this.inventory.removeSpecItem(2, indexRow);
+        } else {
+            this.inventory.addSpecItem(2, this.equipped.getActiveArmor());
+            this.equipped.setActiveArmor(this.inventory.getArmorList().get(indexRow));
+            this.inventory.removeSpecItem(2, indexRow);
+        }
+    }
+
+    @Override
+    public void doAttack(Character character) {
+        int dmg = 0;
+        
+        if (this.equipped.getActiveWeapon().getAttack() <= character.stats.getTotalDefense
+            (character)) {
+            dmg = this.stats.getAttack();
+        }
+        else {
+            dmg = this.stats.getTotalAttack(this) - character.stats.getTotalDefense(character);
+        }
+        character.stats.setHealth(character.stats.getHealth()-dmg);
+    }
+    
     
 }
 

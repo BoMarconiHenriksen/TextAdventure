@@ -27,7 +27,24 @@ public class Controller {
         player.setCurrRoom(dc.rc.startRoom); 
         player.inventory.addSpecItem(1, dc.ic.w1);
         player.inventory.addSpecItem(1, dc.ic.w2);
-        System.out.println(player.inventory.getTotalWeight());
+
+        
+        
+        while(continue_) {
+            if (dc.npc.nmy1.stats.getHealth() <= 0) {
+                continue_ = false;
+                break;
+            } 
+            System.out.println("NPC HEALTH: "+dc.npc.nmy1.stats.getHealth());
+            dc.npc.nmy1.doAttack(player);
+            if (player.stats.getHealth() <= 0) {
+                continue_ = false;
+                break;
+            } 
+            System.out.println("PLAYER HEALTH: "+player.stats.getHealth());
+            player.doAttack(dc.npc.nmy1);
+        }
+        
         
         
 //        while(continue_) {
@@ -341,6 +358,8 @@ public class Controller {
     public boolean enoughGoldPlayer(int amount){
         return player.getInventory().getGoldList().get(0).getAmount() >= amount;
     }
+    
+    
     
 }
 
