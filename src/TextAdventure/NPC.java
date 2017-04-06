@@ -11,6 +11,13 @@ package TextAdventure;
  */
 public class NPC extends Character{
 
+    /**
+     *
+     * @param name
+     * @param stats
+     * @param equipped
+     * @param inventory
+     */
     public NPC(String name, Stats stats, Equipped equipped, Inventory inventory) {
         super(name, stats, equipped, inventory);
     }
@@ -55,6 +62,9 @@ public class NPC extends Character{
         this.inventory = inventory;
     }
     
+    /**
+     *
+     */
     public void onDeath(){
         if (!(this.equipped.getActiveWeapon() == null)) {
             Weapon temp = this.equipped.getActiveWeapon();
@@ -68,6 +78,10 @@ public class NPC extends Character{
         }
     }
     
+    /**
+     *
+     * @param character
+     */
     @Override
     public void doAttack(Character character) {
         int dmg = 0;

@@ -15,6 +15,10 @@ public class Inventory {
     private ArrayList<Armor> armor = new ArrayList<>();
     
     //Filling inventory auto
+
+    /**
+     *
+     */
     public Inventory() {
         items.add(this.gold);
         items.get(0).add(new Gold("Gold",0,1));
@@ -47,10 +51,20 @@ public class Inventory {
         return (Item) items.get(indexCol).get(indexRow);
     }
     
+    /**
+     *
+     * @param indexCol
+     * @param indexRow
+     */
     public void removeSpecItem(int indexCol, int indexRow) {
         items.get(indexCol).remove(indexRow);
     }
 
+    /**
+     *
+     * @param indexCol
+     * @param item
+     */
     public void addSpecItem(int indexCol, Item item) {
         items.get(indexCol).add(item);
     }

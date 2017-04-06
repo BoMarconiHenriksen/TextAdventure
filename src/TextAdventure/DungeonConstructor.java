@@ -15,6 +15,9 @@ public class DungeonConstructor {
     RoomConstructor rc;
     NPCConstructor npc;
     
+    /**
+     *
+     */
     public void createDungeon() {
         ic = new ItemConstructor();
         rc = new RoomConstructor();

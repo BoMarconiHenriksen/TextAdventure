@@ -9,6 +9,13 @@ public class Player extends Character {
     private Room currRoom = null; //Nuværende rum player befinder sig i
     private int maxWeight=999999;
 
+    /**
+     *
+     * @param name
+     * @param stats
+     * @param equipped
+     * @param inventory
+     */
     public Player(String name, Stats stats, Equipped equipped, Inventory inventory) {
         super(name,stats,equipped,inventory);
     }
@@ -20,12 +27,23 @@ public class Player extends Character {
      * @param amount
      * @return 
      */
+
+    /**
+     *
+     * @param indexCol
+     * @param indexRow
+     */
+
     public void takeItem(int indexCol, int indexRow) {
         Item temp = this.currRoom.getInventory().getSpecItem(indexCol, indexRow);
         this.currRoom.getInventory().removeSpecItem(indexCol, indexRow);
         this.getInventory().addSpecItem(indexCol, temp);
     }
     
+    /**
+     *
+     * @param goldAmount
+     */
     public void takeItem(int goldAmount) {
         int temp = this.currRoom.getInventory().getGoldList().get(0).getAmount();
         this.currRoom.getInventory().getGoldList().get(0).setAmount(temp - goldAmount);
@@ -38,10 +56,7 @@ public class Player extends Character {
      * Tilføjer item til room inventory og fjerner den tilsvarende
      * item fra player inventory
      * @param indexCol
-     * @param indexRow
-     * @param index
-     * @param amount
-     * @return 
+     * @param indexRow 
      */ 
 
     public void placeItem(int indexCol, int indexRow) {
@@ -50,6 +65,10 @@ public class Player extends Character {
         this.currRoom.getInventory().addSpecItem(indexCol, temp);
     }
     
+    /**
+     *
+     * @param goldAmount
+     */
     public void placeItem(int goldAmount) {
         int temp = this.getInventory().getGoldList().get(0).getAmount();
         this.getInventory().getGoldList().get(0).setAmount(temp - goldAmount);
@@ -113,6 +132,10 @@ public class Player extends Character {
         this.inventory = inventory;
     }
     
+    /**
+     *
+     * @param indexRow
+     */
     public void equipWeapon(int indexRow){
         if (this.equipped.getActiveWeapon() == null){
             this.equipped.setActiveWeapon(this.inventory.getWeaponList().get(indexRow));
@@ -124,6 +147,10 @@ public class Player extends Character {
         }
     }
     
+    /**
+     *
+     * @param indexRow
+     */
     public void equipArmor(int indexRow){
         if (this.equipped.getActiveArmor() == null){
             this.equipped.setActiveArmor(this.inventory.getArmorList().get(indexRow));
@@ -135,6 +162,10 @@ public class Player extends Character {
         }
     }
 
+    /**
+     *
+     * @param character
+     */
     @Override
     public void doAttack(Character character) {
         int dmg = 0;

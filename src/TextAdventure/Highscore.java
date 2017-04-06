@@ -19,6 +19,10 @@ public class Highscore {
     private final String FILENAME = "highscore.txt";
     private final File FILE = new File(FILENAME);
 
+    /**
+     *
+     * @param display
+     */
     public Highscore(Display display) {
         this.display = display;
     }

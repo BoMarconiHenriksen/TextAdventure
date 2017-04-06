@@ -8,6 +8,12 @@ public class Armor extends Item{
 
     private int defense;
 
+    /**
+     *
+     * @param name
+     * @param defense
+     * @param weight
+     */
     public Armor(String name,int defense, int weight) {
         super(name,weight);
         this.defense = defense;

@@ -15,6 +15,12 @@ public class Stats {
     private int attack;
     private int defense;
 
+    /**
+     *
+     * @param health
+     * @param attack
+     * @param defense
+     */
     public Stats(int health, int attack, int defense) {
         this.health = health;
         this.attack = attack;

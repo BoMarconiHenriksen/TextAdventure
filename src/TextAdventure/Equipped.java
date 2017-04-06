@@ -14,11 +14,19 @@ public class Equipped {
     private Weapon activeWeapon = null;
     private Armor activeArmor = null;
 
+    /**
+     *
+     * @param activeWeapon
+     * @param activeArmor
+     */
     public Equipped(Weapon activeWeapon, Armor activeArmor) {
         this.activeWeapon = activeWeapon;
         this.activeArmor = activeArmor;
     }
 
+    /**
+     *
+     */
     public Equipped() {
     }
 

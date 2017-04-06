@@ -5,11 +5,21 @@ package TextAdventure;
  * @since 2.0
  */
 import java.util.Random;
+
+/**
+ *
+ * @author bo_ma
+ */
 public class Potion extends Item{
     Random r1 = new Random(5);
     Random r2 = new Random(5);
     private int useEffect;
 
+    /**
+     *
+     * @param name
+     * @param weight
+     */
     public Potion(String name,int weight) {
         super(name,weight);
         

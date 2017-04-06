@@ -8,6 +8,12 @@ public class Weapon extends Item {
 
     private int attack;
 
+    /**
+     *
+     * @param name
+     * @param attack
+     * @param weight
+     */
     public Weapon(String name,int attack, int weight) {
         super(name,weight);
         this.attack = attack;

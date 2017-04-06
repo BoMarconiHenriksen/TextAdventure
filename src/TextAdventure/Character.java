@@ -16,6 +16,13 @@ public abstract class Character {
     Equipped equipped;
     Inventory inventory;
 
+    /**
+     *
+     * @param name
+     * @param stats
+     * @param equipped
+     * @param inventory
+     */
     public Character(String name, Stats stats, Equipped equipped, Inventory inventory) {
         this.name = name;
         this.stats = stats;
@@ -39,6 +46,10 @@ public abstract class Character {
 
     public abstract void setInventory(Inventory inventory);
 
+    /**
+     *
+     * @param character
+     */
     public abstract void doAttack(Character character);
     
 }

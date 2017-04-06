@@ -16,21 +16,39 @@ public class Room {
     private Exit west = null;
     private Exit east = null;
 
+    /**
+     *
+     * @param inventory
+     * @param description
+     * @param trap
+     */
     public Room(Inventory inventory, String description, boolean trap) {
         this.description = description;
         this.inventory = inventory;
         this.trap = trap;
     }
     
+    /**
+     *
+     * @param inventory
+     * @param description
+     */
     public Room(Inventory inventory, String description) {
         this.inventory = inventory;
         this.description = description;
     }
     
+    /**
+     *
+     * @param description
+     */
     public Room(String description) {
         this.description = description;
     }
 
+    /**
+     *
+     */
     public Room() {}
     
     public Inventory getInventory(){
