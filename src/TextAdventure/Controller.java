@@ -29,22 +29,40 @@ public class Controller {
         player.inventory.addSpecItem(1, dc.ic.w2);
         player.equipWeapon(0);
         
+        boolean combatLoop=true;
+        boolean npcTurn=true;
+        boolean playerTurn=true;
         
-        
-        while(continue_) {
-            if (dc.npc.nmy1.stats.getHealth() <= 0) {
-                System.out.println("NPC DIED");
-                break;
-            } 
-            System.out.println("NPC HEALTH: "+dc.npc.nmy1.stats.getHealth());
-            dc.npc.nmy1.doAttack(player);
-            if (player.stats.getHealth() <= 0) {
-                System.out.println("PLAYER DIED");
-                break;
-            } 
-            System.out.println("PLAYER HEALTH: "+player.stats.getHealth());
-            player.doAttack(dc.npc.nmy1);
+        while(combatLoop){
+            while(npcTurn){
+                dc.npc.nmy1.doAttack(player);
+                System.out.println("PLAYER HEALTH: "+player.stats.getHealth());
+                npcTurn = false;
+                if (player.stats.getHealth() <= 0) {
+                    System.out.println("PLAYER DIED");
+                    playerTurn = false;
+                } else {
+                    playerTurn = true;
+                }
+            }
+            
+            while(playerTurn){
+                player.doAttack(dc.npc.nmy1);
+                System.out.println("NPC HEALTH: "+dc.npc.nmy1.stats.getHealth());
+                playerTurn = false;
+                if (dc.npc.nmy1.stats.getHealth() <= 0) {
+                    System.out.println("NPC DIED");
+                    npcTurn = false;
+                } else {
+                    npcTurn = true;
+                }
+            }
+            
+            if(!npcTurn&&!playerTurn){
+                combatLoop = false;
+            }
         }
+        
         
         
         
