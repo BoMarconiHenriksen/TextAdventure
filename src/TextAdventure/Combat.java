@@ -19,7 +19,6 @@ public class Combat {
                 display.playerHealthStatus(player);
                 npcTurn = false;
                 if (player.stats.getHealth() <= 0) {
-                    display.printActionDeath();
                     playerTurn = false;
                 } else {
                     playerTurn = true;
