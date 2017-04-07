@@ -2,7 +2,7 @@ package TextAdventure;
 
 
 /**
- * Klassen holder information om pågældende rum
+ * Klassen holder information om pågældende rum.
  * @since 1.0
  */
 public class Room {

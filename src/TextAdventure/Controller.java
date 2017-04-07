@@ -295,8 +295,8 @@ public class Controller {
     }
     /**
      * Checker hvor meget af en item player har i et pågældende index
-     * @param index
-     * @param amount
+     * 
+     * 
      * @return 
      */
     public boolean checkInvRangePlayer(int indexCol,int indexRow){
@@ -311,9 +311,9 @@ public class Controller {
     }
     /**
      * Checker hvor meget af en item Current room har i et pågældende index
-     * @param index
-     * @param amount
-     * @return 
+     * 
+     * 
+     * 
      */
     public boolean checkInvRangeRoom(int indexCol, int indexRow){
         try {

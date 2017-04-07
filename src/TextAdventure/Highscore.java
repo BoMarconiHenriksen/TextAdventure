@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * Simple highscore history, written to a .txt file.
  *
- * @author awha8
+ * 
  */
 public class Highscore {
 

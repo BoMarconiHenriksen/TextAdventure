@@ -1,14 +1,11 @@
 package TextAdventure;
 
-/**
- * Klassen implementerer potions i spillet.
- * @since 2.0
- */
+
 import java.util.Random;
 
 /**
- *
- * @author bo_ma
+ * Klassen implementerer potions i spillet.
+ * @since 2.0
  */
 public class Potion extends Item{
     Random r1 = new Random(5);
