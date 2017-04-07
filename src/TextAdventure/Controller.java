@@ -265,7 +265,7 @@ public class Controller {
     // Trigger ikke når NPC har 0HP. Kører metode der tester Player HP og slutter spillet hvis Player HP er 0 efter combat.
     public void ifRoomContainsNpc(Player player){
         if(player.getCurrRoom().getNpc() != null && !(player.getCurrRoom().getNpc().stats.getHealth() <= 0)){
-            cbt.combat(player.getCurrRoom().getNpc(), player);
+            cbt.combat(player.getCurrRoom().getNpc(), player,display);
             ifPlayerHealthZero(player);
         }
     }
