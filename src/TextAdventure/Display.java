@@ -195,59 +195,6 @@ public class Display {
         }
               
     }
-
-    
-
-    
-    /**
-    *  Printer hvor meget guld du tager eller om du ikke tager noget guld op.
-     * @param index
-    *  @param amount Hvor meget guld der er.
-    *  @since 1.0
-    */
-    public void takeItem(int index,int amount) {
-        amount = Math.abs(amount);
-        switch(index) {
-            case 0:
-                System.out.println("You have picked up " + amount + " gold...");
-                break;
-            case 1:
-                System.out.println("You have picked up " + amount + " weapon...");
-                break;
-            case 2:
-                System.out.println("You have picked up " + amount + " armor...");
-                break;
-            case 3:
-                System.out.println("You have picked up " + amount + " potion...");
-                break;
-        }
-    }
-    /**
-     * Tager item fra inventory position + amount og placerer det pågældende i current room.
-     * Printer hvad og hvor meget der er blevet placeret.
-     * @param index
-     * @param amount 
-     */
-    
-    public void placeItem(int index,int amount) {
-        amount = Math.abs(amount);
-        switch(index) {
-            case 0:
-                System.out.println("You have placed " + amount + " gold...");
-                break;
-            case 1:
-                System.out.println("You have placed " + amount + " weapon...");
-                break;
-            case 2:
-                System.out.println("You have placed " + amount + " armor...");
-                break;
-            case 3:
-                System.out.println("You have placed " + amount + " potion...");
-                break;
-        }
-    }
-
-  
     /**
     *  Printer besked med mængden af guld player mangler for at låse et <b>Exit</b> op.
     *  @param player Spillerens totale mangde guld fra player.getItemAmount.
@@ -370,20 +317,46 @@ public class Display {
     
     //++++++++++++++++++++++ Nye Display Metoder ++++++++++++++++++++++++++++++
     
-    public void takeDamage(int amount,String character){
+    
+     public void combatMenu(){
+         System.out.println("What will you do?"
+                 + "\n1.Attack"
+                 + "\n2.Use Potion"
+                 + "\n3.Run");
     }
-    public void pickupItem(Item item){
+    public void attack(Character character){
+        System.out.println(character.getName() + " attacks!");
+        
     }
+    
+    public void takeDamage(int amount,Character character){
+        System.out.println(character.getName() + " takes " + amount + " damage! ");
+        System.out.println(character.getName() + " is now at " + character.stats.getHealth() + " health ");
+    }
+   public void usePotion(){
+        System.out.println("You drank a mysterious potion");
+    }
+   
+    public void takeItem(Item item){
+        System.out.println("You picked up " + item.getName());
+    }
+    
+    public void takeGold(int amount){
+        System.out.println("You picked up " + amount + " gold");
+    }
+    
     public void dropItem(Item item){
+        System.out.println("You dropped " + item.getName());
     }
     public void equipItem(Item item){
+        System.out.println("You equipped " + item.getName());
     }
+
     public void unequipItem(Item item){
+        System.out.println("You put " + item.getName() + " into your bag");
     }
-    public void attack(String attacker,String defender){
-    }
-    public void usePotion(){
-    }
+   
+    
    
     
     
