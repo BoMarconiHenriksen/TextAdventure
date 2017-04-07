@@ -317,21 +317,46 @@ public class Display {
     
     //++++++++++++++++++++++ Nye Display Metoder ++++++++++++++++++++++++++++++
     
+    
+     public void combatMenu(){
+         System.out.println("What will you do?"
+                 + "\n1.Attack"
+                 + "\n2.Use Potion"
+                 + "\n3.Run");
+    }
+    public void attack(Character character){
+        System.out.println(character.getName() + " attacks!");
+        
+    }
+    
     public void takeDamage(int amount,Character character){
-        System.out.println(character + " takes " + amount + " damage! ");
-        System.out.println(character + " is now at " + character.stats.getHealth() + " health. ");
+        System.out.println(character.getName() + " takes " + amount + " damage! ");
+        System.out.println(character.getName() + " is now at " + character.stats.getHealth() + " health ");
     }
-    public void takeItem(Item item){
-    }
-    public void dropItem(Item item){
-    }
-    public void equipItem(Item item){
-    }
-    public void unequipItem(Item item){
+   public void usePotion(){
+        System.out.println("You drank a mysterious potion");
     }
    
-    public void usePotion(){
+    public void takeItem(Item item){
+        System.out.println("You picked up " + item.getName());
     }
+    
+    public void takeGold(int amount){
+        System.out.println("You picked up " + amount + " gold");
+    }
+    
+    public void dropItem(Item item){
+        System.out.println("You dropped " + item.getName());
+    }
+    public void equipItem(Item item){
+        System.out.println("You equipped " + item.getName());
+    }
+
+    public void unequipItem(Item item){
+        System.out.println("You put " + item.getName() + " into your bag");
+    }
+   
+    
    
     
     
