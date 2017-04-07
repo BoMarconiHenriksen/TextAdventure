@@ -63,6 +63,9 @@ public class Display {
         System.out.println("+ \'take\' or \'t\' + \"Item Name\" - Take an item     +");
         System.out.println("+ \'place\' or \'p\' + \"Item Name\" - Place an item   +");
         System.out.println("+ \'inventory\' or \'i - Show inventory/health      +");
+        System.out.println("+ \'equip\' or \'q - Equip an item                   +");
+        System.out.println("+ \'unequip or \'u - Unequip an item                 +");
+        System.out.println("+ \'potion or \'d - Drink a potion                   +");
         System.out.println("+ \'north\' or \'n\' - Go north                      +");
         System.out.println("+ \'south\' or \'s\' - Go south                      +");
         System.out.println("+ \'east\' or \'e\' - Go east                        +");
@@ -336,16 +339,22 @@ public class Display {
         System.out.println(character.getName() + " takes " + amount + " damage! ");
         System.out.println(character.getName() + " is now at " + character.stats.getHealth() + " health ");
     }
+    public void gainLife(int amount){
+        System.out.println("You gained " + amount + " health!");
+    }
    public void usePotion(){
         System.out.println("You drank a mysterious potion");
     }
    
     public void takeItem(Item item){
-        System.out.println("You picked up " + item.getName());
+        System.out.println("You picked up: " + item.getName());
     }
-    
+            
     public void takeGold(int amount){
         System.out.println("You picked up " + amount + " gold");
+    }
+    public void dropGold(int amount){
+        System.out.println("You dropped " + amount + " gold");
     }
     
     public void dropItem(Item item){
