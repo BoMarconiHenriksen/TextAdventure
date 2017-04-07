@@ -28,6 +28,8 @@ public class DungeonConstructor {
         
         rc.startRoom.getInventory().getGoldList().get(0).setAmount(8);
         
+        rc.startRoom.setNpc(npc.nmy1);
+        
     }
      
 }

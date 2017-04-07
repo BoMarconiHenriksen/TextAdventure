@@ -18,6 +18,11 @@ public abstract class Character {
      * @param equipped
      * @param inventory
      */
+    
+    public Character(){
+        
+    }
+    
     public Character(String name, Stats stats, Equipped equipped, Inventory inventory) {
         this.name = name;
         this.stats = stats;

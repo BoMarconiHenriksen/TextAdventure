@@ -26,7 +26,7 @@ public class RoomConstructor {
     public void createRooms() {
         
         startRoom = new Room(new Inventory(),"The room is moist and a brown glow emanates from the walls." 
-                                +"\nIt has three doorways; One to the north, one to the east, and one to the south.");
+                                +"\nIt has three doorways; One to the north, one to the east, and one to the south.",false, new NPC());
         
         room1 = new Room(new Inventory(),"The room is long and narrow, with rays of light shining through cracks in the roof.\n" 
                                 +"It has a dark tunnel to the east and a doorway to the south and west.");
@@ -62,7 +62,6 @@ public class RoomConstructor {
        
         // Opretter rum med fælder 
         trapRoom1 = new Room(new Inventory(),"The room is a dead end. "
-
                                 + "\nYour only choice is to go back.",true);
         trapRoom2 = new Room(new Inventory(), "The room is a dead end. "
                                 + "\nYour only choice is to go back.",true);

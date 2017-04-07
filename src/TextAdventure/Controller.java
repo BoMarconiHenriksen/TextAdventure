@@ -29,55 +29,59 @@ public class Controller {
         player.inventory.addSpecItem(1, dc.ic.w2);
         player.equipWeapon(0);
         
-        boolean combatLoop=true;
-        boolean npcTurn=true;
-        boolean playerTurn=true;
-        
-        while(combatLoop){
-            while(npcTurn){
-                dc.npc.nmy1.doAttack(player);
-                System.out.println("PLAYER HEALTH: "+player.stats.getHealth());
-                npcTurn = false;
-                if (player.stats.getHealth() <= 0) {
-                    System.out.println("PLAYER DIED");
-                    playerTurn = false;
-                } else {
-                    playerTurn = true;
-                }
-            }
-            
-            while(playerTurn){
-                player.doAttack(dc.npc.nmy1);
-                System.out.println("NPC HEALTH: "+dc.npc.nmy1.stats.getHealth());
-                playerTurn = false;
-                if (dc.npc.nmy1.stats.getHealth() <= 0) {
-                    System.out.println("NPC DIED");
-                    npcTurn = false;
-                } else {
-                    npcTurn = true;
-                }
-            }
-            
-            if(!npcTurn&&!playerTurn){
-                combatLoop = false;
-            }
-        }
         
         
         
         
-//        while(continue_) {
-//            String[] command = new String[1];
-//            command[0] = display.playerInput();
-//            if (command[0].contains(" ")) {
-//                String[] command2 = command[0].split(" ");
-//                playerControl(command2);
-//            } else {
-//                playerControl(command);
+//        boolean combatLoop=true;
+//        boolean npcTurn=true;
+//        boolean playerTurn=true;
+//        
+//        while(combatLoop){
+//            while(npcTurn){
+//                dc.npc.nmy1.doAttack(player);
+//                System.out.println("PLAYER HEALTH: "+player.stats.getHealth());
+//                npcTurn = false;
+//                if (player.stats.getHealth() <= 0) {
+//                    System.out.println("PLAYER DIED");
+//                    playerTurn = false;
+//                } else {
+//                    playerTurn = true;
+//                }
+//            }
+//            
+//            while(playerTurn){
+//                player.doAttack(dc.npc.nmy1);
+//                System.out.println("NPC HEALTH: "+dc.npc.nmy1.stats.getHealth());
+//                playerTurn = false;
+//                if (dc.npc.nmy1.stats.getHealth() <= 0) {
+//                    System.out.println("NPC DIED");
+//                    npcTurn = false;
+//                } else {
+//                    npcTurn = true;
+//                }
+//            }
+//            
+//            if(!npcTurn&&!playerTurn){
+//                combatLoop = false;
 //            }
 //        }
-//        display.printExitMessage();
-//        System.exit(0);
+        
+        
+        System.out.println(player.getCurrRoom().getNpc().getName());
+        
+        while(continue_) {
+            String[] command = new String[1];
+            command[0] = display.playerInput();
+            if (command[0].contains(" ")) {
+                String[] command2 = command[0].split(" ");
+                playerControl(command2);
+            } else {
+                playerControl(command);
+            }
+        }
+        display.printExitMessage();
+        System.exit(0);
 
 
     }
@@ -338,14 +342,14 @@ public class Controller {
         if (takeOrPlace == 0) {
             if (checkInvRangeRoom(itemIndex,indexRow)) {
                 player.takeItem(itemIndex, indexRow);
-                display.takeItem(itemIndex,indexRow);
+    //            display.takeItem(itemIndex,indexRow);
             } else {
                 display.insufficientAmount();
             }
         } else {
             if (checkInvRangePlayer(itemIndex,indexRow)) {
                 player.placeItem(itemIndex, indexRow);
-                display.placeItem(itemIndex, indexRow);
+ //               display.placeItem(itemIndex, indexRow);
             } else {
                 display.insufficientAmount();
             }

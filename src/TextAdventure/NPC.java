@@ -1,10 +1,11 @@
 package TextAdventure;
 
 /**
- *  Klassen holder oplysninger om NPC.
- *  @since 3.0
+ * Klassen holder oplysninger om NPC.
+ *
+ * @since 3.0
  */
-public class NPC extends Character{
+public class NPC extends Character {
 
     /**
      *
@@ -13,6 +14,11 @@ public class NPC extends Character{
      * @param equipped
      * @param inventory
      */
+    
+ public NPC() {
+    
+}
+
     public NPC(String name, Stats stats, Equipped equipped, Inventory inventory) {
         super(name, stats, equipped, inventory);
     }
@@ -56,11 +62,11 @@ public class NPC extends Character{
     public void setInventory(Inventory inventory) {
         this.inventory = inventory;
     }
-    
+
     /**
      *
      */
-    public void onDeath(){
+    public void onDeath() {
         if (!(this.equipped.getActiveWeapon() == null)) {
             Weapon temp = this.equipped.getActiveWeapon();
             this.equipped.setActiveWeapon(null);
@@ -72,7 +78,7 @@ public class NPC extends Character{
             this.inventory.addSpecItem(2, temp);
         }
     }
-    
+
     /**
      *
      * @param character
@@ -80,15 +86,13 @@ public class NPC extends Character{
     @Override
     public void doAttack(Character character) {
         int dmg = 0;
-        
-        if (this.equipped.getActiveWeapon()==null||this.equipped.getActiveWeapon().getAttack() <= character.stats.getTotalDefense
-            (character)) {
+
+        if (this.equipped.getActiveWeapon() == null || this.equipped.getActiveWeapon().getAttack() <= character.stats.getTotalDefense(character)) {
             dmg = this.stats.getAttack();
-        }
-        else {
+        } else {
             dmg = this.stats.getTotalAttack(this) - character.stats.getTotalDefense(character);
         }
-        character.stats.setHealth(character.stats.getHealth()-dmg);
+        character.stats.setHealth(character.stats.getHealth() - dmg);
     }
-    
+
 }

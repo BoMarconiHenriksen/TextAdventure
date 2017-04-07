@@ -1,16 +1,17 @@
 package TextAdventure;
 
-
 /**
  * Klassen holder information om pågældende rum.
+ *
  * @since 1.0
  */
 public class Room {
-    
+
     private Inventory inventory;
     private String description;
     private boolean trap = false;
-    
+    private NPC npc;
+
     private Exit north = null;
     private Exit south = null;
     private Exit west = null;
@@ -21,13 +22,21 @@ public class Room {
      * @param inventory
      * @param description
      * @param trap
+     * @param npc
      */
+    public Room(Inventory inventory, String description, boolean trap, NPC npc) {
+        this.description = description;
+        this.inventory = inventory;
+        this.trap = trap;
+        this.npc = npc;
+    }
+
     public Room(Inventory inventory, String description, boolean trap) {
         this.description = description;
         this.inventory = inventory;
         this.trap = trap;
     }
-    
+
     /**
      *
      * @param inventory
@@ -37,7 +46,7 @@ public class Room {
         this.inventory = inventory;
         this.description = description;
     }
-    
+
     /**
      *
      * @param description
@@ -49,12 +58,13 @@ public class Room {
     /**
      *
      */
-    public Room() {}
-    
-    public Inventory getInventory(){
+    public Room() {
+    }
+
+    public Inventory getInventory() {
         return this.inventory;
     }
-    
+
 //    public int getItemAmount(int index) {
 //        return inventory.getItemAmount(index);
 //    }
@@ -62,13 +72,12 @@ public class Room {
 //    public void setItemAmount(int index, int amount) {
 //        this.inventory.setItemAmount(index,amount);
 //    }
-
     public String getDescription() {
         return description;
     }
-    
+
     public Exit getSpecExit(String exit) {
-        switch(exit){
+        switch (exit) {
             case "north":
                 return this.north;
             case "south":
@@ -121,16 +130,25 @@ public class Room {
     public void setTrap(boolean trap) {
         this.trap = trap;
     }
-    
-    
+
     /**
-    * Fjerner 50 hp fra player og fjerner trap  
-    * @param player a
-    * @since 1.0
-    */
+     * Fjerner 50 hp fra player og fjerner trap
+     *
+     * @param player a
+     * @since 1.0
+     */
     public void springTrap(Player player) {
-        player.stats.setHealth(player.stats.getHealth()-50);
+        player.stats.setHealth(player.stats.getHealth() - 50);
         this.trap = false;
     }
 
+    public NPC getNpc() {
+        return npc;
+    }
+
+    public void setNpc(NPC npc) {
+        this.npc = npc;
+    }
+
+    
 }
