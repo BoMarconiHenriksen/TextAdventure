@@ -314,6 +314,9 @@ public class Display {
         System.out.println("Insufficient amount");
     }
     
+    public void PrintOutOfBoundsInvRange() {
+        System.out.println("Index Out Of Bounds Exception: CheckInventoryRange");
+    }
     
     //++++++++++++++++++++++ Nye Display Metoder ++++++++++++++++++++++++++++++
     
@@ -356,7 +359,18 @@ public class Display {
         System.out.println("You put " + item.getName() + " into your bag");
     }
    
+    //Display metoder fra combat klassen
+    public void playerHealthStatus(Player player) {
+        System.out.println("PLAYER HEALTH: " + player.stats.getHealth());
+    }
     
+    public void npcHealthStatus(NPC npc) {
+        System.out.println("NPC HEALTH: " + npc.stats.getHealth());
+    }
+    
+    public void npcDied() {
+        System.out.println("NPC DIED!");
+    }
    
     
     

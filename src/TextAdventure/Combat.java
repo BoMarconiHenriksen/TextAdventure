@@ -1,18 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package TextAdventure;
 
 /**
- *
- * @author awha8
+ *  Klassen der afvikler combat mellem player og npc.
+ * @since 3.0
  */
 public class Combat {
 
 
-    public void combat(NPC npc, Player player) {
+    public void combat(NPC npc, Player player, Display display) {
         
         boolean combatLoop = true;
         boolean npcTurn = true;
@@ -21,10 +16,10 @@ public class Combat {
         while (combatLoop) {
             while (npcTurn) {
                 npc.doAttack(player);
-                System.out.println("PLAYER HEALTH: " + player.stats.getHealth());
+                display.playerHealthStatus(player);
                 npcTurn = false;
                 if (player.stats.getHealth() <= 0) {
-                    System.out.println("PLAYER DIED");
+                    display.printActionDeath();
                     playerTurn = false;
                 } else {
                     playerTurn = true;
@@ -33,10 +28,10 @@ public class Combat {
 
             while (playerTurn) {
                 player.doAttack(npc);
-                System.out.println("NPC HEALTH: " + npc.stats.getHealth());
+                display.npcHealthStatus(npc);
                 playerTurn = false;
                 if (npc.stats.getHealth() <= 0) {
-                    System.out.println("NPC DIED");
+                    display.npcDied();
                     npcTurn = false;
                 } else {
                     npcTurn = true;

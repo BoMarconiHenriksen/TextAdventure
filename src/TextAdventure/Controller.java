@@ -322,7 +322,7 @@ public class Controller {
             return true;
         }
         catch(IndexOutOfBoundsException e) {
-            System.out.println("ERROR. DENNE BESKED SKAL PLACERES I DISPLAY");
+            display.PrintOutOfBoundsInvRange();
             return false;
         }
     }
