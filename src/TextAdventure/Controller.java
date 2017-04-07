@@ -12,6 +12,7 @@ public class Controller {
     Player player;
     Highscore hs;
     DungeonConstructor dc;
+    Combat cbt;
     
     boolean continue_ = true;
     
@@ -20,6 +21,7 @@ public class Controller {
         display = new Display();
         hs = new Highscore(display);
         dc = new DungeonConstructor();
+        cbt = new Combat();
         
         dc.createDungeon();
         
@@ -68,7 +70,6 @@ public class Controller {
 //        }
         
         
-        System.out.println(player.getCurrRoom().getNpc().getName());
         
         while(continue_) {
             String[] command = new String[1];
@@ -261,11 +262,18 @@ public class Controller {
         }
     }
     
+    public void ifRoomContainsNpc(Player player){
+        if(player.getCurrRoom().getNpc() != null){
+            cbt.combat(player.getCurrRoom().getNpc(), player);
+        }
+    }
+    
     public void allDirections(String exit) {
         if (checkSpecExit(exit) && player.getCurrRoom().getSpecExit(exit).unlockExitCondition(player)){ //Tjekker om der er et exit mod vest og om exit er åben
             player.setCurrRoom(player.getCurrRoom().getSpecExit(exit).getNextRoom()); //Flytter player til nyt rum
             display.printActionPlayerTransit();
             display.printCurrRoomDescr(player.getCurrRoom());
+            ifRoomContainsNpc(player);
             ifRoomContainsTrap(player);
             ifWinCondition(player);
         } else {

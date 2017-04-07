@@ -28,6 +28,7 @@ public class DungeonConstructor {
         
         rc.startRoom.getInventory().getGoldList().get(0).setAmount(8);
         
+        //ADD SKELETOR TO STARTROOM
         rc.startRoom.setNpc(npc.nmy1);
         
     }
