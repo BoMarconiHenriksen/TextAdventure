@@ -40,6 +40,12 @@ public class Player extends Character {
         this.getInventory().addSpecItem(indexCol, temp);
     }
     
+    public void takeItem(int indexCol, int indexRow, ItemHolder takeFrom) {
+        Item temp = takeFrom.getInventory().getSpecItem(indexCol, indexRow);
+        takeFrom.getInventory().removeSpecItem(indexCol, indexRow);
+        this.getInventory().addSpecItem(indexCol, temp);
+    }
+    
     /**
      *
      * @param goldAmount
@@ -47,6 +53,13 @@ public class Player extends Character {
     public void takeItem(int goldAmount) {
         int temp = this.currRoom.getInventory().getGoldList().get(0).getAmount();
         this.currRoom.getInventory().getGoldList().get(0).setAmount(temp - goldAmount);
+        temp = this.getInventory().getGoldList().get(0).getAmount();
+        this.getInventory().getGoldList().get(0).setAmount(goldAmount+temp);
+    }
+    
+    public void takeItem(int goldAmount, ItemHolder takeFrom) {
+        int temp = takeFrom.getInventory().getGoldList().get(0).getAmount();
+        takeFrom.getInventory().getGoldList().get(0).setAmount(temp - goldAmount);
         temp = this.getInventory().getGoldList().get(0).getAmount();
         this.getInventory().getGoldList().get(0).setAmount(goldAmount+temp);
     }
@@ -65,6 +78,12 @@ public class Player extends Character {
         this.currRoom.getInventory().addSpecItem(indexCol, temp);
     }
     
+    public void placeItem(int indexCol, int indexRow,ItemHolder placeTo) {
+        Item temp = this.getInventory().getSpecItem(indexCol, indexRow);
+        this.getInventory().removeSpecItem(indexCol, indexRow);
+        placeTo.getInventory().addSpecItem(indexCol, temp);
+    }
+    
     /**
      *
      * @param goldAmount
@@ -74,6 +93,13 @@ public class Player extends Character {
         this.getInventory().getGoldList().get(0).setAmount(temp - goldAmount);
         temp = this.currRoom.getInventory().getGoldList().get(0).getAmount();
         this.currRoom.getInventory().getGoldList().get(0).setAmount(goldAmount+temp);
+    }
+    
+    public void placeItem(int goldAmount, ItemHolder placeTo) {
+        int temp = this.getInventory().getGoldList().get(0).getAmount();
+        this.getInventory().getGoldList().get(0).setAmount(temp - goldAmount);
+        temp = placeTo.getInventory().getGoldList().get(0).getAmount();
+        placeTo.getInventory().getGoldList().get(0).setAmount(goldAmount+temp);
     }
     
     public Room getCurrRoom() {
@@ -182,5 +208,4 @@ public class Player extends Character {
     
     
 }
-
 

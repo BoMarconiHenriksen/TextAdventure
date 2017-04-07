@@ -4,12 +4,11 @@ package TextAdventure;
  * Abstract klasse samler det som en player og NPC skal have.
  * @since 3.0
  */
-public abstract class Character {
+public abstract class Character extends ItemHolder {
     
     String name;
     Stats stats;
     Equipped equipped;
-    Inventory inventory;
 
     /**
      *
@@ -19,15 +18,12 @@ public abstract class Character {
      * @param inventory
      */
     
-    public Character(){
-        
-    }
-    
+
     public Character(String name, Stats stats, Equipped equipped, Inventory inventory) {
+        super(inventory);
         this.name = name;
         this.stats = stats;
         this.equipped = equipped;
-        this.inventory = inventory;
     }
 
     public abstract String getName();
@@ -41,10 +37,6 @@ public abstract class Character {
     public abstract Equipped getEquipped();
 
     public abstract void setEquipped(Equipped equipped);
-
-    public abstract Inventory getInventory();
-
-    public abstract void setInventory(Inventory inventory);
 
     /**
      *

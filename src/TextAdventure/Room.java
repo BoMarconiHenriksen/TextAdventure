@@ -5,9 +5,8 @@ package TextAdventure;
  *
  * @since 1.0
  */
-public class Room {
+public class Room extends ItemHolder{
 
-    private Inventory inventory;
     private String description;
     private boolean trap = false;
     private NPC npc;
@@ -25,15 +24,15 @@ public class Room {
      * @param npc
      */
     public Room(Inventory inventory, String description, boolean trap, NPC npc) {
+        super(inventory);
         this.description = description;
-        this.inventory = inventory;
         this.trap = trap;
         this.npc = npc;
     }
 
     public Room(Inventory inventory, String description, boolean trap) {
+        super(inventory);
         this.description = description;
-        this.inventory = inventory;
         this.trap = trap;
     }
 
@@ -43,35 +42,20 @@ public class Room {
      * @param description
      */
     public Room(Inventory inventory, String description) {
-        this.inventory = inventory;
+        super(inventory);
         this.description = description;
     }
 
-    /**
-     *
-     * @param description
-     */
-    public Room(String description) {
-        this.description = description;
-    }
-
-    /**
-     *
-     */
-    public Room() {
-    }
-
+    @Override
     public Inventory getInventory() {
         return this.inventory;
     }
+    
+    @Override
+    public void setInventory(Inventory inventory) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
-//    public int getItemAmount(int index) {
-//        return inventory.getItemAmount(index);
-//    }
-//
-//    public void setItemAmount(int index, int amount) {
-//        this.inventory.setItemAmount(index,amount);
-//    }
     public String getDescription() {
         return description;
     }

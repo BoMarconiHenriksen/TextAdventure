@@ -15,10 +15,6 @@ public class NPC extends Character {
      * @param inventory
      */
     
- public NPC() {
-    
-}
-
     public NPC(String name, Stats stats, Equipped equipped, Inventory inventory) {
         super(name, stats, equipped, inventory);
     }

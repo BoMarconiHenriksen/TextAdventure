@@ -153,14 +153,14 @@ public class Controller {
                 break;
             case "take":
                 if (command.length > 1){
-                    itemChoice(command[1],0);
+                    itemChoice(command[1],true,player.getCurrRoom());
                 } else {
                     display.noSpecifiedItem();
                 }
                 break;
             case "place":
                 if (command.length > 1){
-                    itemChoice(command[1],1);
+                    itemChoice(command[1],false,player.getCurrRoom());
                 } else {
                     display.noSpecifiedItem();
                 }
@@ -287,51 +287,38 @@ public class Controller {
         }
     }
     
-    public void itemChoice(String itemChoice, int takeOrPlace) {
+    public void itemChoice(String itemChoice, boolean take,ItemHolder itemHolder) {
 
         switch(itemChoice) {
             case "gold":
-                itemChoiceAction(display.goldAmountChoice(),takeOrPlace);
+                itemChoiceAction(display.goldAmountChoice(),take, itemHolder);
                 break;
             case "weapon":
-                itemChoiceAction(1,display.indexRowChoice(),takeOrPlace);
+                itemChoiceAction(1,display.indexRowChoice(),take, itemHolder);
                 break;
             case "armor":
-                itemChoiceAction(2,display.indexRowChoice(),takeOrPlace);
+                itemChoiceAction(2,display.indexRowChoice(),take, itemHolder);
                 break;
             case "potion":
-                itemChoiceAction(3,display.indexRowChoice(),takeOrPlace);
+                itemChoiceAction(3,display.indexRowChoice(),take, itemHolder);
                 break;
             default:
                 display.printInvalidInput();
                 break;
         }
     }
+    
     /**
-     * Checker hvor meget af en item player har i et pågældende index
+     * Checker hvor meget af en item Current ItemHolder har i et pågældende index
      * 
      * 
-     * @return 
+     * 
+     * @param indexCol
+     * @param indexRow
      */
-    public boolean checkInvRangePlayer(int indexCol,int indexRow){
+    public boolean checkInvRange(int indexCol, int indexRow,ItemHolder itemholder){
         try {
-            player.getInventory().getSpecItem(indexCol, indexRow);
-            return true;
-        }
-        catch(IndexOutOfBoundsException e) {
-            System.out.println("ERROR. DENNE BESKED SKAL PLACERES I DISPLAY");
-            return false;
-        }
-    }
-    /**
-     * Checker hvor meget af en item Current room har i et pågældende index
-     * 
-     * 
-     * 
-     */
-    public boolean checkInvRangeRoom(int indexCol, int indexRow){
-        try {
-            player.getCurrRoom().getInventory().getSpecItem(indexCol, indexRow);
+            itemholder.getInventory().getSpecItem(indexCol, indexRow);
             return true;
         }
         catch(IndexOutOfBoundsException e) {
@@ -346,19 +333,19 @@ public class Controller {
      * Hvis der ikke er nok skrives 
      * @param itemIndex
      * @param indexRow
-     * @param takeOrPlace 
+     * @param take 
      */
-    public void itemChoiceAction(int itemIndex, int indexRow, int takeOrPlace) {
-        if (takeOrPlace == 0) {
-            if (checkInvRangeRoom(itemIndex,indexRow)) {
-                player.takeItem(itemIndex, indexRow);
+    public void itemChoiceAction(int itemIndex, int indexRow, boolean take, ItemHolder itemHolder) {
+        if (take) {
+            if (checkInvRange(itemIndex,indexRow,itemHolder)) {
+                player.takeItem(itemIndex, indexRow,itemHolder);
     //            display.takeItem(itemIndex,indexRow);
             } else {
                 display.insufficientAmount();
             }
         } else {
-            if (checkInvRangePlayer(itemIndex,indexRow)) {
-                player.placeItem(itemIndex, indexRow);
+            if (checkInvRange(itemIndex,indexRow,player)) {
+                player.placeItem(itemIndex, indexRow,itemHolder);
  //               display.placeItem(itemIndex, indexRow);
             } else {
                 display.insufficientAmount();
@@ -366,17 +353,17 @@ public class Controller {
         }
     }
     
-    public void itemChoiceAction(int goldAmount, int takeOrPlace) {
-        if (takeOrPlace == 0) {
-            if (enoughGoldRoom(goldAmount)) {
+    public void itemChoiceAction(int goldAmount, boolean take, ItemHolder itemHolder) {
+        if (take) {
+            if (enoughGold(goldAmount,itemHolder)) {
                 player.takeItem(goldAmount);
                 System.out.println("TILFØJ DISPLAY METODE!!");
             } else {
                 display.insufficientAmount();
             }
         } else {
-            if (enoughGoldPlayer(goldAmount)) {
-                player.placeItem(goldAmount);
+            if (enoughGold(goldAmount,player)) {
+                player.placeItem(goldAmount,itemHolder);
                 System.out.println("TILFØJ DISPLAY METODE!!");
             } else {
                 display.insufficientAmount();
@@ -384,15 +371,9 @@ public class Controller {
         }
     }
     
-    public boolean enoughGoldRoom(int amount){
-        return player.getCurrRoom().getInventory().getGoldList().get(0).getAmount() >= amount;
+    public boolean enoughGold(int amount, ItemHolder itemHolder){
+        return itemHolder.getInventory().getGoldList().get(0).getAmount() >= amount;
     }
-    
-    public boolean enoughGoldPlayer(int amount){
-        return player.getInventory().getGoldList().get(0).getAmount() >= amount;
-    }
-    
-    
     
 }
 
