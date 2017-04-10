@@ -66,12 +66,12 @@ public class NPC extends Character {
         if (!(this.equipped.getActiveWeapon() == null)) {
             Weapon temp = this.equipped.getActiveWeapon();
             this.equipped.setActiveWeapon(null);
-            this.inventory.addSpecItem(1, temp);
+            this.inventory.addItem(1, temp);
         }
         if (!(this.equipped.getActiveArmor() == null)) {
             Armor temp = this.equipped.getActiveArmor();
             this.equipped.setActiveArmor(null);
-            this.inventory.addSpecItem(2, temp);
+            this.inventory.addItem(2, temp);
         }
     }
 

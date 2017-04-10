@@ -16,6 +16,4 @@ public abstract class ItemHolder {
 
     public abstract void setInventory(Inventory inventory);
     
-    
-    
 }

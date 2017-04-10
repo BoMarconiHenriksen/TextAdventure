@@ -27,8 +27,8 @@ public class Controller {
         
         player = new Player("Henrik",new Stats(100,10,10),new Equipped(),new Inventory()); 
         player.setCurrRoom(dc.rc.startRoom); 
-        player.inventory.addSpecItem(1, dc.ic.w5);
-        player.inventory.addSpecItem(1, dc.ic.w2);
+        player.inventory.addItem(1, dc.ic.w5);
+        player.inventory.addItem(1, dc.ic.w2);
         player.equipWeapon(0);
 
         while(continue_) {
@@ -92,16 +92,16 @@ public class Controller {
 
         switch(command[0]) {
             case "north": 
-                allDirections(command[0]);
+                commandDirection(command[0]);
                 break;
             case "south":
-                allDirections(command[0]);
+                commandDirection(command[0]);
                 break;
             case "east":
-                allDirections(command[0]);
+                commandDirection(command[0]);
                 break;
             case "west":
-                allDirections(command[0]);
+                commandDirection(command[0]);
                 break;
             case "look":
                 display.printActionLook(player.getCurrRoom());
@@ -173,7 +173,7 @@ public class Controller {
      * @param exit
      * @return 
      */
-    public boolean checkSpecExit (String exit) {
+    public boolean checkExit (String exit) {
         return player.getCurrRoom().getSpecExit(exit) != null;
     }
     
@@ -225,8 +225,8 @@ public class Controller {
         }
     }
     
-    public void allDirections(String exit) {
-        if (checkSpecExit(exit) && player.getCurrRoom().getSpecExit(exit).unlockExitCondition(player)){ //Tjekker om der er et exit mod vest og om exit er åben
+    public void commandDirection(String exit) {
+        if (checkExit(exit) && player.getCurrRoom().getSpecExit(exit).unlockExitCondition(player)){ //Tjekker om der er et exit mod vest og om exit er åben
             player.setCurrRoom(player.getCurrRoom().getSpecExit(exit).getNextRoom()); //Flytter player til nyt rum
             display.printActionPlayerTransit();
             display.printCurrRoomDescr(player.getCurrRoom());
@@ -234,7 +234,7 @@ public class Controller {
             ifRoomContainsTrap(player);
             ifWinCondition(player);
         } else {
-            if (!checkSpecExit(exit)) {
+            if (!checkExit(exit)) {
                 display.printNoExit();
             } else {
                 display.printNeedGoldExit(player);
@@ -273,7 +273,7 @@ public class Controller {
      */
     public boolean checkInvRange(int indexCol, int indexRow,ItemHolder itemholder){
         try {
-            itemholder.getInventory().getSpecItem(indexCol, indexRow);
+            itemholder.getInventory().getItem(indexCol, indexRow);
             return true;
         }
         catch(IndexOutOfBoundsException e) {
@@ -311,7 +311,7 @@ public class Controller {
     public void itemChoiceAction(int goldAmount, boolean take, ItemHolder itemHolder) {
         if (take) {
             if (enoughGold(goldAmount,itemHolder)) {
-                player.takeItem(goldAmount);
+                player.takeItem(goldAmount,itemHolder);
                 System.out.println("TILFØJ DISPLAY METODE!!");
             } else {
                 display.insufficientAmount();

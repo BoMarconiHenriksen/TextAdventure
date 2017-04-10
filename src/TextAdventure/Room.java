@@ -133,6 +133,5 @@ public class Room extends ItemHolder{
     public void setNpc(NPC npc) {
         this.npc = npc;
     }
-
     
 }

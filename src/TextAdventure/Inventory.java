@@ -47,7 +47,7 @@ public class Inventory {
         return armor;
     }
 
-    public Item getSpecItem(int indexCol, int indexRow) {
+    public Item getItem(int indexCol, int indexRow) {
         return (Item) items.get(indexCol).get(indexRow);
     }
     
@@ -56,7 +56,7 @@ public class Inventory {
      * @param indexCol
      * @param indexRow
      */
-    public void removeSpecItem(int indexCol, int indexRow) {
+    public void removeItem(int indexCol, int indexRow) {
         items.get(indexCol).remove(indexRow);
     }
 
@@ -65,7 +65,7 @@ public class Inventory {
      * @param indexCol
      * @param item
      */
-    public void addSpecItem(int indexCol, Item item) {
+    public void addItem(int indexCol, Item item) {
         items.get(indexCol).add(item);
     }
     
