@@ -4,7 +4,7 @@ package TextAdventure;
  *
  * @since 3.0
  */
-public abstract class ItemHolder {
+public abstract class ItemHolder implements java.io.Serializable{
     
     Inventory inventory;
 

@@ -4,7 +4,7 @@ package TextAdventure;
  * Klassen indeholder beskrivelserne af rummene og opretter exits i rummene.
  * @since 2.0
  */
-public class RoomConstructor {
+public class RoomConstructor implements java.io.Serializable {
     
     Room startRoom;
     Room room1;

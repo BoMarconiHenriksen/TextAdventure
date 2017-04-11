@@ -4,7 +4,7 @@ package TextAdventure;
  * Klassen holder hvilket våben og armor som player og NPC har equipped.
  * @since 3.0
  */
-public class Equipped {
+public class Equipped implements java.io.Serializable{
     
     private Weapon activeWeapon = null;
     private Armor activeArmor = null;

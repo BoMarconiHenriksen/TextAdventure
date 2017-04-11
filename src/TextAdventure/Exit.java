@@ -4,7 +4,7 @@ package TextAdventure;
  *  Klassen definerer om en exit (dør) er åben, lukket og hvor den fører hen.
  *  @since 1.0
  */
-public class Exit {
+public class Exit implements java.io.Serializable{
     
     private Room nextRoom; // Hvilket rum exited fører til.
     private boolean open = true; // Om exited er åbent

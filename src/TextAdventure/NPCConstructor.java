@@ -4,7 +4,7 @@ package TextAdventure;
  *  Klassen laver NPC'erne. 
  *  @since 3.0
  */
-public class NPCConstructor {
+public class NPCConstructor implements java.io.Serializable{
     
     NPC nmy1;
     NPC nmy2;

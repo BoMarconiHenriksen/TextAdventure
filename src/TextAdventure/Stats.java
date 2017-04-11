@@ -4,7 +4,7 @@ package TextAdventure;
  *  Klassen holder stats for player og NPC. 
  *  @since 3.0
  */
-public class Stats {
+public class Stats implements java.io.Serializable{
     
     private int health;
     private int attack;

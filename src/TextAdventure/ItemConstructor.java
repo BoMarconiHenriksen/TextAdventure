@@ -4,7 +4,7 @@ package TextAdventure;
  *  Klassen laver items. 
  *  @since 3.0
  */
-public class ItemConstructor {
+public class ItemConstructor implements java.io.Serializable{
     
     Weapon w1,w2,w3,w4,w5;
     Armor a1,a2,a3,a4,a5;

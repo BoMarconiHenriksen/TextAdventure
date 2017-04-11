@@ -4,7 +4,7 @@ package TextAdventure;
  *  Armor klassen implementer armor i spillet.
  *  @since 2.0
  */
-public class Armor extends Item{
+public class Armor extends Item {
 
     private int defense;
 
