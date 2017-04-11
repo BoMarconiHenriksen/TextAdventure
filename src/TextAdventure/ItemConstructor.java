@@ -25,7 +25,7 @@ public class ItemConstructor {
         a3 = new Armor("Cursed bone kilt from a slut", 5, 10);
         a4 = new Armor("Sandal of twisted hell", 6,5);
         a5 = new Armor("Undead wrap of darkness", 8, 25);
-        p1 = new Potion("A mysterious Potion",p1.getRandomUseEffect(),5);
+        p1 = new Potion("A mysterious Potion",5);
   
         
         

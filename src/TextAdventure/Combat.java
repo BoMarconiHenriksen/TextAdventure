@@ -36,21 +36,17 @@ public class Combat {
                             display.npcHealthStatus(npc);
                             break;
                     case 2:
-                           if(player.inventory.getItem(3, 1)== null){
+                           if(player.inventory.getPotionList().isEmpty()){
                                display.insufficientAmount();
-                               
                            }else{
                                display.usePotion();
-                               int potionEffect = potion.getRandomUseEffect();
-                               
-                               if(potionEffect => 0){
+                               int potionEffect = player.inventory.getPotionList().get(0).getUseEffect();
+                               if(potionEffect <= 0){
                                    player.stats.setHealth(player.stats.getHealth()+potionEffect);
                                    display.gainLife(potionEffect);
-                                   
                                }else{
                                    player.stats.setHealth(player.stats.getHealth()+potionEffect);
                                    display.takeDamage(potionEffect, player);
-                                   
                                }
                            }
                            display.playerHealthStatus(player);

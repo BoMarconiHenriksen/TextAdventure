@@ -18,9 +18,9 @@ public class Potion extends Item{
      * @param useEffect
      * @param weight
      */
-    public Potion(String name,int useEffect,int weight) {
+    public Potion(String name, int weight) {
         super(name,weight);
-        this.useEffect = useEffect;
+        this.useEffect = this.getRandomUseEffect();
     }
 
     @Override
@@ -47,11 +47,11 @@ public class Potion extends Item{
         return this.useEffect;
     }
 
-    public void setUseEffect(int useEffect) {
-        this.useEffect = useEffect;
+    public void setUseEffect() {
+        this.useEffect = this.getRandomUseEffect();
     }
     
-    public int getRandomUseEffect(){
+    public final int getRandomUseEffect(){
         int dice1 = r1.nextInt()+1;
         int dice2 = r2.nextInt()+1;
         int diceresult = dice1 + dice2;

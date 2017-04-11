@@ -324,11 +324,26 @@ public class Display {
     //++++++++++++++++++++++ Nye Display Metoder ++++++++++++++++++++++++++++++
     
     
-     public void combatMenu(){
-         System.out.println("What will you do?"
-                 + "\n1.Attack"
-                 + "\n2.Use Potion"
-                 + "\n3.Run");
+     public int combatMenu(){
+        sc = new Scanner (System.in);
+        int choice = 0;
+        boolean _continue;
+
+        System.out.println("What will you do?"
+                + "\n1.Attack"
+                + "\n2.Use Potion"
+                + "\n3.Run");
+        System.out.print("> ");
+
+        String choiceStr = sc.nextLine();
+           try {
+               choice = Integer.parseInt(choiceStr);
+               _continue = false;
+
+           } catch (NumberFormatException e) {
+               System.out.print("Invalid number.");
+           }
+        return choice;
     }
     public void attack(Character character){
         System.out.println(character.getName() + " attacks!");
