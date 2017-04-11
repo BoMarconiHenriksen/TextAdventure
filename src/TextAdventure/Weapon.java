@@ -50,7 +50,7 @@ public class Weapon extends Item {
 
     @Override
     public String toString() {
-        return "Weapon{" + "attack=" + attack + "Name=" + name + "weight=" + weight +'}';
+        return "Weapon{" + " attack:" + attack + " Name:" + name + " weight:" + weight + "}";
     }
     
     
