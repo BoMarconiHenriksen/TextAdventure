@@ -1,10 +1,20 @@
 package TextAdventure;
 import java.io.*;
+
+/**
+ *  Klassen gemmer dit spil.
+ * @since 3.0
+ */
 public class Savegame {
 
     private Player player;
     private DungeonConstructor dc;
 
+    /**
+     *
+     * @param player
+     * @param dc
+     */
     public void save(Player player, DungeonConstructor dc) {
         try {
             FileOutputStream fileOut = new FileOutputStream("save.ser");
