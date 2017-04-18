@@ -334,7 +334,7 @@ public class Controller {
     
     // IKKE FÆRDIG
     public ItemHolder itemHolderChoice() {
-        System.out.print("** Who to take from (Room or NPC): ");
+        System.out.print("** Who to interact with (Room or NPC): ");
         String choice = "Room".toLowerCase();
         
         switch (choice) {
