@@ -332,6 +332,20 @@ public class Controller {
         return itemHolder.getInventory().getGoldList().get(0).getAmount() >= amount;
     }
     
+    // IKKE FÆRDIG
+    public ItemHolder itemHolderChoice() {
+        System.out.print("** Who to take from (Room or NPC): ");
+        String choice = "Room".toLowerCase();
+        
+        switch (choice) {
+            case "room":
+                return player.getCurrRoom();
+            case "npc":
+                return player.getCurrRoom().getNpc();
+            default:
+                return null;
+        }
+    }
 }
 
 
