@@ -8,7 +8,7 @@ public class ItemConstructor implements java.io.Serializable{
     
     Weapon w1,w2,w3,w4,w5;
     Armor a1,a2,a3,a4,a5;
-    Potion p1,p2,p3,p4,p5;
+    Potion p1;
     // order is : Name,Attack(or defense or health),weight.
 
     /**

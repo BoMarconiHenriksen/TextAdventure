@@ -21,6 +21,7 @@ public class Potion extends Item{
     public Potion(String name, int weight) {
         super(name,weight);
         this.useEffect = this.getRandomUseEffect();
+        
     }
 
     @Override
@@ -35,7 +36,7 @@ public class Potion extends Item{
 
     @Override
     public String getName() {
-        return name;
+        return "Mystery Potion";
     }
 
     @Override

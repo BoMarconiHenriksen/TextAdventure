@@ -64,6 +64,7 @@ public class Combat {
                 playerTurn = false;
                 if (npc.stats.getHealth() <= 0) {
                     display.npcDied(npc);
+                    npc.onDeath();
                     npcTurn = false;
                 } else {
                     npcTurn = true;
@@ -72,6 +73,7 @@ public class Combat {
 
             if (!npcTurn && !playerTurn) {
                 combatLoop = false;
+                
             }
         }
 

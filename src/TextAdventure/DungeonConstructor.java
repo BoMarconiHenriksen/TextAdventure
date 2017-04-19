@@ -24,7 +24,7 @@ public class DungeonConstructor implements java.io.Serializable{
         
         rc.startRoom.getInventory().addItem(2, ic.a1);
         rc.startRoom.getInventory().addItem(1, ic.w1);
-        rc.startRoom.getInventory().addItem(3, ic.p4);
+        rc.startRoom.getInventory().addItem(3, ic.p1);
         
         rc.startRoom.getInventory().getGoldList().get(0).setAmount(8);
         
