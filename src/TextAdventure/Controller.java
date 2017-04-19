@@ -371,8 +371,10 @@ public class Controller {
             try{
                 if (command[1].equals("weapon")){
                     player.equipWeapon(display.indexRowChoice());
+                    display.equipItem(player.equipped.getActiveWeapon());
                 } else if (command[1].equals("armor")){
                     player.equipArmor(display.indexRowChoice());
+                    display.equipItem(player.equipped.getActiveArmor());
                 } else {
                     display.printInvalidInput();
                 }
