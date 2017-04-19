@@ -164,63 +164,7 @@ public class Controller {
                 return input;
         }
     }
-    /**
-     * Checker om det pågældende rum har en exit for den indtastede retning
-     * @param exit
-     * @return 
-     */
-    public boolean checkExit (String exit) {
-        return player.getCurrRoom().getSpecExit(exit) != null;
-    }
     
-    
-    /**
-    *  Tjekker om player er kommet i slutrummet, og afslutter spil, hvis player er det.
-     * @param player
-    *  @since 1.0
-    */
-    public void ifWinCondition(Player player) {
-        if (player.getCurrRoom().equals(dc.rc.slutRoom)) {
-            continue_ = false;
-        }
-    }
-    
-    
-    /**
-    *  Tester player HP - Giver output om at player er død og lukker spillet,
-    *  hvis HP er 0 eller mindre.
-     * @param player
-    *  @since 1.0
-    */
-    public void ifPlayerHealthZero(Player player) {
-        if (player.stats.getHealth()<= 0) {
-            display.printActionDeath();
-            continue_ = false;
-        }
-    }
-    
-    
-    /**
-    *  Metoder der fjerner HP fra player hvis der er en fælde i rummet
-     * @param player
-    *  @since 1.0.
-    */
-    public void ifRoomContainsTrap(Player player){
-        if (player.getCurrRoom().isTrapActive()) { //Tester om der er 
-            player.getCurrRoom().springTrap(player);
-            display.printActionSpringTrap();
-            ifPlayerHealthZero(player);
-        }
-    }
-    
-    // Trigger ikke når NPC har 0HP. Kører metode der tester Player HP og slutter spillet hvis Player HP er 0 efter combat.
-    public void ifRoomContainsNpc(Player player){
-        if(player.getCurrRoom().getNpc() != null && !(player.getCurrRoom().getNpc().stats.getHealth() <= 0)){
-            display.npcAggro(player.getCurrRoom().getNpc());
-            cbt.combat(player.getCurrRoom().getNpc(), player,display);
-            ifPlayerHealthZero(player);
-        }
-    }
     
     public void commandDirection(String exit) {
         if (checkExit(exit) && player.getCurrRoom().getSpecExit(exit).unlockExitCondition(player)){ //Tjekker om der er et exit mod vest og om exit er åben
@@ -239,25 +183,48 @@ public class Controller {
         }
     }
     
-    public void itemChoice(String itemChoice, boolean take,ItemHolder itemHolder) {
-        switch(itemChoice) {
-            case "gold":
-                itemChoiceAction(display.goldAmountChoice(),itemHolder,take);
-                break;
-            case "weapon":
-                itemChoiceAction(1,display.indexRowChoice(),itemHolder, take);
-                break;
-            case "armor":
-                itemChoiceAction(2,display.indexRowChoice(),itemHolder, take);
-                break;
-            case "potion":
-                itemChoiceAction(3,display.indexRowChoice(), itemHolder, take);
-                break;
-            default:
-                display.printInvalidInput();
-                break;
+    public void commandTake(String[] command){
+        if (command.length > 1){
+            //itemHolderChoice();
+            itemChoice(command[1],true,display.itemHolderChoice(player));
+        } else {
+            display.noSpecifiedItem();
         }
     }
+    
+    public void commandPlace(String [] command) {
+        if (command.length > 1){
+            //itemHolderChoice();
+            itemChoice(command[1],false,player.getCurrRoom());
+        } else {
+            display.noSpecifiedItem();
+        }
+    }
+    
+    public void commandEquip(String[] command){
+        if (command.length > 1){
+            try{
+                if (command[1].equals("weapon")){
+                    player.equipWeapon(display.indexRowChoice());
+                    display.equipItem(player.equipped.getActiveWeapon());
+                } else if (command[1].equals("armor")){
+                    player.equipArmor(display.indexRowChoice());
+                    display.equipItem(player.equipped.getActiveArmor());
+                } else {
+                    display.printInvalidInput();
+                }
+            }
+            catch(IndexOutOfBoundsException e){
+                display.PrintOutOfBoundsInvRange();
+                System.out.println("EXCEPTION: Index out of bounds");
+                System.out.println("/\\ TILFØJ METODE TIL DISPLAY /\\");
+            }
+        } else {
+            display.noSpecifiedItem();
+        }
+    }
+    
+    
     
     /**
      * Checker hvor meget af en item Current ItemHolder har i et pågældende index
@@ -306,26 +273,24 @@ public class Controller {
 //        }
 //    }
     
-    public void itemChoiceAction(int goldAmount, ItemHolder itemHolder, boolean take) {
-        if (take) {
-            if (enoughGold(goldAmount,itemHolder)) {
-                player.takeItem(goldAmount,itemHolder);
-                System.out.println("TILFØJ DISPLAY METODE!!");
-            } else {
-                display.insufficientAmount();
-            }
-        } else {
-            if (enoughGold(goldAmount,player)) {
-                player.placeItem(goldAmount,itemHolder);
-                System.out.println("TILFØJ DISPLAY METODE!!");
-            } else {
-                display.insufficientAmount();
-            }
+    public void itemChoice(String itemChoice, boolean take,ItemHolder itemHolder) {
+        switch(itemChoice) {
+            case "gold":
+                itemChoiceAction(display.goldAmountChoice(),itemHolder,take);
+                break;
+            case "weapon":
+                itemChoiceAction(1,display.indexRowChoice(),itemHolder, take);
+                break;
+            case "armor":
+                itemChoiceAction(2,display.indexRowChoice(),itemHolder, take);
+                break;
+            case "potion":
+                itemChoiceAction(3,display.indexRowChoice(), itemHolder, take);
+                break;
+            default:
+                display.printInvalidInput();
+                break;
         }
-    }
-    
-    public boolean enoughGold(int amount, ItemHolder itemHolder){
-        return itemHolder.getInventory().getGoldList().get(0).getAmount() >= amount;
     }
     
     public void itemChoiceAction(int itemIndex, int indexRow, ItemHolder itemHolder, boolean take) {
@@ -350,44 +315,82 @@ public class Controller {
         }
     }
     
-    public void commandTake(String[] command){
-        if (command.length > 1){
-            //itemHolderChoice();
-            itemChoice(command[1],true,display.itemHolderChoice(player));
+    public void itemChoiceAction(int goldAmount, ItemHolder itemHolder, boolean take) {
+        if (take) {
+            if (enoughGold(goldAmount,itemHolder)) {
+                player.takeItem(goldAmount,itemHolder);
+                System.out.println("TILFØJ DISPLAY METODE!!");
+            } else {
+                display.insufficientAmount();
+            }
         } else {
-            display.noSpecifiedItem();
+            if (enoughGold(goldAmount,player)) {
+                player.placeItem(goldAmount,itemHolder);
+                System.out.println("TILFØJ DISPLAY METODE!!");
+            } else {
+                display.insufficientAmount();
+            }
         }
     }
     
-    public void commandPlace(String [] command) {
-        if (command.length > 1){
-            //itemHolderChoice();
-            itemChoice(command[1],false,player.getCurrRoom());
-        } else {
-            display.noSpecifiedItem();
+    public boolean enoughGold(int amount, ItemHolder itemHolder){
+        return itemHolder.getInventory().getGoldList().get(0).getAmount() >= amount;
+    }
+    
+    /**
+     * Checker om det pågældende rum har en exit for den indtastede retning
+     * @param exit
+     * @return 
+     */
+    public boolean checkExit (String exit) {
+        return player.getCurrRoom().getSpecExit(exit) != null;
+    }
+    
+    
+    /**
+    *  Tjekker om player er kommet i slutrummet, og afslutter spil, hvis player er det.
+     * @param player
+    *  @since 1.0
+    */
+    public void ifWinCondition(Player player) {
+        if (player.getCurrRoom().equals(dc.rc.slutRoom)) {
+            continue_ = false;
         }
     }
     
-    public void commandEquip(String[] command){
-        if (command.length > 1){
-            try{
-                if (command[1].equals("weapon")){
-                    player.equipWeapon(display.indexRowChoice());
-                    display.equipItem(player.equipped.getActiveWeapon());
-                } else if (command[1].equals("armor")){
-                    player.equipArmor(display.indexRowChoice());
-                    display.equipItem(player.equipped.getActiveArmor());
-                } else {
-                    display.printInvalidInput();
-                }
-            }
-            catch(IndexOutOfBoundsException e){
-                display.PrintOutOfBoundsInvRange();
-                System.out.println("EXCEPTION: Index out of bounds");
-                System.out.println("/\\ TILFØJ METODE TIL DISPLAY /\\");
-            }
-        } else {
-            display.noSpecifiedItem();
+    
+    /**
+    *  Tester player HP - Giver output om at player er død og lukker spillet,
+    *  hvis HP er 0 eller mindre.
+     * @param player
+    *  @since 1.0
+    */
+    public void ifPlayerHealthZero(Player player) {
+        if (player.stats.getHealth()<= 0) {
+            display.printActionDeath();
+            continue_ = false;
+        }
+    }
+    
+    /**
+    *  Metoder der fjerner HP fra player hvis der er en fælde i rummet
+     * @param player
+    *  @since 1.0.
+    */
+    public void ifRoomContainsTrap(Player player){
+        if (player.getCurrRoom().isTrapActive()) { //Tester om der er 
+            player.getCurrRoom().springTrap(player);
+            display.printActionSpringTrap();
+            ifPlayerHealthZero(player);
+        }
+    }
+    
+    // Trigger ikke når NPC har 0HP. Kører metode der tester Player HP og slutter spillet hvis Player HP er 0 efter combat.
+    public void ifRoomContainsNpc(Player player){
+        if(player.getCurrRoom().getNpc() != null && !(player.getCurrRoom().getNpc().stats.getHealth() <= 0)){
+            display.npcAggro(player.getCurrRoom().getNpc());
+            cbt.combat(player.getCurrRoom().getNpc(), player,display);
+            ifPlayerHealthZero(player);
         }
     }
 
