@@ -108,18 +108,10 @@ public class Controller {
                 display.printActionLook(player.getCurrRoom());
                 break;
             case "take":
-                if (command.length > 1){
-                    itemChoice(command[1],true,player.getCurrRoom());
-                } else {
-                    display.noSpecifiedItem();
-                }
+                commandTake(command);
                 break;
             case "place":
-                if (command.length > 1){
-                    itemChoice(command[1],false,player.getCurrRoom());
-                } else {
-                    display.noSpecifiedItem();
-                }
+                commandPlace(command);
                 break;
             case "equip":
                 commandEquip(command);
@@ -254,13 +246,13 @@ public class Controller {
                 itemChoiceAction(display.goldAmountChoice(),take, itemHolder);
                 break;
             case "weapon":
-                itemChoiceAction(1,display.indexRowChoice(),take, itemHolder);
+                itemChoiceAction(1,display.indexRowChoice(),itemHolder, take);
                 break;
             case "armor":
-                itemChoiceAction(2,display.indexRowChoice(),take, itemHolder);
+                itemChoiceAction(2,display.indexRowChoice(),itemHolder, take);
                 break;
             case "potion":
-                itemChoiceAction(3,display.indexRowChoice(),take, itemHolder);
+                itemChoiceAction(3,display.indexRowChoice(), itemHolder, take);
                 break;
             default:
                 display.printInvalidInput();
@@ -276,16 +268,16 @@ public class Controller {
      * @param indexCol
      * @param indexRow
      */
-    public boolean checkInvRange(int indexCol, int indexRow,ItemHolder itemholder){
-        try {
-            itemholder.getInventory().getItem(indexCol, indexRow);
-            return true;
-        }
-        catch(IndexOutOfBoundsException e) {
-            display.PrintOutOfBoundsInvRange();
-            return false;
-        }
-    }
+//    public boolean checkInvRange(int indexCol, int indexRow,ItemHolder itemholder){
+//        try {
+//            itemholder.getInventory().getItem(indexCol, indexRow);
+//            return true;
+//        }
+//        catch(IndexOutOfBoundsException e) {
+//            display.PrintOutOfBoundsInvRange();
+//            return false;
+//        }
+//    }
     
     /**
      * Tager index, indexRow og om item skal placeres eller tages af player.
@@ -295,23 +287,23 @@ public class Controller {
      * @param indexRow
      * @param take 
      */
-    public void itemChoiceAction(int itemIndex, int indexRow, boolean take, ItemHolder itemHolder) {
-        if (take) {
-            if (checkInvRange(itemIndex,indexRow,itemHolder)) {
-                player.takeItem(itemIndex, indexRow,itemHolder);
-    //            display.takeItem(itemIndex,indexRow);
-            } else {
-                display.insufficientAmount();
-            }
-        } else {
-            if (checkInvRange(itemIndex,indexRow,player)) {
-                player.placeItem(itemIndex, indexRow,itemHolder);
- //               display.placeItem(itemIndex, indexRow);
-            } else {
-                display.insufficientAmount();
-            }
-        }
-    }
+//    public void itemChoiceAction(int itemIndex, int indexRow, boolean take, ItemHolder itemHolder) {
+//        if (take) {
+//            if (checkInvRange(itemIndex,indexRow,itemHolder)) {
+//                player.takeItem(itemIndex, indexRow,itemHolder);
+//    //            display.takeItem(itemIndex,indexRow);
+//            } else {
+//                display.insufficientAmount();
+//            }
+//        } else {
+//            if (checkInvRange(itemIndex,indexRow,player)) {
+//                player.placeItem(itemIndex, indexRow,itemHolder);
+// //               display.placeItem(itemIndex, indexRow);
+//            } else {
+//                display.insufficientAmount();
+//            }
+//        }
+//    }
     
     public void itemChoiceAction(int goldAmount, boolean take, ItemHolder itemHolder) {
         if (take) {
@@ -335,18 +327,42 @@ public class Controller {
         return itemHolder.getInventory().getGoldList().get(0).getAmount() >= amount;
     }
     
-    // IKKE FÆRDIG
-    public ItemHolder itemHolderChoice() {
-        System.out.print("** Who to interact with (Room or NPC): ");
-        String choice = "Room".toLowerCase();
-        
-        switch (choice) {
-            case "room":
-                return player.getCurrRoom();
-            case "npc":
-                return player.getCurrRoom().getNpc();
-            default:
-                return null;
+    public void itemChoiceAction(int itemIndex, int indexRow, ItemHolder itemHolder, boolean take) {
+        if (take){
+            try {
+                player.takeItem(itemIndex, indexRow,itemHolder);
+            } catch (IndexOutOfBoundsException e) {
+                display.PrintOutOfBoundsInvRange();
+                System.out.println("EXCEPTION: Index out of bounds");
+                System.out.println("/\\ TILFØJ METODE TIL DISPLAY /\\");
+            }
+        } else {
+            try {
+                player.placeItem(itemIndex, indexRow, itemHolder);
+            } catch (IndexOutOfBoundsException e) {
+                display.PrintOutOfBoundsInvRange();
+                System.out.println("EXCEPTION: Index out of bounds");
+                System.out.println("/\\ TILFØJ METODE TIL DISPLAY /\\");
+            }
+        }
+
+    }
+    
+    public void commandTake(String[] command){
+        if (command.length > 1){
+            //itemHolderChoice();
+            itemChoice(command[1],true,display.itemHolderChoice(player));
+        } else {
+            display.noSpecifiedItem();
+        }
+    }
+    
+    public void commandPlace(String [] command) {
+        if (command.length > 1){
+            //itemHolderChoice();
+            itemChoice(command[1],false,player.getCurrRoom());
+        } else {
+            display.noSpecifiedItem();
         }
     }
     
@@ -361,7 +377,7 @@ public class Controller {
                     display.printInvalidInput();
                 }
             }
-            catch(Exception e){
+            catch(IndexOutOfBoundsException e){
                 display.PrintOutOfBoundsInvRange();
                 System.out.println("EXCEPTION: Index out of bounds");
                 System.out.println("/\\ TILFØJ METODE TIL DISPLAY /\\");
@@ -370,6 +386,8 @@ public class Controller {
             display.noSpecifiedItem();
         }
     }
+    
+    
 }
 
 

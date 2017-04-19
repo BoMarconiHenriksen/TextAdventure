@@ -402,6 +402,23 @@ public class Display {
         System.out.println( npc.getName() + " DIED!");
     }
    
-    
+    public ItemHolder itemHolderChoice(Player player){
+        sc = new Scanner(System.in);
+        String choice = "room";
+        
+        if (!(player.getCurrRoom().getNpc() == null)){
+            System.out.print("** Who to interact with (Room or NPC): ");
+            choice = sc.nextLine().toLowerCase();
+        }
+        
+        switch (choice) {
+            case "room":
+                return player.getCurrRoom();
+            case "npc":
+                return player.getCurrRoom().getNpc();
+            default:
+                return null;
+        }
+    }
     
 }
