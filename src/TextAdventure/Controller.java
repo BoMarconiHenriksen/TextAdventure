@@ -362,7 +362,8 @@ public class Controller {
                 }
             }
             catch(Exception e){
-                System.out.println("EXCEPTION: Index out of range");
+                display.PrintOutOfBoundsInvRange();
+                System.out.println("EXCEPTION: Index out of bounds");
                 System.out.println("/\\ TILFØJ METODE TIL DISPLAY /\\");
             }
         } else {
