@@ -31,7 +31,6 @@ public class Controller {
         player.setCurrRoom(dc.rc.startRoom); 
         player.inventory.addItem(1, dc.ic.w5);
         player.inventory.addItem(1, dc.ic.w2);
-        player.equipWeapon(0);
 
         while(continue_) {
             String commandStr = display.playerInput();
@@ -123,8 +122,8 @@ public class Controller {
                 }
                 break;
             case "equip":
+                commandEquip(command);
                 break;
-            
             case "inventory":
                 display.printInventory(player);
                 break;
@@ -348,6 +347,26 @@ public class Controller {
                 return player.getCurrRoom().getNpc();
             default:
                 return null;
+        }
+    }
+    
+    public void commandEquip(String[] command){
+        if (command.length > 1){
+            try{
+                if (command[1].equals("weapon")){
+                    player.equipWeapon(display.indexRowChoice());
+                } else if (command[1].equals("armor")){
+                    player.equipArmor(display.indexRowChoice());
+                } else {
+                    display.printInvalidInput();
+                }
+            }
+            catch(Exception e){
+                System.out.println("EXCEPTION: Index out of range");
+                System.out.println("/\\ TILFØJ METODE TIL DISPLAY /\\");
+            }
+        } else {
+            display.noSpecifiedItem();
         }
     }
 }
