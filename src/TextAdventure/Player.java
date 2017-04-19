@@ -180,6 +180,9 @@ public class Player extends Character {
             dmg = this.stats.getTotalAttack(this) - character.stats.getTotalDefense(character);
         }
         character.stats.setHealth(character.stats.getHealth()-dmg);
+        
+        System.out.println(character.getName() + " Takes " + dmg + " damage!");
+
     }
 
 }

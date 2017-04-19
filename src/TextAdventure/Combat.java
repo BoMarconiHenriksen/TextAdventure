@@ -19,6 +19,7 @@ public class Combat {
         while (combatLoop) {
             while (npcTurn) {
                 npc.doAttack(player);
+               
                 display.playerHealthStatus(player);
                 npcTurn = false;
                 if (player.stats.getHealth() <= 0) {
@@ -62,7 +63,7 @@ public class Combat {
                 
                 playerTurn = false;
                 if (npc.stats.getHealth() <= 0) {
-                    display.npcDied();
+                    display.npcDied(npc);
                     npcTurn = false;
                 } else {
                     npcTurn = true;

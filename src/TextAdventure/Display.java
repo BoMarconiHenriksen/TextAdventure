@@ -352,7 +352,7 @@ public class Display {
     
     public void takeDamage(int amount,Character character){
         System.out.println(character.getName() + " takes " + amount + " damage! ");
-        System.out.println(character.getName() + " is now at " + character.stats.getHealth() + " health ");
+      
     }
     public void gainLife(int amount){
         System.out.println("You gained " + amount + " health!");
@@ -387,13 +387,16 @@ public class Display {
     public void playerHealthStatus(Player player) {
         System.out.println("PLAYER HEALTH: " + player.stats.getHealth());
     }
-    
-    public void npcHealthStatus(NPC npc) {
-        System.out.println("NPC HEALTH: " + npc.stats.getHealth());
+    public void npcAggro(NPC npc){
+        System.out.println(npc.getName() + " Attacks you!");
     }
     
-    public void npcDied() {
-        System.out.println("NPC DIED!");
+    public void npcHealthStatus(NPC npc) {
+        System.out.println(npc.getName() + "is now at " + npc.stats.getHealth() + " health");
+    }
+    
+    public void npcDied(NPC npc) {
+        System.out.println( npc.getName() + " DIED!");
     }
    
     
