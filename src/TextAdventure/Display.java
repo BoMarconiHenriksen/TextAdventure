@@ -160,7 +160,7 @@ public class Display {
             for (Potion i : room.getInventory().getPotionList()) {
                 System.out.println((room.getInventory().getPotionList().indexOf(i) + 1) +". "+i);
             }
-        } if (room.getNpc().stats.getHealth()<=0){
+        } if (room.getNpc()!=null){
             System.out.println("There is dead " + room.getNpc().getName() + " on the floor...");
             
             
