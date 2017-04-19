@@ -160,6 +160,9 @@ public class Display {
             for (Potion i : room.getInventory().getPotionList()) {
                 System.out.println((room.getInventory().getPotionList().indexOf(i) + 1) +". "+i);
             }
+        } if (room.getNpc().stats.getHealth()<=0){
+            System.out.println("There is dead " + room.getNpc().getName() + " on the floor...");
+            
             
         }
 
@@ -271,7 +274,7 @@ public class Display {
         int choice=0;
 
         while(_continue) {
-            System.out.print("WHAT INDEX??: ");
+            System.out.print("What slot?: ");
             String choiceStr = sc.nextLine();
             try {
                 choice = Integer.parseInt(choiceStr);
