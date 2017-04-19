@@ -240,10 +240,9 @@ public class Controller {
     }
     
     public void itemChoice(String itemChoice, boolean take,ItemHolder itemHolder) {
-
         switch(itemChoice) {
             case "gold":
-                itemChoiceAction(display.goldAmountChoice(),take, itemHolder);
+                itemChoiceAction(display.goldAmountChoice(),itemHolder,take);
                 break;
             case "weapon":
                 itemChoiceAction(1,display.indexRowChoice(),itemHolder, take);
@@ -283,7 +282,9 @@ public class Controller {
      * Tager index, indexRow og om item skal placeres eller tages af player.
      * Derefter sker handlingen og printes til display.
      * Hvis der ikke er nok skrives 
+     * @param goldAmount
      * @param itemIndex
+     * @param itemHolder
      * @param indexRow
      * @param take 
      */
@@ -305,7 +306,7 @@ public class Controller {
 //        }
 //    }
     
-    public void itemChoiceAction(int goldAmount, boolean take, ItemHolder itemHolder) {
+    public void itemChoiceAction(int goldAmount, ItemHolder itemHolder, boolean take) {
         if (take) {
             if (enoughGold(goldAmount,itemHolder)) {
                 player.takeItem(goldAmount,itemHolder);
@@ -331,6 +332,7 @@ public class Controller {
         if (take){
             try {
                 player.takeItem(itemIndex, indexRow,itemHolder);
+                System.out.println("TILFØJ DISPLAY METODE!!");
             } catch (IndexOutOfBoundsException e) {
                 display.PrintOutOfBoundsInvRange();
                 System.out.println("EXCEPTION: Index out of bounds");
@@ -339,13 +341,13 @@ public class Controller {
         } else {
             try {
                 player.placeItem(itemIndex, indexRow, itemHolder);
+                System.out.println("TILFØJ DISPLAY METODE!!");
             } catch (IndexOutOfBoundsException e) {
                 display.PrintOutOfBoundsInvRange();
                 System.out.println("EXCEPTION: Index out of bounds");
                 System.out.println("/\\ TILFØJ METODE TIL DISPLAY /\\");
             }
         }
-
     }
     
     public void commandTake(String[] command){
@@ -388,8 +390,7 @@ public class Controller {
             display.noSpecifiedItem();
         }
     }
-    
-    
+
 }
 
 
