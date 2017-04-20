@@ -63,8 +63,8 @@ public class Display {
         System.out.println("+ \'take\' or \'t\' + \"Item Name\" - Take an item     +");
         System.out.println("+ \'place\' or \'p\' + \"Item Name\" - Place an item   +");
         System.out.println("+ \'inventory\' or \'i - Show inventory/health      +");
-        System.out.println("+ \'equip\' or \'q - Equip an item                   +");
-        System.out.println("+ \'potion or \'d - Drink a potion                   +");
+        System.out.println("+ \'equip\' or \'q - Equip an item                  +");
+        System.out.println("+ \'potion or \'d - Drink a potion                 +");
         System.out.println("+ \'north\' or \'n\' - Go north                      +");
         System.out.println("+ \'south\' or \'s\' - Go south                      +");
         System.out.println("+ \'east\' or \'e\' - Go east                        +");
