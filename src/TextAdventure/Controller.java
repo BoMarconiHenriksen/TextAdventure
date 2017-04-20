@@ -170,6 +170,8 @@ public class Controller {
                 return "help";
             case "x":
                 return "exit";
+            case "d":
+                return "potion";
             default:
                 return input;
         }
