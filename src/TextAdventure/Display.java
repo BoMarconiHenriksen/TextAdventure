@@ -335,7 +335,9 @@ public class Display {
         System.out.println("What will you do?"
                 + "\n1.Attack"
                 + "\n2.Use Potion"
-                + "\n3.Run");
+                + "\n3.Show Inventory"
+                + "\n4.Change Armor or Weapon"
+                + "\n5.Run");        
         System.out.print("> ");
 
         String choiceStr = sc.nextLine();
