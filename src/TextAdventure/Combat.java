@@ -46,6 +46,7 @@ public class Combat {
                                if(potionEffect > 0){
                                    player.stats.setHealth(player.stats.getHealth()+potionEffect);
                                    display.gainLife(potionEffect);
+                                   
                                    playerTurn = false;
                                }else{
                                    player.stats.setHealth(player.stats.getHealth()+potionEffect);
@@ -53,6 +54,7 @@ public class Combat {
                                    playerTurn = false;
                                }
                            }
+                           player.inventory.removeItem(3, 0);
                            display.playerHealthStatus(player);
                         break;
                         
