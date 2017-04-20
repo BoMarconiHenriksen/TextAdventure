@@ -137,30 +137,37 @@ public class Display {
     *  @since 2.0
     */
     public void printActionLook(ItemHolder itemHolder) {
-
-        System.out.print("You see: ");
+        boolean empty = true;
+        
         if (!(itemHolder.getInventory().getGoldList().get(0).getAmount() == 0)){
             System.out.println("Gold: "+itemHolder.getInventory().getGoldList().get(0).getAmount());
+            empty = false;
             
         } if (!itemHolder.getInventory().getWeaponList().isEmpty()) {
             System.out.println("Weapons: ");
             for (Weapon i : itemHolder.getInventory().getWeaponList()) {
                 System.out.println((itemHolder.getInventory().getWeaponList().indexOf(i) + 1) +". "+i);
             }
+            empty = false;
 
         } if (!itemHolder.getInventory().getArmorList().isEmpty()){
             System.out.println("Armor: ");
             for (Armor i : itemHolder.getInventory().getArmorList()) {
                 System.out.println((itemHolder.getInventory().getArmorList().indexOf(i) + 1) +". "+i);
             }
+            empty = false;
 
         } if (!itemHolder.getInventory().getPotionList().isEmpty()){
           System.out.println("Potions: ");
             for (Potion i : itemHolder.getInventory().getPotionList()) {
                 System.out.println((itemHolder.getInventory().getPotionList().indexOf(i) + 1) +". "+i);
             }
+            empty = false;
         } 
-
+        
+        if (empty){
+            System.out.println("No item, there is nothing here!");
+        }
 
     }
 

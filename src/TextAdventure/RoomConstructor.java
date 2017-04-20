@@ -101,6 +101,7 @@ public class RoomConstructor implements java.io.Serializable {
         room2.setExitSouth(new Exit(room6));
 
         //Opretter Exits room3
+        room3.setExitNorth(new Exit(startRoom));
         room3.setExitWest(new Exit(room2));
         room3.setExitEast(new Exit(room4));
         

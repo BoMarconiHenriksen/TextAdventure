@@ -120,6 +120,9 @@ public class Controller {
             case "equip":
                 commandEquip(command);
                 break;
+            case "potion":
+                commandPotion();
+                break;
             case "inventory":
                 display.printInventory(player);
                 break;
@@ -239,6 +242,25 @@ public class Controller {
         } 
     }
     
+    public void commandPotion(){
+    if(player.inventory.getPotionList().isEmpty()){
+            display.insufficientAmount();
+        }else{
+            display.usePotion();
+            int potionEffect = player.inventory.getPotionList().get(0).getRandomUseEffect();
+            if(potionEffect > 0){
+                player.stats.setHealth(player.stats.getHealth()+potionEffect);
+                display.gainLife(potionEffect);
+                player.inventory.removeItem(3, 0);
+            }else{
+                player.stats.setHealth(player.stats.getHealth()+potionEffect);
+                display.takeDamage(potionEffect, player);
+                player.inventory.removeItem(3, 0);
+            }
+        }
+        display.playerHealthStatus(player);
+    }
+    
     public void itemChoice(String itemChoice, boolean take,ItemHolder itemHolder) {
         switch(itemChoice) {
             case "gold":
@@ -259,18 +281,18 @@ public class Controller {
         }
     }
     
-    public void itemChoiceAction(int itemIndex, int indexRow, ItemHolder itemHolder, boolean take) {
+    public void itemChoiceAction(int indexCol, int indexRow, ItemHolder itemHolder, boolean take) {
         if (take){
             try {
-                display.takeItem(player.inventory.getItem(indexRow, indexRow));
-                player.takeItem(itemIndex, indexRow,itemHolder);
+                display.takeItem(player.inventory.getItem(indexCol, indexRow));
+                player.takeItem(indexCol, indexRow,itemHolder);
             } catch (IndexOutOfBoundsException e) {
                 display.emptySlotMessage();
             }
         } else {
             try {
-                display.placeItem(player.inventory.getItem(indexRow, indexRow));
-                player.placeItem(itemIndex, indexRow, itemHolder);
+                display.placeItem(player.inventory.getItem(indexCol, indexRow));
+                player.placeItem(indexCol, indexRow, itemHolder);
             } catch (IndexOutOfBoundsException e) {
                 display.emptySlotMessage();
             }

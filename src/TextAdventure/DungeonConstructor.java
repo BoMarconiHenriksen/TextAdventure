@@ -31,6 +31,9 @@ public class DungeonConstructor implements java.io.Serializable{
         //ADD SKELETOR TO STARTROOM
         rc.startRoom.setNpc(npc.nmy1);
         
+        
+        rc.room3.setNpc(npc.nmy2);
+        
     }
      
 }
