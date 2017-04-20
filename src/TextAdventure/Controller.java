@@ -109,11 +109,7 @@ public class Controller {
                 commandDirection(command[0]);
                 break;
             case "look":
-                    ItemHolder ih = display.itemHolderChoice(player);
-                    display.printActionLook(ih);
-                    if (ih.equals(player.getCurrRoom())) {
-                        display.lookDeadNpc(player.getCurrRoom());
-                    } 
+                commandLook();
                 break;
             case "take":
                 commandTake(command);
@@ -237,6 +233,13 @@ public class Controller {
         }
     }
 
+    public void commandLook(){
+        ItemHolder ih = display.itemHolderChoice(player);
+        display.printActionLook(ih);
+        if (ih.equals(player.getCurrRoom())) {
+            display.lookDeadNpc(player.getCurrRoom());
+        } 
+    }
     
     public void itemChoice(String itemChoice, boolean take,ItemHolder itemHolder) {
         switch(itemChoice) {
