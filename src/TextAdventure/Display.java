@@ -59,12 +59,11 @@ public class Display {
     public void helpMenu() {
         System.out.println("++++++++++++++++ HELP  MENU ++++++++++++++++++++++");
         System.out.println("+ \'help\' or \'h\' - Show Help-menu                 +");
-        System.out.println("+ \'look\' or \'l\' - Search the room                +");
+        System.out.println("+ \'look\' or \'l\' - Search the room / NPC          +");
         System.out.println("+ \'take\' or \'t\' + \"Item Name\" - Take an item     +");
         System.out.println("+ \'place\' or \'p\' + \"Item Name\" - Place an item   +");
         System.out.println("+ \'inventory\' or \'i - Show inventory/health      +");
         System.out.println("+ \'equip\' or \'q - Equip an item                   +");
-        System.out.println("+ \'unequip or \'u - Unequip an item                 +");
         System.out.println("+ \'potion or \'d - Drink a potion                   +");
         System.out.println("+ \'north\' or \'n\' - Go north                      +");
         System.out.println("+ \'south\' or \'s\' - Go south                      +");
