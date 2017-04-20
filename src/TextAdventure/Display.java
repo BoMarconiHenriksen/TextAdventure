@@ -277,7 +277,7 @@ public class Display {
             System.out.print("What slot?: ");
             String choiceStr = sc.nextLine();
             try {
-                choice = Integer.parseInt(choiceStr);
+                choice = Integer.parseInt(choiceStr)-1;
                 _continue = false;
 
             } catch (NumberFormatException e) {
