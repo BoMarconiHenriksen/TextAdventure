@@ -83,6 +83,7 @@ public class Combat {
                     case 5:
                            player.setCurrRoom(playerPrevRoom);
                            playerTurn = false;
+                           npcTurn = false;
                            fleeSucces = true;
                            display.playerFleeMessage();
                            display.printCurrRoomDescr(playerPrevRoom);
