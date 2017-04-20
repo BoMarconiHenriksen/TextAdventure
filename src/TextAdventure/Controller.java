@@ -164,63 +164,7 @@ public class Controller {
                 return input;
         }
     }
-    /**
-     * Checker om det pågældende rum har en exit for den indtastede retning
-     * @param exit
-     * @return 
-     */
-    public boolean checkExit (String exit) {
-        return player.getCurrRoom().getSpecExit(exit) != null;
-    }
     
-    
-    /**
-    *  Tjekker om player er kommet i slutrummet, og afslutter spil, hvis player er det.
-     * @param player
-    *  @since 1.0
-    */
-    public void ifWinCondition(Player player) {
-        if (player.getCurrRoom().equals(dc.rc.slutRoom)) {
-            continue_ = false;
-        }
-    }
-    
-    
-    /**
-    *  Tester player HP - Giver output om at player er død og lukker spillet,
-    *  hvis HP er 0 eller mindre.
-     * @param player
-    *  @since 1.0
-    */
-    public void ifPlayerHealthZero(Player player) {
-        if (player.stats.getHealth()<= 0) {
-            display.printActionDeath();
-            continue_ = false;
-        }
-    }
-    
-    
-    /**
-    *  Metoder der fjerner HP fra player hvis der er en fælde i rummet
-     * @param player
-    *  @since 1.0.
-    */
-    public void ifRoomContainsTrap(Player player){
-        if (player.getCurrRoom().isTrapActive()) { //Tester om der er 
-            player.getCurrRoom().springTrap(player);
-            display.printActionSpringTrap();
-            ifPlayerHealthZero(player);
-        }
-    }
-    
-    // Trigger ikke når NPC har 0HP. Kører metode der tester Player HP og slutter spillet hvis Player HP er 0 efter combat.
-    public void ifRoomContainsNpc(Player player){
-        if(player.getCurrRoom().getNpc() != null && !(player.getCurrRoom().getNpc().stats.getHealth() <= 0)){
-            display.npcAggro(player.getCurrRoom().getNpc());
-            cbt.combat(player.getCurrRoom().getNpc(), player,display);
-            ifPlayerHealthZero(player);
-        }
-    }
     
     public void commandDirection(String exit) {
         if (checkExit(exit) && player.getCurrRoom().getSpecExit(exit).unlockExitCondition(player)){ //Tjekker om der er et exit mod vest og om exit er åben
@@ -237,115 +181,6 @@ public class Controller {
                 display.printNeedGoldExit(player);
             }
         }
-    }
-    
-    public void itemChoice(String itemChoice, boolean take,ItemHolder itemHolder) {
-
-        switch(itemChoice) {
-            case "gold":
-                itemChoiceAction(display.goldAmountChoice(),take, itemHolder);
-                break;
-            case "weapon":
-                itemChoiceAction(1,display.indexRowChoice(),itemHolder, take);
-                break;
-            case "armor":
-                itemChoiceAction(2,display.indexRowChoice(),itemHolder, take);
-                break;
-            case "potion":
-                itemChoiceAction(3,display.indexRowChoice(), itemHolder, take);
-                break;
-            default:
-                display.printInvalidInput();
-                break;
-        }
-    }
-    
-    /**
-     * Checker hvor meget af en item Current ItemHolder har i et pågældende index
-     * 
-     * 
-     * 
-     * @param indexCol
-     * @param indexRow
-     */
-//    public boolean checkInvRange(int indexCol, int indexRow,ItemHolder itemholder){
-//        try {
-//            itemholder.getInventory().getItem(indexCol, indexRow);
-//            return true;
-//        }
-//        catch(IndexOutOfBoundsException e) {
-//            display.PrintOutOfBoundsInvRange();
-//            return false;
-//        }
-//    }
-    
-    /**
-     * Tager index, indexRow og om item skal placeres eller tages af player.
-     * Derefter sker handlingen og printes til display.
-     * Hvis der ikke er nok skrives 
-     * @param itemIndex
-     * @param indexRow
-     * @param take 
-     */
-//    public void itemChoiceAction(int itemIndex, int indexRow, boolean take, ItemHolder itemHolder) {
-//        if (take) {
-//            if (checkInvRange(itemIndex,indexRow,itemHolder)) {
-//                player.takeItem(itemIndex, indexRow,itemHolder);
-//    //            display.takeItem(itemIndex,indexRow);
-//            } else {
-//                display.insufficientAmount();
-//            }
-//        } else {
-//            if (checkInvRange(itemIndex,indexRow,player)) {
-//                player.placeItem(itemIndex, indexRow,itemHolder);
-// //               display.placeItem(itemIndex, indexRow);
-//            } else {
-//                display.insufficientAmount();
-//            }
-//        }
-//    }
-    
-    public void itemChoiceAction(int goldAmount, boolean take, ItemHolder itemHolder) {
-        if (take) {
-            if (enoughGold(goldAmount,itemHolder)) {
-                player.takeItem(goldAmount,itemHolder);
-                System.out.println("TILFØJ DISPLAY METODE!!");
-            } else {
-                display.insufficientAmount();
-            }
-        } else {
-            if (enoughGold(goldAmount,player)) {
-                player.placeItem(goldAmount,itemHolder);
-                System.out.println("TILFØJ DISPLAY METODE!!");
-            } else {
-                display.insufficientAmount();
-            }
-        }
-    }
-    
-    public boolean enoughGold(int amount, ItemHolder itemHolder){
-        return itemHolder.getInventory().getGoldList().get(0).getAmount() >= amount;
-    }
-    
-    public void itemChoiceAction(int itemIndex, int indexRow, ItemHolder itemHolder, boolean take) {
-        if (take){
-            try {
-                player.takeItem(itemIndex, indexRow,itemHolder);
-            } catch (IndexOutOfBoundsException e) {
-                display.PrintOutOfBoundsInvRange();
-                System.out.println("EXCEPTION: Index out of bounds");
-                System.out.println("/\\ TILFØJ METODE TIL DISPLAY /\\");
-            }
-        } else {
-            try {
-                player.placeItem(itemIndex, indexRow, itemHolder);
-            } catch (IndexOutOfBoundsException e) {
-                display.PrintOutOfBoundsInvRange();
-                System.out.println("EXCEPTION: Index out of bounds");
-                System.out.println("/\\ TILFØJ METODE TIL DISPLAY /\\");
-            }
-        }
-
     }
     
     public void commandTake(String[] command){
@@ -390,6 +225,175 @@ public class Controller {
     }
     
     
+    
+    /**
+     * Checker hvor meget af en item Current ItemHolder har i et pågældende index
+     * 
+     * 
+     * 
+     * @param indexCol
+     * @param indexRow
+     */
+//    public boolean checkInvRange(int indexCol, int indexRow,ItemHolder itemholder){
+//        try {
+//            itemholder.getInventory().getItem(indexCol, indexRow);
+//            return true;
+//        }
+//        catch(IndexOutOfBoundsException e) {
+//            display.PrintOutOfBoundsInvRange();
+//            return false;
+//        }
+//    }
+    
+    /**
+     * Tager index, indexRow og om item skal placeres eller tages af player.
+     * Derefter sker handlingen og printes til display.
+     * Hvis der ikke er nok skrives 
+     * @param goldAmount
+     * @param itemIndex
+     * @param itemHolder
+     * @param indexRow
+     * @param take 
+     */
+//    public void itemChoiceAction(int itemIndex, int indexRow, boolean take, ItemHolder itemHolder) {
+//        if (take) {
+//            if (checkInvRange(itemIndex,indexRow,itemHolder)) {
+//                player.takeItem(itemIndex, indexRow,itemHolder);
+//    //            display.takeItem(itemIndex,indexRow);
+//            } else {
+//                display.insufficientAmount();
+//            }
+//        } else {
+//            if (checkInvRange(itemIndex,indexRow,player)) {
+//                player.placeItem(itemIndex, indexRow,itemHolder);
+// //               display.placeItem(itemIndex, indexRow);
+//            } else {
+//                display.insufficientAmount();
+//            }
+//        }
+//    }
+    
+    public void itemChoice(String itemChoice, boolean take,ItemHolder itemHolder) {
+        switch(itemChoice) {
+            case "gold":
+                itemChoiceAction(display.goldAmountChoice(),itemHolder,take);
+                break;
+            case "weapon":
+                itemChoiceAction(1,display.indexRowChoice(),itemHolder, take);
+                break;
+            case "armor":
+                itemChoiceAction(2,display.indexRowChoice(),itemHolder, take);
+                break;
+            case "potion":
+                itemChoiceAction(3,display.indexRowChoice(), itemHolder, take);
+                break;
+            default:
+                display.printInvalidInput();
+                break;
+        }
+    }
+    
+    public void itemChoiceAction(int itemIndex, int indexRow, ItemHolder itemHolder, boolean take) {
+        if (take){
+            try {
+                player.takeItem(itemIndex, indexRow,itemHolder);
+                System.out.println("TILFØJ DISPLAY METODE!!");
+            } catch (IndexOutOfBoundsException e) {
+                display.PrintOutOfBoundsInvRange();
+                System.out.println("EXCEPTION: Index out of bounds");
+                System.out.println("/\\ TILFØJ METODE TIL DISPLAY /\\");
+            }
+        } else {
+            try {
+                player.placeItem(itemIndex, indexRow, itemHolder);
+                System.out.println("TILFØJ DISPLAY METODE!!");
+            } catch (IndexOutOfBoundsException e) {
+                display.PrintOutOfBoundsInvRange();
+                System.out.println("EXCEPTION: Index out of bounds");
+                System.out.println("/\\ TILFØJ METODE TIL DISPLAY /\\");
+            }
+        }
+    }
+    
+    public void itemChoiceAction(int goldAmount, ItemHolder itemHolder, boolean take) {
+        if (take) {
+            if (enoughGold(goldAmount,itemHolder)) {
+                player.takeItem(goldAmount,itemHolder);
+                System.out.println("TILFØJ DISPLAY METODE!!");
+            } else {
+                display.insufficientAmount();
+            }
+        } else {
+            if (enoughGold(goldAmount,player)) {
+                player.placeItem(goldAmount,itemHolder);
+                System.out.println("TILFØJ DISPLAY METODE!!");
+            } else {
+                display.insufficientAmount();
+            }
+        }
+    }
+    
+    public boolean enoughGold(int amount, ItemHolder itemHolder){
+        return itemHolder.getInventory().getGoldList().get(0).getAmount() >= amount;
+    }
+    
+    /**
+     * Checker om det pågældende rum har en exit for den indtastede retning
+     * @param exit
+     * @return 
+     */
+    public boolean checkExit (String exit) {
+        return player.getCurrRoom().getSpecExit(exit) != null;
+    }
+    
+    
+    /**
+    *  Tjekker om player er kommet i slutrummet, og afslutter spil, hvis player er det.
+     * @param player
+    *  @since 1.0
+    */
+    public void ifWinCondition(Player player) {
+        if (player.getCurrRoom().equals(dc.rc.slutRoom)) {
+            continue_ = false;
+        }
+    }
+    
+    
+    /**
+    *  Tester player HP - Giver output om at player er død og lukker spillet,
+    *  hvis HP er 0 eller mindre.
+     * @param player
+    *  @since 1.0
+    */
+    public void ifPlayerHealthZero(Player player) {
+        if (player.stats.getHealth()<= 0) {
+            display.printActionDeath();
+            continue_ = false;
+        }
+    }
+    
+    /**
+    *  Metoder der fjerner HP fra player hvis der er en fælde i rummet
+     * @param player
+    *  @since 1.0.
+    */
+    public void ifRoomContainsTrap(Player player){
+        if (player.getCurrRoom().isTrapActive()) { //Tester om der er 
+            player.getCurrRoom().springTrap(player);
+            display.printActionSpringTrap();
+            ifPlayerHealthZero(player);
+        }
+    }
+    
+    // Trigger ikke når NPC har 0HP. Kører metode der tester Player HP og slutter spillet hvis Player HP er 0 efter combat.
+    public void ifRoomContainsNpc(Player player){
+        if(player.getCurrRoom().getNpc() != null && !(player.getCurrRoom().getNpc().stats.getHealth() <= 0)){
+            display.npcAggro(player.getCurrRoom().getNpc());
+            cbt.combat(player.getCurrRoom().getNpc(), player,display);
+            ifPlayerHealthZero(player);
+        }
+    }
+
 }
 
 
