@@ -95,7 +95,6 @@ public class RoomConstructor implements java.io.Serializable {
         //Opretter Exits room1
         room1.setExitEast(new Exit(room2));
       
-        
         //Opretter Exits room2
         room2.setExitEast(new Exit(room3));
         room2.setExitWest(new Exit(room1));
@@ -105,12 +104,10 @@ public class RoomConstructor implements java.io.Serializable {
         room3.setExitWest(new Exit(room2));
         room3.setExitEast(new Exit(room4));
         
-        
         //Opretter Exits room4
         room4.setExitEast(new Exit(trapRoom1));
         room4.setExitWest(new Exit(room3));
         room4.setExitSouth(new Exit(room8));
-        
         
         //Opretter Exits room6
         room6.setExitEast(new Exit(room7));
@@ -129,8 +126,6 @@ public class RoomConstructor implements java.io.Serializable {
         room9.setExitNorth(new Exit(room7));
         room9.setExitSouth(new Exit(room11));
         
-       
-        
         //Opretter Exits room11
         room11.setExitNorth(new Exit(room9));
         room11.setExitSouth(new Exit(room13));
@@ -142,10 +137,8 @@ public class RoomConstructor implements java.io.Serializable {
         
         //Opretter Exits room13
         room13.setExitNorth(new Exit(room11));
-        room13.setExitSouth(new Exit(slutRoom));
+        room13.setExitSouth(new Exit(slutRoom,false));
 
- 
-        
         //Opretter Exits trap room1
         trapRoom1.setExitWest(new Exit(room4));
         
