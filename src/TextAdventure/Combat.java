@@ -19,7 +19,7 @@ public class Combat {
         while (combatLoop) {
             while (npcTurn) {
                 npc.doAttack(player);
-               
+                
                 display.playerHealthStatus(player);
                 npcTurn = false;
                 if (player.stats.getHealth() <= 0) {
@@ -35,19 +35,22 @@ public class Combat {
                     case 1: 
                             player.doAttack(npc);
                             display.npcHealthStatus(npc);
+                            playerTurn = false;
                             break;
                     case 2:
                            if(player.inventory.getPotionList().isEmpty()){
                                display.insufficientAmount();
                            }else{
                                display.usePotion();
-                               int potionEffect = player.inventory.getPotionList().get(0).getUseEffect();
-                               if(potionEffect <= 0){
+                               int potionEffect = player.inventory.getPotionList().get(0).getRandomUseEffect();
+                               if(potionEffect > 0){
                                    player.stats.setHealth(player.stats.getHealth()+potionEffect);
                                    display.gainLife(potionEffect);
+                                   playerTurn = false;
                                }else{
                                    player.stats.setHealth(player.stats.getHealth()+potionEffect);
                                    display.takeDamage(potionEffect, player);
+                                   playerTurn = false;
                                }
                            }
                            display.playerHealthStatus(player);
@@ -61,7 +64,7 @@ public class Combat {
                    
                 }
                 
-                playerTurn = false;
+                
                 if (npc.stats.getHealth() <= 0) {
                     display.npcDied(npc);
                     npc.onDeath();
