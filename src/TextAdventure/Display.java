@@ -133,37 +133,34 @@ public class Display {
     
     /**
     *  Printer om der er guld eller ingen guld i rummet.
-    *  @param room Tjekker om der er guld fra RoomItemAmount.
+    *  @param itemHolder Tjekker om der er guld fra RoomItemAmount.
     *  @since 2.0
     */
-    public void printActionLook(Room room) {
+    public void printActionLook(ItemHolder itemHolder) {
 
         System.out.print("You see: ");
-        if (!(room.getInventory().getGoldList().get(0).getAmount() == 0)){
-            System.out.println("Gold: "+room.getInventory().getGoldList().get(0).getAmount());
+        if (!(itemHolder.getInventory().getGoldList().get(0).getAmount() == 0)){
+            System.out.println("Gold: "+itemHolder.getInventory().getGoldList().get(0).getAmount());
             
-        } if (!room.getInventory().getWeaponList().isEmpty()) {
+        } if (!itemHolder.getInventory().getWeaponList().isEmpty()) {
             System.out.println("Weapons: ");
-            for (Weapon i : room.getInventory().getWeaponList()) {
-                System.out.println((room.getInventory().getWeaponList().indexOf(i) + 1) +". "+i);
+            for (Weapon i : itemHolder.getInventory().getWeaponList()) {
+                System.out.println((itemHolder.getInventory().getWeaponList().indexOf(i) + 1) +". "+i);
             }
 
-        } if (!room.getInventory().getArmorList().isEmpty()){
+        } if (!itemHolder.getInventory().getArmorList().isEmpty()){
             System.out.println("Armor: ");
-            for (Armor i : room.getInventory().getArmorList()) {
-                System.out.println((room.getInventory().getArmorList().indexOf(i) + 1) +". "+i);
+            for (Armor i : itemHolder.getInventory().getArmorList()) {
+                System.out.println((itemHolder.getInventory().getArmorList().indexOf(i) + 1) +". "+i);
             }
 
-        } if (!room.getInventory().getPotionList().isEmpty()){
+        } if (!itemHolder.getInventory().getPotionList().isEmpty()){
           System.out.println("Potions: ");
-            for (Potion i : room.getInventory().getPotionList()) {
-                System.out.println((room.getInventory().getPotionList().indexOf(i) + 1) +". "+i);
+            for (Potion i : itemHolder.getInventory().getPotionList()) {
+                System.out.println((itemHolder.getInventory().getPotionList().indexOf(i) + 1) +". "+i);
             }
-        } if (room.getNpc()!=null){
-            System.out.println("There is dead " + room.getNpc().getName() + " on the floor...");
-            
-            
-        }
+        } 
+
 
     }
 
@@ -411,7 +408,6 @@ public class Display {
             System.out.print("** Who to interact with (Room or NPC): ");
             choice = sc.nextLine().toLowerCase();
         }
-        
         switch (choice) {
             case "room":
                 return player.getCurrRoom();
@@ -450,6 +446,12 @@ public class Display {
             
         }
         return choice;
+    }
+    
+    public void lookDeadNpc(Room room) {
+        if (room.getNpc()!=null){
+            System.out.println("There is dead " + room.getNpc().getName() + " on the floor...");
+        }
     }
     
 }

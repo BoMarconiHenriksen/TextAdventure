@@ -109,7 +109,11 @@ public class Controller {
                 commandDirection(command[0]);
                 break;
             case "look":
-                display.printActionLook(player.getCurrRoom());
+                    ItemHolder ih = display.itemHolderChoice(player);
+                    display.printActionLook(ih);
+                    if (ih.equals(player.getCurrRoom())) {
+                        display.lookDeadNpc(player.getCurrRoom());
+                    } 
                 break;
             case "take":
                 commandTake(command);
@@ -144,6 +148,8 @@ public class Controller {
      */
     public String commandAliases(String input) {
         switch(input){
+            case "q":
+                return "equip";
             case "n":
                 return "north";
             case "s":
