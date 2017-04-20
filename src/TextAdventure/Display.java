@@ -421,4 +421,34 @@ public class Display {
         }
     }
     
+    public void playerFleeMessage(){
+        System.out.println("You run back to the previous room!");
+    }
+    
+    public String playerEquipChoice(){
+        sc = new Scanner(System.in);
+        boolean continue_ = true;
+        String choice = "";
+        
+        while(continue_){
+            
+            System.out.print("What do you want to equip?: ");
+            choice = sc.nextLine().toLowerCase();
+            switch(choice){
+                case "weapon":
+                case "w":
+                    continue_ = false;
+                    return "weapon";
+                case "armor":
+                case "a":
+                    continue_ = false;
+                    return "armor";
+                default: 
+                    System.out.println("Not a valid choice!");
+            }
+            
+        }
+        return choice;
+    }
+    
 }

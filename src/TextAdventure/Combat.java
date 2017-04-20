@@ -7,12 +7,12 @@ package TextAdventure;
 
 public class Combat {
 
-    
-    public void combat(NPC npc, Player player, Display display) {
+    public void combat(NPC npc, Player player, Room playerPrevRoom, Display display) {
         
         boolean combatLoop = true;
         boolean npcTurn = true;
         boolean playerTurn = true;
+        boolean fleeSucces = false;
        
         
 
@@ -46,22 +46,46 @@ public class Combat {
                                if(potionEffect > 0){
                                    player.stats.setHealth(player.stats.getHealth()+potionEffect);
                                    display.gainLife(potionEffect);
-                                   
+                                   player.inventory.removeItem(3, 0);
                                    playerTurn = false;
                                }else{
                                    player.stats.setHealth(player.stats.getHealth()+potionEffect);
                                    display.takeDamage(potionEffect, player);
+                                   player.inventory.removeItem(3, 0);
                                    playerTurn = false;
                                }
                            }
-                           player.inventory.removeItem(3, 0);
                            display.playerHealthStatus(player);
                         break;
-                        
                     case 3:
-                           // player.run
-                           // display.runattempt
-                           // if succes, combatloop = false
+                        display.printInventory(player);
+                        break;
+                    case 4:
+                            String choice = display.playerEquipChoice();
+                            try{
+                                if (choice.equals("weapon")){
+                                    player.equipWeapon(display.indexRowChoice());
+                                    display.equipItem(player.equipped.getActiveWeapon());
+                                } else if (choice.equals("armor")){
+                                    player.equipArmor(display.indexRowChoice());
+                                    display.equipItem(player.equipped.getActiveArmor());
+                                } else {
+                                    display.printInvalidInput();
+                                }
+                            }
+                            catch(IndexOutOfBoundsException e){
+                                display.PrintOutOfBoundsInvRange();
+                                System.out.println("EXCEPTION: Index out of bounds");
+                                System.out.println("/\\ TILFØJ METODE TIL DISPLAY /\\");
+                            }
+
+                        break;
+                    case 5:
+                           player.setCurrRoom(playerPrevRoom);
+                           playerTurn = false;
+                           fleeSucces = true;
+                           display.playerFleeMessage();
+                           display.printCurrRoomDescr(playerPrevRoom);
                         break;
                    
                 }
@@ -71,14 +95,13 @@ public class Combat {
                     display.npcDied(npc);
                     npc.onDeath();
                     npcTurn = false;
-                } else {
+                } else if (!(npc.stats.getHealth() <= 0) && !fleeSucces) {
                     npcTurn = true;
                 }
             }
 
             if (!npcTurn && !playerTurn) {
                 combatLoop = false;
-                
             }
         }
 

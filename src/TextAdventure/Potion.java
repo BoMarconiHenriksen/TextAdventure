@@ -8,8 +8,8 @@ import java.util.Random;
  * @since 2.0
  */
 public class Potion extends Item{
-    Random r1 = new Random(5);
-    Random r2 = new Random(5);
+    Random r1 = new Random();
+    Random r2 = new Random();
     private int useEffect;
 
     /**
@@ -53,8 +53,8 @@ public class Potion extends Item{
     }
     
     public final int getRandomUseEffect(){
-        int dice1 = r1.nextInt()+1;
-        int dice2 = r2.nextInt()+1;
+        int dice1 = r1.nextInt(5)+1;
+        int dice2 = r2.nextInt(5)+1;
         int diceresult = dice1 + dice2;
         switch(diceresult){
             case 2:

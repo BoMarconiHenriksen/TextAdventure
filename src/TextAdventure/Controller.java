@@ -32,6 +32,10 @@ public class Controller {
         player.inventory.addItem(1, dc.ic.w5);
         player.inventory.addItem(1, dc.ic.w2);
 
+        player.inventory.addItem(3, dc.ic.p1);
+        
+        
+        
         while(continue_) {
             String commandStr = display.playerInput();
             String[] command = commandStr.split(" ");
@@ -168,10 +172,11 @@ public class Controller {
     
     public void commandDirection(String exit) {
         if (checkExit(exit) && player.getCurrRoom().getSpecExit(exit).unlockExitCondition(player)){ //Tjekker om der er et exit mod vest og om exit er åben
+            Room prevRoom = player.getCurrRoom();
             player.setCurrRoom(player.getCurrRoom().getSpecExit(exit).getNextRoom()); //Flytter player til nyt rum
             display.printActionPlayerTransit();
             display.printCurrRoomDescr(player.getCurrRoom());
-            ifRoomContainsNpc(player);
+            ifRoomContainsNpc(player,prevRoom);
             ifRoomContainsTrap(player);
             ifWinCondition(player);
         } else {
@@ -223,55 +228,7 @@ public class Controller {
             display.noSpecifiedItem();
         }
     }
-    
-    
-    
-    /**
-     * Checker hvor meget af en item Current ItemHolder har i et pågældende index
-     * 
-     * 
-     * 
-     * @param indexCol
-     * @param indexRow
-     */
-//    public boolean checkInvRange(int indexCol, int indexRow,ItemHolder itemholder){
-//        try {
-//            itemholder.getInventory().getItem(indexCol, indexRow);
-//            return true;
-//        }
-//        catch(IndexOutOfBoundsException e) {
-//            display.PrintOutOfBoundsInvRange();
-//            return false;
-//        }
-//    }
-    
-    /**
-     * Tager index, indexRow og om item skal placeres eller tages af player.
-     * Derefter sker handlingen og printes til display.
-     * Hvis der ikke er nok skrives 
-     * @param goldAmount
-     * @param itemIndex
-     * @param itemHolder
-     * @param indexRow
-     * @param take 
-     */
-//    public void itemChoiceAction(int itemIndex, int indexRow, boolean take, ItemHolder itemHolder) {
-//        if (take) {
-//            if (checkInvRange(itemIndex,indexRow,itemHolder)) {
-//                player.takeItem(itemIndex, indexRow,itemHolder);
-//    //            display.takeItem(itemIndex,indexRow);
-//            } else {
-//                display.insufficientAmount();
-//            }
-//        } else {
-//            if (checkInvRange(itemIndex,indexRow,player)) {
-//                player.placeItem(itemIndex, indexRow,itemHolder);
-// //               display.placeItem(itemIndex, indexRow);
-//            } else {
-//                display.insufficientAmount();
-//            }
-//        }
-//    }
+
     
     public void itemChoice(String itemChoice, boolean take,ItemHolder itemHolder) {
         switch(itemChoice) {
@@ -386,10 +343,10 @@ public class Controller {
     }
     
     // Trigger ikke når NPC har 0HP. Kører metode der tester Player HP og slutter spillet hvis Player HP er 0 efter combat.
-    public void ifRoomContainsNpc(Player player){
+    public void ifRoomContainsNpc(Player player,Room playerPrevRoom){
         if(player.getCurrRoom().getNpc() != null && !(player.getCurrRoom().getNpc().stats.getHealth() <= 0)){
             display.npcAggro(player.getCurrRoom().getNpc());
-            cbt.combat(player.getCurrRoom().getNpc(), player,display);
+            cbt.combat(player.getCurrRoom().getNpc(), player, playerPrevRoom, display);
             ifPlayerHealthZero(player);
         }
     }
