@@ -30,37 +30,56 @@ public class RoomConstructor implements java.io.Serializable {
     */
     public void createRooms() {
         
-        startRoom = new Room(new Inventory(),"This is the startroom",false);
+        startRoom = new Room(new Inventory(),"This is where you woke up. You notice"
+                + " a disturbing painting on the far wall. Was it there before?",false);
         
         room1 = new Room(new Inventory(),"This is room 1");
         
-        room2 = new Room(new Inventory(),"This is room 2");
+        room2 = new Room(new Inventory(),"The room is covered in blue tiles. The color seems out of place."
+                + " There is a door to the west,south and east. The South door is yellow and the east door is blue.");
         
-        room3 = new Room(new Inventory(),"This is room 3");
+        room3 = new Room(new Inventory(),"The room is empty except for a large red carpet on the floor."
+                + "The walls are solid rock. There is a blue door to the west, and a red to the east");
         
-        room4 = new Room(new Inventory(),"This is room 4");
+        room4 = new Room(new Inventory(),"The room is a bright red color. Not for the faint of heart. "
+                + "There is a door to the west, south and east. The South door is green and the west door is red."
+                + " the east door is covered in blood...");
         
         // room 5 is a trap room
         
-        room6 = new Room(new Inventory(),"This is room 6");
+        room6 = new Room(new Inventory(),"The room is a bright yellow color. Sickening to the eye..."
+                + " There is a door to the west and north. The east door is purple and the north door is blue.");
         
-        room7 = new Room(new Inventory(),"This is room 7");
+        room7 = new Room(new Inventory(),"The room is purple. A comforting color in your state of distress..."
+                + " There is a door to the east, west and south. The west door is yellow and the south door is "
+                + "silver. The east door is green");
         
-        room8 = new Room(new Inventory(),"This is room 8");
+        room8 = new Room(new Inventory(),"The room is a deep green color. Are you going insane...?"
+                + "There is a door the west and north. The west door is purple and the north door is red.");
         
-        room9 = new Room(new Inventory(),"This is room 9");
+        room9 = new Room(new Inventory(),"To your great disappointment, the room is not silver. "
+                + "There are mannequins standing all around the edge of the room, looking straight at you."
+                + " You sense a movement in the corner of your eye... "
+                + "There is a door to the south and north. The north door is silver.");
         
         // room 10 is a trap room
+       
+        room11 = new Room(new Inventory(),"The room is round with paths in all directions. There is a cradle"
+                + "in the middle of the room. You hear a faint sound of a crying baby..."
+                + "the door to the west and east are covered in blood. The door to the south is white and "
+                + "the door to the north is silver.");
         
-        room11 = new Room(new Inventory(),"This is room 11");
         
-        room12 = new Room(new Inventory(),"This is room 12");
+        room12 = new Room(new Inventory(),"The room is a dead end. When you open the door you see a message "
+                + "scribbled on the far wall: HANDS OFF MY GOLD!");
         
-        room13 = new Room(new Inventory(),"This is room 13");
+        room13 = new Room(new Inventory(),"The room is huge, almost like an arena. There is a giant statue "
+                + "in the middle of the room. You see a door behind it to the south. The door is sealed and has"
+                + " a small slot for depositing coins");
         
         slutRoom = new Room(new Inventory(),"A ray of sunlight momentarilly blind you. "
-                            + "\nAs you stagger out of the darkness, you hear birds singing, smell the fresh air, feel the grass beneath your feet - you finally escaped the dungeon! \n"
-                            + "The treasure, though, is magically gone from your possenssion. It will forever belong to the Dungeon of Mysteries…");
+                            + "\nAs you stagger out of the darkness, you hear birds singing, smell the fresh air, feel the grass beneath your feet - you finally escaped! \n"
+                            + "Your items, though, are magically gone from your possession. It will forever belong to the mysterious mansion…");
         
 
        
