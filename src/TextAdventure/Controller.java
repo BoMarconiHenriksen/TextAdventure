@@ -262,15 +262,15 @@ public class Controller {
     public void itemChoiceAction(int itemIndex, int indexRow, ItemHolder itemHolder, boolean take) {
         if (take){
             try {
+                display.takeItem(player.inventory.getItem(indexRow, indexRow));
                 player.takeItem(itemIndex, indexRow,itemHolder);
-                System.out.println("TILFØJ DISPLAY METODE!!");
             } catch (IndexOutOfBoundsException e) {
                 display.emptySlotMessage();
             }
         } else {
             try {
+                display.placeItem(player.inventory.getItem(indexRow, indexRow));
                 player.placeItem(itemIndex, indexRow, itemHolder);
-                System.out.println("TILFØJ DISPLAY METODE!!");
             } catch (IndexOutOfBoundsException e) {
                 display.emptySlotMessage();
             }
@@ -280,15 +280,15 @@ public class Controller {
     public void itemChoiceAction(int goldAmount, ItemHolder itemHolder, boolean take) {
         if (take) {
             if (enoughGold(goldAmount,itemHolder)) {
+                display.takeGold(goldAmount);
                 player.takeItem(goldAmount,itemHolder);
-                System.out.println("TILFØJ DISPLAY METODE!!");
             } else {
                 display.insufficientAmount();
             }
         } else {
             if (enoughGold(goldAmount,player)) {
+                display.placeGold(goldAmount);
                 player.placeItem(goldAmount,itemHolder);
-                System.out.println("TILFØJ DISPLAY METODE!!");
             } else {
                 display.insufficientAmount();
             }

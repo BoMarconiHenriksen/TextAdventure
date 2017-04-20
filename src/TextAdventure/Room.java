@@ -16,6 +16,39 @@ public class Room extends ItemHolder{
     private Exit west = null;
     private Exit east = null;
 
+    public Room(Inventory inventory, String description, boolean trap, NPC npc,
+            Exit north, Exit south, Exit west, Exit east) {
+        super(inventory);
+        this.description = description;
+        this.trap = trap;
+        this.npc = npc;
+        this.north = north;
+        this.south = south;
+        this.west = west;
+        this.east = east;
+    }
+    
+    public Room(Inventory inventory, String description, NPC npc,
+            Exit north, Exit south, Exit west, Exit east) {
+        super(inventory);
+        this.description = description;
+        this.npc = npc;
+        this.north = north;
+        this.south = south;
+        this.west = west;
+        this.east = east;
+    }
+    
+    public Room(Inventory inventory, String description,
+            Exit north, Exit south, Exit west, Exit east) {
+        super(inventory);
+        this.description = description;
+        this.north = north;
+        this.south = south;
+        this.west = west;
+        this.east = east;
+    }
+    
     /**
      *
      * @param inventory

@@ -383,11 +383,11 @@ public class Display {
     public void takeGold(int amount){
         System.out.println("You picked up " + amount + " gold");
     }
-    public void dropGold(int amount){
+    public void placeGold(int amount){
         System.out.println("You dropped " + amount + " gold");
     }
     
-    public void dropItem(Item item){
+    public void placeItem(Item item){
         System.out.println("You dropped " + item.getName());
     }
     public void equipItem(Item item){

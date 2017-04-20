@@ -9,6 +9,11 @@ public class Exit implements java.io.Serializable{
     private Room nextRoom; // Hvilket rum exited fører til.
     private boolean open = true; // Om exited er åbent
     
+    public Exit(Room nextRoom, boolean open) {
+        this.nextRoom = nextRoom;
+        this.open = open;
+    }
+    
     /**
     * 
     * @param nextRoom 
