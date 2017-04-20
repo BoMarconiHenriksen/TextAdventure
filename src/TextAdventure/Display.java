@@ -172,6 +172,20 @@ public class Display {
     */
     public void printInventory(Player player) {
 
+        System.out.println("Eqipped:");
+        System.out.print("Weapon: ");
+        if (player.equipped.getActiveWeapon() == null) {
+            System.out.println("Empty");
+        } else {
+            System.out.println(player.equipped.getActiveWeapon());
+        }
+        System.out.print("Armor: ");
+        if (player.equipped.getActiveArmor() == null) {
+            System.out.println("Empty");
+        } else {
+            System.out.println(player.equipped.getActiveArmor());
+        }
+        
         System.out.println("Your inventory contains: ");
         System.out.println("Gold: "+player.getInventory().getGoldList().get(0).getAmount());
         
@@ -316,8 +330,8 @@ public class Display {
         System.out.println("Insufficient amount");
     }
     
-    public void PrintOutOfBoundsInvRange() {
-        System.out.println("Index Out Of Bounds Exception: CheckInventoryRange");
+    public void emptySlotMessage() {
+        System.out.println("The slot is empty!");
     }
     
     //++++++++++++++++++++++ Nye Display Metoder ++++++++++++++++++++++++++++++

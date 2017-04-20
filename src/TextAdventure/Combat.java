@@ -74,7 +74,7 @@ public class Combat {
                                 }
                             }
                             catch(IndexOutOfBoundsException e){
-                                display.PrintOutOfBoundsInvRange();
+                                display.emptySlotMessage();
                                 System.out.println("EXCEPTION: Index out of bounds");
                                 System.out.println("/\\ TILFØJ METODE TIL DISPLAY /\\");
                             }

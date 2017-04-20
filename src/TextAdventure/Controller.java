@@ -224,9 +224,7 @@ public class Controller {
                 }
             }
             catch(IndexOutOfBoundsException e){
-                display.PrintOutOfBoundsInvRange();
-                System.out.println("EXCEPTION: Index out of bounds");
-                System.out.println("/\\ TILFØJ METODE TIL DISPLAY /\\");
+                display.emptySlotMessage();
             }
         } else {
             display.noSpecifiedItem();
@@ -267,18 +265,14 @@ public class Controller {
                 player.takeItem(itemIndex, indexRow,itemHolder);
                 System.out.println("TILFØJ DISPLAY METODE!!");
             } catch (IndexOutOfBoundsException e) {
-                display.PrintOutOfBoundsInvRange();
-                System.out.println("EXCEPTION: Index out of bounds");
-                System.out.println("/\\ TILFØJ METODE TIL DISPLAY /\\");
+                display.emptySlotMessage();
             }
         } else {
             try {
                 player.placeItem(itemIndex, indexRow, itemHolder);
                 System.out.println("TILFØJ DISPLAY METODE!!");
             } catch (IndexOutOfBoundsException e) {
-                display.PrintOutOfBoundsInvRange();
-                System.out.println("EXCEPTION: Index out of bounds");
-                System.out.println("/\\ TILFØJ METODE TIL DISPLAY /\\");
+                display.emptySlotMessage();
             }
         }
     }
