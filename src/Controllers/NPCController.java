@@ -17,11 +17,11 @@ public class NPCController{
      *
      */
     public void createNPCS() {
-        nmy1 = new NPC("Spooky Scary Skeleton",new Stats(30,5,5),new Equipped(),new Inventory());
-        nmy2 = new NPC("Spooky Scary Skeleton",new Stats(30,5,5),new Equipped(),new Inventory());
-        nmy3 = new NPC("Crazy maniac",new Stats(40,8,5),new Equipped(),new Inventory());
-        nmy4 = new NPC("Mysterious Gentleman",new Stats(80,10,5),new Equipped(),new Inventory());
-        nmy5 = new NPC("The Guardian",new Stats(100,15,15),new Equipped(),new Inventory());
+        nmy1 = new NPC("Spooky Scary Skeleton",new Stats(20,2,5),new Equipped(),new Inventory());
+        nmy2 = new NPC("Spooky Scary Skeleton",new Stats(20,2,5),new Equipped(),new Inventory());
+        nmy3 = new NPC("Crazy maniac",new Stats(25,5,5),new Equipped(),new Inventory());
+        nmy4 = new NPC("Mysterious Gentleman",new Stats(70,7,5),new Equipped(),new Inventory());
+        nmy5 = new NPC("The Guardian",new Stats(70,8,10),new Equipped(),new Inventory());
     }
     
 }
