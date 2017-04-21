@@ -217,14 +217,20 @@ public class Controller {
     public void commandEquip(String[] command){
         if (command.length > 1){
             try{
-                if (command[1].equals("weapon")){
-                    player.equipWeapon(display.indexRowChoice());
-                    display.equipItem(player.equipped.getActiveWeapon());
-                } else if (command[1].equals("armor")){
-                    player.equipArmor(display.indexRowChoice());
-                    display.equipItem(player.equipped.getActiveArmor());
-                } else {
-                    display.printInvalidInput();
+                switch (command[1]) {
+                    case "weapon":
+                    case "w":
+                        player.equipWeapon(display.indexRowChoice());
+                        display.equipItem(player.equipped.getActiveWeapon());
+                        break;
+                    case "armor":
+                    case "a":
+                        player.equipArmor(display.indexRowChoice());
+                        display.equipItem(player.equipped.getActiveArmor());
+                        break;
+                    default:
+                        display.printInvalidInput();
+                        break;
                 }
             }
             catch(IndexOutOfBoundsException e){
