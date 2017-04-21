@@ -32,6 +32,17 @@ public class Inventory{
         items.add(potions);
     }
     
+    /**
+     * for testing
+     */
+    public Inventory(int goldAmount) {
+        items.add(this.gold);
+        items.get(0).add(new Gold("Gold",goldAmount,1));
+        items.add(weapons);
+        items.add(armor);
+        items.add(potions);
+    }
+    
     public ArrayList<ArrayList> getItemsList() {
         return items;
     }
