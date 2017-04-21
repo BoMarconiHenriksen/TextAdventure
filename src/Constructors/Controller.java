@@ -302,7 +302,7 @@ public class Controller {
     }
     
     /**
-     *
+     * Choosing what Item and ItemHolder the take/place command is interacting with
      * @param itemChoice
      * @param take
      */
@@ -331,7 +331,8 @@ public class Controller {
     }
     
     /**
-     *
+     * take/place the chosen Item from/at the chosen ItemHolder, if the chosen
+     * Item is contained in the Inventory indexRow.
      * @param indexCol
      * @param itemHolder
      * @param indexRow
@@ -356,7 +357,8 @@ public class Controller {
     }
     
     /**
-     *
+     * take/place the Gold Item from/at the chosen ItemHolder, if the chosen
+     * Gold amount is equal or higher than where it is taken from.
      * @param itemHolder
      * @param goldAmount
      * @param take
@@ -380,7 +382,8 @@ public class Controller {
     }
     
     /**
-     *
+     * testing if the chosen amount of gold is equal or higher than where it
+     * is taken from
      * @param amount
      * @param itemHolder
      * @return
@@ -440,7 +443,8 @@ public class Controller {
     // Trigger ikke når NPC har 0HP. Kører metode der tester Player HP og slutter spillet hvis Player HP er 0 efter combat.
 
     /**
-     *
+     * Starts the combat loop if the new currRoom contains a NPC with HP higer than 0
+     * and ends the game if Player HP is 0 or lower after the combat
      * @param player
      * @param playerPrevRoom
      */
