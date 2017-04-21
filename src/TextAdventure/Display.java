@@ -315,7 +315,7 @@ public class Display {
      * Errormessage hvis spiller skriver commando uden henvisning til item
      */
     public void noSpecifiedItem() {
-        System.out.println("Please specify an item...");
+        System.out.println("Please write a command, followed by an item");
     }
     /**
      * Errormessage hvis highscore.txt ikke kan findes af programmet
@@ -334,7 +334,7 @@ public class Display {
      * tilgængelige mængde i inventory
      */
     public void insufficientAmount() {
-        System.out.println("Insufficient amount");
+        System.out.println("You reach in your pocket, but there is nothing!");
     }
     
     public void emptySlotMessage() {
@@ -407,7 +407,7 @@ public class Display {
    
     //Display metoder fra combat klassen
     public void playerHealthStatus(Player player) {
-        System.out.println("PLAYER HEALTH: " + player.stats.getHealth());
+        System.out.println("You are now at: " + player.stats.getHealth() + "health.");
     }
     public void npcAggro(NPC npc){
         System.out.println(npc.getName() + " Attacks you!");
