@@ -1,4 +1,8 @@
-package TextAdventure;
+package Constructors;
+
+import Entities.Exit;
+import Entities.Inventory;
+import Entities.Room;
 
 /**
  * Klassen indeholder beskrivelserne af rummene og opretter exits i rummene.
@@ -6,23 +10,25 @@ package TextAdventure;
  */
 public class RoomConstructor implements java.io.Serializable {
     
-    Room startRoom;
-    Room room1;
-    Room room2;
-    Room room3;
-    Room room4;
-    Room room5;
-    Room room6;
-    Room room7;
-    Room room8;
-    Room room9;
-    Room room10;
-    Room room11;
-    Room room12;
-    Room room13;
-    Room slutRoom;
-    Room trapRoom1;
-    Room trapRoom2;
+    public Room startRoom, room1, room2, room3 ,room4, room6, room7,
+            room8, room9, room11, room12, room13, slutRoom, trapRoom1,
+            trapRoom2;
+//    Room room1;
+//    Room room2;
+//    Room room3;
+//    Room room4;
+//    Room room5;
+//    Room room6;
+//    Room room7;
+//    Room room8;
+//    Room room9;
+//    Room room10;
+//    Room room11;
+//    Room room12;
+//    Room room13;
+//    Room slutRoom;
+//    Room trapRoom1;
+//    Room trapRoom2;
     
     /**
     *  Laver rum uden fælder

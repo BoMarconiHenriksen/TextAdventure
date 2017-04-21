@@ -1,4 +1,8 @@
-package TextAdventure;
+package Constructors;
+
+import Entities.Armor;
+import Entities.Potion;
+import Entities.Weapon;
 
 /**
  *  Klassen laver items. 
@@ -6,9 +10,9 @@ package TextAdventure;
  */
 public class ItemConstructor implements java.io.Serializable{
     
-    Weapon w1,w2,w3,w4,w5;
-    Armor a1,a2,a3,a4,a5;
-    Potion p1;
+    public Weapon w1,w2,w3,w4,w5;
+    public Armor a1,a2,a3,a4,a5;
+    public Potion p1;
     // order is : Name,Attack(or defense or health),weight.
 
     /**

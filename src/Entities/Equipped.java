@@ -1,4 +1,7 @@
-package TextAdventure;
+package Entities;
+
+import Entities.Weapon;
+import Entities.Armor;
 
 /**
  * Klassen holder hvilket våben og armor som player og NPC har equipped.

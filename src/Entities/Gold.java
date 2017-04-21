@@ -1,4 +1,4 @@
-package TextAdventure;
+package Entities;
 
 /**
  *  Klassen implementerer guld i spillet.

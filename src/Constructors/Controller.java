@@ -1,5 +1,13 @@
 
-package TextAdventure;
+package Constructors;
+
+import Entities.Inventory;
+import Entities.Equipped;
+import Entities.Stats;
+import Entities.ItemHolder;
+import Entities.Room;
+import Entities.Player;
+import TextAdventure.Display;
 
 
 /**
@@ -13,7 +21,6 @@ public class Controller {
     Highscore hs;
     DungeonConstructor dc;
     Combat cbt;
-    Savegame save;
     
     boolean continue_ = true;
     
@@ -23,7 +30,6 @@ public class Controller {
         hs = new Highscore(display);
         dc = new DungeonConstructor();
         cbt = new Combat();
-        save = new Savegame();
         
         dc.createDungeon();
         

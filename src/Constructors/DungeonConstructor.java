@@ -1,4 +1,4 @@
-package TextAdventure;
+package Constructors;
 
 /**
  * Klassen laver rum og ligger item og nps'er i rummet
@@ -6,9 +6,9 @@ package TextAdventure;
  */
 public class DungeonConstructor implements java.io.Serializable{
     
-    ItemConstructor ic;
-    RoomConstructor rc;
-    NPCConstructor npc;
+    public ItemConstructor ic;
+    public RoomConstructor rc;
+    public NPCConstructor npc;
     
     /**
      *

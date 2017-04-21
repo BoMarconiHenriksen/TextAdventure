@@ -1,4 +1,4 @@
-package TextAdventure;
+package Entities;
 
 /**
  * Klassen holder informatin om spilleren.

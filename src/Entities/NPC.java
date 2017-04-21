@@ -1,4 +1,8 @@
-package TextAdventure;
+package Entities;
+
+import Entities.Character;
+import Entities.Weapon;
+import Entities.Armor;
 
 /**
  * Klassen holder oplysninger om NPC.

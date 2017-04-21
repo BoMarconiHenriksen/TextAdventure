@@ -1,4 +1,4 @@
-package TextAdventure;
+package Entities;
 
 
 import java.util.Random;

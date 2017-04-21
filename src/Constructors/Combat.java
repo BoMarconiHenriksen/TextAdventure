@@ -1,4 +1,9 @@
-package TextAdventure;
+package Constructors;
+
+import Entities.NPC;
+import Entities.Room;
+import Entities.Player;
+import TextAdventure.Display;
 
 /**
  *  Klassen der afvikler combat mellem player og npc.

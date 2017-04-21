@@ -1,4 +1,4 @@
-package TextAdventure;
+package Entities;
 
 /**
  * Interface som implementerer klasserne Armor, Gold, potion og weapon.
@@ -6,8 +6,8 @@ package TextAdventure;
  */
 public abstract class Item implements java.io.Serializable {
 
-    int weight;
-    String name;
+    public int weight;
+    public String name;
 
     /**
      *

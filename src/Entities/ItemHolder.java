@@ -1,4 +1,4 @@
-package TextAdventure;
+package Entities;
 
 /**
  *
@@ -6,7 +6,7 @@ package TextAdventure;
  */
 public abstract class ItemHolder implements java.io.Serializable{
     
-    Inventory inventory;
+    public Inventory inventory;
 
     public ItemHolder(Inventory inventory) {
         this.inventory = inventory;

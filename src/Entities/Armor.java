@@ -1,22 +1,22 @@
-package TextAdventure;
+package Entities;
 
 /**
- * Klassen implementerer weapons i spillet.
- * @since 2.0
+ *  Armor klassen implementer armor i spillet.
+ *  @since 2.0
  */
-public class Weapon extends Item {
+public class Armor extends Item {
 
-    private int attack;
+    private int defense;
 
     /**
      *
      * @param name
-     * @param attack
+     * @param defense
      * @param weight
      */
-    public Weapon(String name,int attack, int weight) {
+    public Armor(String name,int defense, int weight) {
         super(name,weight);
-        this.attack = attack;
+        this.defense = defense;
         
     }
 
@@ -40,19 +40,17 @@ public class Weapon extends Item {
         this.name = name;
     }
 
-    public int getAttack() {
-        return attack;
+    public int getDefense() {
+        return defense;
     }
 
-    public void setAttack(int attack) {
-        this.attack = attack;
+    public void setDefense(int amount) {
+        this.defense = amount;
     }
-
+    
     @Override
     public String toString() {
-        return "Weapon{" + " attack:" + attack + " Name:" + name + " weight:" + weight + "}";
+        return "Armor{" + "defense=" + defense + "Name=" + name + "weight=" + weight +'}';
     }
     
-    
-
 }

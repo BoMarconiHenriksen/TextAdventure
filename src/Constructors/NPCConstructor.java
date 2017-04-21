@@ -1,4 +1,9 @@
-package TextAdventure;
+package Constructors;
+
+import Entities.Equipped;
+import Entities.Inventory;
+import Entities.NPC;
+import Entities.Stats;
 
 /**
  *  Klassen laver NPC'erne. 
@@ -6,12 +11,8 @@ package TextAdventure;
  */
 public class NPCConstructor implements java.io.Serializable{
  
-    NPC nmy1;
-    NPC nmy2;
-    NPC nmy3;
-    NPC nmy4;
-    NPC nmy5;
-    
+    public NPC nmy1, nmy2, nmy3, nmy4, nmy5;
+
     /**
      *
      */

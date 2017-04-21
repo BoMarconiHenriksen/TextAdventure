@@ -1,5 +1,14 @@
 package TextAdventure;
 
+import Entities.NPC;
+import Entities.Item;
+import Entities.Character;
+import Entities.ItemHolder;
+import Entities.Potion;
+import Entities.Room;
+import Entities.Weapon;
+import Entities.Player;
+import Entities.Armor;
 import java.util.Scanner;
 
 /**

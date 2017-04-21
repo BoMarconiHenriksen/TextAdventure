@@ -1,4 +1,7 @@
-package TextAdventure;
+package Entities;
+
+import Entities.Room;
+import Entities.Player;
 
 /**
  *  Klassen definerer om en exit (dør) er åben, lukket og hvor den fører hen.

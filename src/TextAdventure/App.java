@@ -27,6 +27,8 @@
 */
 package TextAdventure;
 
+import Constructors.Controller;
+
 /**
  * App initierer start i controlleren.
  * @since 1.0

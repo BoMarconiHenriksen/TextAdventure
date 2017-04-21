@@ -1,4 +1,6 @@
-package TextAdventure;
+package Entities;
+
+import Entities.Player;
 
 /**
  * Klassen holder information om pågældende rum.

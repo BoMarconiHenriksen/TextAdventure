@@ -1,5 +1,10 @@
-package TextAdventure;
+package Entities;
 
+import Entities.Item;
+import Entities.Potion;
+import Entities.Weapon;
+import Entities.Gold;
+import Entities.Armor;
 import java.util.ArrayList;
 
 /**

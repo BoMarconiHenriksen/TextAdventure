@@ -1,4 +1,6 @@
-package TextAdventure;
+package Entities;
+
+import Entities.ItemHolder;
 
 /**
  * Abstract klasse samler det som en player og NPC skal have.
@@ -6,9 +8,9 @@ package TextAdventure;
  */
 public abstract class Character extends ItemHolder {
     
-    String name;
-    Stats stats;
-    Equipped equipped;
+    public String name;
+    public Stats stats;
+    public Equipped equipped;
 
     /**
      *

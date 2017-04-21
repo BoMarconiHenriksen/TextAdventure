@@ -1,4 +1,6 @@
-package TextAdventure;
+package Entities;
+
+import Entities.Character;
 
 /**
  *  Klassen holder stats for player og NPC. 

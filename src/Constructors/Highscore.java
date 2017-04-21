@@ -1,5 +1,7 @@
-package TextAdventure;
+package Constructors;
 
+import Entities.Player;
+import TextAdventure.Display;
 import java.util.Scanner;
 import java.io.*;
 import java.text.SimpleDateFormat;
