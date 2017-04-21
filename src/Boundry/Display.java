@@ -442,7 +442,7 @@ public class Display {
         String choice = "room";
         
         if (!(player.getCurrRoom().getNpc() == null)){
-            System.out.print("** Who to interact with (Room or NPC): ");
+            System.out.print("What to interact with (Room or NPC): ");
             choice = sc.nextLine().toLowerCase();
             System.out.println();
         }
