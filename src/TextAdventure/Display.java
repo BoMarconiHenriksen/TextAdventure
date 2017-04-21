@@ -36,7 +36,7 @@ public class Display {
         sc = new Scanner(System.in);
         System.out.print("Enter your name: ");
         String name = sc.nextLine();
-        System.out.println("Welcome, " + name + ".");
+        System.out.println("Welcome, " + name + ".\n");
         return name;
     }
 
@@ -70,7 +70,7 @@ public class Display {
         System.out.println("+ \'east\' or \'e\' - Go east                            +");
         System.out.println("+ \'west\' or \'w\' - Go west                            +");
         System.out.println("+ \'exit\' or \'x\' - Exit game                          +");
-        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
         // System.out.println("+ \'use\' or \'u\' + Item Name - Use an Item  +");
     }
     
@@ -79,7 +79,7 @@ public class Display {
     *  @since 1.0
     */
     public void printActionPlayerTransit() {
-        System.out.println("Walking...");
+        System.out.println("Walking...\n");
     }
     
     /**
@@ -87,7 +87,7 @@ public class Display {
     *  @since 1.0
     */
     public void printNoExit() {
-        System.out.println("You can't go this way...");
+        System.out.println("You can't go this way...\n");
     }
     
     /**
@@ -95,7 +95,7 @@ public class Display {
     *  @since 1.0
     */
     public void printInvalidInput() {
-        System.out.println("Invalid input...");
+        System.out.println("Invalid input...\n");
     }
 
     // printer beskrivelsen af nuværende 'Room'
@@ -105,7 +105,7 @@ public class Display {
     *  @since 1.0
     */
     public void printCurrRoomDescr(Room room) {
-        System.out.println(room.getDescription());
+        System.out.println(room.getDescription()+"\n");
     }
 
     // printer samt returnerer player svar p� som spillet skal afsluttes
@@ -115,7 +115,7 @@ public class Display {
     */
     public String exitChoice() {
         sc = new Scanner(System.in);
-        System.out.print("Are you sure you want to exit?: ");
+        System.out.print("Are you sure you want to exit?: "+"\n");
         String choice = sc.nextLine();
         return choice;
     }
@@ -126,7 +126,7 @@ public class Display {
     *  @since 1.0
     */
     public void printExitMessage() {
-        System.out.println("Farewell!");
+        System.out.println("Farewell!\n");
     }
 
 
@@ -164,9 +164,10 @@ public class Display {
             }
             empty = false;
         } 
+        System.out.println();
         
         if (empty){
-            System.out.println("No item, there is nothing here!");
+            System.out.println("No item, there is nothing here!"+"\n");
         }
 
     }
@@ -192,7 +193,7 @@ public class Display {
         } else {
             System.out.println(player.equipped.getActiveArmor());
         }
-        
+        System.out.println();
         System.out.println("Your inventory contains: ");
         System.out.println("Gold: "+player.getInventory().getGoldList().get(0).getAmount());
         
@@ -216,6 +217,7 @@ public class Display {
                 System.out.println((player.getInventory().getPotionList().indexOf(i) + 1) +". "+i);
             }    
         }
+        System.out.println();
               
     }
     /**
@@ -224,7 +226,7 @@ public class Display {
     *  @since 2.0
     */
     public void printNeedGoldExit(Player player) {
-        System.out.println("You need " + (100 - player.getInventory().getGoldList().get(0).getAmount()) + " gold to enter!");
+        System.out.println("You need " + (100 - player.getInventory().getGoldList().get(0).getAmount()) + " gold to enter!"+"\n");
     }
 
     
@@ -234,7 +236,7 @@ public class Display {
     *  @since 2.0
     */
     public void printFinalStats(Player player) {
-        System.out.println(player.getName()+", total amount of gold gathered: " + player.getInventory().getGoldList().get(0).getAmount());
+        System.out.println(player.getName()+", total amount of gold gathered: " + player.getInventory().getGoldList().get(0).getAmount()+"\n");
         
     }
 
@@ -244,7 +246,7 @@ public class Display {
     *  @since 1.0
     */
     public void printActionSpringTrap() {
-        System.out.println("You hit a trap in the room! You lost health...");
+        System.out.println("You hit a trap in the room! You lost health..."+"\n");
     }
 
     
@@ -253,7 +255,7 @@ public class Display {
     *  @since 1.0
     */
     public void printActionDeath() {
-        System.out.println("You have 0 health points, you die...");
+        System.out.println("You have 0 health points, you die..."+"\n");
     }
     
     /**
@@ -282,6 +284,7 @@ public class Display {
                 }
             }
         }
+        System.out.println();
         return choice;
     }
     
@@ -305,6 +308,7 @@ public class Display {
                 }
             }
         }
+        System.out.println();
         return choice;
     }
     
@@ -316,30 +320,30 @@ public class Display {
      */
     public void noSpecifiedItem() {
         System.out.println("Please write a command followed by an item category"
-                + "\n Examples : equip weapon , take armor ");
+                + "\n Examples : equip weapon , take armor "+"\n");
     }
     /**
      * Errormessage hvis highscore.txt ikke kan findes af programmet
      */
     public void errorFileNotFound() {
-        System.out.println("File not found");
+        System.out.println("File not found"+"\n");
     }
     /**
      * Errormessage hvis programmet ikke kan skrive til highscore.txt
      */
     public void errorIOException() {
-        System.out.println("Unable to write to file - File might be protected.");
+        System.out.println("Unable to write to file - File might be protected."+"\n");
     }
     /**
      * Errormessage hvis den indtastede mængde ikke matcher den 
      * tilgængelige mængde i inventory
      */
     public void insufficientAmount() {
-        System.out.println("You reach in your pocket, but there is nothing!");
+        System.out.println("You reach in your pocket, but there is nothing!"+"\n");
     }
     
     public void emptySlotMessage() {
-        System.out.println("The slot is empty");
+        System.out.println("The slot is empty!"+"\n");
     }
     
     //++++++++++++++++++++++ Nye Display Metoder ++++++++++++++++++++++++++++++
@@ -364,62 +368,62 @@ public class Display {
                _continue = false;
 
            } catch (NumberFormatException e) {
-               System.out.print("Invalid number.");
+               System.out.print("Invalid number."+"\n");
            }
         return choice;
     }
     public void attack(Character character){
-        System.out.println(character.getName() + " attacks!");
+        System.out.println(character.getName() + " attacks!"+"\n");
         
     }
     
     public void takeDamage(int amount,Character character){
-        System.out.println(character.getName() + " takes " + amount + " damage! ");
+        System.out.println(character.getName() + " takes " + amount + " damage! "+"\n");
       
     }
     public void gainLife(int amount){
-        System.out.println("You gained " + amount + " health!");
+        System.out.println("You gained " + amount + " health!"+"\n");
     }
    public void usePotion(){
-        System.out.println("You drink a mysterious potion...");
+        System.out.println("You drank a mysterious potion"+"\n");
     }
    
     public void takeItem(Item item){
-        System.out.println("You picked up: " + item.getName());
+        System.out.println("You picked up: " + item.getName()+"\n");
     }
             
     public void takeGold(int amount){
-        System.out.println("You picked up " + amount + " gold");
+        System.out.println("You picked up " + amount + " gold"+"\n");
     }
     public void placeGold(int amount){
-        System.out.println("You dropped " + amount + " gold");
+        System.out.println("You dropped " + amount + " gold"+"\n");
     }
     
     public void placeItem(Item item){
-        System.out.println("You dropped " + item.getName());
+        System.out.println("You dropped " + item.getName()+"\n");
     }
     public void equipItem(Item item){
-        System.out.println("You equipped " + item.getName());
+        System.out.println("You equipped " + item.getName()+"\n");
     }
 
     public void unequipItem(Item item){
-        System.out.println("You put " + item.getName() + " into your bag");
+        System.out.println("You put " + item.getName() + " into your bag"+"\n");
     }
    
     //Display metoder fra combat klassen
     public void playerHealthStatus(Player player) {
-        System.out.println("You are now at: " + player.stats.getHealth() + "health.");
+        System.out.println("You are now at: " + player.stats.getHealth() + "health."+"\n");
     }
     public void npcAggro(NPC npc){
-        System.out.println(npc.getName() + " Attacks you!");
+        System.out.println(npc.getName() + " Attacks you!"+"\n");
     }
     
     public void npcHealthStatus(NPC npc) {
-        System.out.println(npc.getName() + "is now at " + npc.stats.getHealth() + " health");
+        System.out.println(npc.getName() + "is now at " + npc.stats.getHealth() + " health"+"\n");
     }
     
     public void npcDied(NPC npc) {
-        System.out.println( npc.getName() + " DIED!");
+        System.out.println( npc.getName() + " DIED!"+"\n");
     }
    
     public ItemHolder itemHolderChoice(Player player){
@@ -429,6 +433,7 @@ public class Display {
         if (!(player.getCurrRoom().getNpc() == null)){
             System.out.print("** Who to interact with (Room or NPC): ");
             choice = sc.nextLine().toLowerCase();
+            System.out.println();
         }
         switch (choice) {
             case "room":
@@ -441,7 +446,7 @@ public class Display {
     }
     
     public void playerFleeMessage(){
-        System.out.println("You run back to the previous room!");
+        System.out.println("You run back to the previous room!"+"\n");
     }
     
     public String playerEquipChoice(){
@@ -453,6 +458,7 @@ public class Display {
             
             System.out.print("What do you want to equip?: ");
             choice = sc.nextLine().toLowerCase();
+            System.out.println();
             switch(choice){
                 case "weapon":
                 case "w":
@@ -463,7 +469,7 @@ public class Display {
                     continue_ = false;
                     return "armor";
                 default: 
-                    System.out.println("Not a valid choice!");
+                    System.out.println("Not a valid choice!"+"\n");
             }
             
         }
@@ -472,7 +478,7 @@ public class Display {
     
     public void lookDeadNpc(Room room) {
         if (room.getNpc()!=null){
-            System.out.println("There is dead " + room.getNpc().getName() + " on the floor...");
+            System.out.println("There is dead " + room.getNpc().getName() + " on the floor..."+"\n");
         }
     }
     
