@@ -369,6 +369,7 @@ public class Display {
     /**
      * Errormessage hvis den indtastede mængde ikke matcher den tilgængelige
      * mængde i inventory
+     * @param player
      */
     public void insufficientAmount(boolean player) {
         if (player){
@@ -468,7 +469,7 @@ public class Display {
 
     public ItemHolder itemHolderChoice(Player player) {
         sc = new Scanner(System.in);
-        String choice = "room";
+        String choice = null;
 
         if (!(player.getCurrRoom().getNpc() == null)) {
             System.out.print("What to interact with (Room or NPC): ");

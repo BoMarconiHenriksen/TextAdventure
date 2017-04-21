@@ -242,6 +242,8 @@ public class MainController {
             display.noSpecifiedItem();
         }
     }
+    
+    
 
     public void commandLook(){
         ItemHolder ih = display.itemHolderChoice(player);
