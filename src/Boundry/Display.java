@@ -1,4 +1,4 @@
-package TextAdventure;
+package Boundry;
 
 import Entities.NPC;
 import Entities.Item;

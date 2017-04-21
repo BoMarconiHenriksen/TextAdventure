@@ -7,7 +7,7 @@ import Entities.Stats;
 import Entities.ItemHolder;
 import Entities.Room;
 import Entities.Player;
-import TextAdventure.Display;
+import Boundry.Display;
 
 
 /**

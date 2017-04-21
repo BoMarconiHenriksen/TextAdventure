@@ -3,7 +3,7 @@ package Constructors;
 import Entities.NPC;
 import Entities.Room;
 import Entities.Player;
-import TextAdventure.Display;
+import Boundry.Display;
 
 /**
  *  Klassen der afvikler combat mellem player og npc.
