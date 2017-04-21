@@ -31,11 +31,14 @@ public class Display {
                 + "\n+--------------------------------------------+");
         System.out.println("                Prolouge:                     "
                 + "\nYou wake up in a padded cell. You do not know how you ended up here,"
-                + " but you know you must escape. You hear fingers scraping against the outside of the walls,"
-                + " and as the cell door slowly opens before you, it becomes clear to you that there is an evil"
-                + " in this place. An evil that wants you dead...");
+                + "\nbut you know you must escape. You hear fingers scraping against the outside of the walls,"
+                + "\nand as the cell door slowly opens before you, it becomes clear to you that there is an evil"
+                + "\nin this place. "
+                + "\nAn evil that wants you dead..."
+                + "\n");
         System.out.println("               Objective:                 "
-                + "\nEscape the Asylum of Horrors. Type 'help' to display a menu of actions you can perform."
+                + "\nEscape the Asylum of Horrors. "
+                + "\nType 'help' to display a menu of actions you can perform."
                 + "\nGood luck."
                 + "\n");
     }
