@@ -191,7 +191,7 @@ public class Display {
     */
     public void printInventory(Player player) {
 
-        System.out.println("Eqipped:");
+        System.out.println("-- Eqipped --");
         System.out.print("Weapon: ");
         if (player.equipped.getActiveWeapon() == null) {
             System.out.println("Empty");
@@ -205,7 +205,7 @@ public class Display {
             System.out.println(player.equipped.getActiveArmor());
         }
         System.out.println();
-        System.out.println("Your inventory contains: ");
+        System.out.println("-- Your inventory contains --");
         System.out.println("Gold: "+player.getInventory().getGoldList().get(0).getAmount());
         
         if (!player.getInventory().getWeaponList().isEmpty()) {

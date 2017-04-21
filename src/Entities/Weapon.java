@@ -44,7 +44,7 @@ public class Weapon extends Item {
 
     @Override
     public String toString() {
-        return name + " Attack:" + attack + " Weight: " + weight;
+        return name + " - Attack:" + attack + " Weight: " + weight;
     }
     
     
