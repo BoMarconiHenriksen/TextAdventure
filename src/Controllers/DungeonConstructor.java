@@ -31,6 +31,8 @@ public class DungeonConstructor{
         
         
         rc.room3.getInventory().addItem(1, ic.w1);
+        rc.room3.getInventory().addItem(3, ic.p1);
+        rc.room3.getInventory().addItem(3, ic.p1);
         
         
         rc.room4.getInventory().addItem(3, ic.p1);
