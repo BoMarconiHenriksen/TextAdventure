@@ -315,7 +315,8 @@ public class Display {
      * Errormessage hvis spiller skriver commando uden henvisning til item
      */
     public void noSpecifiedItem() {
-        System.out.println("Please write a command, followed by an item");
+        System.out.println("Please write a command followed by an item category"
+                + "\n Examples : equip weapon , take armor ");
     }
     /**
      * Errormessage hvis highscore.txt ikke kan findes af programmet
@@ -338,7 +339,7 @@ public class Display {
     }
     
     public void emptySlotMessage() {
-        System.out.println("The slot is empty!");
+        System.out.println("The slot is empty");
     }
     
     //++++++++++++++++++++++ Nye Display Metoder ++++++++++++++++++++++++++++++
@@ -380,7 +381,7 @@ public class Display {
         System.out.println("You gained " + amount + " health!");
     }
    public void usePotion(){
-        System.out.println("You drank a mysterious potion");
+        System.out.println("You drink a mysterious potion...");
     }
    
     public void takeItem(Item item){
