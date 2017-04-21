@@ -11,16 +11,17 @@ import Entities.Stats;
  */
 public class NPCController{
  
-    public NPC nmy1, nmy2, nmy3, nmy4;
+    public NPC nmy1, nmy2, nmy3, nmy4, nmy5;
 
     /**
      *
      */
     public void createNPCS() {
         nmy1 = new NPC("Spooky Scary Skeleton",new Stats(30,5,5),new Equipped(),new Inventory());
-        nmy2 = new NPC("Crazy maniac",new Stats(40,8,5),new Equipped(),new Inventory());
-        nmy3 = new NPC("Mysterious Gentleman",new Stats(80,10,5),new Equipped(),new Inventory());
-        nmy4 = new NPC("The Guardian",new Stats(100,15,15),new Equipped(),new Inventory());
+        nmy2 = new NPC("Spooky Scary Skeleton",new Stats(30,5,5),new Equipped(),new Inventory());
+        nmy3 = new NPC("Crazy maniac",new Stats(40,8,5),new Equipped(),new Inventory());
+        nmy4 = new NPC("Mysterious Gentleman",new Stats(80,10,5),new Equipped(),new Inventory());
+        nmy5 = new NPC("The Guardian",new Stats(100,15,15),new Equipped(),new Inventory());
     }
     
 }
