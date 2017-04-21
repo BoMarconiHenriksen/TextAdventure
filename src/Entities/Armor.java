@@ -50,7 +50,7 @@ public class Armor extends Item {
     
     @Override
     public String toString() {
-        return "Armor:" + name + "Defense=" + defense + "Weight=" + weight;
+        return name + "Defense=" + defense + "Weight=" + weight;
     }
     
 }

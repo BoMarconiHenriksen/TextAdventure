@@ -24,7 +24,9 @@ public class Controller {
     
     boolean continue_ = true;
     
-
+    /**
+     *
+     */
     public void test() {
         display = new Display();
         hs = new Highscore(display);
@@ -40,8 +42,6 @@ public class Controller {
 
         player.inventory.addItem(3, dc.ic.p1);
         dc.npc.nmy2.equipped.setActiveWeapon(dc.ic.w3);
-        
-        
         
         while(continue_) {
             String commandStr = display.playerInput();
@@ -73,6 +73,7 @@ public class Controller {
         display.welcome();
         System.out.println(player.getCurrRoom().getDescription());
         
+        // Game loop
         while(continue_) {
             String commandStr = display.playerInput();
             String[] command = commandStr.split(" ");
@@ -178,7 +179,15 @@ public class Controller {
         }
     }
     
-    
+    /**
+     * - Moving Player to the the room, specified with a chosen Exit(if the Exit is valid). 
+     * - Saving the previous Room for Combat.
+     * - Testing if the new Room contains a NPC, for combat.
+     * - Testing if the new Room contains a trap.
+     * - Testing if the new Room is the last Room, and ending the game if it is.
+     * 
+     * @param exit
+     */
     public void commandDirection(String exit) {
         if (checkExit(exit) && player.getCurrRoom().getSpecExit(exit).unlockExitCondition(player)){ //Tjekker om der er et exit mod vest og om exit er åben
             Room prevRoom = player.getCurrRoom();
@@ -197,6 +206,11 @@ public class Controller {
         }
     }
     
+    /**
+     * takes an Item, if command array is longer than 1 (containing a valid Item at index 1) 
+     * and the chosen indexRow is filled with an Item, from an ItemHolder
+     * @param command
+     */
     public void commandTake(String[] command){
         if (command.length > 1){
             //itemHolderChoice();
@@ -206,6 +220,11 @@ public class Controller {
         }
     }
     
+    /**
+     * places an Item, if command array is longer than 1 (containing a valid Item at index 1) 
+     * and the chosen indexRow is filled with an Item, to an ItemHolder
+     * @param command
+     */
     public void commandPlace(String [] command) {
         if (command.length > 1){
             //itemHolderChoice();
@@ -215,6 +234,11 @@ public class Controller {
         }
     }
     
+    /**
+     * equips weapon/armor if command array is longer than 1 (containing a valid Item at index 1)
+     * and the chosen index for row is filled with a weapon/armor
+     * @param command
+     */
     public void commandEquip(String[] command){
         if (command.length > 1){
             try{
@@ -242,6 +266,10 @@ public class Controller {
         }
     }
 
+    /**
+     * displays the Items contained in an ItemHolder's Inventory
+     * displays NPC name if the command is called for a room containing a NPC
+     */
     public void commandLook(){
         ItemHolder ih = display.itemHolderChoice(player);
         display.printActionLook(ih);
@@ -250,6 +278,10 @@ public class Controller {
         } 
     }
     
+    /**
+     * Changes the Player health equal the Potion effect,
+     * and removes the Potion from the Inventory
+     */
     public void commandPotion(){
     if(player.inventory.getPotionList().isEmpty()){
             display.insufficientAmount();
@@ -269,6 +301,11 @@ public class Controller {
         display.playerHealthStatus(player);
     }
     
+    /**
+     *
+     * @param itemChoice
+     * @param take
+     */
     public void itemChoice(String itemChoice, boolean take) {
         switch(itemChoice) {
             case "gold":
@@ -293,6 +330,13 @@ public class Controller {
         }
     }
     
+    /**
+     *
+     * @param indexCol
+     * @param itemHolder
+     * @param indexRow
+     * @param take
+     */
     public void itemChoiceAction(int indexCol, ItemHolder itemHolder, int indexRow, boolean take) {
         if (take){
             try {
@@ -311,6 +355,12 @@ public class Controller {
         }
     }
     
+    /**
+     *
+     * @param itemHolder
+     * @param goldAmount
+     * @param take
+     */
     public void itemChoiceAction(ItemHolder itemHolder,int goldAmount,  boolean take) {
         if (take) {
             if (enoughGold(goldAmount,itemHolder)) {
@@ -329,6 +379,12 @@ public class Controller {
         }
     }
     
+    /**
+     *
+     * @param amount
+     * @param itemHolder
+     * @return
+     */
     public boolean enoughGold(int amount, ItemHolder itemHolder){
         return itemHolder.getInventory().getGoldList().get(0).getAmount() >= amount;
     }
@@ -382,6 +438,12 @@ public class Controller {
     }
     
     // Trigger ikke når NPC har 0HP. Kører metode der tester Player HP og slutter spillet hvis Player HP er 0 efter combat.
+
+    /**
+     *
+     * @param player
+     * @param playerPrevRoom
+     */
     public void ifRoomContainsNpc(Player player,Room playerPrevRoom){
         if(player.getCurrRoom().getNpc() != null && !(player.getCurrRoom().getNpc().stats.getHealth() <= 0)){
             display.npcAggro(player.getCurrRoom().getNpc());
