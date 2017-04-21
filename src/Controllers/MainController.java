@@ -200,7 +200,6 @@ public class MainController {
     
     public void commandTake(String[] command){
         if (command.length > 1){
-            //itemHolderChoice();
             itemChoice(command[1],true);
         } else {
             display.noSpecifiedItem();
@@ -209,7 +208,6 @@ public class MainController {
     
     public void commandPlace(String [] command) {
         if (command.length > 1){
-            //itemHolderChoice();
             itemChoice(command[1],false);
         } else {
             display.noSpecifiedItem();
@@ -246,7 +244,7 @@ public class MainController {
     
 
     public void commandLook(){
-        ItemHolder ih = display.itemHolderChoice(player);
+        ItemHolder ih = display.itemHolderChoice(player,false);
         display.printActionLook(ih);
         if (ih.equals(player.getCurrRoom())) {
             display.lookDeadNpc(player.getCurrRoom());
@@ -279,7 +277,7 @@ public class MainController {
         switch(itemChoice) {
             case "gold":
             case "g":
-                ih = display.itemHolderChoice(player);
+                ih = display.itemHolderChoice(player,take);
                 if (ih == null) {
                     display.printInvalidInput();
                     break;
@@ -289,7 +287,7 @@ public class MainController {
                 break;
             case "weapon":
             case "w":
-                ih = display.itemHolderChoice(player);
+                ih = display.itemHolderChoice(player,take);
                 if (ih == null) {
                     display.printInvalidInput();
                     break;
@@ -299,7 +297,7 @@ public class MainController {
                 break;
             case "armor":
             case "a":
-                ih = display.itemHolderChoice(player);
+                ih = display.itemHolderChoice(player,take);
                 if (ih == null) {
                     display.printInvalidInput();
                     break;
@@ -309,7 +307,7 @@ public class MainController {
                 break;
             case "potion":
             case "p":    
-                ih = display.itemHolderChoice(player);
+                ih = display.itemHolderChoice(player,take);
                 if (ih == null) {
                     display.printInvalidInput();
                     break;
@@ -417,17 +415,7 @@ public class MainController {
             cbt.combat(player.getCurrRoom().getNpc(), player, playerPrevRoom, display);
         }
     }
-    
-    public ItemHolder loopItemHolder(){
-        ItemHolder ih = display.itemHolderChoice(player);
-        if (ih==null) {
-            display.printInvalidInput();
-            return ih;
-        } else {
-            return ih;
-        }
-        
-    }
+ 
 
 }
 

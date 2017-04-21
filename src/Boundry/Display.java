@@ -467,11 +467,11 @@ public class Display {
         System.out.println(npc.getName() + " DIED!" + "\n");
     }
 
-    public ItemHolder itemHolderChoice(Player player) {
+    public ItemHolder itemHolderChoice(Player player,boolean take) {
         sc = new Scanner(System.in);
-        String choice = null;
+        String choice = "room";
 
-        if (!(player.getCurrRoom().getNpc() == null)) {
+        if (!(player.getCurrRoom().getNpc() == null) && take) {
             System.out.print("What to interact with (Room or NPC): ");
             choice = sc.nextLine().toLowerCase();
             System.out.println();
