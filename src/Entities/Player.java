@@ -128,8 +128,8 @@ public class Player extends Character {
             this.equipped.setActiveWeapon(this.inventory.getWeaponList().get(indexRow));
             this.inventory.removeItem(1, indexRow);
         } else {
-            this.inventory.addItem(1, this.equipped.getActiveWeapon());
             this.equipped.setActiveWeapon(this.inventory.getWeaponList().get(indexRow));
+            this.inventory.addItem(1, this.equipped.getActiveWeapon());
             this.inventory.removeItem(1, indexRow);
         }
     }
@@ -143,8 +143,8 @@ public class Player extends Character {
             this.equipped.setActiveArmor(this.inventory.getArmorList().get(indexRow));
             this.inventory.removeItem(2, indexRow);
         } else {
-            this.inventory.addItem(2, this.equipped.getActiveArmor());
             this.equipped.setActiveArmor(this.inventory.getArmorList().get(indexRow));
+            this.inventory.addItem(2, this.equipped.getActiveArmor());
             this.inventory.removeItem(2, indexRow);
         }
     }

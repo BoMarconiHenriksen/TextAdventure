@@ -68,10 +68,10 @@ public class DungeonConstructor{
         // Adding NPCs to rooms
       
         rc.room1.setNpc(npc.nmy1);
-        rc.room4.setNpc(npc.nmy1);
-        rc.room9.setNpc(npc.nmy2);
-        rc.room12.setNpc(npc.nmy3);
-        rc.room13.setNpc(npc.nmy4);
+        rc.room4.setNpc(npc.nmy2);
+        rc.room9.setNpc(npc.nmy3);
+        rc.room12.setNpc(npc.nmy4);
+        rc.room13.setNpc(npc.nmy5);
         
         // Adding items to NPCs
         
