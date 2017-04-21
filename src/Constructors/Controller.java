@@ -59,39 +59,34 @@ public class Controller {
     *  This method starts the game.
     *  @since 1.0
     */
-//    public void start() {
-//        display = new Display();
-//        hs = new Highscore(display);
-//        rc = new RoomConstructor();
-//        
-//        /**
-//         * Opretter rum
-//         */
-//        rc.createRooms();
-//        
-//        player = new Player(new Inventory(), display.nameInput()); 
-//        player.setCurrRoom(rc.startRoom); 
-//        
-//        display.welcome();
-//        System.out.println(player.getCurrRoom().getDescription());
-//        
-//        while(continue_) {
-//            String[] command = new String[1];
-//            command[0] = display.playerInput();
-//            if (command[0].contains(" ")) {
-//                String[] command2 = command[0].split(" ");
-//                playerControl(command2);
-//            } else {
-//                playerControl(command);
-//            }
-//        }
-//        display.printFinalStats(player);
-//        hs.setHighscore(player);
-//        hs.sortHighscore();
-//        hs.getHighscore();
-//        display.printExitMessage();
-//        System.exit(0);
-//    }
+    public void start() {
+        display = new Display();
+        hs = new Highscore(display);
+        dc = new DungeonConstructor();
+        cbt = new Combat();
+        
+        dc.createDungeon();
+        
+        player = new Player(display.nameInput(),new Stats(100,5,0),new Equipped(),new Inventory()); 
+        player.setCurrRoom(dc.rc.startRoom); 
+        
+        display.welcome();
+        System.out.println(player.getCurrRoom().getDescription());
+        
+        while(continue_) {
+            String commandStr = display.playerInput();
+            String[] command = commandStr.split(" ");
+            command[0] = commandAliases(command[0]);
+            playerControl(command);
+        }
+        
+        display.printFinalStats(player);
+        hs.setHighscore(player);
+        hs.sortHighscore();
+        hs.getHighscore();
+        display.printExitMessage();
+        System.exit(0);
+    }
     
     
 
