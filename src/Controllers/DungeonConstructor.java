@@ -1,4 +1,4 @@
-package Constructors;
+package Controllers;
 
 /**
  * Klassen laver rum og ligger item og nps'er i rummet
@@ -6,17 +6,17 @@ package Constructors;
  */
 public class DungeonConstructor{
     
-    public ItemConstructor ic;
-    public RoomConstructor rc;
-    public NPCConstructor npc;
+    public ItemController ic;
+    public RoomController rc;
+    public NPCController npc;
     
     /**
      *
      */
     public void createDungeon() {
-        ic = new ItemConstructor();
-        rc = new RoomConstructor();
-        npc = new NPCConstructor();
+        ic = new ItemController();
+        rc = new RoomController();
+        npc = new NPCController();
         
         rc.createRooms();
         ic.createItems();

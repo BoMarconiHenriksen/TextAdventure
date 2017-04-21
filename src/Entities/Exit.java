@@ -1,8 +1,5 @@
 package Entities;
 
-import Entities.Room;
-import Entities.Player;
-
 /**
  *  Klassen definerer om en exit (dør) er åben, lukket og hvor den fører hen.
  *  @since 1.0
@@ -17,20 +14,11 @@ public class Exit{
         this.open = open;
     }
     
-    /**
-    * 
-    * @param nextRoom 
-    * @since 1.0
-    */
+
     public Exit(Room nextRoom) {
         this.nextRoom = nextRoom;
     }
 
-    /**
-    *  
-     * @return 
-    *  @since 1.0
-    */
     public Room getNextRoom() {
         return nextRoom;
     }

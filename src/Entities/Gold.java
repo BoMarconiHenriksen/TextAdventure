@@ -8,12 +8,6 @@ public class Gold extends Item{
     
     private int amount;
     
-    /**
-     *
-     * @param name
-     * @param amount
-     * @param weight
-     */
     public Gold(String name,int amount, int weight) {
         super(name,weight);
         this.amount = amount;

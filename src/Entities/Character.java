@@ -1,6 +1,5 @@
 package Entities;
 
-import Entities.ItemHolder;
 
 /**
  * Abstract klasse samler det som en player og NPC skal have.
@@ -11,15 +10,6 @@ public abstract class Character extends ItemHolder {
     public String name;
     public Stats stats;
     public Equipped equipped;
-
-    /**
-     *
-     * @param name
-     * @param stats
-     * @param equipped
-     * @param inventory
-     */
-    
 
     public Character(String name, Stats stats, Equipped equipped, Inventory inventory) {
         super(inventory);
@@ -40,10 +30,6 @@ public abstract class Character extends ItemHolder {
 
     public abstract void setEquipped(Equipped equipped);
 
-    /**
-     *
-     * @param character
-     */
     public abstract void doAttack(Character character);
     
 }

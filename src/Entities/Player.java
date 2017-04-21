@@ -9,13 +9,7 @@ public class Player extends Character {
     private Room currRoom = null; //Nuværende rum player befinder sig i
     private int maxWeight=999999;
 
-    /**
-     *
-     * @param name
-     * @param stats
-     * @param equipped
-     * @param inventory
-     */
+
     public Player(String name, Stats stats, Equipped equipped, Inventory inventory) {
         super(name,stats,equipped,inventory);
     }
@@ -26,13 +20,6 @@ public class Player extends Character {
      * @param index
      * @param amount
      * @return 
-     */
-
-    /**
-     *
-     * @param indexCol
-     * @param indexRow
-     * @param takeFrom
      */
     public void takeItem(int indexCol, int indexRow, ItemHolder takeFrom) {
         Item temp = takeFrom.getInventory().getItem(indexCol, indexRow);
@@ -67,7 +54,7 @@ public class Player extends Character {
     }
     
     /**
-     *
+     *place amount of Gold from inventory to Itemholder, remove from inventory.
      * @param goldAmount
      * @param placeTo
      */
@@ -135,7 +122,7 @@ public class Player extends Character {
     }
     
     /**
-     *
+     *equip weapon if no active weapon, else replace weapon with the one being equipped.
      * @param indexRow
      */
     public void equipWeapon(int indexRow){
@@ -150,7 +137,7 @@ public class Player extends Character {
     }
     
     /**
-     *
+     *equip armor if no active armor, else replace armor with the one being equipped.
      * @param indexRow
      */
     public void equipArmor(int indexRow){
@@ -165,7 +152,7 @@ public class Player extends Character {
     }
 
     /**
-     *
+     **calculate attack damage: if equipped weapon dmg > total armor of reciever = deal base dmg + (weapon attack damage - total armor) 
      * @param character
      */
     @Override

@@ -27,7 +27,7 @@
 */
 package TextAdventure;
 
-import Constructors.Controller;
+import Controllers.MainController;
 
 /**
  * App initierer start i controlleren.
@@ -40,7 +40,7 @@ public class App {
      * @since 1.0
      */
     public static void main(String[] args) {
-        Controller controller = new Controller();
+        MainController controller = new MainController();
         controller.start();
         //controller.test();
     }

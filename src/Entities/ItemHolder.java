@@ -1,7 +1,7 @@
 package Entities;
 
 /**
- *
+ *Abstract class extended by Character and Room classes
  * @since 3.0
  */
 public abstract class ItemHolder{

@@ -1,4 +1,4 @@
-package Constructors;
+package Controllers;
 
 import Entities.Equipped;
 import Entities.Inventory;
@@ -9,7 +9,7 @@ import Entities.Stats;
  *  Klassen laver NPC'erne. 
  *  @since 3.0
  */
-public class NPCConstructor{
+public class NPCController{
  
     public NPC nmy1, nmy2, nmy3, nmy4;
 

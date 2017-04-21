@@ -1,8 +1,5 @@
 package Entities;
 
-import Entities.Weapon;
-import Entities.Armor;
-
 /**
  * Klassen holder hvilket våben og armor som player og NPC har equipped.
  * @since 3.0
@@ -12,11 +9,6 @@ public class Equipped{
     private Weapon activeWeapon = null;
     private Armor activeArmor = null;
 
-    /**
-     *
-     * @param activeWeapon
-     * @param activeArmor
-     */
     public Equipped(Weapon activeWeapon, Armor activeArmor) {
         this.activeWeapon = activeWeapon;
         this.activeArmor = activeArmor;

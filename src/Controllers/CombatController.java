@@ -1,4 +1,4 @@
-package Constructors;
+package Controllers;
 
 import Entities.NPC;
 import Entities.Room;
@@ -10,7 +10,7 @@ import Boundry.Display;
  * @since 3.0
  */
 
-public class Combat {
+public class CombatController {
 
     public void combat(NPC npc, Player player, Room playerPrevRoom, Display display) {
         

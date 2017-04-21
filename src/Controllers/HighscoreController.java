@@ -1,4 +1,4 @@
-package Constructors;
+package Controllers;
 
 import Entities.Player;
 import Boundry.Display;
@@ -15,7 +15,7 @@ import java.util.Date;
  *
  * 
  */
-public class Highscore {
+public class HighscoreController {
 
     private final Display display;
     private final String FILENAME = "highscore.txt";
@@ -25,7 +25,7 @@ public class Highscore {
      *
      * @param display
      */
-    public Highscore(Display display) {
+    public HighscoreController(Display display) {
         this.display = display;
     }
 

@@ -1,7 +1,7 @@
 package Entities;
 
 /**
- * Interface som implementerer klasserne Armor, Gold, potion og weapon.
+ * Abstract class extended by Armor, Gold, Potion and Weapon.
  * @since 2.0
  */
 public abstract class Item {
@@ -9,11 +9,6 @@ public abstract class Item {
     public int weight;
     public String name;
 
-    /**
-     *
-     * @param name
-     * @param weight
-     */
     public Item(String name, int weight){
         this.name = name;
         this.weight = weight;

@@ -1,4 +1,4 @@
-package Constructors;
+package Controllers;
 
 import Entities.Armor;
 import Entities.Potion;
@@ -8,7 +8,7 @@ import Entities.Weapon;
  *  Klassen laver items. 
  *  @since 3.0
  */
-public class ItemConstructor{
+public class ItemController{
     
     public Weapon w1,w2,w3,w4,w5;
     public Armor a1,a2,a3,a4,a5;

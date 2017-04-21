@@ -1,23 +1,11 @@
 package Entities;
 
-import Entities.Character;
-import Entities.Weapon;
-import Entities.Armor;
-
 /**
  * Klassen holder oplysninger om NPC.
  *
  * @since 3.0
  */
 public class NPC extends Character {
-
-    /**
-     *
-     * @param name
-     * @param stats
-     * @param equipped
-     * @param inventory
-     */
     
     public NPC(String name, Stats stats, Equipped equipped, Inventory inventory) {
         super(name, stats, equipped, inventory);
@@ -64,7 +52,7 @@ public class NPC extends Character {
     }
 
     /**
-     *
+     *[on death] remove weapon and armor form Equipped and move to Inventory.
      */
     public void onDeath() {
         if (!(this.equipped.getActiveWeapon() == null)) {
@@ -80,7 +68,7 @@ public class NPC extends Character {
     }
 
     /**
-     *
+     *calculate attack damage: if equipped weapon dmg > total armor of reciever = deal base dmg + (weapon attack damage - total armor) 
      * @param character
      */
     @Override

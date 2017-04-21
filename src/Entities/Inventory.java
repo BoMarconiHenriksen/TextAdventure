@@ -1,28 +1,20 @@
 package Entities;
 
-import Entities.Item;
-import Entities.Potion;
-import Entities.Weapon;
-import Entities.Gold;
-import Entities.Armor;
 import java.util.ArrayList;
 
 /**
- *  Klassen holder inventory for spilleren og for rummene.
+ * Class contains Inventory of Player and Room
  * @since 2.0
  */
 public class Inventory{
-    //private Item[] items = new Item[4];
     private ArrayList<ArrayList> items = new ArrayList<>();
     private ArrayList<Gold> gold = new ArrayList<>();
     private ArrayList<Weapon> weapons = new ArrayList<>();
     private ArrayList<Potion> potions = new ArrayList<>();
     private ArrayList<Armor> armor = new ArrayList<>();
     
-    //Filling inventory auto
-
     /**
-     *
+     *Creates empty inventory with empty "gold" object
      */
     public Inventory() {
         items.add(this.gold);
@@ -33,7 +25,7 @@ public class Inventory{
     }
     
     /**
-     * for testing
+     * for JUnit testing
      */
     public Inventory(int goldAmount) {
         items.add(this.gold);
@@ -63,12 +55,18 @@ public class Inventory{
         return armor;
     }
 
+    /**
+     * Gets item at object specific paramterer location
+     * @param indexCol
+     * @param indexRow
+     * @return 
+     */
     public Item getItem(int indexCol, int indexRow) {
         return (Item) items.get(indexCol).get(indexRow);
     }
     
     /**
-     *
+     *remove item object at specific parameter location
      * @param indexCol
      * @param indexRow
      */
@@ -77,14 +75,17 @@ public class Inventory{
     }
 
     /**
-     *
+     * Add item object at specific paramterer location
      * @param indexCol
      * @param item
      */
     public void addItem(int indexCol, Item item) {
         items.get(indexCol).add(item);
     }
-    
+    /**
+     * Total weight of all inventory items
+     * @return 
+     */
     public int getTotalWeight() {
         int weightCounter = 0;
         weightCounter = gold.get(0).getAmount() * gold.get(0).getWeight();
