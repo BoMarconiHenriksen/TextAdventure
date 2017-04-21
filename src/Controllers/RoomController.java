@@ -42,10 +42,10 @@ public class RoomController {
         room1 = new Room(new Inventory(),"A dark room. Is there someone here? It is a dead end...");
         
         room2 = new Room(new Inventory(),"The room is covered in blue tiles. The color seems out of place."
-                + " There is a door to the west,south and east. The South door is yellow and the east door is blue.");
+                + " There is a door to the west, south and east. The South door is yellow and the east door is blue.");
         
-        room3 = new Room(new Inventory(),"The room is empty except for a large red carpet on the floor."
-                + "The walls are solid rock. There is a blue door to the west, and a red to the east");
+        room3 = new Room(new Inventory(),"The room is empty except for a large red carpet on the floor. "
+                + "The walls are solid rock. There is a blue door to the west, and a red to the east.");
         
         room4 = new Room(new Inventory(),"The room is a bright red color. Not for the faint of heart. "
                 + "There is a door to the west, south and east. The South door is green and the west door is red."
@@ -58,9 +58,9 @@ public class RoomController {
         
         room7 = new Room(new Inventory(),"The room is purple. A comforting color in your state of distress..."
                 + " There is a door to the east, west and south. The west door is yellow and the south door is "
-                + "silver. The east door is green");
+                + "silver. The east door is green.");
         
-        room8 = new Room(new Inventory(),"The room is a deep green color. Are you going insane...?"
+        room8 = new Room(new Inventory(),"The room is a deep green color. Are you going insane...? "
                 + "There is a door the west and north. The west door is purple and the north door is red.");
         
         room9 = new Room(new Inventory(),"To your great disappointment, the room is not silver. "
@@ -70,8 +70,8 @@ public class RoomController {
         
         // room 10 is a trap room
        
-        room11 = new Room(new Inventory(),"The room is round with paths in all directions. There is a cradle"
-                + "in the middle of the room. You hear a faint sound of a crying baby..."
+        room11 = new Room(new Inventory(),"The room is round with paths in all directions. There is a cradle "
+                + "in the middle of the room. You hear a faint sound of a crying baby... "
                 + "the door to the west and east are covered in blood. The door to the south is white and "
                 + "the door to the north is silver.");
         
@@ -81,7 +81,7 @@ public class RoomController {
         
         room13 = new Room(new Inventory(),"The room is huge, almost like an arena. There is a giant statue "
                 + "in the middle of the room. You see a door behind it to the south. The door is sealed and has"
-                + " a small slot for depositing coins");
+                + " a small slot for depositing coins.");
         
         slutRoom = new Room(new Inventory(),"A ray of sunlight momentarilly blind you. "
                             + "\nAs you stagger out of the darkness, you hear birds singing, smell the fresh air, feel the grass beneath your feet - you finally escaped! \n"
