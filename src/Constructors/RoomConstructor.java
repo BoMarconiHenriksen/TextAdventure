@@ -36,56 +36,70 @@ public class RoomConstructor {
     */
     public void createRooms() {
         
-        startRoom = new Room(new Inventory(),"This is where you woke up. You notice"
-                + " a disturbing painting on the far wall. Was it there before? The door to the south is open...",false);
+        startRoom = new Room(new Inventory(),"This is where you woke up. "
+                + "\nYou notice a disturbing painting on the far wall. Was it there before? "
+                + "\nThe door to the south is open...",false);
         
-        room1 = new Room(new Inventory(),"A dark room. Is there someone here? It is a dead end...");
+        room1 = new Room(new Inventory(),"A dark room. Is there someone here? "
+                + "\nIt is a dead end...");
         
         room2 = new Room(new Inventory(),"The room is covered in blue tiles. The color seems out of place."
-                + " There is a door to the west,south and east. The South door is yellow and the east door is blue.");
+                + "\nThere is a door to the west,south and east. "
+                + "\nThe South door is yellow and the east door is blue.");
         
         room3 = new Room(new Inventory(),"The room is empty except for a large red carpet on the floor."
-                + "The walls are solid rock. There is a blue door to the west, and a red to the east");
+                + "\nThe walls are solid rock. "
+                + "\nThere is a blue door to the west, and a red to the east");
         
         room4 = new Room(new Inventory(),"The room is a bright red color. Not for the faint of heart. "
-                + "There is a door to the west, south and east. The South door is green and the west door is red."
-                + " the east door is covered in blood...");
+                + "\nThere is a door to the west, south and east. The South door is green and the west door is red."
+                + "\nThe east door is covered in blood...");
         
         // room 5 is a trap room
         
         room6 = new Room(new Inventory(),"The room is a bright yellow color. Sickening to the eye..."
-                + " There is a door to the west and north. The east door is purple and the north door is blue.");
+                + "\nThere is a door to the west and north. "
+                + "\nThe east door is purple and the north door is blue.");
         
         room7 = new Room(new Inventory(),"The room is purple. A comforting color in your state of distress..."
-                + " There is a door to the east, west and south. The west door is yellow and the south door is "
-                + "silver. The east door is green");
+                + "\nThere is a door to the east, west and south. "
+                + "\nThe west door is yellow and the south door is silver. The east door is green");
         
         room8 = new Room(new Inventory(),"The room is a deep green color. Are you going insane...?"
-                + "There is a door the west and north. The west door is purple and the north door is red.");
+                + "\nThere is a door the west and north. "
+                + "\nThe west door is purple and the north door is red.");
         
         room9 = new Room(new Inventory(),"To your great disappointment, the room is not silver. "
-                + "There are mannequins standing all around the edge of the room, looking straight at you."
-                + " You sense a movement in the corner of your eye... "
-                + "There is a door to the south and north. The north door is silver.");
+                + "\nThere are mannequins standing all around the edge of the room, looking straight at you."
+                + "\nYou sense a movement in the corner of your eye... "
+                + "\nThere is a door to the south and north. The north door is silver.");
         
         // room 10 is a trap room
        
-        room11 = new Room(new Inventory(),"The room is round with paths in all directions. There is a cradle"
-                + "in the middle of the room. You hear a faint sound of a crying baby..."
-                + "the door to the west and east are covered in blood. The door to the south is white and "
-                + "the door to the north is silver.");
+        room11 = new Room(new Inventory(),"The room is round with paths in all directions. "
+                + "\nThere is a cradle in the middle of the room. "
+                + "\nYou hear a faint sound of a crying baby..."
+                + "\nThe door to the west and east are covered in blood. "
+                + "\nThe door to the south is white and the door to the north is silver.");
         
         
-        room12 = new Room(new Inventory(),"The room is a dead end. When you open the door you see a message "
-                + "scribbled on the far wall: HANDS OFF MY GOLD!");
+        room12 = new Room(new Inventory(),"The room is a dead end. "
+                + "\nWhen you open the door you see a message scribbled on the far wall: "
+                + "\nHANDS OFF MY GOLD!");
         
-        room13 = new Room(new Inventory(),"The room is huge, almost like an arena. There is a giant statue "
-                + "in the middle of the room. You see a door behind it to the south. The door is sealed and has"
-                + " a small slot for depositing coins");
+        room13 = new Room(new Inventory(),"The room is huge, almost like an arena. "
+                + "\nThere is a giant statue in the middle of the room. "
+                + "\nYou see a door behind it to the south. "
+                + "\nThe door is sealed and has a small slot for depositing coins");
         
         slutRoom = new Room(new Inventory(),"A ray of sunlight momentarilly blind you. "
-                            + "\nAs you stagger out of the darkness, you hear birds singing, smell the fresh air, feel the grass beneath your feet - you finally escaped! \n"
-                            + "Your items, though, are magically gone from your possession. It will forever belong to the mysterious mansion…");
+                            + "\nAs you stagger out of the darkness, "
+                + "\nyou hear birds singing, "
+                + "\nsmell the fresh air, "
+                + "\nfeel the grass beneath your feet. "
+                + "\nYou finally escaped! \n"
+                + "\nYour items, though, are magically gone from your possession. "
+                + "\nWas it all just a dream...?");
         
 
        
