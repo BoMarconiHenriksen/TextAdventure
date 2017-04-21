@@ -33,6 +33,7 @@ public class Controller {
         player.inventory.addItem(1, dc.ic.w2);
 
         player.inventory.addItem(3, dc.ic.p1);
+        dc.npc.nmy2.equipped.setActiveWeapon(dc.ic.w3);
         
         
         
@@ -198,7 +199,7 @@ public class Controller {
     public void commandTake(String[] command){
         if (command.length > 1){
             //itemHolderChoice();
-            itemChoice(command[1],true,display.itemHolderChoice(player));
+            itemChoice(command[1],true);
         } else {
             display.noSpecifiedItem();
         }
@@ -207,7 +208,7 @@ public class Controller {
     public void commandPlace(String [] command) {
         if (command.length > 1){
             //itemHolderChoice();
-            itemChoice(command[1],false,player.getCurrRoom());
+            itemChoice(command[1],false);
         } else {
             display.noSpecifiedItem();
         }
@@ -261,19 +262,23 @@ public class Controller {
         display.playerHealthStatus(player);
     }
     
-    public void itemChoice(String itemChoice, boolean take,ItemHolder itemHolder) {
+    public void itemChoice(String itemChoice, boolean take) {
         switch(itemChoice) {
             case "gold":
-                itemChoiceAction(display.goldAmountChoice(),itemHolder,take);
+            case "g":
+                itemChoiceAction(display.itemHolderChoice(player),display.goldAmountChoice(),take);
                 break;
             case "weapon":
-                itemChoiceAction(1,display.indexRowChoice(),itemHolder, take);
+            case "w":
+                itemChoiceAction(1,display.itemHolderChoice(player),display.indexRowChoice(), take);
                 break;
             case "armor":
-                itemChoiceAction(2,display.indexRowChoice(),itemHolder, take);
+            case "a":
+                itemChoiceAction(2,display.itemHolderChoice(player),display.indexRowChoice(), take);
                 break;
             case "potion":
-                itemChoiceAction(3,display.indexRowChoice(), itemHolder, take);
+            case "p":    
+                itemChoiceAction(3,display.itemHolderChoice(player),display.indexRowChoice(), take);
                 break;
             default:
                 display.printInvalidInput();
@@ -281,10 +286,10 @@ public class Controller {
         }
     }
     
-    public void itemChoiceAction(int indexCol, int indexRow, ItemHolder itemHolder, boolean take) {
+    public void itemChoiceAction(int indexCol, ItemHolder itemHolder, int indexRow, boolean take) {
         if (take){
             try {
-                display.takeItem(player.inventory.getItem(indexCol, indexRow));
+                display.takeItem(itemHolder.inventory.getItem(indexCol, indexRow));
                 player.takeItem(indexCol, indexRow,itemHolder);
             } catch (IndexOutOfBoundsException e) {
                 display.emptySlotMessage();
@@ -292,14 +297,14 @@ public class Controller {
         } else {
             try {
                 display.placeItem(player.inventory.getItem(indexCol, indexRow));
-                player.placeItem(indexCol, indexRow, itemHolder);
+                player.placeItem(indexCol, indexRow, player.getCurrRoom());
             } catch (IndexOutOfBoundsException e) {
                 display.emptySlotMessage();
             }
         }
     }
     
-    public void itemChoiceAction(int goldAmount, ItemHolder itemHolder, boolean take) {
+    public void itemChoiceAction(ItemHolder itemHolder,int goldAmount,  boolean take) {
         if (take) {
             if (enoughGold(goldAmount,itemHolder)) {
                 display.takeGold(goldAmount);
@@ -310,7 +315,7 @@ public class Controller {
         } else {
             if (enoughGold(goldAmount,player)) {
                 display.placeGold(goldAmount);
-                player.placeItem(goldAmount,itemHolder);
+                player.placeItem(goldAmount,player.getCurrRoom());
             } else {
                 display.insufficientAmount();
             }
