@@ -80,8 +80,7 @@ public class CombatController {
                             }
                             catch(IndexOutOfBoundsException e){
                                 display.emptySlotMessage();
-                                System.out.println("EXCEPTION: Index out of bounds");
-                                System.out.println("/\\ TILFØJ METODE TIL DISPLAY /\\");
+                               
                             }
 
                         break;
