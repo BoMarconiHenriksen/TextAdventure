@@ -270,22 +270,49 @@ public class MainController {
     }
     
     public void itemChoice(String itemChoice, boolean take) {
+        
+        ItemHolder ih;
+        
         switch(itemChoice) {
             case "gold":
             case "g":
-                itemChoiceAction(display.itemHolderChoice(player),display.goldAmountChoice(),take);
+                ih = display.itemHolderChoice(player);
+                if (ih == null) {
+                    display.printInvalidInput();
+                    break;
+                } else {
+                    itemChoiceAction(ih,display.goldAmountChoice(),take);
+                }
                 break;
             case "weapon":
             case "w":
-                itemChoiceAction(1,display.itemHolderChoice(player),display.indexRowChoice(), take);
+                ih = display.itemHolderChoice(player);
+                if (ih == null) {
+                    display.printInvalidInput();
+                    break;
+                } else {
+                    itemChoiceAction(1,ih,display.indexRowChoice(), take);
+                }
                 break;
             case "armor":
             case "a":
-                itemChoiceAction(2,display.itemHolderChoice(player),display.indexRowChoice(), take);
+                ih = display.itemHolderChoice(player);
+                if (ih == null) {
+                    display.printInvalidInput();
+                    break;
+                } else {
+                    itemChoiceAction(2,ih,display.indexRowChoice(), take);
+                }
                 break;
             case "potion":
             case "p":    
-                itemChoiceAction(3,display.itemHolderChoice(player),display.indexRowChoice(), take);
+                ih = display.itemHolderChoice(player);
+                if (ih == null) {
+                    display.printInvalidInput();
+                    break;
+                } else {
+                    itemChoiceAction(3,ih,display.indexRowChoice(), take);
+                }
                 break;
             default:
                 display.printInvalidInput();
@@ -388,6 +415,17 @@ public class MainController {
             cbt.combat(player.getCurrRoom().getNpc(), player, playerPrevRoom, display);
             ifPlayerHealthZero(player);
         }
+    }
+    
+    public ItemHolder loopItemHolder(){
+        ItemHolder ih = display.itemHolderChoice(player);
+        if (ih==null) {
+            display.printInvalidInput();
+            return ih;
+        } else {
+            return ih;
+        }
+        
     }
 
 }
