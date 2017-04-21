@@ -330,6 +330,7 @@ public class Display {
                 choice = Integer.parseInt(choiceStr) - 1;
                 _continue = false;
 
+                
             } catch (NumberFormatException e) {
                 System.out.print("Invalid number. Do you want to try again?: ");
                 String check = sc.nextLine().toLowerCase();

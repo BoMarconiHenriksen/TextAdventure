@@ -187,6 +187,7 @@ public class MainController {
             display.printCurrRoomDescr(player.getCurrRoom());
             ifRoomContainsNpc(player,prevRoom);
             ifRoomContainsTrap(player);
+            ifPlayerHealthZero(player);
             ifWinCondition(player);
         } else {
             if (!checkExit(exit)) {
@@ -404,7 +405,6 @@ public class MainController {
         if (player.getCurrRoom().isTrapActive()) { //Tester om der er 
             player.getCurrRoom().springTrap(player);
             display.printActionSpringTrap();
-            ifPlayerHealthZero(player);
         }
     }
     
@@ -413,7 +413,6 @@ public class MainController {
         if(player.getCurrRoom().getNpc() != null && !(player.getCurrRoom().getNpc().stats.getHealth() <= 0)){
             display.npcAggro(player.getCurrRoom().getNpc());
             cbt.combat(player.getCurrRoom().getNpc(), player, playerPrevRoom, display);
-            ifPlayerHealthZero(player);
         }
     }
     
