@@ -203,6 +203,11 @@ public class Display {
      */
     public void printInventory(Player player) {
 
+        System.out.println("-- Stats --");
+        System.out.println("Health: "+player.stats.getHealth());
+        System.out.println("Total attack: "+player.stats.getTotalAttack(player));
+        System.out.println("Total defense: "+player.stats.getTotalDefense(player)+"\n");
+        
         System.out.println("-- Eqipped --");
         System.out.print("Weapon: ");
         if (player.equipped.getActiveWeapon() == null) {
