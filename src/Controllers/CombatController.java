@@ -44,7 +44,7 @@ public class CombatController {
                             break;
                     case 2:
                            if(player.inventory.getPotionList().isEmpty()){
-                               display.insufficientAmount();
+                               display.insufficientAmount(true);
                            }else{
                                display.usePotion();
                                int potionEffect = player.inventory.getPotionList().get(0).getRandomUseEffect();

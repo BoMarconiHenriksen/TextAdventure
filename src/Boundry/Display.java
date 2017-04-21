@@ -370,8 +370,12 @@ public class Display {
      * Errormessage hvis den indtastede mængde ikke matcher den tilgængelige
      * mængde i inventory
      */
-    public void insufficientAmount() {
-        System.out.println("You reach in your pocket, but there is nothing!" + "\n");
+    public void insufficientAmount(boolean player) {
+        if (player){
+            System.out.println("You reach in your pocket, but there is nothing!" + "\n");
+        } else {
+            System.out.println("The amount chosen was too high!" + "\n");
+        }
     }
 
     public void emptySlotMessage() {

@@ -253,7 +253,7 @@ public class MainController {
     
     public void commandPotion(){
     if(player.inventory.getPotionList().isEmpty()){
-            display.insufficientAmount();
+            display.insufficientAmount(true);
         }else{
             display.usePotion();
             int potionEffect = player.inventory.getPotionList().get(0).getRandomUseEffect();
@@ -345,14 +345,14 @@ public class MainController {
                 display.takeGold(goldAmount);
                 player.takeItem(goldAmount,itemHolder);
             } else {
-                display.insufficientAmount();
+                display.insufficientAmount(false);
             }
         } else {
             if (enoughGold(goldAmount,player)) {
                 display.placeGold(goldAmount);
                 player.placeItem(goldAmount,player.getCurrRoom());
             } else {
-                display.insufficientAmount();
+                display.insufficientAmount(true);
             }
         }
     }
