@@ -24,12 +24,6 @@ public class DungeonConstructor{
         
         // Adding items to rooms
         
-        rc.startRoom.getInventory().addItem(2, ic.a1);
-        rc.startRoom.getInventory().addItem(1, ic.w1);
-        rc.startRoom.getInventory().addItem(3, ic.p1);
-        rc.startRoom.getInventory().getGoldList().get(0).setAmount(8);
-        //-------------------------------------------------------------------
-        
         rc.room1.getInventory().getGoldList().get(0).setAmount(15);
         
         
@@ -71,16 +65,32 @@ public class DungeonConstructor{
         rc.room13.getInventory().getGoldList().get(0).setAmount(15);
         
         
-        
-        
-        
-        
-        
         // Adding NPCs to rooms
-        rc.startRoom.setNpc(npc.nmy1);
+      
+        rc.room1.setNpc(npc.nmy1);
+        rc.room4.setNpc(npc.nmy1);
+        rc.room9.setNpc(npc.nmy2);
+        rc.room12.setNpc(npc.nmy3);
+        rc.room13.setNpc(npc.nmy4);
+        
+        // Adding items to NPCs
+        
+        npc.nmy1.equipped.setActiveArmor(ic.a1);
+        npc.nmy1.inventory.getGoldList().get(0).setAmount(5);
+        
+        npc.nmy2.equipped.setActiveWeapon(ic.w1);
+        npc.nmy2.inventory.addItem(3, ic.p1);
+        
+        npc.nmy3.equipped.setActiveWeapon(ic.w2);
+        npc.nmy3.equipped.setActiveArmor(ic.a2);
+        npc.nmy3.inventory.getGoldList().get(0).setAmount(10);
+        
+        npc.nmy4.equipped.setActiveArmor(ic.a4);
+        npc.nmy4.equipped.setActiveWeapon(ic.w3);
+        npc.nmy4.inventory.addItem(2, ic.a5);
+        npc.nmy4.inventory.addItem(1, ic.w5);
         
         
-        rc.room3.setNpc(npc.nmy2);
         
     }
      

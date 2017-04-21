@@ -19,11 +19,11 @@ public class ItemConstructor{
      *
      */
     public void createItems() {
-        w1 = new Weapon("Shank made from a toothbrush",5,10);
-        w2 = new Weapon("Baseball bat",8,30);
-        w3 = new Weapon("Weeabo katana of the dark basement",10,20);
-        w4 = new Weapon("Fist of fury-fisting",10,5);
-        w5 = new Weapon("The Ban Hammer",12,50);
+        w1 = new Weapon("Shank made from a toothbrush",10,10);
+        w2 = new Weapon("Baseball bat",12,30);
+        w3 = new Weapon("Weeabo katana of the dark basement",15,20);
+        w4 = new Weapon("Fist of fury-fisting",15,5);
+        w5 = new Weapon("The Ban Hammer",20,50);
         a1 = new Armor("Leather vest from the 90's",2,15);
         a2 = new Armor("Chestpiece of invisible torso", 4, 30);
         a3 = new Armor("Cursed bone kilt from a slut", 6, 10);

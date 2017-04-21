@@ -24,16 +24,18 @@ public class Display {
     *  @since 1.0
     */
     public void welcome() {
-        System.out.println("\nWelcome to the Dungeon of Mysteries!\n\n"
-                + "Finally you found it - the narrow passage in the mountains, just where the strange, old man from the village said it would be!  "
-                + "\nAs you squeeze through the narrow opening, you are reminded of the old mans tale, of the long forgotten treasures of the mountain.  "
-                + "\n\n"
-                + "As you move  hastily through the dank tunnel, you hear a loud *click* and a hidden trapdoor opens under you, and you fall into the darkness below.."
-                + "\n\n"
-                + ".. You open your eyes, unharmed. "
-                + "\nUnable to reach the trapdoor way above, you must find another way out of the dungeon.\n"
-                + "\n"
-                + "If you feel scared and alone in the dungeon just shout help or even better try to write help on the dusty floor in a room.\n");
+        System.out.println("+------------Text adventure game:------------+"
+                       + "\n+             Asylum of Horrors              +"
+                +        "\n+--------------------------------------------+");
+        System.out.println("                Prolouge:                     "
+                +        "\nYou wake up in a padded cell. You do not know how you ended up here,"
+                + " but you know you must escape. You hear fingers scraping against the outside of the walls,"
+                + " and as the cell door slowly opens before you, it becomes clear to you that there is an evil"
+                + " in this place. An evil that wants you dead...");
+        System.out.println("               Objective:                 "
+                + "\nEscape the Asylum of Horrors. Type 'help' to display a menu of actions you can perform."
+                + "\nGood luck."
+                + "\n");
     }
 
     
