@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *  Klassen holder inventory for spilleren og for rummene.
  * @since 2.0
  */
-public class Inventory implements java.io.Serializable{
+public class Inventory{
     //private Item[] items = new Item[4];
     private ArrayList<ArrayList> items = new ArrayList<>();
     private ArrayList<Gold> gold = new ArrayList<>();

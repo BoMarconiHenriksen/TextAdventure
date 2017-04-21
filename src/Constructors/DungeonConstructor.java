@@ -4,7 +4,7 @@ package Constructors;
  * Klassen laver rum og ligger item og nps'er i rummet
  * @since 3.0
  */
-public class DungeonConstructor implements java.io.Serializable{
+public class DungeonConstructor{
     
     public ItemConstructor ic;
     public RoomConstructor rc;

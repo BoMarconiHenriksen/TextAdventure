@@ -9,7 +9,7 @@ import Entities.Stats;
  *  Klassen laver NPC'erne. 
  *  @since 3.0
  */
-public class NPCConstructor implements java.io.Serializable{
+public class NPCConstructor{
  
     public NPC nmy1, nmy2, nmy3, nmy4, nmy5;
 

@@ -7,7 +7,7 @@ import Entities.Armor;
  * Klassen holder hvilket våben og armor som player og NPC har equipped.
  * @since 3.0
  */
-public class Equipped implements java.io.Serializable{
+public class Equipped{
     
     private Weapon activeWeapon = null;
     private Armor activeArmor = null;

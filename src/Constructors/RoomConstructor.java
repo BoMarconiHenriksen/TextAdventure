@@ -8,7 +8,7 @@ import Entities.Room;
  * Klassen indeholder beskrivelserne af rummene og opretter exits i rummene.
  * @since 2.0
  */
-public class RoomConstructor implements java.io.Serializable {
+public class RoomConstructor {
     
     public Room startRoom, room1, room2, room3 ,room4, room6, room7,
             room8, room9, room11, room12, room13, slutRoom, trapRoom1,

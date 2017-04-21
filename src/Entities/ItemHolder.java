@@ -4,7 +4,7 @@ package Entities;
  *
  * @since 3.0
  */
-public abstract class ItemHolder implements java.io.Serializable{
+public abstract class ItemHolder{
     
     public Inventory inventory;
 
