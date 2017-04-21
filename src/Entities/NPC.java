@@ -68,7 +68,7 @@ public class NPC extends Character {
     }
 
     /**
-     *calculate attack damage: if equipped weapon dmg > total armor of reciever = deal base dmg + (weapon attack damage - total armor) 
+     *calculate attack damage: if equipped weapon dmg is greater than total armor of reciever = deal base dmg + (weapon attack damage - total armor) 
      * @param character
      */
     @Override
