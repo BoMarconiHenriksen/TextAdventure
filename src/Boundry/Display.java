@@ -423,7 +423,7 @@ public class Display {
    
     //Display metoder fra combat klassen
     public void playerHealthStatus(Player player) {
-        System.out.println("You are now at: " + player.stats.getHealth() + "health."+"\n");
+        System.out.println("You are now at: " + player.stats.getHealth() + " health."+"\n");
     }
     public void npcAggro(NPC npc){
         System.out.println(npc.getName() + " Attacks you!"+"\n");

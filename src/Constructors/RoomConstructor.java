@@ -37,9 +37,9 @@ public class RoomConstructor {
     public void createRooms() {
         
         startRoom = new Room(new Inventory(),"This is where you woke up. You notice"
-                + " a disturbing painting on the far wall. Was it there before?",false);
+                + " a disturbing painting on the far wall. Was it there before? The door to the south is open...",false);
         
-        room1 = new Room(new Inventory(),"This is room 1");
+        room1 = new Room(new Inventory(),"A dark room. Is there someone here? It is a dead end...");
         
         room2 = new Room(new Inventory(),"The room is covered in blue tiles. The color seems out of place."
                 + " There is a door to the west,south and east. The South door is yellow and the east door is blue.");
