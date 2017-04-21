@@ -1,10 +1,7 @@
 package Entities;
 
-import Entities.Player;
-
 /**
- * Klassen holder information om pågældende rum.
- *
+ * Class extends Itemholder and has Room related info
  * @since 1.0
  */
 public class Room extends ItemHolder{
@@ -51,13 +48,6 @@ public class Room extends ItemHolder{
         this.east = east;
     }
     
-    /**
-     *
-     * @param inventory
-     * @param description
-     * @param trap
-     * @param npc
-     */
     public Room(Inventory inventory, String description, boolean trap, NPC npc) {
         super(inventory);
         this.description = description;
@@ -71,11 +61,6 @@ public class Room extends ItemHolder{
         this.trap = trap;
     }
 
-    /**
-     *
-     * @param inventory
-     * @param description
-     */
     public Room(Inventory inventory, String description) {
         super(inventory);
         this.description = description;
@@ -94,7 +79,11 @@ public class Room extends ItemHolder{
     public String getDescription() {
         return description;
     }
-
+/**
+ * Get a specific exit direction..
+ * @param exit
+ * @return 
+ */
     public Exit getSpecExit(String exit) {
         switch (exit) {
             case "north":
@@ -151,8 +140,7 @@ public class Room extends ItemHolder{
     }
 
     /**
-     * Fjerner 50 hp fra player og fjerner trap
-     *
+     * Trap logic: removed 50 HP from player and set trap to inactive.
      * @param player a
      * @since 1.0
      */

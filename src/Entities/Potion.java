@@ -4,7 +4,7 @@ package Entities;
 import java.util.Random;
 
 /**
- * Klassen implementerer potions i spillet.
+ * Class extends Item and implements potions into the game.
  * @since 2.0
  */
 public class Potion extends Item{
@@ -12,12 +12,6 @@ public class Potion extends Item{
     Random r2 = new Random();
     private int useEffect;
 
-    /**
-     *
-     * @param name
-     * @param useEffect
-     * @param weight
-     */
     public Potion(String name, int weight) {
         super(name,weight);
         this.useEffect = this.getRandomUseEffect();
@@ -52,6 +46,10 @@ public class Potion extends Item{
         this.useEffect = this.getRandomUseEffect();
     }
     
+    /**
+     * random potion use effect with chance of de- or increase of player HP
+     * @return 
+     */
     public final int getRandomUseEffect(){
         int dice1 = r1.nextInt(5)+1;
         int dice2 = r2.nextInt(5)+1;

@@ -15,8 +15,7 @@ public class Player extends Character {
     }
  
      /* 
-     * Tilføjer item til player inventory og fjerner den tilsvarende
-     * item fra room inventory 
+     * add item to inventory from itemholder, and removes it from itenmholder
      * @param index
      * @param amount
      * @return 
@@ -28,7 +27,7 @@ public class Player extends Character {
     }
     
     /**
-     *
+     * Add gold to inventory from itemholder, and removes gold from itemholder
      * @param goldAmount
      * @param takeFrom
      */
@@ -41,8 +40,7 @@ public class Player extends Character {
 
     
     /**
-     * Tilføjer item til room inventory og fjerner den tilsvarende
-     * item fra player inventory
+     * Add item to itemholder from inventory, and remove it from inventory.
      * @param indexCol
      * @param indexRow 
      * @param placeTo 
@@ -54,7 +52,7 @@ public class Player extends Character {
     }
     
     /**
-     *place amount of Gold from inventory to Itemholder, remove from inventory.
+     * Add gold to itemholder from inventory, and remove it from inventory.
      * @param goldAmount
      * @param placeTo
      */

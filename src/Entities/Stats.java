@@ -1,9 +1,7 @@
 package Entities;
 
-import Entities.Character;
-
 /**
- *  Klassen holder stats for player og NPC. 
+ * Class hold stats for Player and NPC
  *  @since 3.0
  */
 public class Stats{
@@ -12,12 +10,6 @@ public class Stats{
     private int attack;
     private int defense;
 
-    /**
-     *
-     * @param health
-     * @param attack
-     * @param defense
-     */
     public Stats(int health, int attack, int defense) {
         this.health = health;
         this.attack = attack;
@@ -48,6 +40,11 @@ public class Stats{
         this.defense = defense;
     }
     
+    /**
+     * calculate total attack damage for character
+     * @param character
+     * @return 
+     */
     public int getTotalAttack(Character character) {
         if (character.equipped.getActiveWeapon()!=null) {
             return this.attack + character.equipped.getActiveWeapon().getAttack();
@@ -56,6 +53,11 @@ public class Stats{
         }
     }
     
+    /**
+     * calculate total defense for character
+     * @param character
+     * @return 
+     */
     public int getTotalDefense(Character character) {
         if (character.equipped.getActiveArmor()!=null) {
             return this.defense + character.equipped.getActiveArmor().getDefense();

@@ -1,7 +1,7 @@
 package Entities;
 
 /**
- * Klassen holder oplysninger om NPC.
+ * Class contains NPC related info
  *
  * @since 3.0
  */
