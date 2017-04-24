@@ -85,9 +85,11 @@ public class NPC extends Character {
     }
 
     @Override
-    public void usePotion() {
+    public int usePotion() {
+        int returnValue = this.inventory.getPotion(0).getUseEffect();
         this.stats.setHealth(this.stats.getHealth()+this.inventory.getPotion(0).getUseEffect());
         this.inventory.removeItem(3, 0);
+        return returnValue;
     }
 
 }

@@ -47,10 +47,11 @@ public class CombatController {
                                display.insufficientAmount(true);
                            }else{
                                display.usePotion();
-                               int potionEffect = player.inventory.getPotion(0).getRandomUseEffect();
-                               player.usePotion();
-                               display.statusHealth(potionEffect, player);
+                               display.statusHealth(player.usePotion(), player);
                                playerTurn = false;
+                               if (player.stats.getHealth() <= 0) {
+                                    npcTurn = false;
+                               }
                            }
                            display.playerHealthStatus(player);
                         break;

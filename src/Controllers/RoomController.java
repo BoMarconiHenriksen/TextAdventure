@@ -14,7 +14,6 @@ public class RoomController {
             room8, room9, room11, room12, room13, slutRoom, trapRoom1,
             trapRoom2;
 
-    
     /**
     *  Laver rum uden fælder
     *  @since 1.0
