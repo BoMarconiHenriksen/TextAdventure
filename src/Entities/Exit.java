@@ -1,28 +1,24 @@
-package TextAdventure;
+package Entities;
 
 /**
  *  Klassen definerer om en exit (dør) er åben, lukket og hvor den fører hen.
  *  @since 1.0
  */
-public class Exit {
+public class Exit{
     
     private Room nextRoom; // Hvilket rum exited fører til.
     private boolean open = true; // Om exited er åbent
     
-    /**
-    * 
-    * @param nextRoom 
-    * @since 1.0
-    */
+    public Exit(Room nextRoom, boolean open) {
+        this.nextRoom = nextRoom;
+        this.open = open;
+    }
+    
+
     public Exit(Room nextRoom) {
         this.nextRoom = nextRoom;
     }
 
-    /**
-    *  
-     * @return 
-    *  @since 1.0
-    */
     public Room getNextRoom() {
         return nextRoom;
     }
@@ -62,7 +58,7 @@ public class Exit {
     */
     public boolean unlockExitCondition(Player player) {
         if (this.open != true) {
-            if (player.getItemAmount(0) >= 100) {
+            if (player.getInventory().getGold().getAmount() >= 100) {
                 this.open = true;
                 return true;
             } else {

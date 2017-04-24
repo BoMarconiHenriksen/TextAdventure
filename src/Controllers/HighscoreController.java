@@ -1,5 +1,7 @@
-package TextAdventure;
+package Controllers;
 
+import Entities.Player;
+import Boundry.Display;
 import java.util.Scanner;
 import java.io.*;
 import java.text.SimpleDateFormat;
@@ -11,15 +13,19 @@ import java.util.Date;
  *
  * Simple highscore history, written to a .txt file.
  *
- * @author awha8
+ * 
  */
-public class Highscore {
+public class HighscoreController {
 
     private final Display display;
     private final String FILENAME = "highscore.txt";
     private final File FILE = new File(FILENAME);
 
-    public Highscore(Display display) {
+    /**
+     *
+     * @param display
+     */
+    public HighscoreController(Display display) {
         this.display = display;
     }
 
@@ -67,7 +73,7 @@ public class Highscore {
     public void setHighscore(Player player) {
 
         String timestamp = timestamp();
-        String lineToAppend = player.getItemAmount(0) + " " + player.getName() + " " + timestamp;
+        String lineToAppend = player.getInventory().getGold().getAmount() + " " + player.getName() + " " + timestamp;
 
         try {
             FileWriter fw = new FileWriter(FILENAME, true);  //true = append
