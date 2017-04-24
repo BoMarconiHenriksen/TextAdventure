@@ -14,8 +14,7 @@ public class Potion extends Item{
 
     public Potion(String name, int weight) {
         super(name,weight);
-        //this.useEffect = this.getRandomUseEffect();
-        this.useEffect = -200;
+        this.useEffect = this.getRandomUseEffect();
         
     }
 

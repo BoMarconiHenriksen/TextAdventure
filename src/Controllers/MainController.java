@@ -19,7 +19,7 @@ public class MainController {
     Display display;
     Player player;
     HighscoreController hs;
-    DungeonConstructor dc;
+    DungeonController dc;
     CombatController cbt;
     
     boolean continue_ = true;
@@ -28,7 +28,7 @@ public class MainController {
     public void test() {
         display = new Display();
         hs = new HighscoreController(display);
-        dc = new DungeonConstructor();
+        dc = new DungeonController();
         cbt = new CombatController();
         
         dc.createDungeon();
@@ -62,7 +62,7 @@ public class MainController {
     public void start() {
         display = new Display();
         hs = new HighscoreController(display);
-        dc = new DungeonConstructor();
+        dc = new DungeonController();
         cbt = new CombatController();
         
         dc.createDungeon();
