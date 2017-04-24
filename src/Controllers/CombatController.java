@@ -49,9 +49,6 @@ public class CombatController {
                                display.usePotion();
                                display.statusHealth(player.usePotion(), player);
                                playerTurn = false;
-                               if (player.stats.getHealth() <= 0) {
-                                    npcTurn = false;
-                               }
                            }
                            display.playerHealthStatus(player);
                         break;
@@ -95,6 +92,8 @@ public class CombatController {
                     npcTurn = false;
                 } else if (!(npc.stats.getHealth() <= 0) && !fleeSucces) {
                     npcTurn = true;
+                } else if (player.stats.getHealth() <= 0) {
+                    npcTurn = false;
                 }
             }
 
