@@ -32,10 +32,10 @@ public class Player extends Character {
      * @param takeFrom
      */
     public void takeItem(int goldAmount, ItemHolder takeFrom) {
-        int temp = takeFrom.getInventory().getGoldList().get(0).getAmount();
-        takeFrom.getInventory().getGoldList().get(0).setAmount(temp - goldAmount);
-        temp = this.getInventory().getGoldList().get(0).getAmount();
-        this.getInventory().getGoldList().get(0).setAmount(goldAmount+temp);
+        int temp = takeFrom.getInventory().getGold().getAmount();
+        takeFrom.getInventory().getGold().setAmount(temp - goldAmount);
+        temp = this.getInventory().getGold().getAmount();
+        this.getInventory().getGold().setAmount(goldAmount+temp);
     }
 
     
@@ -57,10 +57,10 @@ public class Player extends Character {
      * @param placeTo
      */
     public void placeItem(int goldAmount, ItemHolder placeTo) {
-        int temp = this.getInventory().getGoldList().get(0).getAmount();
-        this.getInventory().getGoldList().get(0).setAmount(temp - goldAmount);
-        temp = placeTo.getInventory().getGoldList().get(0).getAmount();
-        placeTo.getInventory().getGoldList().get(0).setAmount(goldAmount+temp);
+        int temp = this.getInventory().getGold().getAmount();
+        this.getInventory().getGold().setAmount(temp - goldAmount);
+        temp = placeTo.getInventory().getGold().getAmount();
+        placeTo.getInventory().getGold().setAmount(goldAmount+temp);
     }
     
     public Room getCurrRoom() {
@@ -125,11 +125,11 @@ public class Player extends Character {
      */
     public void equipWeapon(int indexRow){
         if (this.equipped.getActiveWeapon() == null){
-            this.equipped.setActiveWeapon(this.inventory.getWeaponList().get(indexRow));
+            this.equipped.setActiveWeapon(this.inventory.getWeapon(indexRow));
             this.inventory.removeItem(1, indexRow);
         } else {
             Weapon temp = this.equipped.getActiveWeapon();
-            this.equipped.setActiveWeapon(this.inventory.getWeaponList().get(indexRow));
+            this.equipped.setActiveWeapon(this.inventory.getWeapon(indexRow));
             this.inventory.addItem(1, temp);
             this.inventory.removeItem(1, indexRow);
         }
@@ -141,11 +141,11 @@ public class Player extends Character {
      */
     public void equipArmor(int indexRow){
         if (this.equipped.getActiveArmor() == null){
-            this.equipped.setActiveArmor(this.inventory.getArmorList().get(indexRow));
+            this.equipped.setActiveArmor(this.inventory.getArmor(indexRow));
             this.inventory.removeItem(2, indexRow);
         } else {
             Armor temp = this.equipped.getActiveArmor();
-            this.equipped.setActiveArmor(this.inventory.getArmorList().get(indexRow));
+            this.equipped.setActiveArmor(this.inventory.getArmor(indexRow));
             this.inventory.addItem(2, temp);
             this.inventory.removeItem(2, indexRow);
         }
@@ -170,6 +170,14 @@ public class Player extends Character {
         
         System.out.println(character.getName() + " Takes " + dmg + " damage!");
 
+    }
+
+    @Override
+    public int usePotion() {
+        int returnValue = this.inventory.getPotion(0).getUseEffect();
+        this.stats.setHealth(this.stats.getHealth()+this.inventory.getPotion(0).getUseEffect());
+        this.inventory.removeItem(3, 0);
+        return returnValue;
     }
 
 }

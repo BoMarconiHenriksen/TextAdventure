@@ -24,7 +24,7 @@ public class DungeonConstructor{
         
         // Adding items to rooms
         
-        rc.room1.getInventory().getGoldList().get(0).setAmount(15);
+        rc.room1.getInventory().getGold().setAmount(15);
         
         
         rc.room2.getInventory().addItem(2, ic.a1);
@@ -38,7 +38,7 @@ public class DungeonConstructor{
         rc.room4.getInventory().addItem(3, ic.p1);
         
         
-        rc.trapRoom1.getInventory().getGoldList().get(0).setAmount(10);
+        rc.trapRoom1.getInventory().getGold().setAmount(10);
         
         
         rc.room6.getInventory().addItem(3, ic.p1);
@@ -47,24 +47,24 @@ public class DungeonConstructor{
         rc.room7.getInventory().addItem(1, ic.w2);
         
         
-        rc.room8.getInventory().getGoldList().get(0).setAmount(10);
+        rc.room8.getInventory().getGold().setAmount(10);
         
         
-        rc.room9.getInventory().getGoldList().get(0).setAmount(20);
+        rc.room9.getInventory().getGold().setAmount(20);
         rc.room9.getInventory().addItem(3, ic.p1);
         
         
-        rc.trapRoom2.getInventory().getGoldList().get(0).setAmount(20);
+        rc.trapRoom2.getInventory().getGold().setAmount(20);
         rc.trapRoom2.getInventory().addItem(1, ic.w4);
         
         
         rc.room11.getInventory().addItem(2, ic.a3);
         
         
-        rc.room12.getInventory().getGoldList().get(0).setAmount(10);
+        rc.room12.getInventory().getGold().setAmount(10);
         
         
-        rc.room13.getInventory().getGoldList().get(0).setAmount(15);
+        rc.room13.getInventory().getGold().setAmount(15);
         
         
         // Adding NPCs to rooms
@@ -78,14 +78,14 @@ public class DungeonConstructor{
         // Adding items to NPCs
         
         npc.nmy1.equipped.setActiveArmor(ic.a1);
-        npc.nmy1.inventory.getGoldList().get(0).setAmount(5);
+        npc.nmy1.inventory.getGold().setAmount(5);
         
         npc.nmy2.equipped.setActiveWeapon(ic.w1);
         npc.nmy2.inventory.addItem(3, ic.p1);
         
         npc.nmy3.equipped.setActiveWeapon(ic.w2);
         npc.nmy3.equipped.setActiveArmor(ic.a2);
-        npc.nmy3.inventory.getGoldList().get(0).setAmount(10);
+        npc.nmy3.inventory.getGold().setAmount(10);
         
         npc.nmy4.equipped.setActiveArmor(ic.a4);
         npc.nmy4.equipped.setActiveWeapon(ic.w3);

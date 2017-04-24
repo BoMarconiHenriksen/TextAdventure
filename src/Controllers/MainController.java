@@ -252,22 +252,13 @@ public class MainController {
     }
     
     public void commandPotion(){
-    if(player.inventory.getPotionList().isEmpty()){
-            display.insufficientAmount(true);
-        }else{
-            display.usePotion();
-            int potionEffect = player.inventory.getPotionList().get(0).getRandomUseEffect();
-            if(potionEffect > 0){
-                player.stats.setHealth(player.stats.getHealth()+potionEffect);
-                display.gainLife(potionEffect);
-                player.inventory.removeItem(3, 0);
+         if(player.inventory.getSpecItemList(3).isEmpty()){
+                display.insufficientAmount(true);
             }else{
-                player.stats.setHealth(player.stats.getHealth()+potionEffect);
-                display.takeDamage(potionEffect, player);
-                player.inventory.removeItem(3, 0);
+                display.usePotion();
+                display.statusHealth(player.usePotion(), player);
             }
-        }
-        display.playerHealthStatus(player);
+            display.playerHealthStatus(player);
     }
     
     public void itemChoice(String itemChoice, boolean take) {
@@ -358,7 +349,7 @@ public class MainController {
     }
     
     public boolean enoughGold(int amount, ItemHolder itemHolder){
-        return itemHolder.getInventory().getGoldList().get(0).getAmount() >= amount;
+        return itemHolder.getInventory().getGold().getAmount() >= amount;
     }
     
     /**

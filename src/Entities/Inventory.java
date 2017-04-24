@@ -38,23 +38,23 @@ public class Inventory{
     public ArrayList<ArrayList> getItemsList() {
         return items;
     }
-
-    public ArrayList<Gold> getGoldList() {
-        return gold;
+    
+    public ArrayList<Item> getSpecItemList(int indexCol) {
+        return items.get(indexCol);
     }
 
-    public ArrayList<Weapon> getWeaponList() {
-        return weapons;
+    public ArrayList<Weapon> getWeaponList(){
+        return items.get(1);
     }
-
-    public ArrayList<Potion> getPotionList() {
-        return potions;
+    
+    public ArrayList<Armor> getArmorList(){
+        return items.get(2);
     }
-
-    public ArrayList<Armor> getArmorList() {
-        return armor;
+    
+    public ArrayList<Potion> getPotionList(){
+        return items.get(3);
     }
-
+    
     /**
      * Gets item at object specific paramterer location
      * @param indexCol
@@ -107,6 +107,22 @@ public class Inventory{
         }
         
         return weightCounter;
+    }
+    
+    public Gold getGold() {
+        return gold.get(0);
+    }
+
+    public Weapon getWeapon(int indexRow) {
+        return weapons.get(indexRow);
+    }
+
+    public Potion getPotion(int indexRow) {
+        return potions.get(indexRow);
+    }
+
+    public Armor getArmor(int indexRow) {
+        return armor.get(indexRow);
     }
     
 }
