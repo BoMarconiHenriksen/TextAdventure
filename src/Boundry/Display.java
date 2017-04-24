@@ -160,8 +160,8 @@ public class Display {
     public void printActionLook(ItemHolder itemHolder) {
         boolean empty = true;
 
-        if (!(itemHolder.getInventory().getGoldList().get(0).getAmount() == 0)) {
-            System.out.println("Gold: " + itemHolder.getInventory().getGoldList().get(0).getAmount());
+        if (!(itemHolder.getInventory().getGold().getAmount() == 0)) {
+            System.out.println("Gold: " + itemHolder.getInventory().getGold().getAmount());
             empty = false;
 
         }
@@ -226,7 +226,7 @@ public class Display {
         }
         System.out.println();
         System.out.println("-- Your inventory contains --");
-        System.out.println("Gold: " + player.getInventory().getGoldList().get(0).getAmount());
+        System.out.println("Gold: " + player.getInventory().getGold().getAmount());
 
         if (!player.getInventory().getWeaponList().isEmpty()) {
             System.out.println("Weapons:");
@@ -260,7 +260,7 @@ public class Display {
      * @since 2.0
      */
     public void printNeedGoldExit(Player player) {
-        System.out.println("You need " + (100 - player.getInventory().getGoldList().get(0).getAmount()) + " gold to enter!" + "\n");
+        System.out.println("You need " + (100 - player.getInventory().getGold().getAmount()) + " gold to enter!" + "\n");
     }
 
     /**
@@ -270,7 +270,7 @@ public class Display {
      * @since 2.0
      */
     public void printFinalStats(Player player) {
-        System.out.println(player.getName() + ", total amount of gold gathered: " + player.getInventory().getGoldList().get(0).getAmount() + "\n");
+        System.out.println(player.getName() + ", total amount of gold gathered: " + player.getInventory().getGold().getAmount() + "\n");
 
     }
 
@@ -430,6 +430,14 @@ public class Display {
         System.out.println("You gained " + amount + " health!" + "\n");
     }
 
+    public void statusHealth(int potionEffect, Player player) {
+        if (potionEffect < 0){
+            System.out.println(player.getName() + " takes " + Math.abs(potionEffect) + " damage! " + "\n");
+        } else {
+            System.out.println(player.getName()+" gained " + Math.abs(potionEffect) + " health!" + "\n");
+        }
+    }
+    
     public void usePotion() {
         System.out.println("You drank a mysterious potion" + "\n");
     }

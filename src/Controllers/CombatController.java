@@ -43,22 +43,14 @@ public class CombatController {
                             playerTurn = false;
                             break;
                     case 2:
-                           if(player.inventory.getPotionList().isEmpty()){
+                           if(player.inventory.getSpecItemList(3).isEmpty()){
                                display.insufficientAmount(true);
                            }else{
                                display.usePotion();
-                               int potionEffect = player.inventory.getPotionList().get(0).getRandomUseEffect();
-                               if(potionEffect > 0){
-                                   player.stats.setHealth(player.stats.getHealth()+potionEffect);
-                                   display.gainLife(potionEffect);
-                                   player.inventory.removeItem(3, 0);
-                                   playerTurn = false;
-                               }else{
-                                   player.stats.setHealth(player.stats.getHealth()+potionEffect);
-                                   display.takeDamage(potionEffect, player);
-                                   player.inventory.removeItem(3, 0);
-                                   playerTurn = false;
-                               }
+                               int potionEffect = player.inventory.getPotion(0).getRandomUseEffect();
+                               player.usePotion();
+                               display.statusHealth(potionEffect, player);
+                               playerTurn = false;
                            }
                            display.playerHealthStatus(player);
                         break;

@@ -63,7 +63,7 @@ public class PlayerTest {
         Player instance = player;
         instance.takeItem(goldAmount, room);
         int expResult = 150;
-        int result = instance.inventory.getGoldList().get(0).getAmount();
+        int result = instance.inventory.getGold().getAmount();
         assertEquals(expResult,result);
         //fail("The test case is a prototype.");
     }
@@ -90,7 +90,7 @@ public class PlayerTest {
         Player instance = player;
         instance.placeItem(goldAmount, room);
         int expResult = 150;
-        int result = room.inventory.getGoldList().get(0).getAmount();
+        int result = room.inventory.getGold().getAmount();
         assertEquals(expResult,result);
         //fail("The test case is a prototype.");
     }

@@ -32,4 +32,6 @@ public abstract class Character extends ItemHolder {
 
     public abstract void doAttack(Character character);
     
+    public abstract void usePotion();
+    
 }
