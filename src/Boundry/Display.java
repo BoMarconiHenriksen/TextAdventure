@@ -527,7 +527,8 @@ public class Display {
 
     public void lookDeadNpc(Room room) {
         if (room.getNpc() != null) {
-            System.out.println("There is dead " + room.getNpc().getName() + " on the floor..." + "\n");
+            System.out.println("There is dead " + room.getNpc().getName() + " on the floor...\nIt has the following items:");
+            printActionLook(room.getNpc());
         }
     }
 
