@@ -92,7 +92,8 @@ public class CombatController {
                     npcTurn = false;
                 } else if (!(npc.stats.getHealth() <= 0) && !fleeSucces) {
                     npcTurn = true;
-                } else if (player.stats.getHealth() <= 0) {
+                } 
+                if (player.stats.getHealth() <= 0) {
                     npcTurn = false;
                 }
             }
